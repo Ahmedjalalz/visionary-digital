@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Who EFL is, what we believe, and how a Lahore-based foundation came to run eleven programmes across Punjab.",
+          "Who EFL is, what we believe, and how a Lahore-based foundation works across Punjab.",
       },
       { property: "og:title", content: "About Education and Life Foundation" },
       {
@@ -67,7 +67,7 @@ const history = [
   { year: "Health", title: "Camps go rural", body: "Medical camps move out of the city into districts where the nearest clinic is a journey rather than a walk.", img: healthImg },
   { year: "Water", title: "WASH added", body: "Safe water and sanitation become a programme in their own right after illness keeps emptying classrooms.", img: washImg },
   { year: "Skills", title: "From aid to income", body: "Skills and digital training launch so families exit assistance instead of depending on it.", img: digitalImg },
-  { year: "Today", title: "Eleven programmes, four countries", body: "Supporters in Pakistan, New Zealand, Canada and Germany fund work delivered by teams who live where it happens.", img: heroImg },
+  { year: "Today", title: "Programmes across four countries", body: "Supporters in Pakistan, New Zealand, Canada and Germany fund work delivered by teams who live where it happens.", img: heroImg },
 ];
 
 function HistoryRail() {
@@ -83,7 +83,7 @@ function HistoryRail() {
           <div className="mx-auto mb-12 w-full max-w-[1600px] px-8">
             <span className="eyebrow">The journey</span>
             <h2 className="display-md mt-4 max-w-[18ch] text-cream">
-              How a room full of urgency became eleven programmes.
+              How a room full of urgency became a portfolio of programmes.
             </h2>
           </div>
           <motion.ol style={reduce ? {} : { x }} className="flex items-stretch gap-10 pl-8">
@@ -107,7 +107,7 @@ function HistoryRail() {
 
       <section className="bg-ink px-5 py-20 lg:hidden">
         <span className="eyebrow">The journey</span>
-        <h2 className="display-md mt-4 text-cream">How urgency became eleven programmes.</h2>
+        <h2 className="display-md mt-4 text-cream">How urgency became a portfolio of programmes.</h2>
         <ol className="mt-10 space-y-12">
           {history.map((h) => (
             <li key={h.year}>
