@@ -19,11 +19,11 @@ export function MaskLines({
   return (
     <span ref={ref} className={className}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden pb-[0.06em]">
+        <span key={i} className="block overflow-hidden pb-[0.14em]">
           <motion.span
             className="block"
-            initial={reduce ? { y: 0 } : { y: "110%" }}
-            animate={reduce || inView ? { y: 0 } : { y: "110%" }}
+            initial={reduce ? { y: 0 } : { y: "102%" }}
+            animate={reduce || inView ? { y: 0 } : { y: "102%" }}
             transition={{ duration: 1, ease: EASE, delay: delay + i * 0.09 }}
           >
             {line}
