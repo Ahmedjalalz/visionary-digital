@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
+import logoAsset from "@/assets/official/efl-logo.png.asset.json";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -36,16 +37,12 @@ export function SiteNav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled || open
-            ? "bg-ink/85 backdrop-blur-xl border-b border-white/10 py-3"
-            : "bg-transparent py-6"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500 ${scrolled || open ? "py-2" : "py-3"}`}
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 sm:px-8">
-          <Link to="/" className="group flex items-baseline gap-2" aria-label="Education and Life Foundation — home">
-            <span className="font-display text-2xl font-extrabold tracking-[-0.06em] text-cream">EFL</span>
-            <span className="hidden text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-cream/55 sm:block">
+          <Link to="/" className="group flex items-center gap-3" aria-label="Education and Life Foundation — home">
+            <img src={logoAsset.url} alt="" className="h-12 w-12 object-contain" />
+            <span className="hidden text-[0.62rem] font-semibold uppercase text-ink/65 sm:block">
               Education&nbsp;&amp;&nbsp;Life Foundation
             </span>
           </Link>
@@ -55,8 +52,8 @@ export function SiteNav() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="link-underline text-[0.78rem] font-medium uppercase tracking-[0.14em] text-cream/75 transition-colors hover:text-cream"
-                activeProps={{ className: "text-cream" }}
+                className="link-underline text-[0.78rem] font-medium uppercase text-ink/70 transition-colors hover:text-clay"
+                activeProps={{ className: "text-clay" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -67,7 +64,7 @@ export function SiteNav() {
           <div className="flex items-center gap-3">
             <Link
               to="/book"
-              className="hidden bg-clay px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-cream sm:inline-block"
+              className="hidden bg-clay px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
             >
               Book a meeting
             </Link>
@@ -75,7 +72,7 @@ export function SiteNav() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-white/20 text-cream lg:hidden"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-ink/20 text-ink lg:hidden"
             >
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`} />
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
@@ -91,19 +88,19 @@ export function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-ink pt-24 pb-16"
+            className="fixed inset-0 z-40 overflow-y-auto bg-background pt-24 pb-16"
           >
             <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-              <ul className="border-t border-white/10">
+              <ul className="border-t border-ink/10">
                 {primary.map((item, i) => (
                   <motion.li
                     key={item.to}
                     initial={{ opacity: 0, y: 22 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 + i * 0.05, duration: 0.5 }}
-                    className="border-b border-white/10"
+                    className="border-b border-ink/10"
                   >
-                    <Link to={item.to} className="block py-5 font-display text-4xl font-bold tracking-tight text-cream">
+                    <Link to={item.to} className="block py-5 font-display text-4xl font-bold text-ink">
                       {item.label}
                     </Link>
                   </motion.li>
@@ -111,7 +108,7 @@ export function SiteNav() {
               </ul>
               <Link
                 to="/book"
-                className="mt-8 inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
+                className="mt-8 inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
               >
                 Book a meeting
               </Link>
@@ -121,7 +118,7 @@ export function SiteNav() {
                     key={p.slug}
                     to="/projects/$slug"
                     params={{ slug: p.slug }}
-                    className="py-2 text-sm text-cream/55 transition-colors hover:text-clay"
+                    className="py-2 text-sm text-ink/55 transition-colors hover:text-clay"
                   >
                     {p.name}
                   </Link>

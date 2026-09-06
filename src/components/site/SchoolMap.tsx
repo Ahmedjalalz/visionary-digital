@@ -23,16 +23,16 @@ export function SchoolMap() {
   const active = schools[activeIndex]!;
 
   return (
-    <section className="bg-ink">
+    <section className="bg-sand">
       <div className="mx-auto max-w-[1600px] px-5 pt-24 sm:px-8">
         <span className="eyebrow">School coverage</span>
-        <h2 className="display-md mt-4 max-w-[18ch] text-cream">
+         <h2 className="display-md mt-4 max-w-[18ch] text-ink">
           Every pin is a roof, a teacher and a register of names.
         </h2>
       </div>
 
       <div className="mt-14 grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-        <div className="max-h-[80svh] overflow-y-auto border-t border-white/10">
+         <div className="max-h-[80svh] overflow-y-auto border-t border-ink/10">
           {schools.map((s, i) => {
             const isActive = i === activeIndex;
             return (
@@ -40,27 +40,27 @@ export function SchoolMap() {
                 key={s.name}
                 onClick={() => setActiveIndex(i)}
                 aria-current={isActive}
-                className={`group flex w-full items-start gap-5 border-b border-white/10 px-5 py-7 text-left transition-colors sm:px-8 ${
-                  isActive ? "bg-clay/10" : "hover:bg-white/[0.04]"
+                 className={`group flex w-full items-start gap-5 border-b border-ink/10 px-5 py-7 text-left transition-colors sm:px-8 ${
+                   isActive ? "bg-clay/10" : "hover:bg-background"
                 }`}
               >
                 <span className="relative mt-1 flex h-3 w-3 shrink-0">
                   {isActive && <span className="pulse-ring absolute inset-0 rounded-full bg-clay/60" />}
                   <span
-                    className={`relative h-3 w-3 rounded-full ${isActive ? "bg-clay" : "bg-cream/25"}`}
+                     className={`relative h-3 w-3 rounded-full ${isActive ? "bg-clay" : "bg-ink/25"}`}
                   />
                 </span>
                 <span className="flex-1">
-                  <span className="block font-display text-xl font-bold leading-tight text-cream">
+                   <span className="block font-display text-xl font-bold leading-tight text-ink">
                     {s.name}
                   </span>
-                  <span className="mt-1 block text-sm text-cream/50">{s.area}</span>
+                   <span className="mt-1 block text-sm text-ink/50">{s.area}</span>
                 </span>
                 <span className="numeral shrink-0 text-2xl text-clay">{s.students}</span>
               </button>
             );
           })}
-          <p className="px-5 py-6 text-xs uppercase tracking-[0.16em] text-cream/35 sm:px-8">
+           <p className="px-5 py-6 text-xs uppercase tracking-[0.16em] text-ink/40 sm:px-8">
             Student counts are indicative and pending EFL verification.
           </p>
         </div>
@@ -73,10 +73,10 @@ export function SchoolMap() {
             className="absolute inset-0"
             zoom={14}
           />
-          <div className="pointer-events-none absolute bottom-6 left-6 max-w-xs bg-ink/85 p-5 backdrop-blur-md">
+           <div className="pointer-events-none absolute bottom-6 left-6 max-w-xs border border-ink/10 bg-background/90 p-5 backdrop-blur-md">
             <span className="eyebrow">Selected</span>
-            <p className="mt-2 font-display text-lg font-bold leading-tight text-cream">{active.name}</p>
-            <p className="text-sm text-cream/55">{active.area}</p>
+             <p className="mt-2 font-display text-lg font-bold leading-tight text-ink">{active.name}</p>
+             <p className="text-sm text-ink/55">{active.area}</p>
           </div>
         </div>
       </div>

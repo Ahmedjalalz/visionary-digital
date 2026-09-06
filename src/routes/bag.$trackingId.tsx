@@ -38,7 +38,7 @@ function BagDetails() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-ink">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <Loader2 className="h-6 w-6 animate-spin text-clay" />
       </div>
     );
@@ -46,9 +46,9 @@ function BagDetails() {
 
   if (isError || !data) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-ink px-5 text-center">
-        <h1 className="display-md max-w-[16ch] text-cream">We couldn't find that bag.</h1>
-        <p className="max-w-md text-sm text-cream/60">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-background px-5 text-center">
+        <h1 className="display-md max-w-[16ch] text-ink">We couldn't find that bag.</h1>
+        <p className="max-w-md text-sm text-ink/60">
           The tracking ID <span className="text-clay">{trackingId}</span> isn't in our records. Check the
           ID on your sponsorship receipt, or contact us and we'll trace it.
         </p>
@@ -75,20 +75,20 @@ function BagDetails() {
   ];
 
   return (
-    <article className="bg-ink">
+    <article className="bg-background text-ink">
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         {/* information side */}
         <div className="flex flex-col justify-center px-5 pb-20 pt-36 sm:px-10 lg:pt-40">
           <Link
             to="/projects/$slug"
             params={{ slug: "school-bags" }}
-            className="link-underline mb-10 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.18em] text-cream/50"
+            className="link-underline mb-10 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.18em] text-ink/50"
           >
             <ArrowLeft className="h-4 w-4" /> School Bags
           </Link>
 
           <span className="eyebrow">Bag ID</span>
-          <h1 className="numeral mt-3 text-[13vw] leading-[0.8] text-cream sm:text-7xl">
+          <h1 className="numeral mt-3 text-[13vw] leading-[0.8] text-ink sm:text-7xl">
             {data.tracking_id}
           </h1>
 
@@ -99,11 +99,11 @@ function BagDetails() {
                 <div key={s} className="flex flex-1 items-center last:flex-none">
                   <div className="flex flex-col items-start gap-2">
                     <span
-                      className={`h-3 w-3 rounded-full ${i <= stageIndex ? "bg-clay" : "bg-cream/20"}`}
+                      className={`h-3 w-3 rounded-full ${i <= stageIndex ? "bg-clay" : "bg-ink/20"}`}
                     />
                     <span
                       className={`text-[0.65rem] uppercase tracking-[0.16em] ${
-                        i <= stageIndex ? "text-cream" : "text-cream/35"
+                        i <= stageIndex ? "text-ink" : "text-ink/40"
                       }`}
                     >
                       {s}
@@ -111,7 +111,7 @@ function BagDetails() {
                   </div>
                   {i < stages.length - 1 && (
                     <span
-                      className={`mx-3 mb-6 h-px flex-1 ${i < stageIndex ? "bg-clay" : "bg-cream/15"}`}
+                      className={`mx-3 mb-6 h-px flex-1 ${i < stageIndex ? "bg-clay" : "bg-ink/15"}`}
                     />
                   )}
                 </div>
@@ -124,19 +124,19 @@ function BagDetails() {
               value ? (
                 <div
                   key={label}
-                  className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-t border-white/10 py-5"
+                  className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-t border-ink/10 py-5"
                 >
-                  <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-cream/40">{label}</dt>
-                  <dd className="font-display text-xl font-bold leading-tight tracking-tight text-cream">
+                  <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-ink/45">{label}</dt>
+                  <dd className="font-display text-xl font-bold leading-tight tracking-tight text-ink">
                     {value}
                   </dd>
                 </div>
               ) : null,
             )}
             {(data.dispatched_on || data.delivered_on) && (
-              <div className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-y border-white/10 py-5">
-                <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-cream/40">Dates</dt>
-                <dd className="text-sm text-cream/70">
+              <div className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-y border-ink/10 py-5">
+                <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-ink/45">Dates</dt>
+                <dd className="text-sm text-ink/70">
                   {data.dispatched_on && <>Dispatched {data.dispatched_on}. </>}
                   {data.delivered_on && <>Delivered {data.delivered_on}.</>}
                 </dd>

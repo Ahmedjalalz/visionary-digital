@@ -55,10 +55,10 @@ export function BagTracker() {
               strokeWidth={1.1}
             />
           </span>
-          <span className="font-display text-2xl font-bold tracking-tight text-cream">
+           <span className="font-display text-2xl font-bold text-ink">
             Track the bag
           </span>
-          <span className="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-cream/45">
+           <span className="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-ink/45">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-clay" /> Tap to open
           </span>
         </button>
@@ -70,7 +70,7 @@ export function BagTracker() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/70 px-5 backdrop-blur-sm"
+             className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/45 px-5 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             role="dialog"
             aria-modal="true"
@@ -82,28 +82,28 @@ export function BagTracker() {
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg overflow-hidden rounded-xl border border-white/20 bg-white/[0.08] p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] backdrop-blur-2xl sm:p-10"
+               className="relative w-full max-w-lg overflow-hidden rounded-xl border border-cream/70 bg-cream/90 p-8 shadow-xl backdrop-blur-2xl sm:p-10"
             >
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close"
-                className="absolute right-5 top-5 text-cream/50 transition-colors hover:text-cream"
+                 className="absolute right-5 top-5 text-ink/50 transition-colors hover:text-ink"
               >
                 <X className="h-5 w-5" />
               </button>
 
               <Backpack className="h-8 w-8 text-clay" strokeWidth={1.2} />
-              <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-cream">
+               <h2 className="mt-5 font-display text-3xl font-bold text-ink">
                 Track a school bag
               </h2>
-              <p className="mt-2 text-sm text-cream/60">
+               <p className="mt-2 text-sm text-ink/60">
                 Every sponsored bag carries an ID from the moment it is packed.
               </p>
 
               <form onSubmit={submit} className="mt-7">
                 <label
                   htmlFor="tracking-id"
-                  className="block text-[0.68rem] uppercase tracking-[0.2em] text-cream/50"
+                   className="block text-[0.68rem] uppercase tracking-[0.2em] text-ink/50"
                 >
                   Enter tracking ID
                 </label>
@@ -118,7 +118,7 @@ export function BagTracker() {
                   autoComplete="off"
                   aria-invalid={!!error}
                   aria-describedby={error ? "tracking-error" : undefined}
-                  className="mt-3 w-full border-b border-white/25 bg-transparent pb-3 font-display text-2xl tracking-tight text-cream placeholder:text-cream/25 focus:border-clay focus:outline-none"
+                   className="mt-3 w-full border-b border-ink/25 bg-transparent pb-3 font-display text-2xl text-ink placeholder:text-ink/25 focus:border-clay focus:outline-none"
                 />
                 {error && (
                   <p id="tracking-error" role="alert" className="mt-3 text-sm text-destructive">
@@ -128,12 +128,12 @@ export function BagTracker() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-7 inline-flex w-full items-center justify-center gap-2 bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:bg-cream disabled:opacity-60"
+                   className="mt-7 inline-flex w-full items-center justify-center gap-2 bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60"
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
                   {loading ? "Looking up" : "Find this bag"}
                 </button>
-                <p className="mt-4 text-center text-xs text-cream/35">
+                 <p className="mt-4 text-center text-xs text-ink/40">
                   Try EFL-2026-0001 to see a delivered bag.
                 </p>
               </form>

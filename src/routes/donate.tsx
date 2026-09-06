@@ -70,17 +70,17 @@ function Donate() {
 
   if (done) {
     return (
-      <section className="flex min-h-screen items-center bg-ink px-5 sm:px-8">
+      <section className="flex min-h-screen items-center bg-background px-5 sm:px-8">
         <div className="mx-auto w-full max-w-[1600px]">
           <Check className="h-10 w-10 text-clay" strokeWidth={1.3} />
-          <h1 className="display-lg mt-6 max-w-[14ch] text-cream">Thank you. Genuinely.</h1>
+          <h1 className="display-lg mt-6 max-w-[14ch] text-ink">Thank you. Genuinely.</h1>
           <p className="lede mt-6 max-w-xl">
             Your pledge of ${value} {monthly ? "per month " : ""}is recorded. A member of the team will
             email you the transfer details and, once it clears, tell you exactly where it went.
           </p>
           <Link
             to="/projects"
-            className="mt-10 inline-block border border-cream/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:border-cream"
+            className="mt-10 inline-block border border-ink/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink"
           >
             See the programmes
           </Link>
@@ -93,19 +93,19 @@ function Donate() {
     <>
       <section className="relative h-[70svh] min-h-[440px] overflow-hidden">
         <ParallaxImage src={heroImg} alt="A classroom of students in Punjab" className="absolute inset-0" priority />
-        <div className="absolute inset-0 bg-ink/70" />
+        <div className="absolute inset-0 bg-background/70" />
         <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 pb-14 sm:px-8">
-          <h1 className="display-xl max-w-[12ch] text-cream">
+          <h1 className="display-xl max-w-[12ch] text-ink">
             <MaskLines lines={["Money here", "becomes a", "morning."]} />
           </h1>
         </div>
       </section>
 
-      <section className="bg-ink px-5 py-24 sm:px-8">
+      <section className="bg-background px-5 py-24 sm:px-8">
         <form onSubmit={submit} className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <span className="eyebrow">Choose an amount — USD</span>
-            <div className="mt-6 grid grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-px bg-ink/10 sm:grid-cols-4">
               {amounts.map((a) => (
                 <button
                   key={a}
@@ -116,7 +116,7 @@ function Donate() {
                   }}
                   aria-pressed={amount === a}
                   className={`p-6 text-left transition-colors ${
-                    amount === a ? "bg-clay text-ink" : "bg-ink text-cream hover:bg-secondary"
+                    amount === a ? "bg-clay text-primary-foreground" : "bg-background text-ink hover:bg-secondary"
                   }`}
                 >
                   <span className="numeral text-4xl">${a}</span>
@@ -125,7 +125,7 @@ function Donate() {
             </div>
 
             <div className="mt-8">
-              <label htmlFor="custom" className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+              <label htmlFor="custom" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
                 Or another amount
               </label>
               <input
@@ -137,7 +137,7 @@ function Donate() {
                   setAmount(null);
                 }}
                 placeholder="0"
-                className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 font-display text-3xl text-cream placeholder:text-cream/20 focus:border-clay focus:outline-none"
+                className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 font-display text-3xl text-ink placeholder:text-ink/20 focus:border-clay focus:outline-none"
               />
             </div>
 
@@ -146,15 +146,15 @@ function Donate() {
               onClick={() => setMonthly(!monthly)}
               aria-pressed={monthly}
               className={`mt-8 inline-flex items-center gap-3 border px-5 py-3 text-xs uppercase tracking-[0.16em] transition-colors ${
-                monthly ? "border-clay text-clay" : "border-white/20 text-cream/70"
+                monthly ? "border-clay text-clay" : "border-ink/20 text-ink/70"
               }`}
             >
-              <span className={`h-2.5 w-2.5 rounded-full ${monthly ? "bg-clay" : "bg-cream/25"}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${monthly ? "bg-clay" : "bg-ink/25"}`} />
               Give monthly
             </button>
 
             {amount && (
-              <p className="mt-10 max-w-md font-serif text-2xl italic leading-snug text-cream/85">
+              <p className="mt-10 max-w-md font-serif text-2xl italic leading-snug text-ink/85">
                 {impact[amount]}
               </p>
             )}
@@ -162,20 +162,20 @@ function Donate() {
 
           <div className="lg:col-span-5 lg:col-start-8">
             <div>
-              <label htmlFor="project" className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+              <label htmlFor="project" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
                 Direct it to
               </label>
               <select
                 id="project"
                 value={projectSlug}
                 onChange={(e) => setProjectSlug(e.target.value)}
-                className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+                className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
               >
-                <option value="" className="bg-ink">
+                <option value="" className="bg-background text-ink">
                   Wherever it's needed most
                 </option>
                 {projects.map((p) => (
-                  <option key={p.slug} value={p.slug} className="bg-ink">
+                  <option key={p.slug} value={p.slug} className="bg-background text-ink">
                     {p.name}
                   </option>
                 ))}
@@ -187,14 +187,14 @@ function Donate() {
               <DonorField label="Email" name="email" type="email" required />
               <DonorField label="Phone (optional)" name="phone" />
               <div>
-                <label htmlFor="message" className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+                <label htmlFor="message" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
                   Message (optional)
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={3}
-                  className="mt-3 w-full resize-none border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+                  className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
                 />
               </div>
             </div>
@@ -202,13 +202,13 @@ function Donate() {
             <button
               type="submit"
               disabled={sending || !value}
-              className="mt-10 inline-flex w-full items-center justify-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:bg-cream disabled:opacity-40"
+              className="mt-10 inline-flex w-full items-center justify-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-40"
             >
               {sending && <Loader2 className="h-4 w-4 animate-spin" />}
               Pledge ${value || 0}
               {monthly ? " / month" : ""}
             </button>
-            <p className="mt-4 text-xs leading-relaxed text-cream/40">
+            <p className="mt-4 text-xs leading-relaxed text-ink/45">
               This records a pledge — no card is charged here. The team emails transfer details and a
               receipt.
             </p>
@@ -232,7 +232,7 @@ function DonorField({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+      <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
         {label}
         {required && <span className="text-clay"> *</span>}
       </label>
@@ -241,7 +241,7 @@ function DonorField({
         name={name}
         type={type}
         required={required}
-        className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+        className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
       />
     </div>
   );

@@ -1,9 +1,24 @@
-import education from "@/assets/project-education.jpg";
-import wash from "@/assets/project-wash.jpg";
-import widows from "@/assets/project-widows.jpg";
-import health from "@/assets/project-health.jpg";
-import digital from "@/assets/project-digital.jpg";
-import hero from "@/assets/hero-community.jpg";
+import educationAsset from "@/assets/official/education.jpg.asset.json";
+import schoolworkAsset from "@/assets/official/schoolwork.jpg.asset.json";
+import communityAsset from "@/assets/official/community.jpg.asset.json";
+import familyAsset from "@/assets/official/family.jpg.asset.json";
+import widowsAsset from "@/assets/official/widows.jpg.asset.json";
+import healthAsset from "@/assets/official/health.jpg.asset.json";
+import midwiferyAsset from "@/assets/official/midwifery.jpg.asset.json";
+import digitalAsset from "@/assets/official/digital.jpg.asset.json";
+import skillsAsset from "@/assets/official/skills.jpg.asset.json";
+import capacityAsset from "@/assets/official/capacity.jpg.asset.json";
+
+const education = educationAsset.url;
+const schoolwork = schoolworkAsset.url;
+const community = communityAsset.url;
+const family = familyAsset.url;
+const widows = widowsAsset.url;
+const health = healthAsset.url;
+const midwifery = midwiferyAsset.url;
+const digital = digitalAsset.url;
+const skills = skillsAsset.url;
+const capacity = capacityAsset.url;
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
 
@@ -17,6 +32,7 @@ export interface Project {
   response: string[];
   outcomes: { label: string; value: string }[];
   image: string;
+  gallery: string[];
   accent: "clay" | "moss" | "sand";
   layout: ProjectLayout;
 }
@@ -46,6 +62,7 @@ export const projects: Project[] = [
       { label: "Reach", value: "Punjab communities" },
     ],
     image: education,
+    gallery: [schoolwork, community, education],
     accent: "clay",
     layout: "map",
   },
@@ -72,6 +89,7 @@ export const projects: Project[] = [
       { label: "Delivered to", value: "A named child" },
     ],
     image: education,
+    gallery: [community, schoolwork, education],
     accent: "sand",
     layout: "object",
   },
@@ -99,6 +117,7 @@ export const projects: Project[] = [
       { label: "Goal", value: "Self-reliance" },
     ],
     image: widows,
+    gallery: [family, widows, community],
     accent: "clay",
     layout: "portrait",
   },
@@ -123,7 +142,8 @@ export const projects: Project[] = [
       { label: "Sanitation", value: "School facilities" },
       { label: "Hygiene", value: "Community training" },
     ],
-    image: wash,
+    image: community,
+    gallery: [community, family, education],
     accent: "moss",
     layout: "horizontal",
   },
@@ -150,6 +170,7 @@ export const projects: Project[] = [
       { label: "Model", value: "Mobile camps" },
     ],
     image: health,
+    gallery: [health, midwifery, community],
     accent: "moss",
     layout: "statement",
   },
@@ -175,6 +196,7 @@ export const projects: Project[] = [
       { label: "Outcome", value: "Employable skills" },
     ],
     image: digital,
+    gallery: [digital, skills, capacity],
     accent: "sand",
     layout: "data",
   },
@@ -199,7 +221,8 @@ export const projects: Project[] = [
       { label: "Placed", value: "In home districts" },
       { label: "Focus", value: "Safe delivery" },
     ],
-    image: health,
+    image: midwifery,
+    gallery: [midwifery, health, community],
     accent: "clay",
     layout: "portrait",
   },
@@ -224,7 +247,8 @@ export const projects: Project[] = [
       { label: "After", value: "Placement support" },
       { label: "Aim", value: "Independence" },
     ],
-    image: digital,
+    image: skills,
+    gallery: [skills, digital, capacity],
     accent: "sand",
     layout: "horizontal",
   },
@@ -249,7 +273,8 @@ export const projects: Project[] = [
       { label: "Builds", value: "Local leadership" },
       { label: "Result", value: "Durable programmes" },
     ],
-    image: hero,
+    image: capacity,
+    gallery: [capacity, skills, community],
     accent: "moss",
     layout: "data",
   },
@@ -275,6 +300,7 @@ export const projects: Project[] = [
       { label: "Principle", value: "Dignity first" },
     ],
     image: widows,
+    gallery: [family, widows, community],
     accent: "clay",
     layout: "statement",
   },
@@ -299,7 +325,8 @@ export const projects: Project[] = [
       { label: "Nutrition", value: "Supported" },
       { label: "After birth", value: "Follow-up" },
     ],
-    image: health,
+    image: midwifery,
+    gallery: [midwifery, health, family],
     accent: "moss",
     layout: "portrait",
   },
