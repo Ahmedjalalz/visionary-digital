@@ -20,7 +20,7 @@ export const schools: School[] = [
 
 export function SchoolMap() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const active = schools[activeIndex];
+  const active = schools[activeIndex]!;
 
   return (
     <section className="bg-ink">
