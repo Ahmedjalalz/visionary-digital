@@ -2,14 +2,21 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
 
-import heroImg from "@/assets/hero-community.jpg";
-import educationImg from "@/assets/project-education.jpg";
-import healthImg from "@/assets/project-health.jpg";
-import washImg from "@/assets/project-wash.jpg";
-import widowsImg from "@/assets/project-widows.jpg";
-import digitalImg from "@/assets/project-digital.jpg";
+import heroAsset from "@/assets/official/community.jpg.asset.json";
+import educationAsset from "@/assets/official/education.jpg.asset.json";
+import healthAsset from "@/assets/official/health.jpg.asset.json";
+import familyAsset from "@/assets/official/family.jpg.asset.json";
+import widowsAsset from "@/assets/official/widows.jpg.asset.json";
+import digitalAsset from "@/assets/official/digital.jpg.asset.json";
 
 import { MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
+
+const heroImg = heroAsset.url;
+const educationImg = educationAsset.url;
+const healthImg = healthAsset.url;
+const washImg = familyAsset.url;
+const widowsImg = widowsAsset.url;
+const digitalImg = digitalAsset.url;
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -78,11 +85,11 @@ function HistoryRail() {
 
   return (
     <>
-      <section ref={ref} className="relative hidden h-[500vh] bg-ink lg:block">
+      <section ref={ref} className="relative hidden h-[500vh] bg-sand lg:block">
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="mx-auto mb-12 w-full max-w-[1600px] px-8">
             <span className="eyebrow">The journey</span>
-            <h2 className="display-md mt-4 max-w-[18ch] text-cream">
+             <h2 className="display-md mt-4 max-w-[18ch] text-ink">
               How a room full of urgency became a portfolio of programmes.
             </h2>
           </div>
@@ -94,10 +101,10 @@ function HistoryRail() {
                   <div className="absolute inset-0 bg-ink/45" />
                   <span className="numeral absolute bottom-4 left-5 text-6xl text-cream">{h.year}</span>
                 </div>
-                <div className="mt-6 border-t border-white/15 pt-5">
+                 <div className="mt-6 border-t border-ink/15 pt-5">
                   <span className="numeral text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-2 font-display text-3xl font-bold tracking-tight text-cream">{h.title}</h3>
-                  <p className="mt-3 max-w-[42ch] text-sm leading-relaxed text-cream/60">{h.body}</p>
+                   <h3 className="mt-2 font-display text-3xl font-bold text-ink">{h.title}</h3>
+                   <p className="mt-3 max-w-[42ch] text-sm leading-relaxed text-ink/60">{h.body}</p>
                 </div>
               </li>
             ))}
@@ -105,9 +112,9 @@ function HistoryRail() {
         </div>
       </section>
 
-      <section className="bg-ink px-5 py-20 lg:hidden">
+       <section className="bg-sand px-5 py-20 lg:hidden">
         <span className="eyebrow">The journey</span>
-        <h2 className="display-md mt-4 text-cream">How urgency became a portfolio of programmes.</h2>
+         <h2 className="display-md mt-4 text-ink">How urgency became a portfolio of programmes.</h2>
         <ol className="mt-10 space-y-12">
           {history.map((h) => (
             <li key={h.year}>
@@ -116,8 +123,8 @@ function HistoryRail() {
                 <div className="absolute inset-0 bg-ink/45" />
                 <span className="numeral absolute bottom-3 left-4 text-4xl text-cream">{h.year}</span>
               </div>
-              <h3 className="mt-4 font-display text-2xl font-bold text-cream">{h.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-cream/60">{h.body}</p>
+               <h3 className="mt-4 font-display text-2xl font-bold text-ink">{h.title}</h3>
+               <p className="mt-2 text-sm leading-relaxed text-ink/60">{h.body}</p>
             </li>
           ))}
         </ol>
@@ -168,13 +175,13 @@ function About() {
 
       {/* vision / mission — split, oversized */}
       <section className="grid md:grid-cols-2">
-        <div className="flex flex-col justify-between gap-16 bg-clay px-5 py-20 text-ink sm:px-10">
+         <div className="flex flex-col justify-between gap-16 bg-clay px-5 py-20 text-primary-foreground sm:px-10">
           <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em]">Vision</span>
           <p className="font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.04em] sm:text-6xl">
             To uplift the deprived community in Pakistan.
           </p>
         </div>
-        <div className="flex flex-col justify-between gap-16 bg-ink px-5 py-20 text-cream sm:px-10">
+         <div className="flex flex-col justify-between gap-16 bg-sand px-5 py-20 text-ink sm:px-10">
           <span className="eyebrow">Mission</span>
           <p className="font-display text-4xl font-extrabold leading-[0.95] tracking-[-0.04em] sm:text-6xl">
             To build a better life for the community, and to aid those who cannot help themselves.
@@ -183,7 +190,7 @@ function About() {
       </section>
 
       {/* services — a list, deliberately plain */}
-      <section className="bg-ink px-5 py-24 sm:px-8">
+       <section className="bg-background px-5 py-24 sm:px-8">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">What the Foundation provides</span>
           <ul className="mt-10">
@@ -196,10 +203,10 @@ function About() {
             ].map((s, i) => (
               <li
                 key={s}
-                className="group flex items-baseline gap-6 border-t border-white/10 py-6 last:border-b"
+                 className="group flex items-baseline gap-6 border-t border-ink/10 py-6 last:border-b"
               >
                 <span className="numeral text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-display text-[6vw] font-bold leading-[1.02] tracking-[-0.04em] text-cream transition-transform duration-700 group-hover:translate-x-3 sm:text-4xl">
+                 <span className="font-display text-[6vw] font-bold leading-[1.02] text-ink transition-transform duration-700 group-hover:translate-x-3 sm:text-4xl">
                   {s}
                 </span>
               </li>
@@ -209,11 +216,11 @@ function About() {
       </section>
 
       {/* team — the card IS the image */}
-      <section className="bg-ink px-5 pb-24 sm:px-8">
+       <section className="bg-background px-5 pb-24 sm:px-8">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="display-md max-w-[14ch] text-cream">Meet the people behind it.</h2>
-            <p className="max-w-sm text-sm text-cream/55">
+             <h2 className="display-md max-w-[14ch] text-ink">Meet the people behind it.</h2>
+             <p className="max-w-sm text-sm text-ink/55">
               Roles shown are current. Names and photographs will be replaced with EFL's own on approval.
             </p>
           </div>

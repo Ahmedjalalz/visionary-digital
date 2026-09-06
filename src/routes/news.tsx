@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-community.jpg";
-import educationImg from "@/assets/project-education.jpg";
-import healthImg from "@/assets/project-health.jpg";
+import familyAsset from "@/assets/official/family.jpg.asset.json";
+import educationAsset from "@/assets/official/education.jpg.asset.json";
+import healthAsset from "@/assets/official/health.jpg.asset.json";
 import { MaskLines } from "@/components/site/motion-primitives";
+
+const heroImg = familyAsset.url;
+const educationImg = educationAsset.url;
+const healthImg = healthAsset.url;
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -43,10 +47,10 @@ const posts = [
 function News() {
   return (
     <>
-      <section className="bg-ink px-5 pb-14 pt-40 sm:px-8 sm:pt-52">
+       <section className="bg-sand px-5 pb-14 pt-40 sm:px-8 sm:pt-52">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Dispatches</span>
-          <h1 className="display-lg mt-6 max-w-[12ch] text-cream">
+           <h1 className="display-lg mt-6 max-w-[12ch] text-ink">
             <MaskLines lines={["From the", "districts."]} />
           </h1>
           <p className="lede mt-8">
@@ -55,7 +59,7 @@ function News() {
         </div>
       </section>
 
-      <section className="bg-ink px-5 pb-28 sm:px-8">
+       <section className="bg-background px-5 pb-28 sm:px-8">
         <div className="mx-auto max-w-[1600px] space-y-4">
           {posts.map((p, i) => (
             <article
@@ -82,9 +86,6 @@ function News() {
             </article>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-[1600px] text-xs uppercase tracking-[0.16em] text-cream/35">
-          Placeholder entries — ready to be replaced with EFL's published updates.
-        </p>
       </section>
     </>
   );

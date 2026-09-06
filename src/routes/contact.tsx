@@ -51,10 +51,10 @@ function Contact() {
   return (
     <>
       {/* geographic opening */}
-      <section className="relative bg-ink px-5 pb-10 pt-40 sm:px-8 sm:pt-52">
+       <section className="relative bg-sand px-5 pb-10 pt-40 sm:px-8 sm:pt-52">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Four places, one foundation</span>
-          <h1 className="display-lg mt-6 max-w-[13ch] text-cream">
+           <h1 className="display-lg mt-6 max-w-[13ch] text-ink">
             <MaskLines lines={["Lahore. Auckland.", "Toronto. Berlin."]} />
           </h1>
         </div>
@@ -73,7 +73,7 @@ function Contact() {
         </div>
 
         <div className="mx-auto -mt-24 max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-px bg-white/10 md:grid-cols-4">
+           <div className="grid gap-px border border-ink/10 bg-ink/10 shadow-lg shadow-clay/5 md:grid-cols-4">
             {branches.map((b, i) => {
               const isActive = i === active;
               return (
@@ -82,7 +82,7 @@ function Contact() {
                   onClick={() => setActive(i)}
                   aria-current={isActive}
                   className={`p-7 text-left transition-colors ${
-                    isActive ? "bg-clay text-ink" : "bg-ink text-cream hover:bg-secondary"
+                     isActive ? "bg-clay text-primary-foreground" : "bg-background text-ink hover:bg-secondary"
                   }`}
                 >
                   <div className="text-[0.66rem] font-semibold uppercase tracking-[0.2em] opacity-70">
@@ -102,26 +102,26 @@ function Contact() {
       <section className="px-5 py-28 sm:px-8">
         <div className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="display-md max-w-[14ch] text-cream">We would love to hear from you.</h2>
+           <h2 className="display-md max-w-[14ch] text-ink">We would love to hear from you.</h2>
             <div className="mt-10 space-y-5 text-sm">
               <div>
-                <div className="text-[0.66rem] uppercase tracking-[0.2em] text-cream/40">Email</div>
+                 <div className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">Email</div>
                 <a
                   href="mailto:info@educationandlifefoundation.org"
-                  className="link-underline mt-1 inline-block break-all text-cream"
+                   className="link-underline mt-1 inline-block break-all text-ink"
                 >
                   info@educationandlifefoundation.org
                 </a>
               </div>
               <div>
-                <div className="text-[0.66rem] uppercase tracking-[0.2em] text-cream/40">Phone</div>
-                <a href="tel:+923009475513" className="link-underline mt-1 inline-block text-cream">
+                 <div className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">Phone</div>
+                 <a href="tel:+923009475513" className="link-underline mt-1 inline-block text-ink">
                   +92 300 9475513
                 </a>
               </div>
               <div>
-                <div className="text-[0.66rem] uppercase tracking-[0.2em] text-cream/40">Head office</div>
-                <p className="mt-1 max-w-xs text-cream/75">
+                 <div className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">Head office</div>
+                 <p className="mt-1 max-w-xs text-ink/75">
                   181 Raza Block, Allama Iqbal Town, Lahore, Pakistan
                 </p>
               </div>
@@ -137,7 +137,7 @@ function Contact() {
               <Field label="Subject" name="subject" />
             </div>
             <div className="mt-8">
-              <label htmlFor="message" className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+               <label htmlFor="message" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
                 Your message
               </label>
               <textarea
@@ -145,13 +145,13 @@ function Contact() {
                 name="message"
                 required
                 rows={5}
-                className="mt-3 w-full resize-none border-b border-white/20 bg-transparent pb-3 text-lg text-cream placeholder:text-cream/25 focus:border-clay focus:outline-none"
+                 className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink placeholder:text-ink/25 focus:border-clay focus:outline-none"
               />
             </div>
             <button
               type="submit"
               disabled={sending}
-              className="mt-10 inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:bg-cream disabled:opacity-60"
+               className="mt-10 inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60"
             >
               {sending && <Loader2 className="h-4 w-4 animate-spin" />}
               Send message
@@ -176,7 +176,7 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+       <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
         {label}
         {required && <span className="text-clay"> *</span>}
       </label>
@@ -185,7 +185,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 text-lg text-cream placeholder:text-cream/25 focus:border-clay focus:outline-none"
+         className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink placeholder:text-ink/25 focus:border-clay focus:outline-none"
       />
     </div>
   );
