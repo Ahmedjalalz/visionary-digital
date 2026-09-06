@@ -107,7 +107,7 @@ function Hero() {
           Education &amp; Life Foundation — Pakistan
         </motion.span>
 
-        <h1 className="font-display text-cream font-extrabold uppercase leading-[0.86] tracking-[-0.045em] text-[clamp(2.3rem,7.4vw,7.4rem)]">
+        <h1 className="font-display text-[clamp(2.3rem,7.4vw,7.4rem)] font-extrabold uppercase leading-[0.92] text-cream">
           <MaskLines lines={["Uplifting"]} delay={0.15} />
           <MaskLines lines={["the Lives"]} delay={0.28} />
           <span className="block text-clay">
