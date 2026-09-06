@@ -22,7 +22,7 @@ export function MaskLines({
             className="block"
             initial={reduce ? { y: 0, opacity: 1 } : { y: "110%" }}
             whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1, ease: EASE, delay: delay + i * 0.09 }}
           >
             {line}
