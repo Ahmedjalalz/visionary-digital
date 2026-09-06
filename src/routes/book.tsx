@@ -110,10 +110,10 @@ function Book() {
 
   return (
     <>
-      <section className="bg-ink px-5 pb-12 pt-40 sm:px-8 sm:pt-52">
+      <section className="bg-background px-5 pb-12 pt-40 sm:px-8 sm:pt-52">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Book a meeting</span>
-          <h1 className="display-lg mt-6 max-w-[13ch] text-cream">
+          <h1 className="display-lg mt-6 max-w-[13ch] text-ink">
             <MaskLines lines={["Thirty minutes,", "properly spent."]} />
           </h1>
           <p className="lede mt-8">
@@ -123,7 +123,7 @@ function Book() {
         </div>
       </section>
 
-      <section className="bg-ink px-5 pb-32 sm:px-8">
+      <section className="bg-background px-5 pb-32 sm:px-8">
         <div className="mx-auto max-w-[1600px]">
           <AnimatePresence mode="wait">
             {confirmed ? (
@@ -131,23 +131,23 @@ function Book() {
                 key="done"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="border-t border-white/10 pt-16"
+                className="border-t border-ink/10 pt-16"
               >
                 <Check className="h-10 w-10 text-clay" strokeWidth={1.3} />
-                <h2 className="display-md mt-6 max-w-[16ch] text-cream">Your meeting is booked.</h2>
-                <dl className="mt-10 grid max-w-3xl gap-px bg-white/10 sm:grid-cols-3">
+                <h2 className="display-md mt-6 max-w-[16ch] text-ink">Your meeting is booked.</h2>
+                <dl className="mt-10 grid max-w-3xl gap-px bg-ink/10 sm:grid-cols-3">
                   {[
                     ["Date", new Date(`${confirmed.date}T00:00:00`).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })],
                     ["Time", `${confirmed.time} PKT`],
                     ["Platform", confirmed.platform],
                   ].map(([k, v]) => (
-                    <div key={k} className="bg-ink p-6">
-                      <dt className="text-[0.66rem] uppercase tracking-[0.2em] text-cream/40">{k}</dt>
-                      <dd className="mt-2 font-display text-xl font-bold tracking-tight text-cream">{v}</dd>
+                    <div key={k} className="bg-background p-6">
+                      <dt className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">{k}</dt>
+                      <dd className="mt-2 font-display text-xl font-bold tracking-tight text-ink">{v}</dd>
                     </div>
                   ))}
                 </dl>
-                <p className="mt-8 max-w-xl text-sm text-cream/60">
+                <p className="mt-8 max-w-xl text-sm text-ink/60">
                   The team has your request and will send joining details to the email address you gave.
                   Need to change it? Write to info@educationandlifefoundation.org.
                 </p>
@@ -157,21 +157,21 @@ function Book() {
                 {/* calendar */}
                 <div className="lg:col-span-5">
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-2xl font-bold tracking-tight text-cream">
+                    <span className="font-display text-2xl font-bold tracking-tight text-ink">
                       {monthLabel}
                     </span>
                     <div className="flex gap-2">
                       <button
                         onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
                         aria-label="Previous month"
-                        className="border border-white/20 px-3 py-1.5 text-cream/70 hover:border-clay hover:text-clay"
+                        className="border border-ink/20 px-3 py-1.5 text-ink/70 hover:border-clay hover:text-clay"
                       >
                         ←
                       </button>
                       <button
                         onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
                         aria-label="Next month"
-                        className="border border-white/20 px-3 py-1.5 text-cream/70 hover:border-clay hover:text-clay"
+                        className="border border-ink/20 px-3 py-1.5 text-ink/70 hover:border-clay hover:text-clay"
                       >
                         →
                       </button>
@@ -180,7 +180,7 @@ function Book() {
 
                   <div className="mt-6 grid grid-cols-7 gap-1 text-center">
                     {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
-                      <span key={i} className="pb-2 text-[0.6rem] uppercase tracking-[0.16em] text-cream/35">
+                      <span key={i} className="pb-2 text-[0.6rem] uppercase tracking-[0.16em] text-ink/40">
                         {d}
                       </span>
                     ))}
@@ -200,8 +200,8 @@ function Book() {
                             date === d.iso
                               ? "bg-clay font-semibold text-ink"
                               : d.open
-                                ? "text-cream hover:bg-white/10"
-                                : "text-cream/20"
+                                ? "text-ink hover:bg-ink/10"
+                                : "text-ink/20"
                           }`}
                         >
                           {d.day}
@@ -222,14 +222,14 @@ function Book() {
                             className={`border px-4 py-2.5 text-sm transition-colors ${
                               time === s
                                 ? "border-clay bg-clay text-ink"
-                                : "border-white/20 text-cream hover:border-clay"
+                                : "border-ink/20 text-ink hover:border-clay"
                             }`}
                           >
                             {s}
                           </button>
                         ))}
                         {slots.length === 0 && (
-                          <p className="text-sm text-cream/50">No times left on this date.</p>
+                          <p className="text-sm text-ink/50">No times left on this date.</p>
                         )}
                       </div>
                     </div>
@@ -245,7 +245,7 @@ function Book() {
                     <div>
                       <label
                         htmlFor="platform"
-                        className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45"
+                        className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
                       >
                         Platform
                       </label>
@@ -253,10 +253,10 @@ function Book() {
                         id="platform"
                         value={platform}
                         onChange={(e) => setPlatform(e.target.value)}
-                        className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+                        className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
                       >
                         {platforms.map((p) => (
-                          <option key={p} value={p} className="bg-ink">
+                          <option key={p} value={p} className="bg-background text-ink">
                             {p}
                           </option>
                         ))}
@@ -267,7 +267,7 @@ function Book() {
                   <div className="mt-8">
                     <label
                       htmlFor="purpose"
-                      className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45"
+                      className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
                     >
                       What would you like to discuss?
                     </label>
@@ -275,7 +275,7 @@ function Book() {
                       id="purpose"
                       name="purpose"
                       rows={4}
-                      className="mt-3 w-full resize-none border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+                      className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
                     />
                   </div>
 
@@ -283,12 +283,12 @@ function Book() {
                     <button
                       type="submit"
                       disabled={!date || !time || sending}
-                      className="inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:bg-cream disabled:cursor-not-allowed disabled:opacity-40"
+                      className="inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {sending && <Loader2 className="h-4 w-4 animate-spin" />}
                       Confirm booking
                     </button>
-                    <p className="text-sm text-cream/50">
+                    <p className="text-sm text-ink/50">
                       {date && time
                         ? `${new Date(`${date}T00:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long" })} at ${time}`
                         : "Choose a date and time first."}
@@ -317,7 +317,7 @@ function BookField({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-cream/45">
+      <label htmlFor={name} className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
         {label}
         {required && <span className="text-clay"> *</span>}
       </label>
@@ -326,7 +326,7 @@ function BookField({
         name={name}
         type={type}
         required={required}
-        className="mt-3 w-full border-b border-white/20 bg-transparent pb-3 text-lg text-cream focus:border-clay focus:outline-none"
+        className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
       />
     </div>
   );
