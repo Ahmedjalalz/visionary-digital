@@ -11,12 +11,12 @@ export const Route = createFileRoute("/projects/")({
       {
         name: "description",
         content:
-          "Eleven programmes across education, health, water, maternal care, digital skills and family support in Pakistan.",
+          "Programmes across education, health, water, maternal care, digital skills and family support in Pakistan.",
       },
       { property: "og:title", content: "EFL Projects" },
       {
         property: "og:description",
-        content: "Eleven programmes, each built around one specific problem.",
+        content: "Every programme is built around one specific problem.",
       },
     ],
   }),
@@ -31,7 +31,7 @@ function ProjectsIndex() {
     <>
       <section className="relative overflow-hidden bg-ink px-5 pb-16 pt-40 sm:px-8 sm:pt-52">
         <div className="mx-auto max-w-[1600px]">
-          <span className="eyebrow">Eleven programmes</span>
+          <span className="eyebrow">Our programmes</span>
           <h1 className="display-lg mt-6 max-w-[13ch] text-cream">
             <MaskLines lines={["Each one starts", "with a problem,", "not a brochure."]} />
           </h1>

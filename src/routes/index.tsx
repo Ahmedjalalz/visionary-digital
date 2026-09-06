@@ -127,7 +127,7 @@ function Hero() {
       >
         <div className="flex items-end gap-4 px-4 opacity-90">
           <span className="font-display text-[13vw] font-extrabold leading-[0.7] tracking-[-0.07em] text-cream/[0.09]">
-            ELEVEN PROJECTS
+            OUR PROJECTS
           </span>
         </div>
       </div>
@@ -160,7 +160,7 @@ function ProjectsRail() {
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="mx-auto mb-10 flex w-full max-w-[1600px] items-end justify-between px-8">
             <h2 className="display-md max-w-[14ch] text-cream">
-              Eleven answers to eleven different problems.
+              Different problems. Different answers.
             </h2>
             <Link
               to="/projects"
@@ -216,7 +216,7 @@ function ProjectsRail() {
 
       {/* mobile: stacked editorial */}
       <section className="bg-ink px-5 py-20 lg:hidden">
-        <h2 className="display-md text-cream">Eleven answers to eleven different problems.</h2>
+        <h2 className="display-md text-cream">Different problems. Different answers.</h2>
         <div className="mt-10 space-y-4">
           {items.map(({ project, img, n }) => (
             <Link
