@@ -26,7 +26,7 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const [active, setActive] = useState(0);
   const [sending, setSending] = useState(false);
-  const branch = branches[active];
+  const branch = branches[active]!;
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

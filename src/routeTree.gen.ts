@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
@@ -27,9 +29,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -56,7 +68,9 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -65,7 +79,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -75,7 +91,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -86,7 +104,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/book'
     | '/contact'
+    | '/donate'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -95,7 +115,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/book'
     | '/contact'
+    | '/donate'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -104,7 +126,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/book'
     | '/contact'
+    | '/donate'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -114,7 +138,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
   NewsRoute: typeof NewsRoute
   BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -137,11 +163,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -178,7 +218,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BookRoute: BookRoute,
   ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
   NewsRoute: NewsRoute,
   BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,

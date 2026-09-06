@@ -6,11 +6,11 @@ import { projects } from "@/data/projects";
 import { MaskLines, ParallaxImage } from "@/components/site/motion-primitives";
 import heroImg from "@/assets/project-education.jpg";
 
-type DonateSearch = { project?: string };
+type DonateSearch = { project?: string | undefined };
 
 export const Route = createFileRoute("/donate")({
   validateSearch: (search: Record<string, unknown>): DonateSearch => ({
-    project: typeof search.project === "string" ? search.project : undefined,
+    project: typeof search['project'] === "string" ? (search['project'] as string) : undefined,
   }),
   head: () => ({
     meta: [
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/donate")({
       { property: "og:description", content: "Every pledge is tied to a programme and a place." },
     ],
   }),
-  component: Donate;
+  component: Donate,
 });
 
 const amounts = [25, 50, 100, 250];

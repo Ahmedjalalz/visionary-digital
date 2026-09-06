@@ -14,15 +14,16 @@ export function MaskLines({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   return (
-    <span className={className}>
+    <span ref={ref} className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden pb-[0.06em]">
           <motion.span
             className="block"
-            initial={reduce ? { y: 0, opacity: 1 } : { y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
+            initial={reduce ? { y: 0 } : { y: "110%" }}
+            animate={reduce || inView ? { y: 0 } : { y: "110%" }}
             transition={{ duration: 1, ease: EASE, delay: delay + i * 0.09 }}
           >
             {line}
@@ -51,7 +52,7 @@ export function Rise({
       className={className}
       initial={reduce ? false : { opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-8%" }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, ease: EASE, delay }}
     >
       {children}
@@ -90,7 +91,7 @@ export function ParallaxImage({
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        style={reduce ? undefined : { y, scale }}
+        style={reduce ? {} : { y, scale }}
         className={`h-full w-full object-cover ${imgClassName ?? ""}`}
       />
     </div>
@@ -110,7 +111,7 @@ export function Counter({
   format?: (n: number) => string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-15%" });
+  const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
   const [value, setValue] = useState(0);
 
