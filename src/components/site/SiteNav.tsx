@@ -1,0 +1,136 @@
+import { Link, useRouterState } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { projects } from "@/data/projects";
+
+const primary = [
+  { to: "/", label: "Home" },
+  { to: "/projects", label: "Projects" },
+  { to: "/about", label: "About" },
+  { to: "/news", label: "News" },
+  { to: "/contact", label: "Contact" },
+  { to: "/donate", label: "Donate" },
+] as const;
+
+export function SiteNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+          scrolled || open
+            ? "bg-ink/85 backdrop-blur-xl border-b border-white/10 py-3"
+            : "bg-transparent py-6"
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 sm:px-8">
+          <Link to="/" className="group flex items-baseline gap-2" aria-label="Education and Life Foundation — home">
+            <span className="font-display text-2xl font-extrabold tracking-[-0.06em] text-cream">EFL</span>
+            <span className="hidden text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-cream/55 sm:block">
+              Education&nbsp;&amp;&nbsp;Life Foundation
+            </span>
+          </Link>
+
+          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+            {primary.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="link-underline text-[0.78rem] font-medium uppercase tracking-[0.14em] text-cream/75 transition-colors hover:text-cream"
+                activeProps={{ className: "text-cream" }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              to="/book"
+              className="hidden bg-clay px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-cream sm:inline-block"
+            >
+              Book a meeting
+            </Link>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-white/20 text-cream lg:hidden"
+            >
+              <span className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`} />
+              <span className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed inset-0 z-40 overflow-y-auto bg-ink pt-24 pb-16"
+          >
+            <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+              <ul className="border-t border-white/10">
+                {primary.map((item, i) => (
+                  <motion.li
+                    key={item.to}
+                    initial={{ opacity: 0, y: 22 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05, duration: 0.5 }}
+                    className="border-b border-white/10"
+                  >
+                    <Link to={item.to} className="block py-5 font-display text-4xl font-bold tracking-tight text-cream">
+                      {item.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+              <Link
+                to="/book"
+                className="mt-8 inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink"
+              >
+                Book a meeting
+              </Link>
+              <div className="mt-10 grid grid-cols-1 gap-1 sm:grid-cols-2">
+                {projects.map((p) => (
+                  <Link
+                    key={p.slug}
+                    to="/projects/$slug"
+                    params={{ slug: p.slug }}
+                    className="py-2 text-sm text-cream/55 transition-colors hover:text-clay"
+                  >
+                    {p.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
