@@ -38,7 +38,7 @@ function ProjectPage() {
   const heroLeft = project.layout === "portrait" || project.layout === "data";
 
   return (
-    <article className="bg-ink">
+    <article className="bg-background">
       {/* ── hero ── */}
       <section className="relative h-[92svh] min-h-[560px] overflow-hidden">
         <ParallaxImage
@@ -74,21 +74,21 @@ function ProjectPage() {
       </section>
 
       {/* ── the problem, huge ── */}
-      <section className="border-b border-white/10 px-5 py-24 sm:px-8 sm:py-36">
+       <section className="border-b border-ink/10 px-5 py-24 sm:px-8 sm:py-36">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">The problem</span>
           <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
             <span className={`numeral text-[24vw] leading-[0.74] sm:text-[15vw] ${accentClass}`}>
               {project.problem.figure}
             </span>
-            <span className="numeral text-[9vw] uppercase leading-none text-cream sm:text-[5vw]">
+             <span className="numeral text-[9vw] uppercase leading-none text-ink sm:text-[5vw]">
               {project.problem.unit}
             </span>
           </div>
-          <p className="mt-8 max-w-[24ch] font-display text-3xl font-bold leading-[1.05] tracking-tight text-cream sm:text-6xl">
+           <p className="mt-8 max-w-[24ch] font-display text-3xl font-bold leading-[1.05] text-ink sm:text-6xl">
             {project.problem.line}
           </p>
-          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-cream/40">
+           <p className="mt-6 text-xs uppercase tracking-[0.18em] text-ink/45">
             Source: {project.problem.source} — figures pending final EFL verification
           </p>
 
@@ -110,18 +110,18 @@ function ProjectPage() {
         <section className="relative overflow-hidden py-24">
           <div
             aria-hidden
-            className="pointer-events-none select-none whitespace-nowrap font-display text-[14vw] font-extrabold leading-none tracking-[-0.06em] text-cream/[0.06]"
+             className="pointer-events-none select-none whitespace-nowrap font-display text-[14vw] font-extrabold leading-none text-clay/[0.06]"
           >
             <span className="inline-block marquee-track">
               {`${project.name.toUpperCase()} · `.repeat(6)}
             </span>
           </div>
           <div className="mx-auto mt-16 max-w-[1600px] px-5 sm:px-8">
-            <h2 className="display-md max-w-[16ch] text-cream">What EFL does about it.</h2>
+             <h2 className="display-md max-w-[16ch] text-ink">What EFL does about it.</h2>
             <div className="mt-10 grid gap-10 md:grid-cols-2">
               {project.response.map((r, i) => (
                 <Rise key={i} delay={i * 0.08}>
-                  <p className="text-lg leading-relaxed text-cream/75">{r}</p>
+                   <p className="text-lg leading-relaxed text-ink/75">{r}</p>
                 </Rise>
               ))}
             </div>
@@ -143,16 +143,37 @@ function ProjectPage() {
       )}
 
       {/* ── outcomes strip ── */}
-      <section className="border-y border-white/10 px-5 py-16 sm:px-8">
+       <section className="border-y border-ink/10 bg-sand px-5 py-16 sm:px-8">
         <div className="mx-auto grid max-w-[1600px] gap-8 sm:grid-cols-3">
           {project.outcomes.map((o) => (
             <div key={o.label}>
-              <div className="text-[0.66rem] uppercase tracking-[0.2em] text-cream/40">{o.label}</div>
-              <div className="mt-2 font-display text-3xl font-bold tracking-tight text-cream">
+               <div className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">{o.label}</div>
+               <div className="mt-2 font-display text-3xl font-bold text-ink">
                 {o.value}
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="px-5 py-24 sm:px-8">
+        <div className="mx-auto max-w-[1600px]">
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <span className="eyebrow">From the field</span>
+              <h2 className="display-md mt-4 max-w-[16ch] text-ink">The work, as it happens.</h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-ink/55">
+              Photographs from Education and Life Foundation programmes and the communities they serve.
+            </p>
+          </div>
+          <div className="mt-12 grid auto-rows-[260px] gap-3 md:grid-cols-12 md:auto-rows-[360px]">
+            {project.gallery.map((image, index) => (
+              <figure key={image} className={`overflow-hidden ${index === 0 ? "md:col-span-7" : index === 1 ? "md:col-span-5" : "md:col-span-12"}`}>
+                <img src={image} alt={`${project.name} field work ${index + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -164,7 +185,7 @@ function ProjectPage() {
           <div className="mx-auto grid max-w-[1600px] items-center gap-14 lg:grid-cols-2">
             <div>
               <span className="eyebrow">Sponsors</span>
-              <h2 className="display-md mt-4 max-w-[15ch] text-cream">
+               <h2 className="display-md mt-4 max-w-[15ch] text-ink">
                 Follow your bag all the way to a name.
               </h2>
               <p className="lede mt-6">
@@ -179,11 +200,11 @@ function ProjectPage() {
 
       {project.layout === "data" && (
         <section className="px-5 py-24 sm:px-8">
-          <div className="mx-auto grid max-w-[1600px] gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+           <div className="mx-auto grid max-w-[1600px] gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {["Enrol", "Train", "Practise", "Earn"].map((step, i) => (
-              <div key={step} className="bg-ink p-8">
+               <div key={step} className="bg-sand p-8">
                 <span className="numeral text-sm text-clay">{String(i + 1).padStart(2, "0")}</span>
-                <div className="mt-4 font-display text-2xl font-bold tracking-tight text-cream">{step}</div>
+                 <div className="mt-4 font-display text-2xl font-bold text-ink">{step}</div>
               </div>
             ))}
           </div>
@@ -215,21 +236,21 @@ function ProjectPage() {
       </section>
 
       {/* ── next ── */}
-      <section className="px-5 py-20 sm:px-8">
+       <section className="bg-sand px-5 py-20 sm:px-8">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Continue</span>
           <ul className="mt-8">
             {others.map((p) => (
-              <li key={p.slug} className="border-t border-white/10 last:border-b">
+               <li key={p.slug} className="border-t border-ink/10 last:border-b">
                 <Link
                   to="/projects/$slug"
                   params={{ slug: p.slug }}
                   className="group flex items-center justify-between gap-6 py-6"
                 >
-                  <span className="font-display text-2xl font-bold tracking-tight text-cream transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
+                   <span className="font-display text-2xl font-bold text-ink transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
                     {p.name}
                   </span>
-                  <ArrowUpRight className="h-5 w-5 shrink-0 text-cream/30 group-hover:text-clay" />
+                   <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/30 group-hover:text-clay" />
                 </Link>
               </li>
             ))}
