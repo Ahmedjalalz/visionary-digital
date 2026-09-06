@@ -89,19 +89,24 @@ function Hero() {
 
       <motion.div
         style={reduce ? {} : { y: titleY }}
-        className="absolute inset-x-0 bottom-[13svh] mx-auto max-w-[1600px] px-5 sm:px-8"
+        className="absolute inset-x-0 bottom-[16svh] mx-auto max-w-[1500px] px-5 sm:px-10"
       >
-        <div className="max-w-[min(92vw,1100px)]">
-          <h1 className="display-xl text-cream">
-            <MaskLines lines={["Uplifting"]} delay={0.15} />
-            <span className="block pl-[8%] sm:pl-[14%]">
-              <MaskLines lines={["the Lives"]} delay={0.28} />
-            </span>
-            <span className="block pl-[2%] text-clay">
-              <MaskLines lines={["of Communities"]} delay={0.4} />
-            </span>
-          </h1>
-        </div>
+        <motion.span
+          initial={reduce ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.9 }}
+          className="eyebrow mb-5 block text-cream/70"
+        >
+          Education &amp; Life Foundation — Pakistan
+        </motion.span>
+
+        <h1 className="font-display text-cream font-extrabold uppercase leading-[0.86] tracking-[-0.045em] text-[clamp(2.3rem,7.4vw,7.4rem)]">
+          <MaskLines lines={["Uplifting"]} delay={0.15} />
+          <MaskLines lines={["the Lives"]} delay={0.28} />
+          <span className="block text-clay">
+            <MaskLines lines={["of Communities"]} delay={0.4} />
+          </span>
+        </h1>
 
         <motion.div
           initial={reduce ? false : { opacity: 0 }}
@@ -120,17 +125,6 @@ function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* curiosity: the next chapter already breaking into the frame */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -bottom-2 select-none overflow-hidden"
-      >
-        <div className="flex items-end gap-4 px-4 opacity-90">
-          <span className="font-display text-[13vw] font-extrabold leading-[0.7] tracking-[-0.07em] text-cream/[0.09]">
-            OUR PROJECTS
-          </span>
-        </div>
-      </div>
     </section>
   );
 }
