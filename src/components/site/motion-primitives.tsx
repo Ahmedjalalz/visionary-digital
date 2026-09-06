@@ -14,15 +14,16 @@ export function MaskLines({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   return (
-    <span className={className}>
+    <span ref={ref} className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden pb-[0.06em]">
           <motion.span
             className="block"
-            initial={reduce ? { y: 0, opacity: 1 } : { y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            initial={reduce ? { y: 0 } : { y: "110%" }}
+            animate={reduce || inView ? { y: 0 } : { y: "110%" }}
             transition={{ duration: 1, ease: EASE, delay: delay + i * 0.09 }}
           >
             {line}
