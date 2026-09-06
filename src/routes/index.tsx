@@ -114,7 +114,7 @@ function Hero() {
           transition={{ delay: 1.1, duration: 1 }}
           className="mt-8 flex flex-wrap items-end justify-between gap-6"
         >
-          <p className="max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
+          <p className="max-w-md text-sm leading-relaxed text-cream/85 sm:text-base">
             A Pakistani non-governmental organisation working where the shortfall is sharpest —
             classrooms, clinics, clean water, and the families holding it all together.
           </p>
