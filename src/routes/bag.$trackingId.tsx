@@ -99,7 +99,7 @@ function BagDetails() {
                 <div key={s} className="flex flex-1 items-center last:flex-none">
                   <div className="flex flex-col items-start gap-2">
                     <span
-                      className={`h-3 w-3 rounded-full ${i <= stageIndex ? "bg-clay" : "bg-cream/20"}`}
+                      className={`h-3 w-3 rounded-full ${i <= stageIndex ? "bg-clay" : "bg-ink/20"}`}
                     />
                     <span
                       className={`text-[0.65rem] uppercase tracking-[0.16em] ${
@@ -111,7 +111,7 @@ function BagDetails() {
                   </div>
                   {i < stages.length - 1 && (
                     <span
-                      className={`mx-3 mb-6 h-px flex-1 ${i < stageIndex ? "bg-clay" : "bg-cream/15"}`}
+                      className={`mx-3 mb-6 h-px flex-1 ${i < stageIndex ? "bg-clay" : "bg-ink/15"}`}
                     />
                   )}
                 </div>
@@ -160,7 +160,7 @@ function BagDetails() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 sm:p-12">
-            <p className="font-serif text-3xl italic leading-tight text-ink sm:text-5xl">
+            <p className="font-serif text-3xl italic leading-tight text-cream sm:text-5xl">
               This isn't a tracking number.
               <br />
               It's {data.student_name ?? "a real child"}.

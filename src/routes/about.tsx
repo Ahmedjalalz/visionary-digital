@@ -262,7 +262,7 @@ function About() {
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-end justify-between gap-8">
           <h2 className="display-lg max-w-[14ch]">Come and see the work.</h2>
           <div className="flex flex-wrap gap-3">
-            <Link to="/projects" className="bg-ink px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:bg-clay hover:text-ink">
+            <Link to="/projects" className="bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep">
               The projects
             </Link>
             <Link to="/book" className="border border-ink/25 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] hover:border-ink">

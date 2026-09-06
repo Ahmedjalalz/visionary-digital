@@ -78,7 +78,7 @@ function News() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 max-w-3xl p-6 sm:p-10">
                 <span className="eyebrow">{p.kicker}</span>
-                <h2 className="mt-3 font-display text-3xl font-bold leading-[1.02] tracking-tight text-cream sm:text-5xl">
+                <h2 className="mt-3 font-display text-3xl font-bold leading-[1.02] text-cream sm:text-5xl">
                   {p.title}
                 </h2>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-cream/65">{p.body}</p>

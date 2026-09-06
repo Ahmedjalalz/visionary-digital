@@ -198,7 +198,7 @@ function Book() {
                           aria-pressed={date === d.iso}
                           className={`aspect-square text-sm transition-colors ${
                             date === d.iso
-                              ? "bg-clay font-semibold text-ink"
+                              ? "bg-clay font-semibold text-primary-foreground"
                               : d.open
                                 ? "text-ink hover:bg-ink/10"
                                 : "text-ink/20"
@@ -221,7 +221,7 @@ function Book() {
                             aria-pressed={time === s}
                             className={`border px-4 py-2.5 text-sm transition-colors ${
                               time === s
-                                ? "border-clay bg-clay text-ink"
+                                ? "border-clay bg-clay text-primary-foreground"
                                 : "border-ink/20 text-ink hover:border-clay"
                             }`}
                           >

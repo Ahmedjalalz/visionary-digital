@@ -116,7 +116,7 @@ function Donate() {
                   }}
                   aria-pressed={amount === a}
                   className={`p-6 text-left transition-colors ${
-                    amount === a ? "bg-clay text-ink" : "bg-background text-ink hover:bg-secondary"
+                    amount === a ? "bg-clay text-primary-foreground" : "bg-background text-ink hover:bg-secondary"
                   }`}
                 >
                   <span className="numeral text-4xl">${a}</span>

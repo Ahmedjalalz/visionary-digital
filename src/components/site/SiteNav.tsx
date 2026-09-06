@@ -37,16 +37,12 @@ export function SiteNav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled || open
-            ? "border-b border-ink/10 bg-background/95 py-2 backdrop-blur-xl"
-            : "bg-transparent py-6"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500 ${scrolled || open ? "py-2" : "py-3"}`}
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 sm:px-8">
           <Link to="/" className="group flex items-center gap-3" aria-label="Education and Life Foundation — home">
             <img src={logoAsset.url} alt="" className="h-12 w-12 object-contain" />
-            <span className={`hidden text-[0.62rem] font-semibold uppercase tracking-[0.18em] sm:block ${scrolled || open ? "text-ink/65" : "text-cream/75"}`}>
+            <span className="hidden text-[0.62rem] font-semibold uppercase text-ink/65 sm:block">
               Education&nbsp;&amp;&nbsp;Life Foundation
             </span>
           </Link>
@@ -56,8 +52,8 @@ export function SiteNav() {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`link-underline text-[0.78rem] font-medium uppercase tracking-[0.14em] transition-colors ${scrolled ? "text-ink/70 hover:text-clay" : "text-cream/85 hover:text-cream"}`}
-                activeProps={{ className: scrolled ? "text-clay" : "text-cream" }}
+                className="link-underline text-[0.78rem] font-medium uppercase text-ink/70 transition-colors hover:text-clay"
+                activeProps={{ className: "text-clay" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -76,7 +72,7 @@ export function SiteNav() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label={open ? "Close menu" : "Open menu"}
-              className={`flex h-10 w-10 flex-col items-center justify-center gap-[5px] border lg:hidden ${scrolled || open ? "border-ink/20 text-ink" : "border-cream/30 text-cream"}`}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-ink/20 text-ink lg:hidden"
             >
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`} />
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />

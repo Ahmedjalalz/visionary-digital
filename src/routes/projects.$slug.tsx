@@ -60,7 +60,7 @@ function ProjectPage() {
           <div className={heroLeft ? "max-w-2xl" : "w-full"}>
             <span className="eyebrow">Project</span>
             <h1
-              className={`mt-4 font-display font-extrabold uppercase leading-[0.86] tracking-[-0.045em] text-cream ${
+               className={`mt-4 font-display font-extrabold uppercase leading-[0.86] text-cream ${
                 project.name.length > 34
                   ? "text-[9vw] sm:text-[5.4vw]"
                   : "text-[13vw] sm:text-[7.5vw]"
@@ -221,7 +221,7 @@ function ProjectPage() {
             <Link
               to="/donate"
               search={{ project: project.slug }}
-              className="bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:bg-cream"
+               className="bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep"
             >
               Fund {project.name.split(" ").slice(0, 2).join(" ")}
             </Link>
