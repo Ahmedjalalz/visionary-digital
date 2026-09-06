@@ -86,7 +86,7 @@ function HistoryRail() {
               How a room full of urgency became eleven programmes.
             </h2>
           </div>
-          <motion.ol style={reduce ? undefined : { x }} className="flex items-stretch gap-10 pl-8">
+          <motion.ol style={reduce ? {} : { x }} className="flex items-stretch gap-10 pl-8">
             {history.map((h, i) => (
               <li key={h.year} className="w-[520px] shrink-0">
                 <div className="relative h-[300px] overflow-hidden">

@@ -65,7 +65,7 @@ function Hero() {
       }}
       className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-ink grain-overlay"
     >
-      <motion.div className="absolute inset-0" style={reduce ? undefined : { y: imgY, scale: imgScale }}>
+      <motion.div className="absolute inset-0" style={reduce ? {} : { y: imgY, scale: imgScale }}>
         <motion.img
           src={heroImg}
           alt="Schoolchildren gathered in a village courtyard at dusk in rural Punjab, Pakistan"
@@ -73,7 +73,7 @@ function Hero() {
           height={1280}
           fetchPriority="high"
           className="h-full w-full object-cover object-[60%_center]"
-          style={reduce ? undefined : { x: px, y: py }}
+          style={reduce ? {} : { x: px, y: py }}
         />
       </motion.div>
 
@@ -88,7 +88,7 @@ function Hero() {
       />
 
       <motion.div
-        style={reduce ? undefined : { y: titleY }}
+        style={reduce ? {} : { y: titleY }}
         className="absolute inset-x-0 bottom-[13svh] mx-auto max-w-[1600px] px-5 sm:px-8"
       >
         <div className="max-w-[15ch]">
@@ -170,7 +170,7 @@ function ProjectsRail() {
             </Link>
           </div>
 
-          <motion.div style={reduce ? undefined : { x }} className="flex gap-8 pl-8">
+          <motion.div style={reduce ? {} : { x }} className="flex gap-8 pl-8">
             {items.map(({ project, img, n }, i) => (
               <Link
                 key={project.slug}
@@ -373,7 +373,7 @@ function Story() {
             </div>
 
             <motion.blockquote
-              style={reduce ? undefined : { x: quoteX }}
+              style={reduce ? {} : { x: quoteX }}
               className="max-w-[20ch] font-serif text-[13vw] italic leading-[0.95] text-cream sm:max-w-[16ch] sm:text-[7vw]"
             >
               “They did not ask me to prove I was poor. They asked what my children needed.”
