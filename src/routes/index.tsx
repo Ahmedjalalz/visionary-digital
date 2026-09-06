@@ -3,16 +3,23 @@ import { useScroll, useSpring, useTransform, useReducedMotion } from "motion/rea
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import heroImg from "@/assets/hero-community.jpg";
-import educationImg from "@/assets/project-education.jpg";
-import widowsImg from "@/assets/project-widows.jpg";
-import washImg from "@/assets/project-wash.jpg";
-import healthImg from "@/assets/project-health.jpg";
-import digitalImg from "@/assets/project-digital.jpg";
+import heroAsset from "@/assets/official/community.jpg.asset.json";
+import educationAsset from "@/assets/official/education.jpg.asset.json";
+import widowsAsset from "@/assets/official/widows.jpg.asset.json";
+import familyAsset from "@/assets/official/family.jpg.asset.json";
+import healthAsset from "@/assets/official/health.jpg.asset.json";
+import digitalAsset from "@/assets/official/digital.jpg.asset.json";
 
 import { projects } from "@/data/projects";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
+
+const heroImg = heroAsset.url;
+const educationImg = educationAsset.url;
+const widowsImg = widowsAsset.url;
+const washImg = familyAsset.url;
+const healthImg = healthAsset.url;
+const digitalImg = digitalAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -150,15 +157,15 @@ function ProjectsRail() {
   return (
     <>
       {/* desktop: pinned horizontal journey */}
-      <section ref={ref} className="relative hidden h-[420vh] bg-ink lg:block">
+      <section ref={ref} className="relative hidden h-[420vh] bg-sand lg:block">
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="mx-auto mb-10 flex w-full max-w-[1600px] items-end justify-between px-8">
-            <h2 className="display-md max-w-[14ch] text-cream">
+            <h2 className="display-md max-w-[14ch] text-ink">
               Different problems. Different answers.
             </h2>
             <Link
               to="/projects"
-              className="link-underline mb-2 text-xs uppercase tracking-[0.2em] text-cream/60 hover:text-clay"
+               className="link-underline mb-2 text-xs uppercase tracking-[0.2em] text-ink/60 hover:text-clay"
             >
               All projects
             </Link>
@@ -197,10 +204,10 @@ function ProjectsRail() {
 
             <Link
               to="/projects"
-              className="flex h-[520px] w-[420px] shrink-0 flex-col justify-end border border-white/15 p-8 transition-colors hover:border-clay"
+               className="flex h-[520px] w-[420px] shrink-0 flex-col justify-end border border-ink/15 bg-background p-8 transition-colors hover:border-clay"
             >
-              <span className="numeral text-7xl text-cream/20">+6</span>
-              <span className="mt-4 font-display text-3xl font-bold tracking-tight text-cream">
+               <span className="numeral text-7xl text-clay/30">More</span>
+               <span className="mt-4 font-display text-3xl font-bold text-ink">
                 See every project
               </span>
             </Link>
@@ -209,8 +216,8 @@ function ProjectsRail() {
       </section>
 
       {/* mobile: stacked editorial */}
-      <section className="bg-ink px-5 py-20 lg:hidden">
-        <h2 className="display-md text-cream">Different problems. Different answers.</h2>
+      <section className="bg-sand px-5 py-20 lg:hidden">
+        <h2 className="display-md text-ink">Different problems. Different answers.</h2>
         <div className="mt-10 space-y-4">
           {items.map(({ project, img, n }) => (
             <Link
@@ -229,7 +236,7 @@ function ProjectsRail() {
           ))}
           <Link
             to="/projects"
-            className="flex items-center justify-between border border-white/15 px-5 py-6 text-cream"
+             className="flex items-center justify-between border border-ink/15 bg-background px-5 py-6 text-ink"
           >
             <span className="font-display text-xl font-bold">See every project</span>
             <ArrowUpRight className="h-5 w-5 text-clay" />
@@ -245,18 +252,18 @@ function ProjectsRail() {
 function Impact() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink py-28 sm:py-40">
+       <section className="relative overflow-hidden bg-background py-28 sm:py-40">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <Rise>
             <div className="flex flex-wrap items-baseline gap-x-6">
-              <span className="numeral text-[22vw] leading-[0.75] text-cream sm:text-[18vw]">
+               <span className="numeral text-[22vw] leading-[0.75] text-ink sm:text-[18vw]">
                 <Counter to={26} format={(n) => Math.round(n).toString()} />
               </span>
               <span className="numeral text-[9vw] leading-none text-clay sm:text-[6vw]">MILLION</span>
             </div>
           </Rise>
-          <div className="mt-8 grid gap-8 border-t border-white/10 pt-8 md:grid-cols-12">
-            <p className="md:col-span-6 md:col-start-1 font-display text-3xl font-bold leading-[1.05] tracking-tight text-cream sm:text-5xl">
+           <div className="mt-8 grid gap-8 border-t border-ink/10 pt-8 md:grid-cols-12">
+             <p className="md:col-span-6 md:col-start-1 font-display text-3xl font-bold leading-[1.05] text-ink sm:text-5xl">
               children in Pakistan are not in a classroom today.
             </p>
             <div className="md:col-span-4 md:col-start-9">
@@ -265,7 +272,7 @@ function Impact() {
                 something much smaller and much more solvable: a fee, a uniform, a walk that is too long,
                 a family that needs the income more than the certificate.
               </p>
-              <p className="mt-4 text-xs uppercase tracking-[0.18em] text-cream/40">
+               <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
                 Source: UNICEF Pakistan
               </p>
             </div>
@@ -345,7 +352,7 @@ function Story() {
   const reduce = useReducedMotion();
 
   return (
-    <section ref={ref} className="relative bg-ink">
+     <section ref={ref} className="relative bg-background">
       <div className="relative h-[130svh]">
         <div className="sticky top-0 h-[100svh] overflow-hidden">
           <ParallaxImage
@@ -383,19 +390,18 @@ function Story() {
 
 function Numbers() {
   const stats = [
-    { value: 11, label: "Active programmes", suffix: "" },
     { value: 4, label: "Countries supporting the work", suffix: "" },
     { value: 5, label: "Core services delivered free", suffix: "" },
   ];
   return (
-    <section className="border-y border-white/10 bg-ink py-20">
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 md:grid-cols-3">
+    <section className="border-y border-ink/10 bg-sand py-20">
+      <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 md:grid-cols-2">
         {stats.map((s) => (
           <div key={s.label} className="flex items-baseline gap-5">
             <span className="numeral text-7xl text-clay sm:text-8xl">
               <Counter to={s.value} format={(n) => Math.round(n).toString()} />
             </span>
-            <span className="max-w-[14ch] text-sm uppercase tracking-[0.14em] text-cream/60">{s.label}</span>
+             <span className="max-w-[18ch] text-sm uppercase tracking-[0.14em] text-ink/60">{s.label}</span>
           </div>
         ))}
       </div>
@@ -407,7 +413,7 @@ function Numbers() {
 
 function Location() {
   return (
-    <section className="relative bg-ink">
+     <section className="relative bg-background">
       <div className="grid lg:grid-cols-2">
         <div className="relative min-h-[420px] lg:min-h-[80svh]">
           <MapEmbed
@@ -416,35 +422,35 @@ function Location() {
             className="absolute inset-0"
             zoom={15}
           />
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-ink/25 mix-blend-multiply" />
+           <div aria-hidden className="pointer-events-none absolute inset-0 bg-clay/10 mix-blend-multiply" />
         </div>
 
         <div className="flex flex-col justify-center px-5 py-20 sm:px-12 lg:py-0">
           <span className="eyebrow">Head office</span>
-          <h2 className="display-md mt-4 max-w-[14ch] text-cream">Lahore, Pakistan.</h2>
+           <h2 className="display-md mt-4 max-w-[14ch] text-ink">Lahore, Pakistan.</h2>
           <p className="lede mt-6">
             The work is planned, funded and dispatched from Allama Iqbal Town — and delivered across
             Punjab's districts by teams who live there.
           </p>
-          <dl className="mt-10 space-y-6 border-t border-white/10 pt-8 text-sm">
+           <dl className="mt-10 space-y-6 border-t border-ink/10 pt-8 text-sm">
             <div className="flex flex-wrap gap-x-10 gap-y-1">
-              <dt className="w-28 text-xs uppercase tracking-[0.18em] text-cream/40">Address</dt>
-              <dd className="max-w-xs text-cream/85">181 Raza Block, Allama Iqbal Town, Lahore</dd>
+               <dt className="w-28 text-xs uppercase tracking-[0.18em] text-ink/45">Address</dt>
+               <dd className="max-w-xs text-ink/85">181 Raza Block, Allama Iqbal Town, Lahore</dd>
             </div>
             <div className="flex flex-wrap gap-x-10 gap-y-1">
-              <dt className="w-28 text-xs uppercase tracking-[0.18em] text-cream/40">Phone</dt>
+               <dt className="w-28 text-xs uppercase tracking-[0.18em] text-ink/45">Phone</dt>
               <dd>
-                <a href="tel:+923009475513" className="link-underline text-cream/85">
+                 <a href="tel:+923009475513" className="link-underline text-ink/85">
                   +92 300 9475513
                 </a>
               </dd>
             </div>
             <div className="flex flex-wrap gap-x-10 gap-y-1">
-              <dt className="w-28 text-xs uppercase tracking-[0.18em] text-cream/40">Email</dt>
+               <dt className="w-28 text-xs uppercase tracking-[0.18em] text-ink/45">Email</dt>
               <dd>
                 <a
                   href="mailto:info@educationandlifefoundation.org"
-                  className="link-underline break-all text-cream/85"
+                   className="link-underline break-all text-ink/85"
                 >
                   info@educationandlifefoundation.org
                 </a>

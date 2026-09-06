@@ -17,7 +17,7 @@ export function MapEmbed({ query, title, className, zoom = 14 }: MapEmbedProps) 
       src={src}
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      className={`h-full w-full border-0 grayscale-[0.45] contrast-[1.05] ${className ?? ""}`}
+      className={`h-full w-full border-0 saturate-[0.75] contrast-[1.02] ${className ?? ""}`}
     />
   );
 }
