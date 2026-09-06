@@ -91,7 +91,7 @@ function Hero() {
         style={reduce ? {} : { y: titleY }}
         className="absolute inset-x-0 bottom-[13svh] mx-auto max-w-[1600px] px-5 sm:px-8"
       >
-        <div className="max-w-[15ch]">
+        <div className="max-w-[min(92vw,1100px)]">
           <h1 className="display-xl text-cream">
             <MaskLines lines={["Uplifting"]} delay={0.15} />
             <span className="block pl-[8%] sm:pl-[14%]">

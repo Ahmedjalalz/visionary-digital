@@ -51,7 +51,7 @@ export function Rise({
       className={className}
       initial={reduce ? false : { opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-8%" }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, ease: EASE, delay }}
     >
       {children}
@@ -110,7 +110,7 @@ export function Counter({
   format?: (n: number) => string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-15%" });
+  const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
   const [value, setValue] = useState(0);
 
