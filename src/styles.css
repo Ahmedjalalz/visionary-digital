@@ -2,8 +2,6 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /*
  * EFL design system — editorial, clear, Foundation Blue and light-only.
  * Display: Bricolage Grotesque. Body: Instrument Sans. Emotive: Instrument Serif.
