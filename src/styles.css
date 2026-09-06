@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * EFL design system — editorial, cinematic, warm-dark.
+ * EFL design system — editorial, clear, Foundation Blue and light-only.
  * Display: Bricolage Grotesque. Body: Instrument Sans. Emotive: Instrument Serif.
  */
 
@@ -66,65 +66,60 @@
 :root {
   --radius: 3px;
 
-  --ink: oklch(0.17 0.045 262);
-  --cream: oklch(0.965 0.006 250);
-  --sand: oklch(0.88 0.035 250);
-  --clay: oklch(0.66 0.135 255);
+  --ink: oklch(0.31 0.075 256);
+  --cream: oklch(1 0 0);
+  --sand: oklch(0.973 0.012 250);
+  --clay: oklch(0.368 0.139 261);
   --clay-deep: oklch(0.368 0.139 261);
-  --moss: oklch(0.52 0.09 225);
+  --moss: oklch(0.51 0.125 255);
 
-  --background: oklch(0.17 0.045 262);
-  --foreground: oklch(0.965 0.006 250);
-  --card: oklch(0.22 0.05 262);
-  --card-foreground: oklch(0.965 0.006 250);
-  --popover: oklch(0.2 0.048 262);
-  --popover-foreground: oklch(0.965 0.006 250);
-  --primary: oklch(0.66 0.135 255);
-  --primary-foreground: oklch(0.17 0.045 262);
-  --secondary: oklch(0.27 0.05 262);
-  --secondary-foreground: oklch(0.965 0.006 250);
-  --muted: oklch(0.25 0.045 262);
-  --muted-foreground: oklch(0.74 0.025 255);
-  --accent: oklch(0.3 0.06 260);
-  --accent-foreground: oklch(0.965 0.006 250);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.31 0.075 256);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.31 0.075 256);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.31 0.075 256);
+  --primary: oklch(0.368 0.139 261);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.973 0.012 250);
+  --secondary-foreground: oklch(0.31 0.075 256);
+  --muted: oklch(0.955 0.014 250);
+  --muted-foreground: oklch(0.47 0.05 256);
+  --accent: oklch(0.93 0.03 250);
+  --accent-foreground: oklch(0.31 0.075 256);
   --destructive: oklch(0.6 0.21 27);
-  --destructive-foreground: oklch(0.98 0.006 250);
-  --border: oklch(1 0 0 / 14%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.66 0.135 255);
-  --chart-1: oklch(0.66 0.135 255);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.368 0.139 261 / 16%);
+  --input: oklch(0.368 0.139 261 / 24%);
+  --ring: oklch(0.368 0.139 261);
+  --chart-1: oklch(0.368 0.139 261);
   --chart-2: oklch(0.6 0.11 220);
   --chart-3: oklch(0.78 0.09 245);
   --chart-4: oklch(0.52 0.09 225);
   --chart-5: oklch(0.42 0.14 265);
-  --sidebar: oklch(0.2 0.048 262);
-  --sidebar-foreground: oklch(0.965 0.006 250);
-  --sidebar-primary: oklch(0.66 0.135 255);
-  --sidebar-primary-foreground: oklch(0.17 0.045 262);
-  --sidebar-accent: oklch(0.27 0.05 262);
-  --sidebar-accent-foreground: oklch(0.965 0.006 250);
-  --sidebar-border: oklch(1 0 0 / 14%);
-  --sidebar-ring: oklch(0.66 0.135 255);
+  --sidebar: oklch(0.973 0.012 250);
+  --sidebar-foreground: oklch(0.31 0.075 256);
+  --sidebar-primary: oklch(0.368 0.139 261);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.93 0.03 250);
+  --sidebar-accent-foreground: oklch(0.31 0.075 256);
+  --sidebar-border: oklch(0.368 0.139 261 / 16%);
+  --sidebar-ring: oklch(0.368 0.139 261);
 }
 
-.dark {
-  --background: oklch(0.17 0.045 262);
-  --foreground: oklch(0.965 0.006 250);
-}
-
-/* Light "paper" surface used for editorial breaks */
+/* Pale-blue editorial surface. */
 .paper {
-  --background: var(--cream);
+  --background: var(--sand);
   --foreground: var(--ink);
   --card: oklch(0.99 0.004 250);
   --card-foreground: var(--ink);
-  --clay: oklch(0.42 0.145 262);
+  --clay: oklch(0.368 0.139 261);
   --muted-foreground: oklch(0.46 0.03 260);
   --border: oklch(0.17 0.045 262 / 16%);
   --input: oklch(0.17 0.045 262 / 20%);
   --secondary: oklch(0.9 0.03 250);
   --secondary-foreground: var(--ink);
-  background-color: var(--cream);
+  background-color: var(--sand);
   color: var(--ink);
 }
 
@@ -157,7 +152,7 @@
   h3 {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     line-height: 0.92;
     text-wrap: balance;
   }
@@ -180,7 +175,7 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
   line-height: 0.84;
   font-size: clamp(3.2rem, 12vw, 13rem);
   text-transform: uppercase;
@@ -189,7 +184,7 @@
 @utility display-lg {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   line-height: 0.88;
   font-size: clamp(2.6rem, 7.5vw, 7rem);
 }
@@ -197,7 +192,7 @@
 @utility display-md {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 0.95;
   font-size: clamp(1.9rem, 4.2vw, 3.4rem);
 }
@@ -205,7 +200,7 @@
 @utility numeral {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
   line-height: 0.8;
   font-variant-numeric: tabular-nums;
 }
@@ -235,10 +230,9 @@
 @utility fog-up {
   background: linear-gradient(
     to top,
-    var(--ink) 0%,
-    color-mix(in oklab, var(--ink) 92%, transparent) 22%,
-    color-mix(in oklab, var(--ink) 62%, transparent) 46%,
-    color-mix(in oklab, var(--ink) 24%, transparent) 72%,
+    color-mix(in oklab, var(--ink) 86%, transparent) 0%,
+    color-mix(in oklab, var(--ink) 68%, transparent) 28%,
+    color-mix(in oklab, var(--ink) 32%, transparent) 58%,
     transparent 100%
   );
 }
