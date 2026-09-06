@@ -35,7 +35,7 @@ function Book() {
   });
   const [date, setDate] = useState<string | null>(null);
   const [time, setTime] = useState<string | null>(null);
-  const [platform, setPlatform] = useState(platforms[0]);
+  const [platform, setPlatform] = useState<string>(platforms[0]!);
   const [sending, setSending] = useState(false);
   const [confirmed, setConfirmed] = useState<{ date: string; time: string; platform: string } | null>(
     null,

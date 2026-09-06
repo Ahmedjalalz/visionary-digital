@@ -6,11 +6,11 @@ import { projects } from "@/data/projects";
 import { MaskLines, ParallaxImage } from "@/components/site/motion-primitives";
 import heroImg from "@/assets/project-education.jpg";
 
-type DonateSearch = { project?: string };
+type DonateSearch = { project?: string | undefined };
 
 export const Route = createFileRoute("/donate")({
   validateSearch: (search: Record<string, unknown>): DonateSearch => ({
-    project: typeof search.project === "string" ? search.project : undefined,
+    project: typeof search['project'] === "string" ? (search['project'] as string) : undefined,
   }),
   head: () => ({
     meta: [
