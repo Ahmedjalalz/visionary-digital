@@ -14,7 +14,201 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointment_availability: {
+        Row: {
+          id: string
+          is_active: boolean
+          slots: string[]
+          weekday: number
+        }
+        Insert: {
+          id?: string
+          is_active?: boolean
+          slots?: string[]
+          weekday: number
+        }
+        Update: {
+          id?: string
+          is_active?: boolean
+          slots?: string[]
+          weekday?: number
+        }
+        Relationships: []
+      }
+      appointment_blocked_dates: {
+        Row: {
+          blocked_on: string
+          id: string
+          reason: string | null
+        }
+        Insert: {
+          blocked_on: string
+          id?: string
+          reason?: string | null
+        }
+        Update: {
+          blocked_on?: string
+          id?: string
+          reason?: string | null
+        }
+        Relationships: []
+      }
+      appointments: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          meeting_date: string
+          meeting_time: string
+          name: string
+          phone: string | null
+          platform: string
+          purpose: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          meeting_date: string
+          meeting_time: string
+          name: string
+          phone?: string | null
+          platform: string
+          purpose?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          meeting_date?: string
+          meeting_time?: string
+          name?: string
+          phone?: string | null
+          platform?: string
+          purpose?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      donation_pledges: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          email: string
+          id: string
+          is_monthly: boolean
+          message: string | null
+          name: string
+          phone: string | null
+          project_slug: string | null
+          status: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string
+          email: string
+          id?: string
+          is_monthly?: boolean
+          message?: string | null
+          name: string
+          phone?: string | null
+          project_slug?: string | null
+          status?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          email?: string
+          id?: string
+          is_monthly?: boolean
+          message?: string | null
+          name?: string
+          phone?: string | null
+          project_slug?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      school_bags: {
+        Row: {
+          class_name: string
+          created_at: string
+          delivered_on: string | null
+          destination: string
+          dispatched_on: string | null
+          funded_by: string
+          id: string
+          packed_by: string
+          photo_url: string | null
+          school: string
+          status: string
+          student_name: string | null
+          tracking_id: string
+        }
+        Insert: {
+          class_name: string
+          created_at?: string
+          delivered_on?: string | null
+          destination: string
+          dispatched_on?: string | null
+          funded_by: string
+          id?: string
+          packed_by: string
+          photo_url?: string | null
+          school: string
+          status?: string
+          student_name?: string | null
+          tracking_id: string
+        }
+        Update: {
+          class_name?: string
+          created_at?: string
+          delivered_on?: string | null
+          destination?: string
+          dispatched_on?: string | null
+          funded_by?: string
+          id?: string
+          packed_by?: string
+          photo_url?: string | null
+          school?: string
+          status?: string
+          student_name?: string | null
+          tracking_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
