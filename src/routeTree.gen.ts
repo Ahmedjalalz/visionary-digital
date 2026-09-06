@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BagTrackingIdRoute = BagTrackingIdRouteImport.update({
+  id: '/bag/$trackingId',
+  path: '/bag/$trackingId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
@@ -25,27 +31,31 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/'
+  fullPaths: '/' | '/bag/$trackingId' | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects'
-  id: '__root__' | '/' | '/projects/'
+  to: '/' | '/bag/$trackingId' | '/projects'
+  id: '__root__' | '/' | '/bag/$trackingId' | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bag/$trackingId': {
+      id: '/bag/$trackingId'
+      path: '/bag/$trackingId'
+      fullPath: '/bag/$trackingId'
+      preLoaderRoute: typeof BagTrackingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
