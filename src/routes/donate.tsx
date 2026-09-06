@@ -23,7 +23,7 @@ export const Route = createFileRoute("/donate")({
       { property: "og:description", content: "Every pledge is tied to a programme and a place." },
     ],
   }),
-  component: Donate;
+  component: Donate,
 });
 
 const amounts = [25, 50, 100, 250];
