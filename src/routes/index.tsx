@@ -184,14 +184,13 @@ function ProjectsRail() {
             </Link>
           </div>
 
-          <motion.div style={reduce ? {} : { x }} className="flex gap-8 pl-8">
-            {items.map(({ project, img, n }, i) => (
+          <motion.div ref={trackRef} style={reduce ? {} : { x }} className="flex gap-6 pl-8 pr-8">
+            {items.map(({ project, img, n }) => (
               <Link
                 key={project.slug}
                 to="/projects/$slug"
                 params={{ slug: project.slug }}
-                className="group relative block shrink-0 overflow-hidden"
-                style={{ width: i % 2 === 0 ? 620 : 460, height: i % 2 === 0 ? 520 : 600 }}
+                className="group relative block h-[540px] w-[420px] shrink-0 overflow-hidden"
               >
                 <img
                   src={img}
