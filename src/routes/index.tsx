@@ -171,7 +171,7 @@ function ProjectsRail() {
         className="relative hidden bg-sand lg:block"
         style={{ height: `${100 + items.length * 42}vh` }}
       >
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24">
           <div className="mx-auto mb-10 flex w-full max-w-[1600px] items-end justify-between px-8">
             <h2 className="display-md max-w-[14ch] text-ink">
               Different problems. Different answers.
@@ -198,7 +198,7 @@ function ProjectsRail() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/5" />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <span className="numeral text-sm text-clay">{n}</span>
                   <h3 className="mt-2 max-w-[16ch] font-display text-3xl font-bold leading-[0.95] tracking-tight text-cream">
