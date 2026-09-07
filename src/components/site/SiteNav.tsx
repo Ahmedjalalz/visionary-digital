@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
@@ -12,6 +13,13 @@ const primary = [
   { to: "/contact", label: "Contact" },
   { to: "/donate", label: "Donate" },
 ] as const;
+
+const topSocials = [
+  { href: "http://instagram.com/educationandlifefoundation1", label: "Instagram", Icon: Instagram },
+  { href: "http://facebook.com/profile.php?id=61582388637046", label: "Facebook", Icon: Facebook },
+  { href: "https://wa.me/923009475513", label: "WhatsApp", Icon: MessageCircle },
+  { href: "http://youtube.com/@EducationAndLifeFoundation", label: "YouTube", Icon: Youtube },
+];
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,9 +45,48 @@ export function SiteNav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500 ${scrolled || open ? "py-2" : "py-3"}`}
+        className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500"
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 sm:px-8">
+        <div className="border-b border-ink/10 bg-sand/70">
+          <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-5 py-[3px] text-[0.6rem] tracking-[0.12em] text-ink/60 sm:px-8">
+            <a
+              href="https://www.google.com/maps?q=31.507582468159587,74.2878023190929"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center gap-1.5 transition-colors hover:text-clay"
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-clay" />
+              </span>
+              <span className="tabular-nums">31.507582468159587, 74.2878023190929</span>
+            </a>
+
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
+                {topSocials.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={label}
+                    className="text-ink/55 transition-colors hover:text-clay"
+                  >
+                    <Icon className="h-3 w-3" strokeWidth={1.6} />
+                  </a>
+                ))}
+              </div>
+              <a href="tel:+923009475513" className="hidden transition-colors hover:text-clay sm:inline">
+                +92 300 9475513
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={`mx-auto flex max-w-[1600px] items-center justify-between px-5 transition-all duration-500 sm:px-8 ${scrolled || open ? "py-2" : "py-3"}`}
+        >
           <Link to="/" className="group flex items-center gap-3" aria-label="Education and Life Foundation — home">
             <img src={logoAsset.url} alt="" className="h-12 w-12 object-contain" />
             <span className="hidden text-[0.62rem] font-semibold uppercase text-ink/65 sm:block">

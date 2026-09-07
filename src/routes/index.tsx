@@ -79,7 +79,7 @@ function Hero() {
           width={1920}
           height={1280}
           fetchPriority="high"
-          className="h-full w-full object-cover object-[60%_center]"
+          className="h-full w-full object-cover object-[55%_22%]"
           style={reduce ? {} : { x: px, y: py }}
         />
       </motion.div>
@@ -138,27 +138,40 @@ function Hero() {
 
 /* ─────────────────────  PROJECTS (horizontal)  ───────────────────── */
 
-const featured = [
-  { slug: "education-for-all", img: educationImg, n: "01" },
-  { slug: "hope-and-freedom-for-widows-headed-families", img: widowsImg, n: "02" },
-  { slug: "wash-improvement", img: washImg, n: "03" },
-  { slug: "health-care-program", img: healthImg, n: "04" },
-  { slug: "community-digital-skills", img: digitalImg, n: "05" },
-];
-
 function ProjectsRail() {
   const ref = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-74%"]);
+  const [distance, setDistance] = useState(0);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
 
-  const items = featured.map((f) => ({ ...f, project: projects.find((p) => p.slug === f.slug)! }));
+  const items = projects.map((project, i) => ({
+    project,
+    img: project.image,
+    n: String(i + 1).padStart(2, "0"),
+  }));
+
+  useEffect(() => {
+    const measure = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      setDistance(Math.max(0, el.scrollWidth - window.innerWidth + 64));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   return (
     <>
       {/* desktop: pinned horizontal journey */}
-      <section ref={ref} className="relative hidden h-[420vh] bg-sand lg:block">
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+      <section
+        ref={ref}
+        className="relative hidden bg-sand lg:block"
+        style={{ height: `${100 + items.length * 42}vh` }}
+      >
+        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24">
           <div className="mx-auto mb-10 flex w-full max-w-[1600px] items-end justify-between px-8">
             <h2 className="display-md max-w-[14ch] text-ink">
               Different problems. Different answers.
@@ -171,14 +184,13 @@ function ProjectsRail() {
             </Link>
           </div>
 
-          <motion.div style={reduce ? {} : { x }} className="flex gap-8 pl-8">
-            {items.map(({ project, img, n }, i) => (
+          <motion.div ref={trackRef} style={reduce ? {} : { x }} className="flex gap-6 pl-8 pr-8">
+            {items.map(({ project, img, n }) => (
               <Link
                 key={project.slug}
                 to="/projects/$slug"
                 params={{ slug: project.slug }}
-                className="group relative block shrink-0 overflow-hidden"
-                style={{ width: i % 2 === 0 ? 620 : 460, height: i % 2 === 0 ? 520 : 600 }}
+                className="group relative block h-[540px] w-[420px] shrink-0 overflow-hidden"
               >
                 <img
                   src={img}
@@ -186,7 +198,7 @@ function ProjectsRail() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/5" />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <span className="numeral text-sm text-clay">{n}</span>
                   <h3 className="mt-2 max-w-[16ch] font-display text-3xl font-bold leading-[0.95] tracking-tight text-cream">
@@ -204,7 +216,7 @@ function ProjectsRail() {
 
             <Link
               to="/projects"
-               className="flex h-[520px] w-[420px] shrink-0 flex-col justify-end border border-ink/15 bg-background p-8 transition-colors hover:border-clay"
+               className="flex h-[540px] w-[420px] shrink-0 flex-col justify-end border border-ink/15 bg-background p-8 transition-colors hover:border-clay"
             >
                <span className="numeral text-7xl text-clay/30">More</span>
                <span className="mt-4 font-display text-3xl font-bold text-ink">
