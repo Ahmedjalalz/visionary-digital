@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
@@ -12,6 +13,13 @@ const primary = [
   { to: "/contact", label: "Contact" },
   { to: "/donate", label: "Donate" },
 ] as const;
+
+const topSocials = [
+  { href: "http://instagram.com/educationandlifefoundation1", label: "Instagram", Icon: Instagram },
+  { href: "http://facebook.com/profile.php?id=61582388637046", label: "Facebook", Icon: Facebook },
+  { href: "https://wa.me/923009475513", label: "WhatsApp", Icon: MessageCircle },
+  { href: "http://youtube.com/@EducationAndLifeFoundation", label: "YouTube", Icon: Youtube },
+];
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
