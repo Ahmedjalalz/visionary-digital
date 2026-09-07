@@ -216,7 +216,7 @@ function ProjectsRail() {
 
             <Link
               to="/projects"
-               className="flex h-[520px] w-[420px] shrink-0 flex-col justify-end border border-ink/15 bg-background p-8 transition-colors hover:border-clay"
+               className="flex h-[540px] w-[420px] shrink-0 flex-col justify-end border border-ink/15 bg-background p-8 transition-colors hover:border-clay"
             >
                <span className="numeral text-7xl text-clay/30">More</span>
                <span className="mt-4 font-display text-3xl font-bold text-ink">
