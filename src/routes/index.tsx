@@ -79,7 +79,7 @@ function Hero() {
           width={1920}
           height={1280}
           fetchPriority="high"
-          className="h-full w-full object-cover object-[60%_center]"
+          className="h-full w-full object-cover object-[55%_22%]"
           style={reduce ? {} : { x: px, y: py }}
         />
       </motion.div>
@@ -138,26 +138,39 @@ function Hero() {
 
 /* ─────────────────────  PROJECTS (horizontal)  ───────────────────── */
 
-const featured = [
-  { slug: "education-for-all", img: educationImg, n: "01" },
-  { slug: "hope-and-freedom-for-widows-headed-families", img: widowsImg, n: "02" },
-  { slug: "wash-improvement", img: washImg, n: "03" },
-  { slug: "health-care-program", img: healthImg, n: "04" },
-  { slug: "community-digital-skills", img: digitalImg, n: "05" },
-];
-
 function ProjectsRail() {
   const ref = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-74%"]);
+  const [distance, setDistance] = useState(0);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
 
-  const items = featured.map((f) => ({ ...f, project: projects.find((p) => p.slug === f.slug)! }));
+  const items = projects.map((project, i) => ({
+    project,
+    img: project.image,
+    n: String(i + 1).padStart(2, "0"),
+  }));
+
+  useEffect(() => {
+    const measure = () => {
+      const el = trackRef.current;
+      if (!el) return;
+      setDistance(Math.max(0, el.scrollWidth - window.innerWidth + 64));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   return (
     <>
       {/* desktop: pinned horizontal journey */}
-      <section ref={ref} className="relative hidden h-[420vh] bg-sand lg:block">
+      <section
+        ref={ref}
+        className="relative hidden bg-sand lg:block"
+        style={{ height: `${100 + items.length * 42}vh` }}
+      >
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
           <div className="mx-auto mb-10 flex w-full max-w-[1600px] items-end justify-between px-8">
             <h2 className="display-md max-w-[14ch] text-ink">
