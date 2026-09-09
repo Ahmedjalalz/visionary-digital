@@ -101,7 +101,22 @@ function Donate() {
         </div>
       </section>
 
-      <section className="bg-background px-5 py-24 sm:px-8">
+      <BankDetails />
+
+      <section className="border-t border-ink/10 bg-sand px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-[1600px]">
+          <span className="eyebrow">Or tell us first</span>
+          <h2 className="display-md mt-3 max-w-[20ch] text-ink">
+            Prefer to pledge and let the team guide you?
+          </h2>
+          <p className="lede mt-4">
+            Use the form below and we will reply with the transfer details, a receipt and where your
+            gift went.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-background px-5 py-20 sm:px-8">
         <form onSubmit={submit} className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <span className="eyebrow">Choose an amount — USD</span>
