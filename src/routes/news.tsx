@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import familyAsset from "@/assets/official/family.jpg.asset.json";
 import educationAsset from "@/assets/official/education.jpg.asset.json";
 import healthAsset from "@/assets/official/health.jpg.asset.json";
+import { assetUrl } from "@/lib/asset";
 import { MaskLines } from "@/components/site/motion-primitives";
 
 const heroImg = assetUrl(familyAsset.url);

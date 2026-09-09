@@ -69,7 +69,7 @@ export const projects: Project[] = [
   },
   {
     slug: "school-bags",
-    name: "School Bags",
+    name: "School Bags Distribution Program",
     short: "A sponsored bag, packed and delivered to a named child — trackable end to end.",
     problem: {
       figure: "1",
@@ -93,6 +93,139 @@ export const projects: Project[] = [
     gallery: [community, schoolwork, education],
     accent: "sand",
     layout: "object",
+  },
+  {
+    slug: "midwifery-program",
+    name: "Midwifery Training Program",
+    short: "Training skilled birth attendants where hospitals are hours away.",
+    problem: {
+      figure: "155",
+      unit: "deaths",
+      line: "per 100,000 live births — Pakistan's maternal mortality ratio.",
+      source: "Pakistan Maternal Mortality Survey",
+    },
+    context: [
+      "Most maternal deaths are preventable with a skilled attendant present. In remote districts, there often isn't one.",
+    ],
+    response: [
+      "EFL trains and equips community midwives so safe delivery does not depend on reaching a distant hospital in time.",
+    ],
+    outcomes: [
+      { label: "Trained", value: "Community midwives" },
+      { label: "Placed", value: "In home districts" },
+      { label: "Focus", value: "Safe delivery" },
+    ],
+    image: midwifery,
+    gallery: [midwifery, health, community],
+    accent: "clay",
+    layout: "portrait",
+  },
+  {
+    slug: "music-of-the-heart",
+    name: "Music of the Heart Project",
+    short: "Music, expression and confidence for children carrying more than they can say.",
+    problem: {
+      figure: "1",
+      unit: "voice",
+      line: "is often the first thing hardship takes from a child.",
+      source: "EFL programme design",
+    },
+    context: [
+      "Children growing up through poverty, loss or displacement rarely get a space that asks how they feel rather than what they lack.",
+      "Expression is treated as a luxury, and so withdrawal goes unnoticed until it becomes permanent.",
+    ],
+    response: [
+      "EFL runs music and creative sessions in schools and community centres, giving children instruments, teaching and an audience.",
+      "Sessions are led alongside teachers, so confidence built in the room carries back into the classroom.",
+    ],
+    outcomes: [
+      { label: "Format", value: "Group sessions" },
+      { label: "Focus", value: "Confidence & expression" },
+      { label: "Held in", value: "Schools & centres" },
+    ],
+    image: community,
+    gallery: [community, schoolwork, education],
+    accent: "sand",
+    layout: "statement",
+  },
+  {
+    slug: "health-care-program",
+    name: "Health Care Program",
+    short: "Free medical camps and medicine for rural communities without a clinic.",
+    problem: {
+      figure: "0",
+      unit: "clinics",
+      line: "within reach for many rural families in Pakistan.",
+      source: "EFL field reporting",
+    },
+    context: [
+      "Health services concentrate in cities. Rural districts absorb the shortfall — and treatable conditions become permanent ones.",
+    ],
+    response: [
+      "EFL runs medical camps in underserved areas with volunteer doctors, free consultation and free medicine.",
+      "Patients who need more than a camp can offer are referred and supported.",
+    ],
+    outcomes: [
+      { label: "Consultation", value: "Free" },
+      { label: "Medicine", value: "Free" },
+      { label: "Model", value: "Mobile camps" },
+    ],
+    image: health,
+    gallery: [health, midwifery, community],
+    accent: "moss",
+    layout: "statement",
+  },
+  {
+    slug: "wash-improvement",
+    name: "WASH Improvement Project",
+    short: "Safe water, sanitation and hygiene where contaminated water is the default.",
+    problem: {
+      figure: "70",
+      unit: "percent",
+      line: "of households drink water contaminated with bacteria.",
+      source: "WHO / UNICEF Joint Monitoring Programme, Pakistan",
+    },
+    context: [
+      "Waterborne illness keeps children out of classrooms and adults out of work. In many villages the nearest safe source is a walk, not a tap.",
+    ],
+    response: [
+      "EFL improves water points, sanitation facilities and hygiene practice in schools and villages, with community upkeep built into the plan.",
+    ],
+    outcomes: [
+      { label: "Water", value: "Safer sources" },
+      { label: "Sanitation", value: "School facilities" },
+      { label: "Hygiene", value: "Community training" },
+    ],
+    image: community,
+    gallery: [community, family, education],
+    accent: "moss",
+    layout: "horizontal",
+  },
+  {
+    slug: "pregnancy-support-pakistan",
+    name: "Pregnancy Support: Pakistan",
+    short: "Care, nutrition and guidance for mothers through pregnancy and after.",
+    problem: {
+      figure: "9",
+      unit: "months",
+      line: "that determine two lives at once.",
+      source: "EFL programme design",
+    },
+    context: [
+      "Antenatal care, nutrition and simple information change outcomes dramatically — and are exactly what is missing.",
+    ],
+    response: [
+      "EFL supports expectant mothers with check-ups, nutritional support, and postnatal follow-up in partnership with local health workers.",
+    ],
+    outcomes: [
+      { label: "Antenatal", value: "Check-ups" },
+      { label: "Nutrition", value: "Supported" },
+      { label: "After birth", value: "Follow-up" },
+    ],
+    image: midwifery,
+    gallery: [midwifery, health, family],
+    accent: "moss",
+    layout: "portrait",
   },
   {
     slug: "hope-and-freedom-for-widows-headed-families",
@@ -123,56 +256,29 @@ export const projects: Project[] = [
     layout: "portrait",
   },
   {
-    slug: "wash-improvement",
-    name: "WASH Improvement Project",
-    short: "Safe water, sanitation and hygiene where contaminated water is the default.",
+    slug: "widows-welfare",
+    name: "Widows Welfare Program",
+    short: "Monthly food and financial assistance for widows in acute need.",
     problem: {
-      figure: "70",
-      unit: "percent",
-      line: "of households drink water contaminated with bacteria.",
-      source: "WHO / UNICEF Joint Monitoring Programme, Pakistan",
-    },
-    context: [
-      "Waterborne illness keeps children out of classrooms and adults out of work. In many villages the nearest safe source is a walk, not a tap.",
-    ],
-    response: [
-      "EFL improves water points, sanitation facilities and hygiene practice in schools and villages, with community upkeep built into the plan.",
-    ],
-    outcomes: [
-      { label: "Water", value: "Safer sources" },
-      { label: "Sanitation", value: "School facilities" },
-      { label: "Hygiene", value: "Community training" },
-    ],
-    image: community,
-    gallery: [community, family, education],
-    accent: "moss",
-    layout: "horizontal",
-  },
-  {
-    slug: "health-care-program",
-    name: "Health Care Program",
-    short: "Free medical camps and medicine for rural communities without a clinic.",
-    problem: {
-      figure: "0",
-      unit: "clinics",
-      line: "within reach for many rural families in Pakistan.",
+      figure: "30",
+      unit: "days",
+      line: "is how far ahead a family in crisis can plan.",
       source: "EFL field reporting",
     },
     context: [
-      "Health services concentrate in cities. Rural districts absorb the shortfall — and treatable conditions become permanent ones.",
+      "Before training or enterprise can matter, a household needs to eat this month.",
     ],
     response: [
-      "EFL runs medical camps in underserved areas with volunteer doctors, free consultation and free medicine.",
-      "Patients who need more than a camp can offer are referred and supported.",
+      "Monthly food packages and direct financial assistance, delivered consistently and without conditions that shame the recipient.",
     ],
     outcomes: [
-      { label: "Consultation", value: "Free" },
-      { label: "Medicine", value: "Free" },
-      { label: "Model", value: "Mobile camps" },
+      { label: "Cycle", value: "Monthly" },
+      { label: "Support", value: "Food & cash" },
+      { label: "Principle", value: "Dignity first" },
     ],
-    image: health,
-    gallery: [health, midwifery, community],
-    accent: "moss",
+    image: widows,
+    gallery: [family, widows, community],
+    accent: "clay",
     layout: "statement",
   },
   {
@@ -200,32 +306,6 @@ export const projects: Project[] = [
     gallery: [digital, skills, capacity],
     accent: "sand",
     layout: "data",
-  },
-  {
-    slug: "midwifery-program",
-    name: "Midwifery Program",
-    short: "Training skilled birth attendants where hospitals are hours away.",
-    problem: {
-      figure: "155",
-      unit: "deaths",
-      line: "per 100,000 live births — Pakistan's maternal mortality ratio.",
-      source: "Pakistan Maternal Mortality Survey",
-    },
-    context: [
-      "Most maternal deaths are preventable with a skilled attendant present. In remote districts, there often isn't one.",
-    ],
-    response: [
-      "EFL trains and equips community midwives so safe delivery does not depend on reaching a distant hospital in time.",
-    ],
-    outcomes: [
-      { label: "Trained", value: "Community midwives" },
-      { label: "Placed", value: "In home districts" },
-      { label: "Focus", value: "Safe delivery" },
-    ],
-    image: midwifery,
-    gallery: [midwifery, health, community],
-    accent: "clay",
-    layout: "portrait",
   },
   {
     slug: "skill-development",
@@ -278,58 +358,6 @@ export const projects: Project[] = [
     gallery: [capacity, skills, community],
     accent: "moss",
     layout: "data",
-  },
-  {
-    slug: "widows-welfare",
-    name: "Widows Welfare Program",
-    short: "Monthly food and financial assistance for widows in acute need.",
-    problem: {
-      figure: "30",
-      unit: "days",
-      line: "is how far ahead a family in crisis can plan.",
-      source: "EFL field reporting",
-    },
-    context: [
-      "Before training or enterprise can matter, a household needs to eat this month.",
-    ],
-    response: [
-      "Monthly food packages and direct financial assistance, delivered consistently and without conditions that shame the recipient.",
-    ],
-    outcomes: [
-      { label: "Cycle", value: "Monthly" },
-      { label: "Support", value: "Food & cash" },
-      { label: "Principle", value: "Dignity first" },
-    ],
-    image: widows,
-    gallery: [family, widows, community],
-    accent: "clay",
-    layout: "statement",
-  },
-  {
-    slug: "pregnancy-support-pakistan",
-    name: "Pregnancy Support: Pakistan",
-    short: "Care, nutrition and guidance for mothers through pregnancy and after.",
-    problem: {
-      figure: "9",
-      unit: "months",
-      line: "that determine two lives at once.",
-      source: "EFL programme design",
-    },
-    context: [
-      "Antenatal care, nutrition and simple information change outcomes dramatically — and are exactly what is missing.",
-    ],
-    response: [
-      "EFL supports expectant mothers with check-ups, nutritional support, and postnatal follow-up in partnership with local health workers.",
-    ],
-    outcomes: [
-      { label: "Antenatal", value: "Check-ups" },
-      { label: "Nutrition", value: "Supported" },
-      { label: "After birth", value: "Follow-up" },
-    ],
-    image: midwifery,
-    gallery: [midwifery, health, family],
-    accent: "moss",
-    layout: "portrait",
   },
 ];
 
