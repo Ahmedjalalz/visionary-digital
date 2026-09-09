@@ -108,10 +108,16 @@ export function SiteNav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <Link
+              to="/donate"
+              className="hidden border border-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-clay transition-colors hover:bg-clay/10 sm:inline-block"
+            >
+              Donate
+            </Link>
             <Link
               to="/book"
-              className="hidden bg-clay px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
+              className="hidden bg-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
             >
               Book a meeting
             </Link>
@@ -153,12 +159,20 @@ export function SiteNav() {
                   </motion.li>
                 ))}
               </ul>
-              <Link
-                to="/book"
-                className="mt-8 inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
-              >
-                Book a meeting
-              </Link>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  to="/donate"
+                  className="inline-block border border-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay"
+                >
+                  Donate
+                </Link>
+                <Link
+                  to="/book"
+                  className="inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
+                >
+                  Book a meeting
+                </Link>
+              </div>
               <div className="mt-10 grid grid-cols-1 gap-1 sm:grid-cols-2">
                 {projects.map((p) => (
                   <Link
