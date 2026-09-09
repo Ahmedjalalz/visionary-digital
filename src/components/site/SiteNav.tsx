@@ -4,14 +4,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import logoAsset from "@/assets/official/efl-logo.png.asset.json";
+import { assetUrl } from "@/lib/asset";
 
 const primary = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
-  { to: "/donate", label: "Donate" },
 ] as const;
 
 const topSocials = [
@@ -88,7 +88,7 @@ export function SiteNav() {
           className={`mx-auto flex max-w-[1600px] items-center justify-between px-5 transition-all duration-500 sm:px-8 ${scrolled || open ? "py-2" : "py-3"}`}
         >
           <Link to="/" className="group flex items-center gap-3" aria-label="Education and Life Foundation — home">
-            <img src={logoAsset.url} alt="" className="h-12 w-12 object-contain" />
+            <img src={assetUrl(logoAsset.url)} alt="" className="h-12 w-12 object-contain" />
             <span className="hidden text-[0.62rem] font-semibold uppercase text-ink/65 sm:block">
               Education&nbsp;&amp;&nbsp;Life Foundation
             </span>
@@ -108,10 +108,16 @@ export function SiteNav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <Link
+              to="/donate"
+              className="hidden border border-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-clay transition-colors hover:bg-clay/10 sm:inline-block"
+            >
+              Donate
+            </Link>
             <Link
               to="/book"
-              className="hidden bg-clay px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
+              className="hidden bg-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
             >
               Book a meeting
             </Link>
@@ -153,12 +159,20 @@ export function SiteNav() {
                   </motion.li>
                 ))}
               </ul>
-              <Link
-                to="/book"
-                className="mt-8 inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
-              >
-                Book a meeting
-              </Link>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  to="/donate"
+                  className="inline-block border border-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay"
+                >
+                  Donate
+                </Link>
+                <Link
+                  to="/book"
+                  className="inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
+                >
+                  Book a meeting
+                </Link>
+              </div>
               <div className="mt-10 grid grid-cols-1 gap-1 sm:grid-cols-2">
                 {projects.map((p) => (
                   <Link

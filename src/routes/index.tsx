@@ -9,17 +9,18 @@ import widowsAsset from "@/assets/official/widows.jpg.asset.json";
 import familyAsset from "@/assets/official/family.jpg.asset.json";
 import healthAsset from "@/assets/official/health.jpg.asset.json";
 import digitalAsset from "@/assets/official/digital.jpg.asset.json";
+import { assetUrl } from "@/lib/asset";
 
 import { projects } from "@/data/projects";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 
-const heroImg = heroAsset.url;
-const educationImg = educationAsset.url;
-const widowsImg = widowsAsset.url;
-const washImg = familyAsset.url;
-const healthImg = healthAsset.url;
-const digitalImg = digitalAsset.url;
+const heroImg = assetUrl(heroAsset.url);
+const educationImg = assetUrl(educationAsset.url);
+const widowsImg = assetUrl(widowsAsset.url);
+const washImg = assetUrl(familyAsset.url);
+const healthImg = assetUrl(healthAsset.url);
+const digitalImg = assetUrl(digitalAsset.url);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -107,7 +108,7 @@ function Hero() {
           Education &amp; Life Foundation — Pakistan
         </motion.span>
 
-        <h1 className="font-display text-[clamp(2.3rem,7.4vw,7.4rem)] font-extrabold uppercase leading-[0.92] text-cream">
+        <h1 className="font-display text-[clamp(2.1rem,5.4vw,5rem)] font-extrabold uppercase leading-[0.92] text-cream">
           <MaskLines lines={["Uplifting"]} delay={0.15} />
           <MaskLines lines={["the Lives"]} delay={0.28} />
           <span className="block text-clay">
@@ -268,14 +269,14 @@ function Impact() {
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <Rise>
             <div className="flex flex-wrap items-baseline gap-x-6">
-               <span className="numeral text-[22vw] leading-[0.75] text-ink sm:text-[18vw]">
+               <span className="numeral text-[18vw] leading-[0.8] text-ink sm:text-[11vw]">
                 <Counter to={26} format={(n) => Math.round(n).toString()} />
               </span>
-              <span className="numeral text-[9vw] leading-none text-clay sm:text-[6vw]">MILLION</span>
+              <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
             </div>
           </Rise>
            <div className="mt-8 grid gap-8 border-t border-ink/10 pt-8 md:grid-cols-12">
-             <p className="md:col-span-6 md:col-start-1 font-display text-3xl font-bold leading-[1.05] text-ink sm:text-5xl">
+             <p className="md:col-span-6 md:col-start-1 font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
               children in Pakistan are not in a classroom today.
             </p>
             <div className="md:col-span-4 md:col-start-9">
@@ -309,7 +310,7 @@ function Impact() {
             <div className="mt-6 max-w-xl pl-[4%]">
               <MaskLines
                 lines={["can change the arithmetic", "of an entire family."]}
-                className="font-serif text-3xl italic leading-tight text-cream sm:text-5xl"
+                className="font-serif text-2xl italic leading-tight text-cream sm:text-4xl"
                 delay={0.15}
               />
             </div>
@@ -376,21 +377,20 @@ function Story() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/25 to-ink/70" />
 
-          <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-5 py-24 sm:px-8">
-            <div>
+          <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-16 sm:px-8">
+            <motion.div
+              style={reduce ? {} : { x: quoteX }}
+              className="w-full max-w-xl bg-ink/70 p-7 backdrop-blur-sm sm:p-9"
+            >
               <span className="eyebrow">One story</span>
-              <p className="mt-3 font-display text-xl font-bold tracking-tight text-cream sm:text-2xl">
+              <p className="mt-2 font-display text-lg font-bold tracking-tight text-cream">
                 Nasreen — Lahore
               </p>
-              <p className="text-sm text-cream/55">Widows Welfare Program</p>
-            </div>
-
-            <motion.blockquote
-              style={reduce ? {} : { x: quoteX }}
-              className="max-w-[20ch] font-serif text-[13vw] italic leading-[0.95] text-cream sm:max-w-[16ch] sm:text-[7vw]"
-            >
-              “They did not ask me to prove I was poor. They asked what my children needed.”
-            </motion.blockquote>
+              <p className="text-xs text-cream/55">Widows Welfare Program</p>
+              <blockquote className="mt-5 font-serif text-2xl italic leading-snug text-cream sm:text-3xl">
+                “They did not ask me to prove I was poor. They asked what my children needed.”
+              </blockquote>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -410,7 +410,7 @@ function Numbers() {
       <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 md:grid-cols-2">
         {stats.map((s) => (
           <div key={s.label} className="flex items-baseline gap-5">
-            <span className="numeral text-7xl text-clay sm:text-8xl">
+            <span className="numeral text-5xl text-clay sm:text-6xl">
               <Counter to={s.value} format={(n) => Math.round(n).toString()} />
             </span>
              <span className="max-w-[18ch] text-sm uppercase tracking-[0.14em] text-ink/60">{s.label}</span>
@@ -514,7 +514,7 @@ function FinalCta() {
       </div>
       <div
         aria-hidden
-        className="pointer-events-none mt-20 select-none whitespace-nowrap font-display text-[15vw] font-extrabold leading-[0.8] tracking-[-0.07em] text-ink/[0.07]"
+        className="pointer-events-none mt-20 select-none whitespace-nowrap font-display text-[10vw] font-extrabold leading-[0.85] tracking-[-0.07em] text-ink/[0.07]"
       >
         <span className="inline-block marquee-track">
           EDUCATION · HEALTH · WATER · DIGNITY · EDUCATION · HEALTH · WATER · DIGNITY ·&nbsp;
