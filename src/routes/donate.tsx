@@ -234,6 +234,99 @@ function Donate() {
   );
 }
 
+const bankBlocks: { title: string; note?: string; rows: { label: string; value: string }[] }[] = [
+  {
+    title: "Correspondent bank",
+    note: "Standard Chartered Bank, New York",
+    rows: [
+      { label: "Account no.", value: "3582-059673-001" },
+      { label: "SWIFT code", value: "SCBLUS33" },
+      { label: "ABA no.", value: "026001591" },
+    ],
+  },
+  {
+    title: "Beneficiary bank",
+    note: "Faysal Bank Limited, Karachi, Pakistan",
+    rows: [{ label: "SWIFT code", value: "FAYSPKKA" }],
+  },
+  {
+    title: "Final beneficiary",
+    note: "Faysal Bank, Usman Block, Awami Complex — Garden Town, Lahore, Punjab, Pakistan",
+    rows: [
+      { label: "Account title", value: "EDUCATION AND LIFE FOUNDATION" },
+      { label: "Account no.", value: "0464007900224713" },
+      { label: "IBAN", value: "PK11FAYS0464007900224713" },
+    ],
+  },
+];
+
+function CopyRow({ label, value }: { label: string; value: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="flex items-start justify-between gap-4 border-t border-ink/10 py-3">
+      <div className="min-w-0">
+        <div className="text-[0.62rem] uppercase tracking-[0.18em] text-ink/45">{label}</div>
+        <div className="mt-1 break-all font-display text-base font-bold text-ink sm:text-lg">
+          {value}
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          navigator.clipboard?.writeText(value);
+          setCopied(true);
+          window.setTimeout(() => setCopied(false), 1600);
+        }}
+        aria-label={`Copy ${label}`}
+        className="mt-1 shrink-0 border border-ink/20 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.16em] text-ink/70 transition-colors hover:border-clay hover:text-clay"
+      >
+        {copied ? "Copied" : "Copy"}
+      </button>
+    </div>
+  );
+}
+
+function BankDetails() {
+  return (
+    <section className="bg-background px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-[1600px]">
+        <span className="eyebrow">Bank transfer — the fastest way to give</span>
+        <h2 className="display-md mt-3 max-w-[22ch] text-ink">
+          Send your donation directly to the foundation.
+        </h2>
+        <p className="lede mt-4">
+          International transfers route through the correspondent bank, then the beneficiary bank, and
+          land in the foundation's account. Copy any line with one tap.
+        </p>
+
+        <div className="mt-12 grid gap-px bg-ink/10 lg:grid-cols-3">
+          {bankBlocks.map((block, i) => (
+            <div key={block.title} className="bg-background p-7">
+              <div className="flex items-baseline gap-3">
+                <span className="numeral text-sm text-clay">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-display text-xl font-bold text-ink">{block.title}</h3>
+              </div>
+              {block.note && (
+                <p className="mt-2 text-sm leading-relaxed text-ink/60">{block.note}</p>
+              )}
+              <div className="mt-5">
+                {block.rows.map((r) => (
+                  <CopyRow key={r.label} label={r.label} value={r.value} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 text-xs leading-relaxed text-ink/50">
+          Please email info@educationandlifefoundation.org with your transfer reference so the team can
+          issue a receipt and confirm where your gift is going.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function DonorField({
   label,
   name,
