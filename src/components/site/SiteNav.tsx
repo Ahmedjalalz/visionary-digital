@@ -8,11 +8,10 @@ import { assetUrl } from "@/lib/asset";
 
 const primary = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
+  { to: "/projects", label: "Projects" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
-  { to: "/donate", label: "Donate" },
 ] as const;
 
 const topSocials = [
