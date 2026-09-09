@@ -8,17 +8,18 @@ import midwiferyAsset from "@/assets/official/midwifery.jpg.asset.json";
 import digitalAsset from "@/assets/official/digital.jpg.asset.json";
 import skillsAsset from "@/assets/official/skills.jpg.asset.json";
 import capacityAsset from "@/assets/official/capacity.jpg.asset.json";
+import { assetUrl } from "@/lib/asset";
 
-const education = educationAsset.url;
-const schoolwork = schoolworkAsset.url;
-const community = communityAsset.url;
-const family = familyAsset.url;
-const widows = widowsAsset.url;
-const health = healthAsset.url;
-const midwifery = midwiferyAsset.url;
-const digital = digitalAsset.url;
-const skills = skillsAsset.url;
-const capacity = capacityAsset.url;
+const education = assetUrl(educationAsset.url);
+const schoolwork = assetUrl(schoolworkAsset.url);
+const community = assetUrl(communityAsset.url);
+const family = assetUrl(familyAsset.url);
+const widows = assetUrl(widowsAsset.url);
+const health = assetUrl(healthAsset.url);
+const midwifery = assetUrl(midwiferyAsset.url);
+const digital = assetUrl(digitalAsset.url);
+const skills = assetUrl(skillsAsset.url);
+const capacity = assetUrl(capacityAsset.url);
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
 

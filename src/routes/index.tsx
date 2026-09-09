@@ -9,17 +9,18 @@ import widowsAsset from "@/assets/official/widows.jpg.asset.json";
 import familyAsset from "@/assets/official/family.jpg.asset.json";
 import healthAsset from "@/assets/official/health.jpg.asset.json";
 import digitalAsset from "@/assets/official/digital.jpg.asset.json";
+import { assetUrl } from "@/lib/asset";
 
 import { projects } from "@/data/projects";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 
-const heroImg = heroAsset.url;
-const educationImg = educationAsset.url;
-const widowsImg = widowsAsset.url;
-const washImg = familyAsset.url;
-const healthImg = healthAsset.url;
-const digitalImg = digitalAsset.url;
+const heroImg = assetUrl(heroAsset.url);
+const educationImg = assetUrl(educationAsset.url);
+const widowsImg = assetUrl(widowsAsset.url);
+const washImg = assetUrl(familyAsset.url);
+const healthImg = assetUrl(healthAsset.url);
+const digitalImg = assetUrl(digitalAsset.url);
 
 export const Route = createFileRoute("/")({
   head: () => ({

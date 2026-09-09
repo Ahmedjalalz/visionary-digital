@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import logoAsset from "@/assets/official/efl-logo.png.asset.json";
+import { assetUrl } from "@/lib/asset";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -88,7 +89,7 @@ export function SiteNav() {
           className={`mx-auto flex max-w-[1600px] items-center justify-between px-5 transition-all duration-500 sm:px-8 ${scrolled || open ? "py-2" : "py-3"}`}
         >
           <Link to="/" className="group flex items-center gap-3" aria-label="Education and Life Foundation — home">
-            <img src={logoAsset.url} alt="" className="h-12 w-12 object-contain" />
+            <img src={assetUrl(logoAsset.url)} alt="" className="h-12 w-12 object-contain" />
             <span className="hidden text-[0.62rem] font-semibold uppercase text-ink/65 sm:block">
               Education&nbsp;&amp;&nbsp;Life Foundation
             </span>
