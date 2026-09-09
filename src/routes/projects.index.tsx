@@ -24,9 +24,6 @@ export const Route = createFileRoute("/projects/")({
 });
 
 function ProjectsIndex() {
-  const [hover, setHover] = useState<string | null>(null);
-  const active = projects.find((p) => p.slug === hover);
-
   return (
     <>
       <section className="relative overflow-hidden bg-sand px-5 pb-16 pt-40 sm:px-8 sm:pt-52">
