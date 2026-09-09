@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { MaskLines } from "@/components/site/motion-primitives";

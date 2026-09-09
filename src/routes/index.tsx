@@ -377,21 +377,20 @@ function Story() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/25 to-ink/70" />
 
-          <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-5 py-24 sm:px-8">
-            <div>
+          <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-16 sm:px-8">
+            <motion.div
+              style={reduce ? {} : { x: quoteX }}
+              className="w-full max-w-xl bg-ink/70 p-7 backdrop-blur-sm sm:p-9"
+            >
               <span className="eyebrow">One story</span>
-              <p className="mt-3 font-display text-xl font-bold tracking-tight text-cream sm:text-2xl">
+              <p className="mt-2 font-display text-lg font-bold tracking-tight text-cream">
                 Nasreen — Lahore
               </p>
-              <p className="text-sm text-cream/55">Widows Welfare Program</p>
-            </div>
-
-            <motion.blockquote
-              style={reduce ? {} : { x: quoteX }}
-              className="max-w-[20ch] font-serif text-[13vw] italic leading-[0.95] text-cream sm:max-w-[16ch] sm:text-[7vw]"
-            >
-              “They did not ask me to prove I was poor. They asked what my children needed.”
-            </motion.blockquote>
+              <p className="text-xs text-cream/55">Widows Welfare Program</p>
+              <blockquote className="mt-5 font-serif text-2xl italic leading-snug text-cream sm:text-3xl">
+                “They did not ask me to prove I was poor. They asked what my children needed.”
+              </blockquote>
+            </motion.div>
           </div>
         </div>
       </div>
