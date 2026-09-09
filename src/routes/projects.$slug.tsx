@@ -62,8 +62,8 @@ function ProjectPage() {
             <h1
                className={`mt-4 font-display font-extrabold uppercase leading-[0.86] text-cream ${
                 project.name.length > 34
-                  ? "text-[9vw] sm:text-[5.4vw]"
-                  : "text-[13vw] sm:text-[7.5vw]"
+                  ? "text-[7vw] sm:text-[3.6vw]"
+                  : "text-[9vw] sm:text-[5vw]"
               }`}
             >
               <MaskLines lines={[project.name]} />
@@ -78,14 +78,14 @@ function ProjectPage() {
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">The problem</span>
           <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            <span className={`numeral text-[24vw] leading-[0.74] sm:text-[15vw] ${accentClass}`}>
+            <span className={`numeral text-[18vw] leading-[0.78] sm:text-[9vw] ${accentClass}`}>
               {project.problem.figure}
             </span>
-             <span className="numeral text-[9vw] uppercase leading-none text-ink sm:text-[5vw]">
+             <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
               {project.problem.unit}
             </span>
           </div>
-           <p className="mt-8 max-w-[24ch] font-display text-3xl font-bold leading-[1.05] text-ink sm:text-6xl">
+           <p className="mt-8 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
             {project.problem.line}
           </p>
            <p className="mt-6 text-xs uppercase tracking-[0.18em] text-ink/45">
@@ -110,7 +110,7 @@ function ProjectPage() {
         <section className="relative overflow-hidden py-24">
           <div
             aria-hidden
-             className="pointer-events-none select-none whitespace-nowrap font-display text-[14vw] font-extrabold leading-none text-clay/[0.06]"
+             className="pointer-events-none select-none whitespace-nowrap font-display text-[10vw] font-extrabold leading-none text-clay/[0.06]"
           >
             <span className="inline-block marquee-track">
               {`${project.name.toUpperCase()} · `.repeat(6)}

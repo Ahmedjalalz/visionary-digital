@@ -88,7 +88,7 @@ function BagDetails() {
           </Link>
 
           <span className="eyebrow">Bag ID</span>
-          <h1 className="numeral mt-3 text-[13vw] leading-[0.8] text-ink sm:text-7xl">
+          <h1 className="numeral mt-3 text-[10vw] leading-[0.85] text-ink sm:text-5xl">
             {data.tracking_id}
           </h1>
 
