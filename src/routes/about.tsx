@@ -161,13 +161,12 @@ function About() {
   return (
     <>
       {/* hero — typographic, image behind */}
-      <section className="relative h-[70svh] min-h-[460px] overflow-hidden">
+      <section className="relative min-h-[50svh] sm:min-h-[58svh] w-full flex flex-col justify-end overflow-hidden pt-10 pb-12 sm:pt-14 sm:pb-16">
         <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an EFL village school in Punjab" className="absolute inset-0" priority strength={60} />
         <div className="absolute inset-0 bg-ink/65" />
-        <div aria-hidden className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/40 to-transparent z-10" />
-        <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-20 z-20">
+        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
-            <span className="eyebrow text-clay font-bold block mb-4">Founded 2003 · Lahore, Pakistan</span>
+            <span className="eyebrow text-clay font-bold block mb-3">Founded 2003 · Lahore, Pakistan</span>
             <h1 className="display-xl max-w-[14ch] text-cream">
               <MaskLines lines={["To uplift", "the deprived", "community."]} />
             </h1>

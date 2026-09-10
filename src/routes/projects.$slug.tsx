@@ -41,7 +41,7 @@ function ProjectPage() {
   return (
     <article className="bg-background">
       {/* ── hero ── */}
-      <section className="relative h-[75svh] min-h-[480px] overflow-hidden">
+      <section className="relative min-h-[50svh] sm:min-h-[58svh] w-full flex flex-col justify-end overflow-hidden pt-10 pb-12 sm:pt-14 sm:pb-16">
         <ParallaxImage
           src={project.image}
           alt={project.name}
@@ -57,22 +57,20 @@ function ProjectPage() {
               : "bg-gradient-to-t from-ink/95 via-ink/50 to-ink/60"
           }`}
         />
-        {/* Subtle top vignette */}
-        <div aria-hidden className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/40 to-transparent z-10" />
 
-        <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 pb-12 pt-16 sm:px-8 sm:pb-16 sm:pt-20 z-20">
+        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div className={heroLeft ? "max-w-3xl" : "w-full"}>
             <span className="eyebrow text-clay font-bold">Initiative Portfolio</span>
             <h1
-              className={`mt-4 font-display font-black uppercase leading-[1.04] text-cream ${
+              className={`mt-3 font-display font-black uppercase leading-[1.04] text-cream ${
                 project.name.length > 34
-                  ? "text-[7vw] sm:text-[3.6vw] lg:text-[3.2vw]"
-                  : "text-[8.5vw] sm:text-[5vw] lg:text-[4.2vw]"
+                  ? "text-[6vw] sm:text-[3.2vw] lg:text-[2.8vw]"
+                  : "text-[7.5vw] sm:text-[4.5vw] lg:text-[3.8vw]"
               }`}
             >
               <MaskLines lines={[project.name]} />
             </h1>
-            <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-cream/80">{project.short}</p>
+            <p className="mt-4 max-w-xl text-base sm:text-lg leading-relaxed text-cream/80">{project.short}</p>
           </div>
         </div>
       </section>

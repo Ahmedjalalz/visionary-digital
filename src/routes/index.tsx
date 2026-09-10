@@ -74,9 +74,9 @@ function Hero() {
           y: ((e.clientY - r.top) / r.height - 0.5) * -14,
         });
       }}
-      className="relative h-[calc(100svh-5rem)] min-h-[600px] w-full overflow-hidden bg-ink grain-overlay"
+      className="relative min-h-[calc(100svh-5.5rem)] w-full flex flex-col justify-end overflow-hidden bg-ink grain-overlay pt-8 pb-10 sm:pt-12 sm:pb-14"
     >
-      <motion.div className="absolute -inset-x-[3%] -inset-y-[5%]" style={reduce ? {} : { y: imgY, scale: imgScale }}>
+      <motion.div className="absolute inset-0" style={reduce ? {} : { y: imgY, scale: imgScale }}>
         <motion.img
           src={heroImg}
           alt="Schoolchildren gathered in a village courtyard at dusk in rural Punjab, Pakistan"
@@ -88,27 +88,21 @@ function Hero() {
         />
       </motion.div>
 
-      {/* subtle top vignette */}
-      <div aria-hidden className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/40 to-transparent" />
-
       {/* cinematic fog rising from the bottom */}
       <motion.div
         aria-hidden
-        className="fog-up absolute inset-x-0 bottom-0"
+        className="fog-up absolute inset-x-0 bottom-0 pointer-events-none"
         style={reduce ? { height: "42%" } : { height: fogHeight }}
       />
 
-      <motion.div
-        style={reduce ? {} : { y: titleY, opacity: titleOpacity }}
-        className="absolute inset-x-0 bottom-0 mx-auto max-w-[1600px] px-5 pb-10 sm:px-8 sm:pb-14"
-      >
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-cream/20 bg-ink/50 px-3.5 py-1.5 backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-cream/20 bg-ink/60 px-3.5 py-1.5 backdrop-blur-md"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-75" />
@@ -119,7 +113,7 @@ function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="font-display text-[clamp(2.2rem,5.4vw,5.2rem)] font-black uppercase tracking-tight leading-[0.98] text-cream">
+            <h1 className="font-display text-[clamp(1.95rem,4.2vw,4.2rem)] font-black uppercase tracking-tight leading-[1.04] text-cream">
               <MaskLines lines={["Action where the"]} delay={0.12} />
               <MaskLines lines={["shortfall is sharpest."]} delay={0.24} />
               <span className="block text-clay mt-1">
@@ -187,7 +181,7 @@ function Hero() {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
