@@ -78,7 +78,7 @@ function BagDetails() {
     <article className="bg-background text-ink">
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         {/* information side */}
-        <div className="flex flex-col justify-center px-5 pb-20 pt-36 sm:px-10 lg:pt-40">
+        <div className="flex flex-col justify-center px-5 py-14 sm:px-10 sm:py-20">
           <Link
             to="/projects/$slug"
             params={{ slug: "school-bags" }}

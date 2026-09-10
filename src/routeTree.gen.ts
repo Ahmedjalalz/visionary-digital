@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
@@ -44,6 +45,11 @@ const DonateRoute = DonateRouteImport.update({
   path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/impact'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/impact'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/impact'
     | '/news'
     | '/bag/$trackingId'
     | '/projects/$slug'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
+  ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRoute
   BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
+  ImpactRoute: ImpactRoute,
   NewsRoute: NewsRoute,
   BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,

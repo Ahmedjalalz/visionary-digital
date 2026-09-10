@@ -51,10 +51,10 @@ function Contact() {
   return (
     <>
       {/* geographic opening */}
-       <section className="relative bg-sand px-5 pb-10 pt-40 sm:px-8 sm:pt-52">
+      <section className="relative bg-sand px-5 py-14 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Four places, one foundation</span>
-           <h1 className="display-lg mt-6 max-w-[13ch] text-ink">
+          <h1 className="display-lg mt-4 max-w-[13ch] text-ink">
             <MaskLines lines={["Lahore. Auckland.", "Toronto. Berlin."]} />
           </h1>
         </div>
@@ -62,7 +62,7 @@ function Contact() {
 
       {/* branch switcher over a live map */}
       <section className="relative">
-        <div className="relative h-[70svh] min-h-[460px]">
+        <div className="relative h-[65svh] min-h-[420px]">
           <MapEmbed
             key={branch.query}
             query={branch.query}
@@ -72,8 +72,8 @@ function Contact() {
           />
         </div>
 
-        <div className="mx-auto -mt-24 max-w-[1600px] px-5 sm:px-8">
-           <div className="grid gap-px border border-ink/10 bg-ink/10 shadow-lg shadow-clay/5 md:grid-cols-4">
+        <div className="relative z-10 mx-auto -mt-14 max-w-[1600px] px-5 sm:-mt-16 sm:px-8">
+          <div className="grid gap-px border border-ink/10 bg-ink/10 shadow-lg shadow-clay/5 md:grid-cols-4">
             {branches.map((b, i) => {
               const isActive = i === active;
               return (
@@ -81,16 +81,16 @@ function Contact() {
                   key={b.country}
                   onClick={() => setActive(i)}
                   aria-current={isActive}
-                  className={`p-7 text-left transition-colors ${
-                     isActive ? "bg-clay text-primary-foreground" : "bg-background text-ink hover:bg-secondary"
+                  className={`p-6 text-left transition-colors sm:p-7 ${
+                    isActive ? "bg-clay text-primary-foreground" : "bg-background text-ink hover:bg-secondary"
                   }`}
                 >
                   <div className="text-[0.66rem] font-semibold uppercase tracking-[0.2em] opacity-70">
                     {b.country}
                   </div>
                   <div className="mt-2 font-display text-2xl font-bold tracking-tight">{b.city}</div>
-                  <div className="mt-3 text-sm leading-snug opacity-75">{b.address}</div>
-                  {b.phone && <div className="mt-3 text-sm opacity-90">{b.phone}</div>}
+                  <div className="mt-2.5 text-sm leading-snug opacity-75">{b.address}</div>
+                  {b.phone && <div className="mt-2 text-sm opacity-90">{b.phone}</div>}
                 </button>
               );
             })}
@@ -99,7 +99,7 @@ function Contact() {
       </section>
 
       {/* write to us */}
-      <section className="px-5 py-28 sm:px-8">
+      <section className="px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
            <h2 className="display-md max-w-[14ch] text-ink">We would love to hear from you.</h2>

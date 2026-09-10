@@ -1,0 +1,764 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useMemo, useRef, useEffect } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+} from "motion/react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Globe,
+  HeartHandshake,
+  LayoutGrid,
+  MapPin,
+  Maximize2,
+  MoveHorizontal,
+  Quote,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "lucide-react";
+import { partners } from "@/data/partners";
+import { testimonials, type Testimonial } from "@/data/testimonials";
+import { PartnerTicker } from "@/components/site/PartnerTicker";
+import { MaskLines, Rise, ParallaxImage } from "@/components/site/motion-primitives";
+import communityAsset from "@/assets/official/community.jpg.asset.json";
+import { assetUrl } from "@/lib/asset";
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
+
+const heroImg = assetUrl(communityAsset.url);
+
+export const Route = createFileRoute("/impact")({
+  head: () => ({
+    meta: [
+      { title: "Impact & Field Stories — Education and Life Foundation" },
+      {
+        name: "description",
+        content:
+          "Witness the real outcomes of EFL's programmes across Pakistan through field testimonies, verified outcomes, and our global partner foundations.",
+      },
+      { property: "og:title", content: "Our Impact — Education and Life Foundation" },
+      {
+        property: "og:description",
+        content:
+          "12 projects, 13 international partner organizations, and thousands of lives transformed with zero platform cuts.",
+      },
+    ],
+  }),
+  component: ImpactPage,
+});
+
+const stats = [
+  { value: "14,000+", label: "Students in Supported Schools", sub: "Tuition, books & uniform covered" },
+  { value: "4,800+", label: "Safe Village Deliveries", sub: "Equipped community midwives" },
+  { value: "18,500+", label: "Free Medical Consultations", sub: "Rural health camps & surgeries" },
+  { value: "100%", label: "Direct Field Flow", sub: "Zero administrative platform cuts" },
+];
+
+const categories = [
+  "All",
+  "Education",
+  "Healthcare & Maternity",
+  "Widows & Families",
+  "Skills & Livelihoods",
+] as const;
+
+const countries = ["All", "United Kingdom", "United States", "Germany", "New Zealand"] as const;
+
+function TestimonialCard({
+  t,
+  className = "",
+  onSelect,
+}: {
+  t: Testimonial;
+  className?: string;
+  onSelect?: () => void;
+}) {
+  return (
+    <div
+      onClick={onSelect}
+      className={`group relative flex flex-col justify-between rounded-sm border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 select-none cursor-pointer ${className}`}
+    >
+      <div>
+        {/* Header: Category Badge & Project Link */}
+        <div className="flex items-center justify-between gap-3 border-b border-ink/8 pb-3.5">
+          <span className="rounded bg-sand px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-clay">
+            {t.category}
+          </span>
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex items-center gap-1 text-[0.65rem] font-semibold text-clay/70 group-hover:text-clay transition-colors">
+              <Maximize2 className="h-3 w-3" />
+              <span className="hidden sm:inline">Read story</span>
+            </span>
+            <Link
+              to="/projects/$slug"
+              params={{ slug: t.projectSlug }}
+              onClick={(e) => e.stopPropagation()}
+              className="group/link flex items-center gap-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-ink/50 hover:text-clay transition-colors"
+            >
+              <span>Project</span>
+              <ArrowRight className="h-3 w-3 transition-transform group-hover/link:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Quotation mark decoration */}
+        <div className="mt-4 flex items-center justify-between text-clay/25">
+          <Quote className="h-7 w-7" />
+          <span className="font-mono text-[0.62rem] uppercase tracking-widest text-ink/35">
+            Verified Account
+          </span>
+        </div>
+
+        {/* Quote text — fully shown without truncation */}
+        <p className="mt-2 font-serif text-base sm:text-lg leading-relaxed text-ink/90 italic">
+          “{t.quote}”
+        </p>
+
+        {/* Impact highlight pill */}
+        <div className="mt-4 flex items-center gap-2 rounded bg-clay/5 px-3 py-2 border border-clay/15">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-clay" />
+          <span className="text-xs font-semibold text-clay-deep leading-tight">
+            {t.impactHighlight}
+          </span>
+        </div>
+      </div>
+
+      {/* Footer: Person Metadata & Partner Tag */}
+      <div className="mt-6 border-t border-ink/8 pt-4">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="font-display text-sm sm:text-base font-bold text-ink">
+              {t.name}
+            </div>
+            <div className="text-xs text-ink/65">{t.role}</div>
+            <div className="mt-1 flex items-center gap-1.5 text-[0.7rem] text-ink/50">
+              <MapPin className="h-3 w-3 text-clay shrink-0" />
+              <span className="truncate max-w-[200px]">{t.location}</span>
+            </div>
+          </div>
+
+          {t.partnerName && (
+            <div className="text-right shrink-0">
+              <span className="block text-[0.6rem] uppercase tracking-wider text-ink/40">
+                Co-sponsored by
+              </span>
+              <span className="font-display text-[0.68rem] font-bold text-clay">
+                {t.partnerName}
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScrollTestimonialsTrack({
+  testimonials: items,
+  onSelectTestimonial,
+}: {
+  testimonials: Testimonial[];
+  onSelectTestimonial: (t: Testimonial) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
+  const [overflow1, setOverflow1] = useState(600);
+  const [overflow2, setOverflow2] = useState(600);
+  const reduce = useReducedMotion();
+
+  // Distribute items into row 1 & row 2
+  const row1 = useMemo(() => {
+    const evens = items.filter((_, i) => i % 2 === 0);
+    return evens.length > 0 ? evens : items;
+  }, [items]);
+
+  const row2 = useMemo(() => {
+    const odds = items.filter((_, i) => i % 2 === 1);
+    return odds.length > 0 ? odds : items;
+  }, [items]);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const cWidth = containerRef.current.clientWidth;
+        if (row1Ref.current) {
+          const r1Width = row1Ref.current.scrollWidth;
+          setOverflow1(Math.max(0, r1Width - cWidth + 48));
+        }
+        if (row2Ref.current) {
+          const r2Width = row2Ref.current.scrollWidth;
+          setOverflow2(Math.max(0, r2Width - cWidth + 48));
+        }
+      }
+    };
+
+    updateDimensions();
+    const timeout = setTimeout(updateDimensions, 150);
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, [row1, row2]);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  // Dynamic travel offsets:
+  // Row 1 travels left so that the last card ends fully in frame.
+  // Row 2 travels right so that the first card ends fully in frame.
+  const x1 = useTransform(smoothProgress, [0.08, 0.92], [20, -overflow1]);
+  const x2 = useTransform(smoothProgress, [0.08, 0.92], [-overflow2, 20]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative mt-12 overflow-hidden py-4 -mx-5 sm:-mx-8"
+    >
+      {/* Left/Right Subtle Edge Gradient Fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-8 sm:w-16 bg-gradient-to-r from-sand via-sand/40 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-8 sm:w-16 bg-gradient-to-l from-sand via-sand/40 to-transparent" />
+
+      {/* Row 1 — travels left as you scroll down */}
+      <motion.div
+        ref={row1Ref}
+        style={reduce ? {} : { x: x1 }}
+        className="flex gap-5 sm:gap-6 w-max pb-5 sm:pb-6 will-change-transform pl-4 sm:pl-8"
+      >
+        {row1.map((t, idx) => (
+          <TestimonialCard
+            key={`track-r1-${t.id}-${idx}`}
+            t={t}
+            onSelect={() => onSelectTestimonial(t)}
+            className="w-[320px] sm:w-[420px] shrink-0"
+          />
+        ))}
+      </motion.div>
+
+      {/* Row 2 — travels right as you scroll down */}
+      <motion.div
+        ref={row2Ref}
+        style={reduce ? {} : { x: x2 }}
+        className="flex gap-5 sm:gap-6 w-max will-change-transform pl-4 sm:pl-8"
+      >
+        {row2.map((t, idx) => (
+          <TestimonialCard
+            key={`track-r2-${t.id}-${idx}`}
+            t={t}
+            onSelect={() => onSelectTestimonial(t)}
+            className="w-[320px] sm:w-[420px] shrink-0"
+          />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function ImpactPage() {
+  const [selectedCategory, setSelectedCategory] = useState<(typeof categories)[number]>("All");
+  const [selectedCountry, setSelectedCountry] = useState<(typeof countries)[number]>("All");
+  const [viewMode, setViewMode] = useState<"stream" | "grid">("stream");
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+
+  const filteredTestimonials = useMemo(() => {
+    if (selectedCategory === "All") return testimonials;
+    return testimonials.filter((t) => t.category === selectedCategory);
+  }, [selectedCategory]);
+
+  const filteredPartners = useMemo(() => {
+    if (selectedCountry === "All") return partners;
+    return partners.filter((p) => p.country === selectedCountry);
+  }, [selectedCountry]);
+
+  return (
+    <div className="min-h-screen bg-background text-ink">
+      {/* ─── HERO SECTION ─── */}
+      <section className="relative overflow-hidden py-16 sm:py-24">
+        {/* Subtle background ambient elements */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-clay/5 blur-[120px]" />
+        <div className="pointer-events-none absolute top-1/2 left-0 h-[400px] w-[400px] rounded-full bg-moss/5 blur-[100px]" />
+
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <span className="eyebrow flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-clay" />
+                Verified Field Outcomes
+              </span>
+              <h1 className="display-xl mt-4 max-w-[14ch] text-ink">
+                <MaskLines lines={["The measure of", "the work is in the", "lives it changes."]} />
+              </h1>
+              <p className="mt-8 max-w-[50ch] font-serif text-xl sm:text-2xl text-ink/75 leading-relaxed italic">
+                “Every program exists because a family had nowhere else to turn. Every metric represents a child back in school, a mother safely delivered, or a widow holding her head high.”
+              </p>
+            </div>
+
+            {/* Quick summary card */}
+            <div className="lg:col-span-5">
+              <div className="rounded-sm border border-ink/10 bg-sand/60 p-6 sm:p-8 backdrop-blur-md">
+                <div className="flex items-center gap-3 border-b border-ink/10 pb-4">
+                  <ShieldCheck className="h-5 w-5 text-clay" />
+                  <span className="font-display text-sm font-bold uppercase tracking-[0.16em] text-ink">
+                    Accountability Guarantee
+                  </span>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-ink/70">
+                  EFL operates with direct grassroots field governance in Punjab. Supported by 13 global partner foundations, our projects deliver quantifiable community transformations with open, transparent ledger reporting.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link
+                    to="/donate"
+                    className="inline-flex items-center gap-2 bg-clay px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+                  >
+                    <span>Donate to a project</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <a
+                    href="#partners"
+                    className="inline-flex items-center gap-2 border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink hover:border-ink transition-colors"
+                  >
+                    View Partners ({partners.length})
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Aggregate Impact Stat Grid */}
+          <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-6 border-t border-ink/10 pt-12">
+            {stats.map((s, idx) => (
+              <Rise key={s.label} delay={idx * 0.08}>
+                <div className="rounded-xs border border-ink/8 bg-sand/20 p-5 sm:p-6 transition-all hover:bg-sand/50">
+                  <div className="numeral text-3xl sm:text-5xl font-extrabold text-clay">
+                    {s.value}
+                  </div>
+                  <div className="mt-2 font-display text-sm sm:text-base font-bold text-ink">
+                    {s.label}
+                  </div>
+                  <div className="mt-1 text-xs text-ink/55 leading-normal">
+                    {s.sub}
+                  </div>
+                </div>
+              </Rise>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── MOVING TRUST STRIP ─── */}
+      <PartnerTicker />
+
+      {/* ─── TESTIMONIALS SECTION ─── */}
+      <section className="py-20 sm:py-28 bg-sand/25 border-b border-ink/10 overflow-hidden">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between border-b border-ink/10 pb-10">
+            <div>
+              <span className="eyebrow flex items-center gap-2">
+                <Quote className="h-3.5 w-3.5 text-clay" />
+                Field Voices
+              </span>
+              <h2 className="display-md mt-2 text-ink">
+                Testimonies Across All 12 Programmes
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-ink/65 leading-relaxed">
+                Direct accounts from children, mothers, community midwives, trainees, and village elders who live the results of this work every day.
+              </p>
+            </div>
+
+            {/* Controls: Category Filter Pills + View Mode Toggle */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              {/* Category Filter Pills */}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
+                      selectedCategory === cat
+                        ? "bg-clay text-cream shadow-sm"
+                        : "bg-background border border-ink/15 text-ink/70 hover:border-ink hover:text-ink"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              {/* View Mode Toggle */}
+              <div className="flex items-center rounded-full border border-ink/15 bg-background p-1 self-start sm:self-auto shrink-0 shadow-2xs">
+                <button
+                  onClick={() => setViewMode("stream")}
+                  title="Dynamic Scroll Stream"
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] transition-all ${
+                    viewMode === "stream"
+                      ? "bg-clay text-cream shadow-2xs"
+                      : "text-ink/60 hover:text-ink"
+                  }`}
+                >
+                  <MoveHorizontal className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Dynamic</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("grid")}
+                  title="Grid View"
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] transition-all ${
+                    viewMode === "grid"
+                      ? "bg-clay text-cream shadow-2xs"
+                      : "text-ink/60 hover:text-ink"
+                  }`}
+                >
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Grid</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Subtitle helper in dynamic stream mode */}
+          {viewMode === "stream" && (
+            <div className="mt-4 flex items-center justify-between text-xs text-ink/50">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-clay" />
+                </span>
+                <span className="font-display uppercase tracking-wider text-[0.65rem]">
+                  Scroll to glide across opposing tracks • Hover cards to focus
+                </span>
+              </div>
+              <span className="hidden sm:inline font-mono text-[0.65rem] text-ink/40">
+                {filteredTestimonials.length} stories displayed
+              </span>
+            </div>
+          )}
+
+          {/* Render either Dynamic Scroll Tracks or Standard Grid */}
+          {viewMode === "stream" ? (
+            <ScrollTestimonialsTrack
+              key={selectedCategory}
+              testimonials={filteredTestimonials}
+              onSelectTestimonial={setSelectedTestimonial}
+            />
+          ) : (
+            <motion.div
+              layout
+              className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredTestimonials.map((t, index) => (
+                  <motion.div
+                    key={t.id}
+                    layout
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.35, delay: index * 0.04 }}
+                  >
+                    <TestimonialCard
+                      t={t}
+                      className="h-full"
+                      onSelect={() => setSelectedTestimonial(t)}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
+
+          {/* Testimonial Full Story Modal Dialog */}
+          <Dialog
+            open={!!selectedTestimonial}
+            onOpenChange={(open) => !open && setSelectedTestimonial(null)}
+          >
+            <DialogContent className="max-w-2xl bg-sand/98 p-6 sm:p-9 border border-ink/15 backdrop-blur-md">
+              {selectedTestimonial && (
+                <div>
+                  {/* Category & Verified Badge */}
+                  <div className="flex items-center justify-between border-b border-ink/10 pb-4">
+                    <span className="rounded bg-clay/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-clay">
+                      {selectedTestimonial.category}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-xs font-mono text-ink/60">
+                      <ShieldCheck className="h-4 w-4 text-clay" />
+                      Verified Field Outcome
+                    </span>
+                  </div>
+
+                  {/* Large quote */}
+                  <div className="mt-6 text-clay/30">
+                    <Quote className="h-10 w-10" />
+                  </div>
+                  <blockquote className="mt-2 font-serif text-xl sm:text-2xl italic leading-relaxed text-ink">
+                    “{selectedTestimonial.quote}”
+                  </blockquote>
+
+                  {/* Highlight Pill */}
+                  <div className="mt-6 flex items-center gap-2.5 rounded-sm bg-clay/10 p-3.5 border border-clay/20">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-clay" />
+                    <span className="text-sm font-semibold text-clay-deep">
+                      {selectedTestimonial.impactHighlight}
+                    </span>
+                  </div>
+
+                  {/* Author & Location */}
+                  <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ink/10 pt-5">
+                    <div>
+                      <h4 className="font-display text-lg font-bold text-ink">
+                        {selectedTestimonial.name}
+                      </h4>
+                      <p className="text-sm text-ink/70">{selectedTestimonial.role}</p>
+                      <div className="mt-1 flex items-center gap-1.5 text-xs text-ink/50">
+                        <MapPin className="h-3.5 w-3.5 text-clay shrink-0" />
+                        <span>{selectedTestimonial.location}</span>
+                      </div>
+                    </div>
+
+                    {selectedTestimonial.partnerName && (
+                      <div className="sm:text-right">
+                        <span className="block text-[0.65rem] uppercase tracking-wider text-ink/40">
+                          Co-sponsored by
+                        </span>
+                        <span className="font-display text-sm font-bold text-clay">
+                          {selectedTestimonial.partnerName}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-ink/10 pt-5">
+                    <Link
+                      to="/projects/$slug"
+                      params={{ slug: selectedTestimonial.projectSlug }}
+                      onClick={() => setSelectedTestimonial(null)}
+                      className="inline-flex items-center gap-2 border border-ink/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:border-ink transition-colors"
+                    >
+                      <span>Explore Project</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <Link
+                      to="/donate"
+                      onClick={() => setSelectedTestimonial(null)}
+                      className="inline-flex items-center gap-2 bg-clay px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+                    >
+                      <span>Support this Cause</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </DialogContent>
+          </Dialog>
+        </div>
+      </section>
+
+      {/* ─── GLOBAL PARTNERS & SPONSORS SPOTLIGHT ─── */}
+      <section id="partners" className="py-20 sm:py-28 bg-background">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between border-b border-ink/10 pb-10">
+            <div>
+              <span className="eyebrow flex items-center gap-2">
+                <Globe className="h-3.5 w-3.5 text-clay" />
+                Global Coalition
+              </span>
+              <h2 className="display-md mt-2 text-ink">
+                Our Partners &amp; Sponsors
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-ink/65 leading-relaxed">
+                Thirteen verified charities, trusts, and donor foundations across the United Kingdom, United States, Germany, and New Zealand that stand behind our field execution.
+              </p>
+            </div>
+
+            {/* Country Filters */}
+            <div className="flex flex-wrap gap-2">
+              {countries.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setSelectedCountry(c)}
+                  className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-all ${
+                    selectedCountry === c
+                      ? "bg-clay text-cream shadow-sm"
+                      : "bg-sand/60 border border-ink/15 text-ink/70 hover:border-ink hover:text-ink"
+                  }`}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Partners Grid */}
+          <motion.div
+            layout
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredPartners.map((p, index) => (
+                <motion.div
+                  key={p.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                  className="group flex flex-col justify-between rounded-sm border border-ink/10 bg-sand/20 p-6 hover:bg-sand/60 hover:border-clay/40 transition-all hover:shadow-md"
+                >
+                  <div>
+                    {/* Logo container */}
+                    <div className="flex h-20 items-center justify-center rounded bg-white p-4 border border-ink/8 shadow-xs">
+                      <img
+                        src={p.logo}
+                        alt={p.name}
+                        loading="lazy"
+                        className="max-h-12 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="mt-5 flex items-center justify-between gap-2">
+                      <span className="rounded bg-clay/10 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-clay">
+                        {p.country}
+                      </span>
+                      <span className="text-[0.65rem] font-mono text-ink/40">
+                        {p.countryCode}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3 font-display text-lg font-bold text-ink group-hover:text-clay transition-colors">
+                      {p.name}
+                    </h3>
+
+                    <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                      {p.role}
+                    </p>
+                  </div>
+
+                  {/* Connected Projects */}
+                  <div className="mt-6 border-t border-ink/8 pt-4">
+                    <span className="block text-[0.62rem] font-semibold uppercase tracking-wider text-ink/45">
+                      Mutual Initiatives
+                    </span>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {p.collaborations.map((slug) => (
+                        <Link
+                          key={slug}
+                          to="/projects/$slug"
+                          params={{ slug }}
+                          className="rounded bg-background px-2 py-1 text-[0.65rem] font-medium text-ink/75 border border-ink/10 hover:border-clay hover:text-clay transition-colors"
+                        >
+                          {slug.replace(/-/g, " ")}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── 100% MODEL & DIRECT FIELD GOVERNANCE ─── */}
+      <section className="py-20 sm:py-24 bg-clay text-cream">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-6">
+              <span className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-cream/70">
+                Ethical Stewardship
+              </span>
+              <h2 className="display-md mt-3 text-cream">
+                Where does your support actually go?
+              </h2>
+              <p className="mt-6 font-serif text-xl leading-relaxed text-cream/90 italic">
+                “We refuse the traditional NGO model of heavy administrative overheads. When donors pledge funds, they reach actual children, actual clinics, and actual mothers.”
+              </p>
+            </div>
+
+            <div className="lg:col-span-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+                <div className="numeral text-3xl font-extrabold text-cream">0%</div>
+                <div className="mt-2 font-display text-base font-bold text-cream">Zero Platform Cuts</div>
+                <p className="mt-2 text-xs text-cream/80 leading-relaxed">
+                  All international donations clear directly into official audited foundation bank accounts.
+                </p>
+              </div>
+
+              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+                <div className="numeral text-3xl font-extrabold text-cream">100%</div>
+                <div className="mt-2 font-display text-base font-bold text-cream">Direct to Field</div>
+                <p className="mt-2 text-xs text-cream/80 leading-relaxed">
+                  Program supplies, medicine, books, and rations are purchased and distributed locally in Punjab.
+                </p>
+              </div>
+
+              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+                <div className="numeral text-3xl font-extrabold text-cream">100%</div>
+                <div className="mt-2 font-display text-base font-bold text-cream">Traceable Bags</div>
+                <p className="mt-2 text-xs text-cream/80 leading-relaxed">
+                  Every sponsored school bag carries a unique tracking identifier from packing to student handoff.
+                </p>
+              </div>
+
+              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+                <div className="numeral text-3xl font-extrabold text-cream">Annual</div>
+                <div className="mt-2 font-display text-base font-bold text-cream">Public Audits</div>
+                <p className="mt-2 text-xs text-cream/80 leading-relaxed">
+                  Financial books reviewed by certified chartered accountants and published for open scrutiny.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BOTTOM INVITATION CTA ─── */}
+      <section className="py-20 sm:py-28 bg-sand/30">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8 text-center">
+          <span className="eyebrow">Partner with us</span>
+          <h2 className="display-lg mt-3 text-ink">
+            Be part of the next field story.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base text-ink/70 leading-relaxed">
+            Whether you are an individual donor sponsoring a child or an international foundation seeking vetted field implementation in Pakistan, we invite you to join our mission.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/donate"
+              className="bg-clay px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:bg-clay-deep transition-colors"
+            >
+              Support the work
+            </Link>
+            <Link
+              to="/book"
+              className="border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink transition-colors"
+            >
+              Book a meeting with team
+            </Link>
+            <Link
+              to="/projects"
+              className="border border-clay/40 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay hover:bg-clay/10 transition-colors"
+            >
+              Explore all projects
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

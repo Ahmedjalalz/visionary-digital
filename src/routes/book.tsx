@@ -110,20 +110,20 @@ function Book() {
 
   return (
     <>
-      <section className="bg-background px-5 pb-12 pt-40 sm:px-8 sm:pt-52">
+      <section className="bg-sand px-5 py-14 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">Book a meeting</span>
-          <h1 className="display-lg mt-6 max-w-[13ch] text-ink">
+          <h1 className="display-lg mt-4 max-w-[14ch] text-ink">
             <MaskLines lines={["Thirty minutes,", "properly spent."]} />
           </h1>
-          <p className="lede mt-8">
+          <p className="lede mt-6 max-w-2xl text-ink/75">
             Partnerships, sponsorship, volunteering or a question about a programme — pick a slot and we
             will meet you there.
           </p>
         </div>
       </section>
 
-      <section className="bg-background px-5 pb-32 sm:px-8">
+      <section className="bg-background px-5 pb-20 pt-8 sm:px-8 sm:pb-24">
         <div className="mx-auto max-w-[1600px]">
           <AnimatePresence mode="wait">
             {confirmed ? (

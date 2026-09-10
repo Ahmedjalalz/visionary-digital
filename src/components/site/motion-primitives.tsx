@@ -17,13 +17,13 @@ export function MaskLines({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={`inline-block w-full ${className ?? ""}`}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden pb-[0.14em] leading-[1.12]">
+        <span key={i} className="block overflow-hidden pt-[0.08em] pb-[0.18em] -my-[0.08em] leading-[1.18]">
           <motion.span
             className="block"
-            initial={reduce ? { y: 0 } : { y: "102%" }}
-            animate={reduce || inView ? { y: 0 } : { y: "102%" }}
+            initial={reduce ? { y: 0 } : { y: "105%" }}
+            animate={reduce || inView ? { y: 0 } : { y: "105%" }}
             transition={{ duration: 1, ease: EASE, delay: delay + i * 0.09 }}
           >
             {line}
@@ -66,8 +66,8 @@ export function ParallaxImage({
   alt,
   className,
   imgClassName,
-  strength = 90,
-  scaleFrom = 1.18,
+  strength = 60,
+  scaleFrom = 1.12,
   priority = false,
 }: {
   src: string;
@@ -81,18 +81,28 @@ export function ParallaxImage({
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [-strength, strength]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [scaleFrom, 1]);
+  const bleed = Math.max(Math.abs(strength), 30);
+  const y = useTransform(scrollYProgress, [0, 1], [-bleed, bleed]);
+  const scale = useTransform(scrollYProgress, [0, 1], [scaleFrom, 1.02]);
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
+    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
       <motion.img
         src={src}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        style={reduce ? {} : { y, scale }}
-        className={`h-full w-full object-cover ${imgClassName ?? ""}`}
+        style={
+          reduce
+            ? { height: "100%", width: "100%" }
+            : {
+                y,
+                scale,
+                top: `-${bleed}px`,
+                height: `calc(100% + ${bleed * 2}px)`,
+              }
+        }
+        className={`absolute inset-x-0 w-full object-cover will-change-transform ${imgClassName ?? ""}`}
       />
     </div>
   );
