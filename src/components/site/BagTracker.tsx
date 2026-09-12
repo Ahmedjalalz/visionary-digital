@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { Backpack, Loader2, X } from "lucide-react";
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { fetchLiveBagDetails } from "@/lib/bag-tracker-service";
 
 export function BagTracker() {
   const [open, setOpen] = useState(false);
@@ -20,23 +20,22 @@ export function BagTracker() {
     }
     setLoading(true);
     setError(null);
-    const { data, error: dbError } = await supabase
-      .from("school_bags")
-      .select("tracking_id")
-      .ilike("tracking_id", id)
-      .maybeSingle();
-    setLoading(false);
 
-    if (dbError) {
+    try {
+      const data = await fetchLiveBagDetails({ data: id });
+      setLoading(false);
+
+      if (!data) {
+        setError(`No bag found for “${id}”. Check the ID and try again.`);
+        return;
+      }
+
+      setOpen(false);
+      navigate({ to: "/bag/$trackingId", params: { trackingId: data.tracking_id } });
+    } catch (err) {
+      setLoading(false);
       setError("We couldn't reach the tracking service. Please try again.");
-      return;
     }
-    if (!data) {
-      setError(`No bag found for “${id}”. Check the ID and try again.`);
-      return;
-    }
-    setOpen(false);
-    navigate({ to: "/bag/$trackingId", params: { trackingId: data.tracking_id } });
   }
 
   return (

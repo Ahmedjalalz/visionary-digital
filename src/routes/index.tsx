@@ -146,24 +146,83 @@ function ProjectsRail() {
             Explore all programmes <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-12 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-12">
-          {items.map(({ project, img, n }, index) => (
+        <div className="mt-12 grid gap-x-6 gap-y-10 sm:gap-x-8 sm:gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {items.map(({ project, img, n }) => (
             <Link
               key={project.slug}
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className={`group block ${index === 0 || index === 5 ? "lg:col-span-7" : "lg:col-span-5"}`}
+              className="group flex flex-col justify-between border-t border-ink/15 pt-5 transition-colors"
             >
-              <div className={`overflow-hidden bg-muted ${index === 0 || index === 5 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
-                <img src={img} alt={project.name} loading="lazy" className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 group-hover:scale-[1.035]`} />
+              <div>
+                <div className="relative overflow-hidden bg-muted aspect-[16/10] rounded-xs">
+                  <img
+                    src={img}
+                    alt={project.name}
+                    loading="lazy"
+                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
+                  />
+                  <div className="absolute left-3 top-3 flex items-center gap-2">
+                    <span className="numeral bg-background/90 px-2 py-0.5 text-xs font-bold text-clay shadow-xs backdrop-blur-xs">
+                      {n}
+                    </span>
+                    {project.problem?.figure && (
+                      <span className="bg-ink/80 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
+                        {project.problem.figure} {project.problem.unit}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/65 line-clamp-2">
+                    {project.short}
+                  </p>
+                </div>
               </div>
-              <div className="mt-5 grid grid-cols-[2rem_1fr_auto] gap-3 border-t border-ink/15 pt-4">
-                <span className="numeral text-xs text-clay">{n}</span>
-                <div><h3 className="font-display text-xl font-bold text-ink sm:text-2xl">{project.name}</h3><p className="mt-2 max-w-xl text-sm leading-relaxed text-ink/60">{project.short}</p></div>
-                <ArrowUpRight className="h-4 w-4 text-clay transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+
+              <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-3 text-xs">
+                <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">
+                  {project.outcomes?.[0]?.value || "Direct Field Program"}
+                </span>
+                <span className="inline-flex items-center gap-1 font-semibold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
+                  <span>Explore</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </span>
               </div>
             </Link>
           ))}
+
+          {/* 12th Card: Directory Feature Tile completing the 4x3 grid */}
+          <Link
+            to="/projects"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-xs bg-ink p-6 sm:p-7 text-cream transition-transform duration-300 hover:shadow-lg aspect-[16/10] md:aspect-auto"
+          >
+            <div className="relative z-10">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay">
+                Complete Field Directory
+              </span>
+              <h3 className="mt-3 font-display text-xl font-bold text-cream sm:text-2xl">
+                Explore All 11 Programmes
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-cream/75">
+                From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
+              </p>
+            </div>
+            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-3 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay transition-colors">
+              <span>View full directory</span>
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </div>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-8 -right-6 select-none font-display text-7xl font-black tracking-tighter text-cream/[0.04]"
+            >
+              EFL
+            </div>
+          </Link>
         </div>
       </div>
     </section>
@@ -324,11 +383,11 @@ function Story() {
       <ParallaxImage
         src={foundationMedia.widowsFoodRations}
         alt="EFL team delivering essential food rations and family welfare support"
-        className="absolute inset-0"
+        className="absolute inset-0 -scale-x-100 [transform:scaleX(-1)]"
         strength={60}
         scaleFrom={1.1}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-ink/75" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-ink/25" />
 
       <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-12 sm:px-8 sm:py-16">
         <motion.div

@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import fallbackPhoto from "@/assets/project-education.jpg";
 import { ParallaxImage } from "@/components/site/motion-primitives";
+import { fetchLiveBagDetails } from "@/lib/bag-tracker-service";
 
 export const Route = createFileRoute("/bag/$trackingId")({
   head: () => ({
@@ -26,14 +26,9 @@ function BagDetails() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["school-bag", trackingId],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("school_bags")
-        .select("*")
-        .ilike("tracking_id", trackingId)
-        .maybeSingle();
-      if (error) throw error;
-      return data;
+      return await fetchLiveBagDetails({ data: trackingId });
     },
+    staleTime: 1000 * 60 * 5,
   });
 
   if (isLoading) {

@@ -103,39 +103,51 @@ function ProjectsIndex() {
 
       <section className="relative bg-background pb-28 pt-12 sm:pt-16">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 lg:grid-cols-12">
-            {filteredProjects.map((p, i) => (
+          <div className="grid gap-x-6 gap-y-12 sm:gap-x-8 sm:gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((p) => (
               <Link
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className={`group block ${i === 0 || i % 5 === 0 ? "lg:col-span-7" : "lg:col-span-5"}`}
+                className="group flex flex-col justify-between border-t border-ink/15 pt-5 transition-colors"
               >
-                  <div className={`relative overflow-hidden bg-muted ${i === 0 || i % 5 === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+                <div>
+                  <div className="relative overflow-hidden bg-muted aspect-[16/10] rounded-xs">
                     <img
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]`}
+                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                     />
-                    <div className="absolute left-0 top-0 bg-background px-3 py-2">
-                      <span className="numeral text-xs text-clay">
+                    <div className="absolute left-3 top-3 flex items-center gap-2">
+                      <span className="numeral bg-background/90 px-2.5 py-1 text-xs font-semibold text-clay shadow-xs backdrop-blur-xs">
                         {String(projects.findIndex((item) => item.slug === p.slug) + 1).padStart(2, "0")}
                       </span>
+                      {p.problem?.figure && (
+                        <span className="bg-ink/80 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
+                          {p.problem.figure} {p.problem.unit}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <div className="mt-5 grid grid-cols-[1fr_auto] gap-6 border-t border-ink/15 pt-5">
-                    <div>
-                    <div className="mb-2 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-clay">{p.problem.figure} {p.problem.unit}</div>
-                    <h2 className="font-display text-2xl font-bold leading-tight text-ink transition-colors group-hover:text-clay sm:text-3xl">
+                  <div className="mt-4">
+                    <h2 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
                       {p.name}
                     </h2>
-                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/60">
+                    <p className="mt-2 text-sm leading-relaxed text-ink/65 line-clamp-2">
                       {p.short}
                     </p>
-                    </div>
-                    <ArrowUpRight className="mt-1 h-5 w-5 text-clay transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-3 text-xs">
+                  <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">
+                    {p.outcomes?.[0]?.value || "Direct Field Program"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 font-semibold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
+                    <span>Explore</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
