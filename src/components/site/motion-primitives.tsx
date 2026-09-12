@@ -86,7 +86,7 @@ export function ParallaxImage({
   const scale = useTransform(scrollYProgress, [0, 1], [scaleFrom, 1.02]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
+    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
       <motion.img
         src={src}
         alt={alt}

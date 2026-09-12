@@ -140,7 +140,7 @@ function Hero() {
                 to="/projects"
                 className="inline-flex items-center gap-2 rounded-sm bg-clay px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-lg transition-all hover:bg-clay-deep hover:shadow-clay/25"
               >
-                <span>Explore 12 Programmes</span>
+                <span>Explore Our Programmes</span>
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link

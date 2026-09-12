@@ -146,7 +146,7 @@ function Donate() {
       {/* ── HERO ── */}
       <section className="relative min-h-[50svh] sm:min-h-[56svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-14 sm:pt-20 sm:pb-16">
         <ParallaxImage src={foundationMedia.schoolStudents} alt="A classroom of students in Punjab supported by EFL" className="absolute inset-0" strength={60} priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
             <span className="eyebrow text-clay font-bold">Direct Impact · Verified Foundation</span>
