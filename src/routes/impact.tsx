@@ -26,14 +26,12 @@ import { partners } from "@/data/partners";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 import { MaskLines, Rise, ParallaxImage } from "@/components/site/motion-primitives";
-import communityAsset from "@/assets/official/community.jpg.asset.json";
-import { assetUrl } from "@/lib/asset";
+import heroImg from "@/assets/official-local/community.jpg";
 import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog";
 
-const heroImg = assetUrl(communityAsset.url);
 
 export const Route = createFileRoute("/impact")({
   head: () => ({

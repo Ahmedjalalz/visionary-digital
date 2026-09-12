@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { projects } from "@/data/projects";
-import logoAsset from "@/assets/official/efl-logo.png.asset.json";
-import { assetUrl } from "@/lib/asset";
+import logo from "@/assets/official-local/efl-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -59,7 +58,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <img src={assetUrl(logoAsset.url)} alt="Education and Life Foundation" className="h-24 w-24 object-contain" />
+            <img src={logo} alt="Education and Life Foundation" className="h-24 w-24 object-contain" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">
               Education and Life Foundation is a non-governmental organisation working with deprived
               communities across Pakistan — education, healthcare, water, and support for families

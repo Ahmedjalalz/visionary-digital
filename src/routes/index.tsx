@@ -3,13 +3,12 @@ import { useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 
-import heroAsset from "@/assets/official/community.jpg.asset.json";
-import educationAsset from "@/assets/official/education.jpg.asset.json";
-import widowsAsset from "@/assets/official/widows.jpg.asset.json";
-import familyAsset from "@/assets/official/family.jpg.asset.json";
-import healthAsset from "@/assets/official/health.jpg.asset.json";
-import digitalAsset from "@/assets/official/digital.jpg.asset.json";
-import { assetUrl } from "@/lib/asset";
+import heroImg from "@/assets/official-local/community.jpg";
+import educationImg from "@/assets/official-local/education.jpg";
+import widowsImg from "@/assets/official-local/widows.jpg";
+import washImg from "@/assets/official-local/family.jpg";
+import healthImg from "@/assets/official-local/health.jpg";
+import digitalImg from "@/assets/official-local/digital.jpg";
 import { foundationMedia } from "@/data/foundationMedia";
 
 import { projects } from "@/data/projects";
@@ -17,12 +16,6 @@ import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 
-const heroImg = assetUrl(heroAsset.url);
-const educationImg = assetUrl(educationAsset.url);
-const widowsImg = assetUrl(widowsAsset.url);
-const washImg = assetUrl(familyAsset.url);
-const healthImg = assetUrl(healthAsset.url);
-const digitalImg = assetUrl(digitalAsset.url);
 
 export const Route = createFileRoute("/")({
   head: () => ({

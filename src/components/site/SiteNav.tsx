@@ -3,8 +3,7 @@ import { ArrowRight, ChevronDown, Facebook, Instagram, MessageCircle, Youtube } 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
-import logoAsset from "@/assets/official/efl-logo.png.asset.json";
-import { assetUrl } from "@/lib/asset";
+import logo from "@/assets/official-local/efl-logo.png";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -113,7 +112,7 @@ export function SiteNav() {
             aria-label="Education And Life Foundation — home"
           >
             <img
-              src={assetUrl(logoAsset.url)}
+              src={logo}
               alt="EFL Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
             />
@@ -281,7 +280,7 @@ export function SiteNav() {
             <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
               <div className="flex items-center gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
                 <img
-                  src={assetUrl(logoAsset.url)}
+                  src={logo}
                   alt="EFL Logo"
                   className="h-10 w-10 object-contain shrink-0"
                 />

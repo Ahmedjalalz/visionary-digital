@@ -1,26 +1,14 @@
-import educationAsset from "@/assets/official/education.jpg.asset.json";
-import schoolworkAsset from "@/assets/official/schoolwork.jpg.asset.json";
-import communityAsset from "@/assets/official/community.jpg.asset.json";
-import familyAsset from "@/assets/official/family.jpg.asset.json";
-import widowsAsset from "@/assets/official/widows.jpg.asset.json";
-import healthAsset from "@/assets/official/health.jpg.asset.json";
-import midwiferyAsset from "@/assets/official/midwifery.jpg.asset.json";
-import digitalAsset from "@/assets/official/digital.jpg.asset.json";
-import skillsAsset from "@/assets/official/skills.jpg.asset.json";
-import capacityAsset from "@/assets/official/capacity.jpg.asset.json";
-import { assetUrl } from "@/lib/asset";
+import education from "@/assets/official-local/education.jpg";
+import schoolwork from "@/assets/official-local/schoolwork.jpg";
+import community from "@/assets/official-local/community.jpg";
+import family from "@/assets/official-local/family.jpg";
+import widows from "@/assets/official-local/widows.jpg";
+import health from "@/assets/official-local/health.jpg";
+import midwifery from "@/assets/official-local/midwifery.jpg";
+import digital from "@/assets/official-local/digital.jpg";
+import skills from "@/assets/official-local/skills.jpg";
+import capacity from "@/assets/official-local/capacity.jpg";
 import { foundationMedia } from "./foundationMedia";
-
-const education = assetUrl(educationAsset.url);
-const schoolwork = assetUrl(schoolworkAsset.url);
-const community = assetUrl(communityAsset.url);
-const family = assetUrl(familyAsset.url);
-const widows = assetUrl(widowsAsset.url);
-const health = assetUrl(healthAsset.url);
-const midwifery = assetUrl(midwiferyAsset.url);
-const digital = assetUrl(digitalAsset.url);
-const skills = assetUrl(skillsAsset.url);
-const capacity = assetUrl(capacityAsset.url);
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
 
