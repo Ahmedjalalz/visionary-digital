@@ -10,7 +10,6 @@ const primary = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/projects", label: "Projects" },
-  { to: "/impact", label: "Impact" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -163,7 +162,7 @@ export function SiteNav() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 4, scale: 0.985 }}
                           transition={{ duration: 0.18, ease: "easeOut" }}
-                          className="absolute left-1/2 top-full z-50 w-[740px] -translate-x-1/2 pt-2"
+                           className="absolute left-1/2 top-full z-50 w-[min(740px,calc(100vw-3rem))] -translate-x-1/2 pt-2"
                         >
                           <div className="overflow-hidden rounded-sm border border-ink/12 bg-background/98 p-6 shadow-2xl backdrop-blur-2xl">
                             {/* Header */}

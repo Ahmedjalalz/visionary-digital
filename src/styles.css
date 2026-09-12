@@ -66,7 +66,7 @@
 
   --ink: oklch(0.31 0.075 256);
   --cream: oklch(1 0 0);
-  --sand: oklch(0.973 0.012 250);
+  --sand: oklch(0.975 0.008 255);
   --clay: oklch(0.368 0.139 261);
   --clay-deep: oklch(0.368 0.139 261);
   --moss: oklch(0.51 0.125 255);
@@ -79,11 +79,11 @@
   --popover-foreground: oklch(0.31 0.075 256);
   --primary: oklch(0.368 0.139 261);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.973 0.012 250);
+  --secondary: oklch(0.975 0.008 255);
   --secondary-foreground: oklch(0.31 0.075 256);
-  --muted: oklch(0.955 0.014 250);
+  --muted: oklch(0.955 0.008 255);
   --muted-foreground: oklch(0.47 0.05 256);
-  --accent: oklch(0.93 0.03 250);
+  --accent: oklch(0.94 0.015 255);
   --accent-foreground: oklch(0.31 0.075 256);
   --destructive: oklch(0.6 0.21 27);
   --destructive-foreground: oklch(1 0 0);
@@ -95,7 +95,7 @@
   --chart-3: oklch(0.78 0.09 245);
   --chart-4: oklch(0.52 0.09 225);
   --chart-5: oklch(0.42 0.14 265);
-  --sidebar: oklch(0.973 0.012 250);
+  --sidebar: oklch(0.975 0.008 255);
   --sidebar-foreground: oklch(0.31 0.075 256);
   --sidebar-primary: oklch(0.368 0.139 261);
   --sidebar-primary-foreground: oklch(1 0 0);
@@ -150,7 +150,7 @@
   h3 {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
     line-height: 1.04;
     text-wrap: balance;
   }
@@ -173,24 +173,23 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 0.98;
-  font-size: clamp(2.4rem, 6.4vw, 5.6rem);
-  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.01;
+  font-size: clamp(2.7rem, 6vw, 5.4rem);
 }
 
 @utility display-lg {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.04;
-  font-size: clamp(2rem, 4.8vw, 3.9rem);
+  letter-spacing: 0;
+  line-height: 1.06;
+  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
 }
 
 @utility display-md {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   line-height: 1.08;
   font-size: clamp(1.6rem, 2.9vw, 2.4rem);
 }
