@@ -1,26 +1,14 @@
-import educationAsset from "@/assets/official/education.jpg.asset.json";
-import schoolworkAsset from "@/assets/official/schoolwork.jpg.asset.json";
-import communityAsset from "@/assets/official/community.jpg.asset.json";
-import familyAsset from "@/assets/official/family.jpg.asset.json";
-import widowsAsset from "@/assets/official/widows.jpg.asset.json";
-import healthAsset from "@/assets/official/health.jpg.asset.json";
-import midwiferyAsset from "@/assets/official/midwifery.jpg.asset.json";
-import digitalAsset from "@/assets/official/digital.jpg.asset.json";
-import skillsAsset from "@/assets/official/skills.jpg.asset.json";
-import capacityAsset from "@/assets/official/capacity.jpg.asset.json";
-import { assetUrl } from "@/lib/asset";
+import education from "@/assets/official-local/education.jpg";
+import schoolwork from "@/assets/official-local/schoolwork.jpg";
+import community from "@/assets/official-local/community.jpg";
+import family from "@/assets/official-local/family.jpg";
+import widows from "@/assets/official-local/widows.jpg";
+import health from "@/assets/official-local/health.jpg";
+import midwifery from "@/assets/official-local/midwifery.jpg";
+import digital from "@/assets/official-local/digital.jpg";
+import skills from "@/assets/official-local/skills.jpg";
+import capacity from "@/assets/official-local/capacity.jpg";
 import { foundationMedia } from "./foundationMedia";
-
-const education = assetUrl(educationAsset.url);
-const schoolwork = assetUrl(schoolworkAsset.url);
-const community = assetUrl(communityAsset.url);
-const family = assetUrl(familyAsset.url);
-const widows = assetUrl(widowsAsset.url);
-const health = assetUrl(healthAsset.url);
-const midwifery = assetUrl(midwiferyAsset.url);
-const digital = assetUrl(digitalAsset.url);
-const skills = assetUrl(skillsAsset.url);
-const capacity = assetUrl(capacityAsset.url);
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
 
@@ -35,6 +23,7 @@ export interface Project {
   outcomes: { label: string; value: string }[];
   image: string;
   gallery: string[];
+  heroPosition: string;
   accent: "clay" | "moss" | "sand";
   layout: ProjectLayout;
 }
@@ -65,6 +54,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.schoolStudents,
     gallery: [foundationMedia.classroomDesks, foundationMedia.schoolUniforms, education],
+    heroPosition: "object-[50%_32%]",
     accent: "clay",
     layout: "map",
   },
@@ -92,6 +82,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.bagsCeremony,
     gallery: [foundationMedia.schoolStudents, foundationMedia.bagsCeremony, schoolwork],
+    heroPosition: "object-[50%_42%]",
     accent: "sand",
     layout: "object",
   },
@@ -116,8 +107,9 @@ export const projects: Project[] = [
       { label: "Placed", value: "In home districts" },
       { label: "Focus", value: "Safe delivery" },
     ],
-    image: foundationMedia.maternalClinic,
-    gallery: [foundationMedia.maternalClinic, foundationMedia.healthCampDoctor, foundationMedia.clinicBanner],
+    image: midwifery,
+    gallery: [midwifery, foundationMedia.maternalClinic, foundationMedia.clinicBanner],
+    heroPosition: "object-[50%_30%]",
     accent: "clay",
     layout: "portrait",
   },
@@ -151,6 +143,7 @@ export const projects: Project[] = [
       foundationMedia.musicOrchestraClass,
       foundationMedia.musicStudentSolo,
     ],
+    heroPosition: "object-[50%_40%]",
     accent: "clay",
     layout: "statement",
   },
@@ -178,6 +171,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.healthCampDoctor,
     gallery: [foundationMedia.healthCampDoctor, foundationMedia.clinicBanner, foundationMedia.projectHealth],
+    heroPosition: "object-center",
     accent: "moss",
     layout: "statement",
   },
@@ -204,6 +198,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.cleanWaterPump,
     gallery: [foundationMedia.cleanWaterPump, foundationMedia.projectWash, community],
+    heroPosition: "object-center",
     accent: "moss",
     layout: "horizontal",
   },
@@ -228,8 +223,9 @@ export const projects: Project[] = [
       { label: "Nutrition", value: "Supported" },
       { label: "After birth", value: "Follow-up" },
     ],
-    image: foundationMedia.maternalClinic,
-    gallery: [foundationMedia.maternalClinic, foundationMedia.healthCampDoctor, family],
+    image: family,
+    gallery: [family, foundationMedia.maternalClinic, foundationMedia.healthCampDoctor],
+    heroPosition: "object-[50%_38%]",
     accent: "moss",
     layout: "portrait",
   },
@@ -258,6 +254,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.widowsFoodRations,
     gallery: [foundationMedia.widowsFoodRations, foundationMedia.skillsSewingMachine, foundationMedia.projectWidows],
+    heroPosition: "object-[50%_35%]",
     accent: "clay",
     layout: "portrait",
   },
@@ -282,8 +279,9 @@ export const projects: Project[] = [
       { label: "Support", value: "Food & cash" },
       { label: "Principle", value: "Dignity first" },
     ],
-    image: foundationMedia.widowsFoodRations,
-    gallery: [foundationMedia.widowsFoodRations, foundationMedia.emergencyRelief, foundationMedia.projectWidows],
+    image: widows,
+    gallery: [widows, foundationMedia.widowsFoodRations, foundationMedia.projectWidows],
+    heroPosition: "object-[50%_34%]",
     accent: "clay",
     layout: "statement",
   },
@@ -310,6 +308,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.digitalSkillsLab,
     gallery: [foundationMedia.digitalSkillsLab, foundationMedia.projectDigital, digital],
+    heroPosition: "object-center",
     accent: "sand",
     layout: "data",
   },
@@ -335,7 +334,8 @@ export const projects: Project[] = [
       { label: "Aim", value: "Independence" },
     ],
     image: foundationMedia.skillsSewingMachine,
-    gallery: [foundationMedia.skillsSewingMachine, foundationMedia.digitalSkillsLab, skills],
+    gallery: [foundationMedia.skillsSewingMachine, skills, foundationMedia.projectWidows],
+    heroPosition: "object-[50%_40%]",
     accent: "sand",
     layout: "horizontal",
   },
@@ -360,8 +360,9 @@ export const projects: Project[] = [
       { label: "Builds", value: "Local leadership" },
       { label: "Result", value: "Durable programmes" },
     ],
-    image: foundationMedia.communityLeadPortrait,
-    gallery: [foundationMedia.communityLeadPortrait, foundationMedia.emergencyRelief, capacity],
+    image: capacity,
+    gallery: [capacity, foundationMedia.communityLeadPortrait, community],
+    heroPosition: "object-[50%_22%]",
     accent: "moss",
     layout: "data",
   },

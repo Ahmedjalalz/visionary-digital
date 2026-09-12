@@ -26,14 +26,12 @@ import { partners } from "@/data/partners";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 import { MaskLines, Rise, ParallaxImage } from "@/components/site/motion-primitives";
-import communityAsset from "@/assets/official/community.jpg.asset.json";
-import { assetUrl } from "@/lib/asset";
+import heroImg from "@/assets/official-local/community.jpg";
 import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog";
 
-const heroImg = assetUrl(communityAsset.url);
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -290,7 +288,7 @@ function ImpactPage() {
   return (
     <div className="min-h-screen bg-background text-ink">
       {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden py-16 sm:py-24">
+      <section className="relative min-h-[70svh] overflow-hidden py-20 sm:py-28">
         <img
           src={heroImg}
           alt="EFL field work with communities in Punjab"
@@ -313,9 +311,9 @@ function ImpactPage() {
               </p>
             </div>
 
-            {/* Quick summary card */}
+            {/* Accountability note */}
             <div className="lg:col-span-5">
-              <div className="rounded-sm border border-ink/10 bg-sand/60 p-6 sm:p-8 backdrop-blur-md">
+              <div className="border-l-2 border-clay bg-background/85 p-6 sm:p-8">
                 <div className="flex items-center gap-3 border-b border-ink/10 pb-4">
                   <ShieldCheck className="h-5 w-5 text-clay" />
                   <span className="font-display text-sm font-bold uppercase tracking-[0.16em] text-ink">
@@ -345,10 +343,10 @@ function ImpactPage() {
           </div>
 
           {/* Aggregate Impact Stat Grid */}
-          <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-6 border-t border-ink/10 pt-12">
+          <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-ink/10 pt-12 sm:grid-cols-4 lg:gap-x-12">
             {stats.map((s, idx) => (
               <Rise key={s.label} delay={idx * 0.08}>
-                <div className="rounded-xs border border-ink/8 bg-sand/20 p-5 sm:p-6 transition-all hover:bg-sand/50">
+                <div className="border-t border-ink/15 pt-5">
                   <div className="numeral text-3xl sm:text-5xl font-extrabold text-clay">
                     {s.value}
                   </div>

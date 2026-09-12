@@ -3,14 +3,12 @@ import { ArrowRight, ChevronDown, Facebook, Instagram, MessageCircle, Youtube } 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
-import logoAsset from "@/assets/official/efl-logo.png.asset.json";
-import { assetUrl } from "@/lib/asset";
+import logo from "@/assets/official-local/efl-logo.png";
 
 const primary = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/projects", label: "Projects" },
-  { to: "/impact", label: "Impact" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -114,7 +112,7 @@ export function SiteNav() {
             aria-label="Education And Life Foundation — home"
           >
             <img
-              src={assetUrl(logoAsset.url)}
+              src={logo}
               alt="EFL Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
             />
@@ -163,7 +161,7 @@ export function SiteNav() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 4, scale: 0.985 }}
                           transition={{ duration: 0.18, ease: "easeOut" }}
-                          className="absolute left-1/2 top-full z-50 w-[740px] -translate-x-1/2 pt-2"
+                           className="absolute left-1/2 top-full z-50 w-[min(740px,calc(100vw-3rem))] -translate-x-1/2 pt-2"
                         >
                           <div className="overflow-hidden rounded-sm border border-ink/12 bg-background/98 p-6 shadow-2xl backdrop-blur-2xl">
                             {/* Header */}
@@ -282,7 +280,7 @@ export function SiteNav() {
             <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
               <div className="flex items-center gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
                 <img
-                  src={assetUrl(logoAsset.url)}
+                  src={logo}
                   alt="EFL Logo"
                   className="h-10 w-10 object-contain shrink-0"
                 />
