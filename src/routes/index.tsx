@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useScroll, useSpring, useTransform, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { useScroll, useTransform, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import heroAsset from "@/assets/official/community.jpg.asset.json";
 import educationAsset from "@/assets/official/education.jpg.asset.json";
@@ -49,32 +49,13 @@ function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-2%", "6%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.15]);
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -35]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
-  const fogHeight = useTransform(scrollYProgress, [0, 1], ["38%", "56%"]);
-
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
-  const px = useSpring(0, { stiffness: 40, damping: 20 });
-  const py = useSpring(0, { stiffness: 40, damping: 20 });
-  useEffect(() => {
-    px.set(pointer.x);
-    py.set(pointer.y);
-  }, [pointer, px, py]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "7%"]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.08]);
 
   return (
     <section
       ref={ref}
-      onMouseMove={(e) => {
-        if (reduce) return;
-        const r = e.currentTarget.getBoundingClientRect();
-        setPointer({
-          x: ((e.clientX - r.left) / r.width - 0.5) * -20,
-          y: ((e.clientY - r.top) / r.height - 0.5) * -14,
-        });
-      }}
-      className="relative min-h-[calc(100svh-5.5rem)] w-full flex flex-col justify-center overflow-hidden bg-ink grain-overlay pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24"
+      className="relative flex min-h-[78svh] w-full flex-col justify-end overflow-hidden bg-ink pb-16 pt-32 sm:min-h-[84svh] sm:pb-20 lg:min-h-[calc(100svh-5rem)] lg:pb-24"
     >
       <motion.div className="absolute inset-0" style={reduce ? {} : { y: imgY, scale: imgScale }}>
         <motion.img
@@ -83,51 +64,39 @@ function Hero() {
           width={1920}
           height={1280}
           fetchPriority="high"
-          className="h-full w-full object-cover object-[50%_35%]"
-          style={reduce ? {} : { x: px, y: py }}
+          className="h-full w-full object-cover object-[56%_34%] sm:object-[58%_34%] lg:object-[62%_34%]"
         />
       </motion.div>
 
-      {/* cinematic fog rising from the bottom */}
-      <motion.div
-        aria-hidden
-        className="fog-up absolute inset-x-0 bottom-0 pointer-events-none"
-        style={reduce ? { height: "42%" } : { height: fogHeight }}
-      />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/88 via-ink/40 to-transparent" />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink/75 to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-cream/20 bg-ink/60 px-3.5 py-1.5 backdrop-blur-md"
+              className="mb-6 flex items-center gap-3"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-clay" />
-              </span>
-              <span className="text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-cream/90">
-                Registered Non-Profit NGO · Lahore, Pakistan · Est. 2003
+              <span className="h-px w-10 bg-cream/65" />
+              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-cream/80">
+                Lahore, Pakistan · Since 2003
               </span>
             </motion.div>
 
-            <h1 className="font-display text-[clamp(1.95rem,4.2vw,4.2rem)] font-black uppercase tracking-tight leading-[1.04] text-cream">
-              <MaskLines lines={["Action where the"]} delay={0.12} />
-              <MaskLines lines={["shortfall is sharpest."]} delay={0.24} />
-              <span className="block text-clay mt-1">
-                <MaskLines lines={["Dignity. Education. Life."]} delay={0.38} />
-              </span>
+            <h1 className="max-w-[12ch] font-display text-[clamp(3rem,6.5vw,6.8rem)] font-bold leading-[0.98] text-cream">
+              <MaskLines lines={["Uplifting the Lives", "of Community"]} delay={0.12} />
             </h1>
 
             <motion.p
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.9 }}
-              className="mt-5 max-w-2xl text-sm leading-relaxed text-cream/85 sm:text-base"
+              className="mt-7 max-w-xl text-base leading-relaxed text-cream/82 sm:text-lg"
             >
-              Where classrooms lack roofs, medical camps are rare, and widow-headed households fight for survival — Education And Life Foundation delivers free schooling, clinical care, and life-changing self-reliance across Pakistan.
+              Education, healthcare, safe water, and pathways to self-reliance—delivered with dignity in communities across Pakistan.
             </motion.p>
 
             <motion.div
@@ -149,36 +118,13 @@ function Hero() {
               >
                 <span>Donate to Field</span>
               </Link>
-              <Link
-                to="/impact"
-                className="inline-flex items-center gap-1.5 px-3 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cream/75 transition-colors hover:text-cream"
-              >
-                <span>Field Outcomes</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
             </motion.div>
           </div>
 
-          {/* Floating live metrics column */}
-          <div className="hidden lg:col-span-4 lg:flex lg:flex-col lg:gap-3 lg:items-end">
-            {[
-              { val: "14,000+", label: "Enrolled & Supported Students" },
-              { val: "4,800+", label: "Safe Community Deliveries" },
-              { val: "100%", label: "Direct Field Flow · 0% Deductions" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={reduce ? false : { opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.95 + i * 0.12, duration: 0.8 }}
-                className="w-full max-w-xs rounded-sm border border-cream/15 bg-ink/55 p-4 backdrop-blur-md shadow-xl"
-              >
-                <div className="font-display text-2xl font-black text-clay">{stat.val}</div>
-                <div className="mt-0.5 text-xs font-medium uppercase tracking-wider text-cream/80">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+          <div className="hidden lg:col-span-5 lg:flex lg:justify-end">
+            <a href="#our-work" className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-cream/70 hover:text-cream">
+              Continue to our work <ArrowDown className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -189,128 +135,45 @@ function Hero() {
 /* ─────────────────────  PROJECTS (horizontal)  ───────────────────── */
 
 function ProjectsRail() {
-  const ref = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const [distance, setDistance] = useState(0);
-  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-
   const items = projects.map((project, i) => ({
     project,
     img: project.image,
     n: String(i + 1).padStart(2, "0"),
   }));
 
-  useEffect(() => {
-    const measure = () => {
-      const el = trackRef.current;
-      if (!el) return;
-      setDistance(Math.max(0, el.scrollWidth - window.innerWidth + 64));
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (trackRef.current) ro.observe(trackRef.current);
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [items.length]);
-
   return (
-    <>
-      {/* desktop: pinned horizontal journey */}
-      <section
-        ref={ref}
-        className="relative hidden bg-sand lg:block"
-        style={{ height: `${Math.max(160, 60 + items.length * 18)}vh` }}
-      >
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24 pb-8">
-          <div className="mx-auto mb-6 flex w-full max-w-[1600px] items-end justify-between px-8">
-            <h2 className="display-md max-w-[14ch] text-ink">
-              Different problems. Different answers.
-            </h2>
-            <Link
-              to="/projects"
-              className="link-underline mb-2 text-xs uppercase tracking-[0.2em] text-ink/60 hover:text-clay"
-            >
-              All projects
-            </Link>
+    <section id="our-work" className="bg-sand px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="flex flex-col gap-6 border-b border-ink/10 pb-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="eyebrow">Our work</span>
+            <h2 className="display-md mt-3 max-w-[15ch] text-ink">Different problems. Deliberate answers.</h2>
           </div>
-
-          <motion.div ref={trackRef} style={reduce ? {} : { x }} className="flex gap-6 pl-8 pr-8">
-            {items.map(({ project, img, n }) => (
-              <Link
-                key={project.slug}
-                to="/projects/$slug"
-                params={{ slug: project.slug }}
-                className="group relative block h-[clamp(380px,50vh,470px)] w-[clamp(280px,26vw,360px)] shrink-0 overflow-hidden"
-              >
-                <img
-                  src={img}
-                  alt={project.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.07]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/5" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <span className="numeral text-sm text-clay">{n}</span>
-                  <h3 className="mt-2 max-w-[16ch] font-display text-2xl font-bold leading-tight tracking-tight text-cream sm:text-3xl line-clamp-2">
-                    {project.name}
-                  </h3>
-                  <p className="mt-2.5 max-w-[34ch] text-xs leading-relaxed text-cream/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:text-sm line-clamp-3">
-                    {project.short}
-                  </p>
-                  <span className="mt-3.5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-clay">
-                    Open project <ArrowUpRight className="h-3.5 w-3.5" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-
-            <Link
-              to="/projects"
-              className="flex h-[clamp(380px,50vh,470px)] w-[clamp(280px,26vw,360px)] shrink-0 flex-col justify-end border border-ink/15 bg-background p-7 transition-colors hover:border-clay"
-            >
-              <span className="numeral text-6xl text-clay/30">More</span>
-              <span className="mt-4 font-display text-2xl sm:text-3xl font-bold text-ink">
-                See every project
-              </span>
-            </Link>
-          </motion.div>
+          <Link to="/projects" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-clay">
+            Explore all programmes <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
-      </section>
-
-      {/* mobile: stacked editorial */}
-      <section className="bg-sand px-5 py-14 lg:hidden">
-        <h2 className="display-md text-ink">Different problems. Different answers.</h2>
-        <div className="mt-8 space-y-4">
-          {items.map(({ project, img, n }) => (
+        <div className="mt-12 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-12">
+          {items.map(({ project, img, n }, index) => (
             <Link
               key={project.slug}
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className="relative block h-[58vw] min-h-[260px] max-h-[340px] overflow-hidden"
+              className={`group block ${index === 0 || index === 5 ? "lg:col-span-7" : "lg:col-span-5"}`}
             >
-              <img src={img} alt={project.name} loading="lazy" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
+              <div className={`overflow-hidden bg-muted ${index === 0 || index === 5 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+                <img src={img} alt={project.name} loading="lazy" className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 group-hover:scale-[1.035]`} />
+              </div>
+              <div className="mt-5 grid grid-cols-[2rem_1fr_auto] gap-3 border-t border-ink/15 pt-4">
                 <span className="numeral text-xs text-clay">{n}</span>
-                <h3 className="mt-1 font-display text-2xl font-bold leading-tight text-cream">{project.name}</h3>
+                <div><h3 className="font-display text-xl font-bold text-ink sm:text-2xl">{project.name}</h3><p className="mt-2 max-w-xl text-sm leading-relaxed text-ink/60">{project.short}</p></div>
+                <ArrowUpRight className="h-4 w-4 text-clay transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </div>
             </Link>
           ))}
-          <Link
-            to="/projects"
-            className="flex items-center justify-between border border-ink/15 bg-background px-5 py-5 text-ink"
-          >
-            <span className="font-display text-lg font-bold">See every project</span>
-            <ArrowUpRight className="h-5 w-5 text-clay" />
-          </Link>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 
@@ -499,8 +362,8 @@ function Numbers() {
   const stats = [
     { value: 20, label: "Years of continuous direct community service", suffix: "+" },
     { value: 4000, label: "Children supported in school & music education", suffix: "+" },
-    { value: 12, label: "Programmes operating across health & welfare", suffix: "" },
-    { value: 13, label: "Verified global institutional partner bodies", suffix: "" },
+    { value: 4, label: "Connected areas of education, health, water & welfare", suffix: "" },
+    { value: 100, label: "Direct field focus across every initiative", suffix: "%" },
   ];
   return (
     <section className="border-y border-ink/10 bg-sand py-14 sm:py-18">
