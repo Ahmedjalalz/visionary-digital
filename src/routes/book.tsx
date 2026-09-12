@@ -123,7 +123,7 @@ function Book() {
         </div>
       </section>
 
-      <section className="bg-background px-5 pb-20 pt-8 sm:px-8 sm:pb-24">
+      <section className="bg-background px-5 pb-24 pt-12 sm:px-8 sm:pb-28 sm:pt-16">
         <div className="mx-auto max-w-[1600px]">
           <AnimatePresence mode="wait">
             {confirmed ? (

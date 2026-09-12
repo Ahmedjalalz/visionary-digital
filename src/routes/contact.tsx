@@ -52,12 +52,11 @@ function Contact() {
   return (
     <>
       {/* geographic opening */}
-      <section className="relative bg-sand px-5 py-14 sm:px-8 sm:py-20">
-        <div className="mx-auto max-w-[1600px]">
-          <span className="eyebrow">Four places, one foundation</span>
-          <h1 className="display-lg mt-4 max-w-[13ch] text-ink">
-            <MaskLines lines={["Lahore. Auckland.", "Toronto. Berlin."]} />
-          </h1>
+      <section className="relative bg-sand px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8"><span className="eyebrow">Four places, one foundation</span>
+          <h1 className="display-lg mt-4 max-w-[13ch] text-ink"><MaskLines lines={["Lahore. Auckland.", "Toronto. Berlin."]} /></h1></div>
+          <p className="max-w-md text-base leading-relaxed text-ink/65 lg:col-span-4">Begin in Lahore or reach the nearest EFL team. Every enquiry arrives with people who understand the work.</p>
         </div>
       </section>
 
@@ -74,7 +73,7 @@ function Contact() {
         </div>
 
         <div className="relative z-10 mx-auto -mt-14 max-w-[1600px] px-5 sm:-mt-16 sm:px-8">
-          <div className="grid gap-px border border-ink/10 bg-ink/10 shadow-lg shadow-clay/5 md:grid-cols-4">
+          <div className="grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-4">
             {branches.map((b, i) => {
               const isActive = i === active;
               return (

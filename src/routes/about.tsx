@@ -161,13 +161,13 @@ function About() {
   return (
     <>
       {/* hero — typographic, image behind */}
-      <section className="relative min-h-[55svh] sm:min-h-[62svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-16 sm:pt-24 sm:pb-20">
-        <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an EFL village school in Punjab" className="absolute inset-0" priority strength={60} />
-        <div className="absolute inset-0 bg-ink/65" />
+      <section className="relative flex min-h-[68svh] w-full flex-col justify-end overflow-hidden pb-14 pt-24 sm:min-h-[76svh] sm:pb-20">
+        <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an EFL village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_32%]" priority strength={45} />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/82 via-ink/42 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
             <span className="eyebrow text-clay font-bold block mb-3">Founded 2003 · Lahore, Pakistan</span>
-            <h1 className="display-xl max-w-[14ch] text-cream">
+            <h1 className="display-xl max-w-[12ch] text-cream">
               <MaskLines lines={["To uplift", "the deprived", "community."]} />
             </h1>
           </div>
@@ -175,7 +175,7 @@ function About() {
       </section>
 
       {/* who we are */}
-      <section className="paper py-16 sm:py-24">
+      <section className="paper py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <span className="eyebrow">Who we are</span>
@@ -217,7 +217,7 @@ function About() {
       </section>
 
       {/* services — rich visual card showcase */}
-      <section className="bg-background px-5 py-16 sm:px-8 sm:py-24 border-b border-ink/10">
+      <section className="border-b border-ink/10 bg-background px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>

@@ -142,7 +142,7 @@
 
   ::selection {
     background: var(--clay);
-    color: var(--ink);
+    color: white;
   }
 
   h1,
