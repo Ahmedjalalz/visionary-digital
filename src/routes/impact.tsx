@@ -48,7 +48,7 @@ export const Route = createFileRoute("/impact")({
       {
         property: "og:description",
         content:
-          "12 projects, 13 international partner organizations, and thousands of lives transformed with zero platform cuts.",
+          "Community programmes, international partners, and thousands of lives supported through direct field work.",
       },
     ],
   }),
@@ -291,9 +291,12 @@ function ImpactPage() {
     <div className="min-h-screen bg-background text-ink">
       {/* ─── HERO SECTION ─── */}
       <section className="relative overflow-hidden py-16 sm:py-24">
-        {/* Subtle background ambient elements */}
-        <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-clay/5 blur-[120px]" />
-        <div className="pointer-events-none absolute top-1/2 left-0 h-[400px] w-[400px] rounded-full bg-moss/5 blur-[100px]" />
+        <img
+          src={heroImg}
+          alt="EFL field work with communities in Punjab"
+          className="absolute inset-y-0 right-0 hidden h-full w-[48%] object-cover object-center opacity-35 lg:block"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/35" />
 
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
@@ -375,7 +378,7 @@ function ImpactPage() {
                 Field Voices
               </span>
               <h2 className="display-md mt-2 text-ink">
-                Testimonies Across All 12 Programmes
+                Testimonies Across Our Programmes
               </h2>
               <p className="mt-3 max-w-2xl text-sm text-ink/65 leading-relaxed">
                 Direct accounts from children, mothers, community midwives, trainees, and village elders who live the results of this work every day.

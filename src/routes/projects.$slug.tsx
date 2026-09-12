@@ -53,8 +53,8 @@ function ProjectPage() {
         <div
           className={`absolute inset-0 ${
             heroLeft
-              ? "bg-gradient-to-r from-ink/95 via-ink/60 to-transparent"
-              : "bg-gradient-to-t from-ink/95 via-ink/50 to-ink/60"
+              ? "bg-gradient-to-r from-ink/85 via-ink/40 to-transparent"
+              : "bg-gradient-to-t from-ink/90 via-ink/35 to-ink/20"
           }`}
         />
 

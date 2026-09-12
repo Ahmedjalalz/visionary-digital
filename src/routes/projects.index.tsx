@@ -11,7 +11,7 @@ export const Route = createFileRoute("/projects/")({
       {
         name: "description",
         content:
-          "Explore 12 active programmes across education, health, maternal care, clean water, skills training, and widow welfare in Pakistan.",
+          "Explore EFL programmes across education, health, maternal care, clean water, skills training, and widow welfare in Pakistan.",
       },
       { property: "og:title", content: "EFL Programmes & Initiatives" },
       {
@@ -73,7 +73,7 @@ function ProjectsIndex() {
             <MaskLines lines={["Each one starts", "with a problem,", "not a brochure."]} />
           </h1>
           <p className="lede mt-6 max-w-2xl text-ink/75">
-            Twelve focused initiatives serving underprivileged families across Punjab. Every programme operates with zero administrative leakage and verifiable community outcomes.
+            Focused initiatives serving underprivileged families across Punjab. Every programme is built around direct community needs and verifiable outcomes.
           </p>
 
           {/* Filter Pills */}
