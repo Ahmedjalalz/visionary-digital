@@ -44,7 +44,7 @@ function ProjectPage() {
   const accentClass =
     project.accent === "moss" ? "text-moss" : project.accent === "sand" ? "text-sand" : "text-clay";
 
-  const splitHero = project.layout === "portrait" || project.layout === "data";
+  const splitHero = ["portrait", "data", "map", "object"].includes(project.layout);
   const centeredHero = project.layout === "map" || project.layout === "object";
 
   return (
