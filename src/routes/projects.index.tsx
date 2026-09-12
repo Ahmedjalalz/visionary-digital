@@ -35,10 +35,18 @@ function getProjectCategory(slug: string): string {
   if (slug === "education-for-all" || slug === "music-of-the-heart" || slug === "school-bags") {
     return "education";
   }
-  if (slug === "health-care-program" || slug === "maternal-and-neonatal" || slug === "clean-water-initiative") {
+  if (
+    slug === "health-care-program" ||
+    slug === "midwifery-program" ||
+    slug === "pregnancy-support-pakistan" ||
+    slug === "wash-improvement"
+  ) {
     return "health";
   }
-  if (slug === "hope-and-freedom-for-widows-headed-families" || slug === "widows-welfare" || slug === "relief-and-rehabilitation") {
+  if (
+    slug === "hope-and-freedom-for-widows-headed-families" ||
+    slug === "widows-welfare"
+  ) {
     return "welfare";
   }
   return "skills";

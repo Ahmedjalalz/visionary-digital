@@ -41,32 +41,32 @@ export const Route = createFileRoute("/about")({
 
 const team = [
   {
-    name: "Founder & Chairperson",
-    role: "Leadership",
-    img: foundationMedia.widowsFoodRations,
+    name: "Abdul Rahman Khan",
+    role: "Founder & Chairperson",
+    img: foundationMedia.chairpersonPortrait,
     detail:
-      "Sets EFL's direction, holds relationships with donors and partner organisations, and signs off every programme before it reaches a community.",
+      "Guides EFL's strategic direction, stewardship of partner trust, and signs off every programme before it reaches a community.",
   },
   {
-    name: "Programme Director",
-    role: "Education & Schools",
-    img: foundationMedia.classroomDesks,
+    name: "Dr. Zoya Khan",
+    role: "Programme Director — Education",
+    img: foundationMedia.directorPortrait,
     detail:
-      "Runs the schooling portfolio — enrolment, teacher support, supplies, and the attendance follow-up that keeps children in class.",
+      "Leads community schooling, teacher development, classroom infrastructure, and the daily attendance tracking that keeps vulnerable students enrolled.",
   },
   {
-    name: "Health Coordinator",
-    role: "Medical Camps & Midwifery",
+    name: "Dr. Sonu Bashir",
+    role: "Chief Health Coordinator",
     img: foundationMedia.healthCampDoctor,
     detail:
-      "Plans and staffs rural medical camps, manages the midwifery training pipeline, and handles referrals for patients who need more than a camp.",
+      "Directs mobile rural medical camps, free medicine dispensaries, and coordinates community midwifery placement across Punjab.",
   },
   {
-    name: "Community Lead",
-    role: "Water, Skills & Welfare",
-    img: foundationMedia.skillsSewingMachine,
+    name: "Tariq Mahmood",
+    role: "Community Lead — Welfare & WASH",
+    img: foundationMedia.communityLeadPortrait,
     detail:
-      "Works district by district on WASH improvements, skills cohorts and the monthly welfare cycle for widow-headed households.",
+      "Oversees monthly widow welfare rations, clean water hand-pump installations, and vocational skills placement cohorts.",
   },
 ];
 
@@ -161,7 +161,7 @@ function About() {
   return (
     <>
       {/* hero — typographic, image behind */}
-      <section className="relative min-h-[50svh] sm:min-h-[58svh] w-full flex flex-col justify-end overflow-hidden pt-10 pb-12 sm:pt-14 sm:pb-16">
+      <section className="relative min-h-[55svh] sm:min-h-[62svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-16 sm:pt-24 sm:pb-20">
         <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an EFL village school in Punjab" className="absolute inset-0" priority strength={60} />
         <div className="absolute inset-0 bg-ink/65" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
@@ -216,29 +216,87 @@ function About() {
         </div>
       </section>
 
-      {/* services — a list, deliberately plain */}
-      <section className="bg-background px-5 py-16 sm:px-8 sm:py-20">
+      {/* services — rich visual card showcase */}
+      <section className="bg-background px-5 py-16 sm:px-8 sm:py-24 border-b border-ink/10">
         <div className="mx-auto max-w-[1600px]">
-          <span className="eyebrow">What the Foundation provides</span>
-          <ul className="mt-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="eyebrow">Direct Provisions</span>
+              <h2 className="display-md mt-3 text-ink">What the Foundation Provides</h2>
+            </div>
+            <p className="max-w-md text-sm text-ink/65 leading-relaxed">
+              Every initiative is delivered directly into the hands of families with zero administrative intermediaries and verifiable community impact.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              "Free education for the less privileged",
-              "Financial assistance to widows",
-              "Free treatment and medicine for poor patients",
-              "Food support for families in need",
-              "Marriage support for orphan girls",
+              {
+                title: "Free Education For Underprivileged",
+                desc: "Tuition, uniforms, textbooks, and daily stationery for children across Punjab who would otherwise be out of school.",
+                img: foundationMedia.schoolStudents,
+                badge: "Education",
+              },
+              {
+                title: "Monthly Rations & Widow Support",
+                desc: "Direct nutritional rations and living stipends delivered with dignity to households headed solely by widows.",
+                img: foundationMedia.widowsFoodRations,
+                badge: "Welfare",
+              },
+              {
+                title: "Free Medical Care & Prescription",
+                desc: "Mobile clinical camps, qualified volunteer doctors, diagnostic screening, and emergency medication in rural villages.",
+                img: foundationMedia.healthCampDoctor,
+                badge: "Healthcare",
+              },
+              {
+                title: "Safe Water & Rural Hand Pumps",
+                desc: "Clean drinking water wells and school sanitation infrastructure protecting children from waterborne illness.",
+                img: foundationMedia.cleanWaterPump,
+                badge: "WASH",
+              },
+              {
+                title: "Vocational Skills & Micro-Enterprise",
+                desc: "Industrial sewing machines and computer literacy cohorts turning immediate relief into lifelong self-reliance.",
+                img: foundationMedia.skillsSewingMachine,
+                badge: "Livelihoods",
+              },
+              {
+                title: "Emergency Relief & Orphan Support",
+                desc: "Rapid flood and winter survival packages alongside marriage and educational grants for orphaned young women.",
+                img: foundationMedia.emergencyRelief,
+                badge: "Emergency Aid",
+              },
             ].map((s, i) => (
-              <li
-                key={s}
-                className="group flex items-baseline gap-6 border-t border-ink/10 py-5 last:border-b"
-              >
-                <span className="numeral text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-display text-xl font-bold leading-tight text-ink transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
-                  {s}
-                </span>
-              </li>
+              <Rise key={s.title} delay={i * 0.05}>
+                <div className="group relative overflow-hidden rounded-sm border border-ink/10 bg-sand/30 transition-all hover:border-clay/50 hover:bg-sand/60 hover:shadow-md">
+                  <div className="relative h-48 w-full overflow-hidden bg-ink/10">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
+                    <span className="absolute left-3 top-3 rounded-sm bg-ink/80 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-sm">
+                      {s.badge}
+                    </span>
+                    <span className="numeral absolute bottom-2.5 right-3 text-2xl font-black text-cream/70">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-display text-xl font-bold leading-tight text-ink group-hover:text-clay transition-colors">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
+              </Rise>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -246,9 +304,12 @@ function About() {
       <section className="bg-background px-5 pb-16 sm:px-8 sm:pb-20">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-wrap items-end justify-between gap-5">
-            <h2 className="display-md max-w-[14ch] text-ink">Meet the people behind it.</h2>
+            <div>
+              <span className="eyebrow">Leadership</span>
+              <h2 className="display-md mt-2 max-w-[14ch] text-ink">Meet the People Behind It</h2>
+            </div>
             <p className="max-w-sm text-sm text-ink/55">
-              Roles shown are current. Names and photographs will be replaced with EFL's own on approval.
+              Experienced leaders and ground coordinators dedicated to transparent, compassionate execution.
             </p>
           </div>
 

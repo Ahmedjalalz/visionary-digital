@@ -6,6 +6,7 @@ import { branches } from "@/components/site/SiteFooter";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { MaskLines } from "@/components/site/motion-primitives";
 import { supabase } from "@/integrations/supabase/client";
+import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -125,6 +126,16 @@ function Contact() {
                   181 Raza Block, Allama Iqbal Town, Lahore, Pakistan
                 </p>
               </div>
+            </div>
+
+            {/* Visual grounding photo */}
+            <div className="mt-8 overflow-hidden rounded-sm aspect-[16/10] bg-ink/10 border border-ink/10 shadow-sm">
+              <img
+                src={foundationMedia.heroCommunity}
+                alt="Education And Life Foundation community center in Lahore"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
 

@@ -74,7 +74,7 @@ function Hero() {
           y: ((e.clientY - r.top) / r.height - 0.5) * -14,
         });
       }}
-      className="relative min-h-[calc(100svh-5.5rem)] w-full flex flex-col justify-end overflow-hidden bg-ink grain-overlay pt-8 pb-10 sm:pt-12 sm:pb-14"
+      className="relative min-h-[calc(100svh-5.5rem)] w-full flex flex-col justify-center overflow-hidden bg-ink grain-overlay pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24"
     >
       <motion.div className="absolute inset-0" style={reduce ? {} : { y: imgY, scale: imgScale }}>
         <motion.img
@@ -404,6 +404,51 @@ function Impact() {
               </li>
             ))}
           </ul>
+
+          {/* Operational field photography trio */}
+          <div className="mt-16 grid gap-5 sm:grid-cols-3">
+            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+              <img
+                src={foundationMedia.schoolStudents}
+                alt="EFL students in rural Punjab"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Direct Education</span>
+                <p className="font-display text-sm font-bold text-cream">Enrolment to Attendance</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+              <img
+                src={foundationMedia.cleanWaterPump}
+                alt="Installed clean water hand pump"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Safe Water Points</span>
+                <p className="font-display text-sm font-bold text-cream">Preventing Waterborne Illness</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+              <img
+                src={foundationMedia.healthCampDoctor}
+                alt="Medical camp doctor examining patient"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Clinical Care</span>
+                <p className="font-display text-sm font-bold text-cream">Free Medicine & Diagnosis</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
@@ -452,18 +497,25 @@ function Story() {
 
 function Numbers() {
   const stats = [
-    { value: 4, label: "Countries supporting the work", suffix: "" },
-    { value: 5, label: "Core services delivered free", suffix: "" },
+    { value: 20, label: "Years of continuous direct community service", suffix: "+" },
+    { value: 4000, label: "Children supported in school & music education", suffix: "+" },
+    { value: 12, label: "Programmes operating across health & welfare", suffix: "" },
+    { value: 13, label: "Verified global institutional partner bodies", suffix: "" },
   ];
   return (
-    <section className="border-y border-ink/10 bg-sand py-14 sm:py-16">
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 md:grid-cols-2">
+    <section className="border-y border-ink/10 bg-sand py-14 sm:py-18">
+      <div className="mx-auto grid max-w-[1600px] gap-8 px-5 sm:px-8 grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="flex items-baseline gap-5">
-            <span className="numeral text-5xl text-clay sm:text-6xl">
-              <Counter to={s.value} format={(n) => Math.round(n).toString()} />
-            </span>
-            <span className="max-w-[18ch] text-sm uppercase tracking-[0.14em] text-ink/60">{s.label}</span>
+          <div key={s.label} className="border-l-2 border-clay/40 pl-5">
+            <div className="flex items-baseline">
+              <span className="numeral text-4xl sm:text-5xl font-black text-clay">
+                <Counter to={s.value} format={(n) => Math.round(n).toString()} />
+              </span>
+              {s.suffix && <span className="numeral text-2xl font-bold text-clay ml-0.5">{s.suffix}</span>}
+            </div>
+            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-ink/70 leading-relaxed font-semibold">
+              {s.label}
+            </p>
           </div>
         ))}
       </div>

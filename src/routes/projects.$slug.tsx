@@ -41,7 +41,7 @@ function ProjectPage() {
   return (
     <article className="bg-background">
       {/* ── hero ── */}
-      <section className="relative min-h-[50svh] sm:min-h-[58svh] w-full flex flex-col justify-end overflow-hidden pt-10 pb-12 sm:pt-14 sm:pb-16">
+      <section className="relative min-h-[52svh] sm:min-h-[58svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-14 sm:pt-20 sm:pb-16">
         <ParallaxImage
           src={project.image}
           alt={project.name}
