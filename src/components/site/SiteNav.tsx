@@ -181,12 +181,12 @@ export function SiteNav() {
                                 onClick={() => setProjectsDropdownOpen(false)}
                                 className="group flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-clay transition-colors hover:text-clay-deep"
                               >
-                                <span>All Projects ({projects.length})</span>
+                                <span>View All Projects</span>
                                 <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                               </Link>
                             </div>
 
-                            {/* 2-column list of all 12 projects in exact order */}
+                            {/* Project list follows the editorial portfolio order. */}
                             <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5">
                               {projects.map((p, idx) => {
                                 const isActive = pathname === `/projects/${p.slug}`;
