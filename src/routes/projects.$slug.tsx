@@ -24,6 +24,14 @@ export const Route = createFileRoute("/projects/$slug")({
         { name: "description", content: project.short },
         { property: "og:title", content: title },
         { property: "og:description", content: project.short },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
+        ...(project.image.startsWith("https://")
+          ? [
+              { property: "og:image", content: project.image },
+              { name: "twitter:image", content: project.image },
+            ]
+          : []),
       ],
     };
   },
@@ -36,51 +44,46 @@ function ProjectPage() {
   const accentClass =
     project.accent === "moss" ? "text-moss" : project.accent === "sand" ? "text-sand" : "text-clay";
 
-  const heroLeft = project.layout === "portrait" || project.layout === "data";
+  const splitHero = project.layout === "portrait" || project.layout === "data";
+  const centeredHero = project.layout === "map" || project.layout === "object";
 
   return (
     <article className="bg-background">
-      {/* ── hero ── */}
-      <section className="relative min-h-[52svh] sm:min-h-[58svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-14 sm:pt-20 sm:pb-16">
+      <section className={`relative overflow-hidden ${splitHero ? "grid min-h-[72svh] lg:grid-cols-2" : "flex min-h-[68svh] sm:min-h-[76svh] flex-col justify-end"}`}>
         <ParallaxImage
           src={project.image}
           alt={project.name}
-          className="absolute inset-0"
+          className={splitHero ? "relative min-h-[48svh] lg:order-2 lg:min-h-[72svh]" : "absolute inset-0"}
+          imgClassName={project.heroPosition}
           strength={60}
           scaleFrom={1.12}
           priority
         />
-        <div
-          className={`absolute inset-0 ${
-            heroLeft
-              ? "bg-gradient-to-r from-ink/85 via-ink/40 to-transparent"
-              : "bg-gradient-to-t from-ink/90 via-ink/35 to-ink/20"
-          }`}
-        />
+        {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/28 to-ink/10" />}
 
-        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
-          <div className={heroLeft ? "max-w-3xl" : "w-full"}>
-            <span className="eyebrow text-clay font-bold">Initiative Portfolio</span>
+        <div className={`relative z-10 flex flex-col justify-end px-5 py-12 sm:px-8 sm:py-16 ${splitHero ? "bg-sand lg:order-1 lg:px-[8vw]" : "mx-auto w-full max-w-[1600px]"}`}>
+          <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
+            <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "text-cream/75"}`}>Initiative Portfolio</span>
             <h1
-              className={`mt-3 font-display font-black uppercase leading-[1.04] text-cream ${
+              className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "text-cream"} ${
                 project.name.length > 34
-                  ? "text-[6vw] sm:text-[3.2vw] lg:text-[2.8vw]"
-                  : "text-[7.5vw] sm:text-[4.5vw] lg:text-[3.8vw]"
+                  ? "text-[clamp(2.5rem,5vw,5.2rem)]"
+                  : "text-[clamp(3rem,6vw,6.4rem)]"
               }`}
             >
               <MaskLines lines={[project.name]} />
             </h1>
-            <p className="mt-4 max-w-xl text-base sm:text-lg leading-relaxed text-cream/80">{project.short}</p>
+            <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "text-cream/80"}`}>{project.short}</p>
           </div>
         </div>
       </section>
 
       {/* ── the problem, huge ── */}
-      <section className="border-b border-ink/10 px-5 py-16 sm:px-8 sm:py-24">
+      <section className="border-b border-ink/10 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">The problem</span>
-          <div className="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            <span className={`numeral text-[18vw] leading-[0.78] sm:text-[9vw] ${accentClass}`}>
+          <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+            <span className={`numeral text-[17vw] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
               {project.problem.figure}
             </span>
             <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
@@ -158,7 +161,7 @@ function ProjectPage() {
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-8 sm:py-22">
+      <section className="px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
@@ -169,14 +172,14 @@ function ProjectPage() {
               Photographs from Education and Life Foundation programmes and the communities they serve.
             </p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-12">
             {project.gallery.map((image, index) => (
-              <figure key={image} className="group relative aspect-[4/3] overflow-hidden rounded-[2px] bg-ink/10">
+              <figure key={image} className={`group relative overflow-hidden bg-muted ${index === 0 ? "aspect-[16/10] sm:col-span-8" : "aspect-[4/3] sm:col-span-4"}`}>
                 <img
                   src={image}
                   alt={`${project.name} field work ${index + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
+                  className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-center"} transition-transform duration-700 group-hover:scale-[1.035]`}
                 />
               </figure>
             ))}
@@ -311,8 +314,8 @@ function ProjectPage() {
       )}
 
       {/* ── closing ── */}
-      <section className="relative h-[70svh] overflow-hidden">
-        <ParallaxImage src={project.image} alt="" className="absolute inset-0" strength={60} />
+      <section className="relative h-[68svh] min-h-[520px] overflow-hidden">
+        <ParallaxImage src={project.gallery.at(-1) ?? project.image} alt="" className="absolute inset-0" strength={45} />
         <div className="absolute inset-0 bg-ink/70" />
         <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-center px-5 sm:px-8">
           <h2 className="display-lg max-w-[14ch] text-cream">Support this work.</h2>

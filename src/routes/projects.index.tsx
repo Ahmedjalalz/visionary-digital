@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
-import { ArrowUpRight, CheckCircle2, Filter } from "lucide-react";
+import { ArrowUpRight, Filter } from "lucide-react";
 import { projects } from "@/data/projects";
 import { MaskLines } from "@/components/site/motion-primitives";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/")({
   head: () => ({
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/projects/")({
         property: "og:description",
         content: "Every programme is built around one specific, urgent problem in Pakistan.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ProjectsIndex,
@@ -62,94 +65,77 @@ function ProjectsIndex() {
 
   return (
     <>
-      {/* Landing header */}
-      <section className="relative overflow-hidden bg-sand px-5 py-14 sm:px-8 sm:py-20">
+      <section className="relative overflow-hidden bg-sand px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex items-center gap-2.5 text-clay">
             <span className="h-1.5 w-1.5 rounded-full bg-clay" />
             <span className="eyebrow text-clay">Direct Field Operations</span>
           </div>
-          <h1 className="display-lg mt-4 max-w-[15ch] text-ink">
+          <h1 className="display-lg mt-5 max-w-[16ch] text-ink">
             <MaskLines lines={["Each one starts", "with a problem,", "not a brochure."]} />
           </h1>
           <p className="lede mt-6 max-w-2xl text-ink/75">
             Focused initiatives serving underprivileged families across Punjab. Every programme is built around direct community needs and verifiable outcomes.
           </p>
 
-          {/* Filter Pills */}
-          <div className="mt-10 flex flex-wrap items-center gap-2 pt-4 border-t border-ink/10">
+          <div className="mt-12 flex flex-wrap items-center gap-2 border-t border-ink/10 pt-5">
             <span className="mr-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-ink/50">
               <Filter className="h-3.5 w-3.5" /> Filter:
             </span>
             {filterCategories.map((cat) => (
-              <button
+              <Button
                 key={cat.id}
+                type="button"
+                variant="ghost"
                 onClick={() => setActiveFilter(cat.id)}
-                className={`rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`h-auto rounded-none border-b-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] shadow-none ${
                   activeFilter === cat.id
-                    ? "bg-clay text-primary-foreground shadow-sm"
-                    : "bg-background/80 text-ink/70 hover:bg-background hover:text-ink border border-ink/10"
+                    ? "border-clay text-clay"
+                    : "border-transparent text-ink/55 hover:bg-transparent hover:text-ink"
                 }`}
               >
                 {cat.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Projects Directory */}
-      <section className="relative bg-background pb-24 pt-8">
+      <section className="relative bg-background pb-28 pt-12 sm:pt-16">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 lg:grid-cols-12">
             {filteredProjects.map((p, i) => (
               <Link
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-ink/10 bg-sand/30 p-5 transition-all duration-300 hover:border-clay/60 hover:bg-sand/60 hover:shadow-lg"
+                className={`group block ${i === 0 || i % 5 === 0 ? "lg:col-span-7" : "lg:col-span-5"}`}
               >
-                <div>
-                  {/* Image container */}
-                  <div className="relative h-56 w-full overflow-hidden rounded-sm bg-ink/10">
+                  <div className={`relative overflow-hidden bg-muted ${i === 0 || i % 5 === 0 ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
                     <img
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                    
-                    {/* Index badge */}
-                    <div className="absolute left-3 top-3 rounded bg-ink/80 px-2 py-1 backdrop-blur-sm">
-                      <span className="font-mono text-xs font-bold text-cream">
+                    <div className="absolute left-0 top-0 bg-background px-3 py-2">
+                      <span className="numeral text-xs text-clay">
                         {String(projects.findIndex((item) => item.slug === p.slug) + 1).padStart(2, "0")}
                       </span>
                     </div>
-
-                    {/* Problem stat chip */}
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 rounded bg-sand/90 px-2.5 py-1.5 backdrop-blur-sm">
-                      <span className="font-bold text-clay text-xs">{p.problem.figure} {p.problem.unit}</span>
-                      <span className="text-[0.68rem] text-ink/70 truncate">— {p.problem.line}</span>
-                    </div>
                   </div>
-
-                  {/* Text content */}
-                  <div className="mt-5">
-                    <h2 className="font-display text-xl sm:text-2xl font-bold leading-tight text-ink transition-colors group-hover:text-clay">
+                  <div className="mt-5 grid grid-cols-[1fr_auto] gap-6 border-t border-ink/15 pt-5">
+                    <div>
+                    <div className="mb-2 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-clay">{p.problem.figure} {p.problem.unit}</div>
+                    <h2 className="font-display text-2xl font-bold leading-tight text-ink transition-colors group-hover:text-clay sm:text-3xl">
                       {p.name}
                     </h2>
-                    <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-ink/65 line-clamp-2">
+                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/60">
                       {p.short}
                     </p>
+                    </div>
+                    <ArrowUpRight className="mt-1 h-5 w-5 text-clay transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
-                </div>
-
-                {/* Card footer CTA */}
-                <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs font-semibold uppercase tracking-[0.16em] text-clay">
-                  <span>Explore Programme</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
               </Link>
             ))}
           </div>
