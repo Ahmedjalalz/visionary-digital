@@ -72,7 +72,7 @@ export const partners: Partner[] = [
     logo: visionForAsia,
     focus: "Community Health & Clean Water",
     role: "Rural Medical Camps & Water Infrastructure",
-    collaborations: ["health-care-program", "wash-improvement"],
+    collaborations: ["health-wash-community-wellbeing"],
   },
   {
     id: "happy-to-help",

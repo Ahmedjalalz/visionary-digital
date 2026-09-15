@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { Backpack, Loader2, X } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { useState } from "react";
 import { fetchLiveBagDetails } from "@/lib/bag-tracker-service";
 
@@ -46,18 +46,21 @@ export function BagTracker() {
           className="group relative flex flex-col items-center gap-4"
           aria-label="Track a school bag"
         >
-          <span className="relative flex h-40 w-40 items-center justify-center">
-            <span className="absolute inset-0 rounded-full bg-clay/15 blur-2xl transition-all group-hover:bg-clay/30" />
-            <span className="pulse-ring absolute inset-6 rounded-full border border-clay/50" />
-            <Backpack
-              className="float-slow relative h-24 w-24 text-clay transition-transform duration-500 group-hover:scale-110"
-              strokeWidth={1.1}
-            />
+          <span className="relative flex h-44 w-44 items-center justify-center">
+            <span className="absolute inset-0 rounded-full bg-clay/15 blur-2xl transition-all duration-500 group-hover:bg-clay/30 group-hover:scale-110" />
+            <span className="pulse-ring absolute inset-5 rounded-full border border-clay/40" />
+            <span className="relative flex h-28 w-28 items-center justify-center">
+              <img
+                src="/school-in-a-bag-logo-blue.png"
+                alt="School in a Bag"
+                className="float-slow h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_8px_20px_rgba(29,78,216,0.28)]"
+              />
+            </span>
           </span>
-           <span className="font-display text-2xl font-bold text-ink">
+          <span className="font-display text-2xl font-bold text-ink transition-colors group-hover:text-clay">
             Track the bag
           </span>
-           <span className="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-ink/45">
+          <span className="flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-ink/55">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-clay" /> Tap to open
           </span>
         </button>
@@ -69,7 +72,7 @@ export function BagTracker() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-             className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/45 px-5 backdrop-blur-sm"
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/45 px-5 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             role="dialog"
             aria-modal="true"
@@ -81,17 +84,23 @@ export function BagTracker() {
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-               className="relative w-full max-w-lg overflow-hidden rounded-xl border border-cream/70 bg-cream/90 p-8 shadow-xl backdrop-blur-2xl sm:p-10"
+              className="relative w-full max-w-lg overflow-hidden rounded-xl border border-cream/70 bg-cream/90 p-8 shadow-xl backdrop-blur-2xl sm:p-10"
             >
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close"
-                 className="absolute right-5 top-5 text-ink/50 transition-colors hover:text-ink"
+                className="absolute right-5 top-5 text-ink/50 transition-colors hover:text-ink"
               >
                 <X className="h-5 w-5" />
               </button>
 
-              <Backpack className="h-8 w-8 text-clay" strokeWidth={1.2} />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay/10 p-2">
+                <img
+                  src="/school-in-a-bag-logo-blue.png"
+                  alt="School in a Bag"
+                  className="h-full w-full object-contain drop-shadow-xs"
+                />
+              </div>
                <h2 className="mt-5 font-display text-3xl font-bold text-ink">
                 Track a school bag
               </h2>

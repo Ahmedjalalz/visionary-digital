@@ -1,13 +1,26 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowUpRight, Music } from "lucide-react";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import {
+  Activity,
+  ArrowUpRight,
+  Droplets,
+  HeartPulse,
+  Music,
+  ShieldCheck,
+  Sparkles,
+  Stethoscope,
+} from "lucide-react";
 import { getProject, projects } from "@/data/projects";
 import { MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
 import { SchoolMap } from "@/components/site/SchoolMap";
 import { BagTracker } from "@/components/site/BagTracker";
+import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
+    if (params.slug === "health-care-program" || params.slug === "wash-improvement") {
+      throw redirect({ to: "/projects/$slug", params: { slug: "health-wash-community-wellbeing" } });
+    }
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
@@ -283,19 +296,154 @@ function ProjectPage() {
       )}
 
       {project.slug === "school-bags" && (
-        <section className="relative overflow-hidden px-5 py-28 sm:px-8">
-          <div className="mx-auto grid max-w-[1600px] items-center gap-14 lg:grid-cols-2">
-            <div>
-              <span className="eyebrow">Sponsors</span>
-               <h2 className="display-md mt-4 max-w-[15ch] text-ink">
-                Follow your bag all the way to a name.
+        <>
+          <section id="bag-tracker" className="relative overflow-hidden px-5 py-28 sm:px-8">
+            <div className="mx-auto grid max-w-[1600px] items-center gap-14 lg:grid-cols-2">
+              <div>
+                <span className="eyebrow">Sponsors</span>
+                <h2 className="display-md mt-4 max-w-[15ch] text-ink">
+                  Follow your bag all the way to a name.
+                </h2>
+                <p className="lede mt-6">
+                  Every bag is tagged when it is packed and updated at each hand-off. If you sponsored one,
+                  your receipt carries the ID.
+                </p>
+              </div>
+              <BagTracker />
+            </div>
+          </section>
+          <SchoolBagShortcut />
+        </>
+      )}
+
+      {project.slug === "health-wash-community-wellbeing" && (
+        <section className="border-y border-ink/10 bg-sand/40 px-5 py-24 sm:px-8">
+          <div className="mx-auto max-w-[1600px]">
+            <div className="max-w-3xl">
+              <span className="eyebrow">Integrated Health & WASH Framework</span>
+              <h2 className="display-md mt-4 text-ink">
+                Six Pillars of Community Dignity & Wellbeing
               </h2>
-              <p className="lede mt-6">
-                Every bag is tagged when it is packed and updated at each hand-off. If you sponsored one,
-                your receipt carries the ID.
+              <p className="lede mt-5">
+                Education And Life Foundation unites clinical medical care with essential WASH initiatives.
+                By bridging direct clinical intervention, safe water infrastructure, hygiene awareness, and
+                dignified sanitation, we target preventative and curative health in Punjab&apos;s most underserved areas.
               </p>
             </div>
-            <BagTracker />
+
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  num: "01",
+                  tag: "Clinical Medicine",
+                  title: "Community Health & Medical Outreach",
+                  icon: Stethoscope,
+                  desc: "Qualified doctors and medical teams conduct mobile outreach camps, diagnostic screenings, and triage across hard-to-reach brick kiln communities and rural settlements.",
+                  points: [
+                    "Comprehensive physical examinations",
+                    "Preventative diagnostics and triage",
+                    "Referrals for secondary hospital care",
+                  ],
+                },
+                {
+                  num: "02",
+                  tag: "Safe Water",
+                  title: "Clean Drinking Water Infrastructure",
+                  icon: Droplets,
+                  desc: "Engineering and installing deep-bore electric water pumps and community filtration systems to bypass heavy metal, microbial, and arsenic contaminants.",
+                  points: [
+                    "Deep-aquifer extraction points",
+                    "Routine laboratory water testing",
+                    "Community maintenance committees",
+                  ],
+                },
+                {
+                  num: "03",
+                  tag: "Sanitation",
+                  title: "Water, Sanitation & Hygiene (WASH)",
+                  icon: ShieldCheck,
+                  desc: "Constructing and restoring dignified, gender-segregated toilet blocks, handwashing stations, and clean drainage at local schools and community centers.",
+                  points: [
+                    "Dedicated girls' sanitation blocks",
+                    "Handwashing and soap stations",
+                    "Safe blackwater containment",
+                  ],
+                },
+                {
+                  num: "04",
+                  tag: "Women's Health",
+                  title: "Maternal Health & Menstrual Dignity",
+                  icon: HeartPulse,
+                  desc: "Providing women-led health education, safe menstrual hygiene kits, maternal care counsel, and confidential doctor consultations without social stigma.",
+                  points: [
+                    "Hygienic menstrual product distribution",
+                    "Reproductive health education",
+                    "Private doctor consultations",
+                  ],
+                },
+                {
+                  num: "05",
+                  tag: "Early Prevention",
+                  title: "Child Health & Hygiene Education",
+                  icon: Sparkles,
+                  desc: "Instilling lifelong hygiene practices among students through structured classroom sessions, handwashing protocols, oral hygiene, and routine pediatric deworming.",
+                  points: [
+                    "Classroom handwashing routines",
+                    "School deworming campaigns",
+                    "Growth and nutrition tracking",
+                  ],
+                },
+                {
+                  num: "06",
+                  tag: "Continuous Care",
+                  title: "Essential Medicines & Health Sessions",
+                  icon: Activity,
+                  desc: "Dispensing 100% free prescription antibiotics, rehydration salts, analgesics, and vitamins alongside interactive community sessions on disease prevention.",
+                  points: [
+                    "Free verified pharmaceuticals",
+                    "Seasonal illness awareness",
+                    "Waterborne epidemic prevention",
+                  ],
+                },
+              ].map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.num}
+                    className="flex flex-col justify-between rounded-sm border border-ink/10 bg-sand p-7 sm:p-8 transition-colors duration-300 hover:border-clay/40"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="numeral text-sm font-bold text-clay">{pillar.num}</span>
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink/5 text-ink">
+                          <Icon className="h-4 w-4" />
+                        </div>
+                      </div>
+                      <span className="mt-4 inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-ink/50">
+                        {pillar.tag}
+                      </span>
+                      <h3 className="mt-1 font-display text-xl font-bold text-ink">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-ink/75">
+                        {pillar.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 border-t border-ink/10 pt-4">
+                      <ul className="space-y-2">
+                        {pillar.points.map((pt) => (
+                          <li key={pt} className="flex items-start gap-2 text-xs font-medium text-ink/80">
+                            <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
       )}

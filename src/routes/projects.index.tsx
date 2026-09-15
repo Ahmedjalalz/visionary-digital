@@ -39,10 +39,9 @@ function getProjectCategory(slug: string): string {
     return "education";
   }
   if (
-    slug === "health-care-program" ||
+    slug === "health-wash-community-wellbeing" ||
     slug === "midwifery-program" ||
-    slug === "pregnancy-support-pakistan" ||
-    slug === "wash-improvement"
+    slug === "pregnancy-support-pakistan"
   ) {
     return "health";
   }

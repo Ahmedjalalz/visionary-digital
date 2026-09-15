@@ -9,6 +9,7 @@ const primary = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/projects", label: "Projects" },
+  { to: "/impact", label: "Impact" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ] as const;

@@ -159,7 +159,7 @@ function About() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/82 via-ink/42 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
-            <span className="eyebrow text-clay font-bold block mb-3">Founded 2003 · Lahore, Pakistan</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright block mb-3">Founded 2003 · Lahore, Pakistan</span>
             <h1 className="display-xl max-w-[12ch] text-cream">
               <MaskLines lines={["To uplift", "the deprived", "community."]} />
             </h1>

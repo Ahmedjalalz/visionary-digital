@@ -134,7 +134,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-ink/10 py-8 text-[0.7rem] uppercase tracking-[0.18em] text-ink/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-20 flex flex-col gap-4 border-t border-ink/10 py-8 text-[0.7rem] uppercase tracking-[0.18em] text-ink/70 font-medium sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Education and Life Foundation</span>
           <span>Lahore · Auckland · Toronto · Berlin</span>
         </div>

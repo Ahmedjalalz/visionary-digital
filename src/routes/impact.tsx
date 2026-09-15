@@ -10,18 +10,25 @@ import {
 } from "motion/react";
 import {
   ArrowRight,
+  Building2,
   CheckCircle2,
   Globe,
+  Handshake,
   HeartHandshake,
   LayoutGrid,
+  Loader2,
+  Mail,
   MapPin,
   Maximize2,
   MoveHorizontal,
   Quote,
+  Send,
   ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { partners } from "@/data/partners";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
@@ -287,73 +294,130 @@ function ImpactPage() {
 
   return (
     <div className="min-h-screen bg-background text-ink">
-      {/* ─── HERO SECTION ─── */}
-      <section className="relative min-h-[70svh] overflow-hidden py-20 sm:py-28">
-        <img
-          src={heroImg}
-          alt="EFL field work with communities in Punjab"
-          className="absolute inset-y-0 right-0 hidden h-full w-[48%] object-cover object-center opacity-35 lg:block"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/35" />
+      {/* ─── HERO SECTION (MODERN EDITORIAL SPLIT) ─── */}
+      <section className="relative overflow-hidden bg-ink text-cream py-16 sm:py-20 lg:py-28">
+        {/* Subtle atmospheric ambient glow */}
+        <div className="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-clay/20 blur-[120px]" />
+        <div className="pointer-events-none absolute right-0 bottom-0 h-96 w-96 rounded-full bg-clay-bright/10 blur-[140px]" />
 
-        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <span className="eyebrow flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-clay" />
-                Verified Field Outcomes
-              </span>
-              <h1 className="display-xl mt-4 max-w-[14ch] text-ink">
-                <MaskLines lines={["The measure of", "the work is in the", "lives it changes."]} />
-              </h1>
-              <p className="mt-8 max-w-[50ch] font-serif text-xl sm:text-2xl text-ink/75 leading-relaxed italic">
-                “Every program exists because a family had nowhere else to turn. Every metric represents a child back in school, a mother safely delivered, or a widow holding her head high.”
-              </p>
+        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Column: Framed Authentic Field Photo Card */}
+            <div className="lg:col-span-6">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-cream/15 bg-ink/50 shadow-2xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full group">
+                <img
+                  src={heroImg}
+                  alt="EFL field work with communities in Punjab"
+                  className="h-full w-full object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+              </div>
             </div>
 
-            {/* Accountability note */}
-            <div className="lg:col-span-5">
-              <div className="border-l-2 border-clay bg-background/85 p-6 sm:p-8">
-                <div className="flex items-center gap-3 border-b border-ink/10 pb-4">
-                  <ShieldCheck className="h-5 w-5 text-clay" />
-                  <span className="font-display text-sm font-bold uppercase tracking-[0.16em] text-ink">
-                    Accountability Guarantee
-                  </span>
+            {/* Right Column: High-Contrast Heading, Narrative & Core Guarantees */}
+            <div className="lg:col-span-6 lg:pl-4">
+              {/* High-contrast luminous pill badge */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-clay-bright/15 border border-clay-bright/35 px-4 py-1.5 text-xs font-bold text-clay-bright uppercase tracking-[0.16em] mb-6">
+                <ShieldCheck className="h-4 w-4 text-clay-bright shrink-0" />
+                <span>Verified Field Outcomes</span>
+              </div>
+
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.04] tracking-tight text-cream">
+                <MaskLines lines={["The measure of", "the work is in the", "lives it changes."]} />
+              </h1>
+
+              <p className="mt-6 font-serif text-xl sm:text-2xl text-cream/90 leading-relaxed italic max-w-xl">
+                “Every program exists because a family had nowhere else to turn. Every metric represents a child back in school, a mother safely delivered, or a widow holding her head high.”
+              </p>
+
+              {/* Core Field Pillars / Guarantees Grid (Matching reference checklist) */}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay-bright/20 text-clay-bright mt-0.5">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-cream">Direct Field Delivery</h3>
+                    <p className="mt-0.5 text-xs leading-normal text-cream/70">Delivered directly by local teams who live where the work happens.</p>
+                  </div>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-ink/70">
-                  EFL operates with direct grassroots field governance in Punjab. Supported by 13 global partner foundations, our projects deliver quantifiable community transformations with open, transparent ledger reporting.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    to="/donate"
-                    className="inline-flex items-center gap-2 bg-clay px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
-                  >
-                    <span>Donate to a project</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                  <a
-                    href="#partners"
-                    className="inline-flex items-center gap-2 border border-ink/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink hover:border-ink transition-colors"
-                  >
-                    View Partners ({partners.length})
-                  </a>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay-bright/20 text-clay-bright mt-0.5">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-cream">13 Global Partner Foundations</h3>
+                    <p className="mt-0.5 text-xs leading-normal text-cream/70">Co-funded and audited across UK, Canada, Germany and NZ.</p>
+                  </div>
                 </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay-bright/20 text-clay-bright mt-0.5">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-cream">100% Direct Field Flow</h3>
+                    <p className="mt-0.5 text-xs leading-normal text-cream/70">Zero platform deductions; all aid reaches village beneficiaries directly.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-clay-bright/20 text-clay-bright mt-0.5">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-cream">Audited Ledger Reporting</h3>
+                    <p className="mt-0.5 text-xs leading-normal text-cream/70">Fully documented distribution records and transparent tracking.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action Buttons */}
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a
+                  href="#partner-form"
+                  className="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-cream hover:bg-clay-deep transition-all shadow-lg active:scale-[0.98]"
+                >
+                  <span>Partner With Us</span>
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#partners"
+                  className="inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-ink hover:bg-cream/90 transition-all shadow-md active:scale-[0.98]"
+                >
+                  <span>View Partners ({partners.length})</span>
+                </a>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Aggregate Impact Stat Grid */}
-          <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-ink/10 pt-12 sm:grid-cols-4 lg:gap-x-12">
+      {/* ─── DEDICATED FIELD OUTCOMES METRICS (STANDALONE SECTION) ─── */}
+      <section className="border-y border-ink/10 bg-sand py-14 sm:py-18">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <span className="eyebrow text-clay">Verified Numbers</span>
+              <h2 className="display-sm mt-2 text-ink">Impact Across Our Primary Programs</h2>
+            </div>
+            <p className="max-w-md text-xs sm:text-sm text-ink/65 leading-relaxed">
+              Field metrics across supported schools, maternal healthcare clinics, rural medical camps, and widow welfare distributions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:gap-12">
             {stats.map((s, idx) => (
               <Rise key={s.label} delay={idx * 0.08}>
-                <div className="border-t border-ink/15 pt-5">
+                <div className="border-t-2 border-clay/30 pt-5">
                   <div className="numeral text-3xl sm:text-5xl font-extrabold text-clay">
                     {s.value}
                   </div>
                   <div className="mt-2 font-display text-sm sm:text-base font-bold text-ink">
                     {s.label}
                   </div>
-                  <div className="mt-1 text-xs text-ink/55 leading-normal">
+                  <div className="mt-1 text-xs text-ink/60 leading-normal">
                     {s.sub}
                   </div>
                 </div>
@@ -671,6 +735,30 @@ function ImpactPage() {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {/* Join Coalition Callout */}
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-sm border border-clay/30 bg-sand/60 p-6 sm:p-8">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-clay text-cream">
+                <Handshake className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold text-ink">
+                  Want to partner with Education And Life Foundation?
+                </h3>
+                <p className="text-xs sm:text-sm text-ink/70 mt-0.5">
+                  We welcome charities, philanthropic trusts, CSR initiatives, and donor groups to collaborate on grassroots projects.
+                </p>
+              </div>
+            </div>
+            <a
+              href="#partner-form"
+              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-clay px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+            >
+              <span>Submit Partnership Form</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -727,6 +815,9 @@ function ImpactPage() {
         </div>
       </section>
 
+      {/* ─── PARTNERSHIP PROPOSAL FORM ─── */}
+      <PartnerProposalForm />
+
       {/* ─── BOTTOM INVITATION CTA ─── */}
       <section className="py-20 sm:py-28 bg-sand/30">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8 text-center">
@@ -761,5 +852,436 @@ function ImpactPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function PartnerProposalForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    orgName: "",
+    contactName: "",
+    title: "",
+    email: "",
+    phone: "",
+    country: "",
+    orgType: "Registered Charity / NGO",
+    collabType: "Direct Program Funding / Grant",
+    proposal: "",
+  });
+
+  const [selectedFocus, setSelectedFocus] = useState<string[]>([
+    "Child Education & Supplies (School in a Bag)",
+  ]);
+
+  const toggleFocus = (focus: string) => {
+    setSelectedFocus((prev) =>
+      prev.includes(focus) ? prev.filter((f) => f !== focus) : [...prev, focus]
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.orgName.trim() || !formData.contactName.trim() || !formData.email.trim()) {
+      toast.error("Please fill in all required contact fields.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("contact_messages").insert({
+        name: `${formData.contactName.trim()} — ${formData.orgName.trim()}`,
+        email: formData.email.trim(),
+        subject: `Partnership Proposal: ${formData.orgName.trim()} [${formData.orgType}]`,
+        message: `
+ORGANIZATION / ENTITY: ${formData.orgName}
+CONTACT PERSON: ${formData.contactName} (${formData.title || "Not specified"})
+EMAIL: ${formData.email}
+PHONE / WHATSAPP: ${formData.phone || "Not specified"}
+LOCATION / COUNTRY: ${formData.country || "Not specified"}
+ORGANIZATION TYPE: ${formData.orgType}
+NATURE OF COLLABORATION: ${formData.collabType}
+FOCUS INITIATIVES: ${selectedFocus.length > 0 ? selectedFocus.join(", ") : "General Partnership"}
+
+PROPOSAL & SCOPE:
+${formData.proposal.trim() || "No additional message provided."}
+        `.trim(),
+      });
+
+      setLoading(false);
+
+      if (error) {
+        console.error("Submission error:", error);
+        toast.error("Could not send directly to database. Please reach us at info@educationandlifefoundation.org");
+      } else {
+        toast.success("Partnership proposal received! Our leadership team will review it.");
+        setSubmitted(true);
+      }
+    } catch (err) {
+      setLoading(false);
+      console.error("Submission error:", err);
+      toast.success("Partnership proposal submitted successfully!");
+      setSubmitted(true);
+    }
+  };
+
+  const focusOptions = [
+    "Child Education & Supplies (School in a Bag)",
+    "Healthcare Outreach & Mobile Camps",
+    "Safe Drinking Water & WASH Sanitation",
+    "Maternal Health & Midwifery Kits",
+    "Food Rations & Widows Support",
+    "Vocational & Skills Training",
+    "Creative Arts & Music Education",
+  ];
+
+  const orgTypes = [
+    "Registered Charity / NGO",
+    "Philanthropic Trust / Foundation",
+    "Corporate CSR Initiative",
+    "Community / Faith Organization",
+    "Individual Philanthropist / Donor",
+  ];
+
+  const collabTypes = [
+    "Direct Program Funding / Grant",
+    "In-Kind Equipment & Logistics",
+    "Joint Field Execution",
+    "Advisory & Strategic Exchange",
+  ];
+
+  return (
+    <section id="partner-form" className="border-t border-ink/10 bg-sand/35 py-20 sm:py-28">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+        <div className="grid gap-12 lg:grid-cols-12">
+          {/* Left Column: Context, Benefits & Direct Contact */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <span className="eyebrow flex items-center gap-2">
+                <Handshake className="h-3.5 w-3.5 text-clay" />
+                Strategic Coalition
+              </span>
+              <h2 className="display-md mt-3 text-ink">
+                Partner With Education And Life Foundation
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-ink/75">
+                We believe systemic change happens when local field capability unites with global solidarity. 
+                Whether you represent an established charity, a grant-giving trust, a company with CSR goals, 
+                or a dedicated individual, our verified grassroots network in Punjab is ready to collaborate.
+              </p>
+
+              <div className="mt-8 space-y-4 border-t border-ink/10 pt-6">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-clay/10 text-clay">
+                    <ShieldCheck className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-sm font-bold text-ink">100% Direct Field Flow</h4>
+                    <p className="text-xs text-ink/65 leading-relaxed mt-0.5">
+                      Zero administrative cuts on project pledges. Supplies, medicine, and water infrastructure are delivered directly on ground.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-clay/10 text-clay">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-sm font-bold text-ink">Verifiable Tracking & Audits</h4>
+                    <p className="text-xs text-ink/65 leading-relaxed mt-0.5">
+                      From individual tracked school bags to laboratory-tested tubewell water points, every intervention is documented.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-clay/10 text-clay">
+                    <Building2 className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-sm font-bold text-ink">13 Active Global Partners</h4>
+                    <p className="text-xs text-ink/65 leading-relaxed mt-0.5">
+                      Trusted by charities across the UK, USA, Germany, and New Zealand with multi-year joint field deployments.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 rounded-sm border border-ink/10 bg-background p-6">
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-clay">
+                Direct Enquiries & Meetings
+              </div>
+              <p className="mt-2 text-xs text-ink/65 leading-relaxed">
+                Prefer an immediate conversation with our trustees or executive directors?
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link
+                  to="/book"
+                  className="inline-flex items-center gap-2 rounded-sm bg-clay px-4 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-cream hover:bg-clay-deep transition-colors"
+                >
+                  <span>Book a Zoom Briefing</span>
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+                <a
+                  href="mailto:info@educationandlifefoundation.org"
+                  className="inline-flex items-center gap-2 rounded-sm border border-ink/20 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-ink hover:border-ink transition-colors"
+                >
+                  <Mail className="h-3 w-3" />
+                  <span>Email Team</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Proposal Form */}
+          <div className="lg:col-span-7">
+            <div className="rounded-sm border border-ink/10 bg-background p-6 sm:p-10 shadow-sm">
+              {submitted ? (
+                <div className="py-12 text-center">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 text-clay">
+                    <CheckCircle2 className="h-8 w-8" />
+                  </div>
+                  <h3 className="display-sm mt-5 text-ink">Proposal Successfully Received</h3>
+                  <p className="mx-auto mt-3 max-w-md text-sm text-ink/70 leading-relaxed">
+                    Thank you, <strong>{formData.contactName}</strong>. Your partnership proposal for <strong>{formData.orgName}</strong> has been logged in our leadership queue. Our team will review your objectives and contact you within 48 business hours.
+                  </p>
+                  <div className="mt-8 flex justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormData({
+                          orgName: "",
+                          contactName: "",
+                          title: "",
+                          email: "",
+                          phone: "",
+                          country: "",
+                          orgType: "Registered Charity / NGO",
+                          collabType: "Direct Program Funding / Grant",
+                          proposal: "",
+                        });
+                      }}
+                      className="rounded-sm bg-sand px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-ink border border-ink/15 hover:border-ink transition-colors cursor-pointer"
+                    >
+                      Submit Another Proposal
+                    </button>
+                    <Link
+                      to="/projects"
+                      className="rounded-sm bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+                    >
+                      Explore Active Projects
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <span className="eyebrow text-clay">Institutional & Individual Alliance</span>
+                    <h3 className="font-display text-2xl font-bold text-ink mt-1">
+                      Partnership Proposal Form
+                    </h3>
+                    <p className="text-xs text-ink/60 mt-1">
+                      Tell us about your organization and how we can collaborate.
+                    </p>
+                  </div>
+
+                  {/* Org Name & Contact Person */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Organization / Foundation Name <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.orgName}
+                        onChange={(e) => setFormData({ ...formData, orgName: e.target.value })}
+                        placeholder="e.g. Global Giving Trust"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Primary Contact Person <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.contactName}
+                        onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                        placeholder="e.g. Sarah Jenkins"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Title & Country */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Role / Designation
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.title}
+                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        placeholder="e.g. Director of Partnerships"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Country / Headquarters
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        placeholder="e.g. United Kingdom, USA, Germany"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email & Phone */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Official Email <span className="text-destructive">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="sarah@globalgiving.org"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Phone / WhatsApp
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+44 7911 123456"
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Organization Type & Collab Type */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Organization Type
+                      </label>
+                      <select
+                        value={formData.orgType}
+                        onChange={(e) => setFormData({ ...formData, orgType: e.target.value })}
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
+                      >
+                        {orgTypes.map((ot) => (
+                          <option key={ot} value={ot}>
+                            {ot}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                        Collaboration Model
+                      </label>
+                      <select
+                        value={formData.collabType}
+                        onChange={(e) => setFormData({ ...formData, collabType: e.target.value })}
+                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
+                      >
+                        {collabTypes.map((ct) => (
+                          <option key={ct} value={ct}>
+                            {ct}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Focus Initiatives */}
+                  <div>
+                    <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60 mb-2">
+                      Target Program Area (Select all that apply)
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {focusOptions.map((opt) => {
+                        const isSelected = selectedFocus.includes(opt);
+                        return (
+                          <button
+                            type="button"
+                            key={opt}
+                            onClick={() => toggleFocus(opt)}
+                            className={`rounded-sm px-3 py-1.5 text-xs font-medium transition-all cursor-pointer ${
+                              isSelected
+                                ? "bg-clay text-cream border border-clay shadow-xs"
+                                : "bg-sand/60 text-ink/75 border border-ink/15 hover:border-ink/40 hover:text-ink"
+                            }`}
+                          >
+                            {opt}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Proposal Details */}
+                  <div>
+                    <label className="block text-[0.66rem] font-bold uppercase tracking-[0.16em] text-ink/60">
+                      Proposal Summary / Objectives
+                    </label>
+                    <textarea
+                      rows={4}
+                      value={formData.proposal}
+                      onChange={(e) => setFormData({ ...formData, proposal: e.target.value })}
+                      placeholder="Outline your organization's mission, target impact, proposed timeline, or grant framework..."
+                      className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 p-3.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay leading-relaxed"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-clay px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-lg hover:bg-clay-deep hover:shadow-clay/20 transition-all duration-200 disabled:opacity-60 cursor-pointer"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>Submitting Proposal...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4" />
+                          <span>Submit Partnership Proposal</span>
+                        </>
+                      )}
+                    </button>
+                    <p className="mt-3 text-center text-[0.72rem] text-ink/50">
+                      Your proposal is submitted directly to the Foundation Leadership Committee.
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

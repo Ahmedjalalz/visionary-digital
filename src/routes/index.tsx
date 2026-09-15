@@ -202,7 +202,7 @@ function ProjectsRail() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-xs bg-ink p-6 sm:p-7 text-cream transition-transform duration-300 hover:shadow-lg aspect-[16/10] md:aspect-auto"
           >
             <div className="relative z-10">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay-bright">
                 Complete Field Directory
               </span>
               <h3 className="mt-3 font-display text-xl font-bold text-cream sm:text-2xl">
@@ -212,7 +212,7 @@ function ProjectsRail() {
                 From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
               </p>
             </div>
-            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-3 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay transition-colors">
+            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-3 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay-bright transition-colors">
               <span>View full directory</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
@@ -379,27 +379,31 @@ function Story() {
   const reduce = useReducedMotion();
 
   return (
-    <section ref={ref} className="relative h-[80svh] min-h-[500px] overflow-hidden bg-background">
+    <section ref={ref} className="relative h-[82svh] min-h-[520px] overflow-hidden bg-background">
       <ParallaxImage
         src={foundationMedia.widowsFoodRations}
         alt="EFL team delivering essential food rations and family welfare support"
-        className="absolute inset-0 -scale-x-100 [transform:scaleX(-1)]"
-        strength={60}
-        scaleFrom={1.1}
+        className="absolute inset-0"
+        imgClassName="object-[63%_32%]"
+        strength={16}
+        scaleFrom={1.04}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-ink/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-ink/20" />
 
       <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-12 sm:px-8 sm:py-16">
         <motion.div
           style={reduce ? {} : { x: quoteX }}
-          className="w-full max-w-xl bg-ink/75 p-7 backdrop-blur-md sm:p-9"
+          className="w-full max-w-2xl border-l-4 border-clay-bright bg-ink/85 p-8 backdrop-blur-md sm:p-10 shadow-2xl"
         >
-          <span className="eyebrow">One story</span>
-          <p className="mt-2 font-display text-lg font-bold tracking-tight text-cream">
+          <div className="flex items-center gap-2.5">
+            <span className="h-2 w-2 rounded-full bg-clay-bright shadow-xs" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright">One Story</span>
+          </div>
+          <p className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-cream">
             Nasreen — Lahore
           </p>
-          <p className="text-xs text-cream/55">Widows Welfare Program</p>
-          <blockquote className="mt-5 font-serif text-2xl italic leading-snug text-cream sm:text-3xl">
+          <p className="text-xs sm:text-sm font-medium text-cream/75">Widows Welfare Program</p>
+          <blockquote className="mt-6 font-serif text-3xl sm:text-4xl lg:text-[2.65rem] lg:leading-[1.18] italic text-cream">
             “They did not ask me to prove I was poor. They asked what my children needed.”
           </blockquote>
         </motion.div>

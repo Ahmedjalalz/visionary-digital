@@ -29,7 +29,7 @@ function parseSiabHtml(html: string, id: string): TrackedBag | null {
 
   const match = (regex: RegExp): string | null => {
     const m = html.match(regex);
-    return m ? m[1].replace(/<[^>]*>/g, "").trim() : null;
+    return m && m[1] ? m[1].replace(/<[^>]*>/g, "").trim() : null;
   };
 
   // Check if Bag Number or heading exists

@@ -67,8 +67,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-health",
-    projectSlug: "health-care-program",
-    projectName: "Health Care Program",
+    projectSlug: "health-wash-community-wellbeing",
+    projectName: "Health, WASH & Community Wellbeing",
     category: "Healthcare & Maternity",
     name: "Ghulam Rasool",
     role: "Patient & Village Elder (Age 68)",
@@ -80,8 +80,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-wash",
-    projectSlug: "wash-improvement",
-    projectName: "WASH Improvement Project",
+    projectSlug: "health-wash-community-wellbeing",
+    projectName: "Health, WASH & Community Wellbeing",
     category: "Healthcare & Maternity",
     name: "Surraiya Manzoor",
     role: "Primary School Administrator",

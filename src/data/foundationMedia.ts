@@ -17,7 +17,7 @@ import schoolUniforms from "@/assets/official-local/school-uniforms.jpg";
 import bagsCeremony from "@/assets/official-local/bags-ceremony.jpg";
 import healthCampDoctor from "@/assets/official-local/health-camp-doctor.jpg";
 import clinicBanner from "@/assets/official-local/clinic-banner.jpg";
-import widowsFoodRations from "@/assets/official-local/widows-rations.jpg";
+import widowsFoodRations from "@/assets/official-local/widows-rations-flipped.jpg";
 import skillsSewingMachine from "@/assets/official-local/skills-sewing.jpg";
 import officialLogo from "@/assets/official-local/logo.png";
 import officialEmblem from "@/assets/official-local/emblem.png";

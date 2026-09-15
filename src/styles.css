@@ -25,6 +25,7 @@
   --color-ink: var(--ink);
   --color-cream: var(--cream);
   --color-clay: var(--clay);
+  --color-clay-bright: var(--clay-bright);
   --color-clay-deep: var(--clay-deep);
   --color-moss: var(--moss);
   --color-sand: var(--sand);
@@ -68,6 +69,7 @@
   --cream: oklch(1 0 0);
   --sand: oklch(0.975 0.008 255);
   --clay: oklch(0.368 0.139 261);
+  --clay-bright: oklch(0.76 0.14 248);
   --clay-deep: oklch(0.368 0.139 261);
   --moss: oklch(0.51 0.125 255);
 
@@ -209,6 +211,12 @@
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--clay);
+}
+
+.bg-ink .eyebrow,
+[class*="bg-ink"] .eyebrow,
+.text-cream .eyebrow {
+  color: var(--clay-bright);
 }
 
 @utility lede {
