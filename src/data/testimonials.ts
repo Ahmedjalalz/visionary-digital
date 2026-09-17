@@ -93,8 +93,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-pregnancy",
-    projectSlug: "pregnancy-support-pakistan",
-    projectName: "Pregnancy Support: Pakistan",
+    projectSlug: "health-wash-community-wellbeing",
+    projectName: "Health, WASH & Community Wellbeing",
     category: "Healthcare & Maternity",
     name: "Kainat Zahra",
     role: "Young Mother",

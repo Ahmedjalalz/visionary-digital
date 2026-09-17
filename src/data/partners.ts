@@ -52,7 +52,7 @@ export const partners: Partner[] = [
     logo: womenAndGirls,
     focus: "Maternal Health & Female Empowerment",
     role: "Maternal Health & Midwife Kit Sponsor",
-    collaborations: ["midwifery-program", "pregnancy-support-pakistan"],
+    collaborations: ["midwifery-program", "health-wash-community-wellbeing"],
   },
   {
     id: "barnabas-aid",
@@ -152,6 +152,6 @@ export const partners: Partner[] = [
     logo: consistentLife,
     focus: "Holistic Protection of Life & Welfare",
     role: "Maternity & Newborn Care Advocacy",
-    collaborations: ["pregnancy-support-pakistan", "midwifery-program"],
+    collaborations: ["health-wash-community-wellbeing", "midwifery-program"],
   },
 ];

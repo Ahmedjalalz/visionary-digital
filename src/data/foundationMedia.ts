@@ -1,5 +1,3 @@
-import cleanWaterPump from "@/assets/field/clean-water-pump.jpg";
-import maternalClinic from "@/assets/field/maternal-clinic.jpg";
 import emergencyRelief from "@/assets/field/emergency-relief.jpg";
 import digitalSkillsLab from "@/assets/field/digital-skills-lab.jpg";
 import chairpersonPortrait from "@/assets/field/chairperson.jpg";
@@ -8,9 +6,13 @@ import communityLeadPortrait from "@/assets/field/community-lead.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import projectDigital from "@/assets/project-digital.jpg";
 import projectEducation from "@/assets/project-education.jpg";
-import projectHealth from "@/assets/project-health.jpg";
-import projectWash from "@/assets/project-wash.jpg";
 import projectWidows from "@/assets/project-widows.jpg";
+import washHandPump from "@/assets/projects/wash-hand-pump.jpg";
+import washSchoolHygiene from "@/assets/projects/wash-school-hygiene.jpg";
+import washSoapDistribution from "@/assets/projects/wash-soap-distribution.jpg";
+import maternalLhvConsultation from "@/assets/projects/maternal-lhv-consultation.jpg";
+import maternalEflCare from "@/assets/projects/maternal-efl-care.jpg";
+import maternalAntenatalCheckup from "@/assets/projects/maternal-antenatal-checkup.jpg";
 import schoolStudents from "@/assets/official-local/school-students.jpg";
 import classroomDesks from "@/assets/official-local/classroom-desks.jpg";
 import schoolUniforms from "@/assets/official-local/school-uniforms.jpg";
@@ -42,8 +44,14 @@ export const foundationMedia = {
   musicConcertHall: "https://static.wixstatic.com/media/97679f_3180a75f30a54df89f691b5c97d08ee1f000.jpg/v1/fill/w_1960,h_674,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/97679f_3180a75f30a54df89f691b5c97d08ee1f000.jpg",
 
   // High-Resolution Authentic Field Photography & Portraits
-  cleanWaterPump,
-  maternalClinic,
+  cleanWaterPump: washHandPump,
+  maternalClinic: maternalAntenatalCheckup,
+  washHandPump,
+  washSchoolHygiene,
+  washSoapDistribution,
+  maternalLhvConsultation,
+  maternalEflCare,
+  maternalAntenatalCheckup,
   emergencyRelief,
   digitalSkillsLab,
   chairpersonPortrait,
@@ -52,8 +60,8 @@ export const foundationMedia = {
   heroCommunity,
   projectDigital,
   projectEducation,
-  projectHealth,
-  projectWash,
+  projectHealth: washSchoolHygiene,
+  projectWash: washHandPump,
   projectWidows,
 };
 

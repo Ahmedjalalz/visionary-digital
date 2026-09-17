@@ -2,9 +2,11 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import {
   Activity,
   ArrowUpRight,
+  Baby,
   Droplets,
   HeartPulse,
   Music,
+  Pill,
   ShieldCheck,
   Sparkles,
   Stethoscope,
@@ -18,7 +20,14 @@ import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
-    if (params.slug === "health-care-program" || params.slug === "wash-improvement") {
+    const healthWashAliases = [
+      "health-care-program",
+      "wash-improvement",
+      "pregnancy-support",
+      "pregnancy-support-pakistan",
+      "pregnancy-support-program",
+    ];
+    if (healthWashAliases.includes(params.slug)) {
       throw redirect({ to: "/projects/$slug", params: { slug: "health-wash-community-wellbeing" } });
     }
     const schoolBagAliases = [
@@ -215,16 +224,32 @@ function ProjectPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-12">
-            {project.gallery.map((image, index) => (
-              <figure key={image} className={`group relative overflow-hidden bg-muted ${index === 0 ? "aspect-[16/10] sm:col-span-8" : "aspect-[4/3] sm:col-span-4"}`}>
-                <img
-                  src={image}
-                  alt={`${project.name} field work ${index + 1}`}
-                  loading="lazy"
-                  className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-center"} transition-transform duration-700 group-hover:scale-[1.035]`}
-                />
-              </figure>
-            ))}
+            {project.gallery.map((image, index) => {
+              const total = project.gallery.length;
+              let spanClass = "sm:col-span-4 aspect-[4/3]";
+              if (total === 8) {
+                spanClass = index < 2 ? "sm:col-span-6 aspect-[16/10]" : "sm:col-span-4 aspect-[4/3]";
+              } else if (total === 4) {
+                spanClass = "sm:col-span-6 aspect-[16/10]";
+              } else if (total === 5) {
+                spanClass = index < 2 ? "sm:col-span-6 aspect-[16/10]" : "sm:col-span-4 aspect-[4/3]";
+              } else if (total === 3 || total === 6) {
+                spanClass = "sm:col-span-4 aspect-[4/3]";
+              } else if (total === 2) {
+                spanClass = "sm:col-span-6 aspect-[16/10]";
+              }
+
+              return (
+                <figure key={image} className={`group relative overflow-hidden bg-muted ${spanClass}`}>
+                  <img
+                    src={image}
+                    alt={`${project.name} field work ${index + 1}`}
+                    loading="lazy"
+                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-center"} transition-transform duration-700 group-hover:scale-[1.035]`}
+                  />
+                </figure>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -346,17 +371,237 @@ function ProjectPage() {
       )}
 
       {project.slug === "health-wash-community-wellbeing" && (
-        <section className="border-y border-ink/10 bg-sand/40 px-5 py-24 sm:px-8">
+        <>
+          {/* ── dedicated pregnant women support section ── */}
+          <section className="border-y border-ink/10 bg-sand/30 px-5 py-24 sm:px-8 sm:py-28">
+            <div className="mx-auto max-w-[1600px]">
+              {/* Eyebrow & Headline */}
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-clay">
+                  <Baby className="h-4 w-4" />
+                  Dedicated Initiative · Safe Motherhood & Maternal Dignity
+                </div>
+                <h2 className="display-md mt-5 text-ink">
+                  Pregnant Women Support: Saving Mothers & Newborns
+                </h2>
+                <p className="lede mt-5 text-ink/75">
+                  In rural Pakistan and displaced communities where hospitals are hours away, pregnancy carries immense danger. Education And Life Foundation deploys certified Lady Health Visitors, clinical antenatal diagnostics, life-saving micronutrients, and safe birth delivery kits to ensure no mother faces childbirth in isolation.
+                </p>
+              </div>
+
+              {/* The Problem Statement with the BIG NUMBER */}
+              <div className="mt-14 rounded-sm border border-clay/25 bg-background p-8 sm:p-12 shadow-sm">
+                <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+                  <div className="lg:col-span-5">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay">
+                      Maternal Health Emergency
+                    </span>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-x-4">
+                      <span className="numeral text-[18vw] leading-[0.78] sm:text-[7.5rem] font-bold text-clay">
+                        27
+                      </span>
+                      <span className="font-display text-2xl sm:text-3xl font-bold uppercase leading-tight text-ink">
+                        Mothers Every Day
+                      </span>
+                    </div>
+                    <p className="mt-3 text-xs uppercase tracking-[0.16em] text-ink/50">
+                      Source: WHO, UNICEF & UNFPA Maternal Mortality Global Estimates
+                    </p>
+                  </div>
+                  <div className="lg:col-span-7 lg:border-l lg:border-ink/10 lg:pl-10">
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold leading-tight text-ink">
+                      27 mothers and 675 newborns lose their lives every single day in Pakistan to preventable pregnancy and childbirth complications.
+                    </h3>
+                    <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink/75">
+                      That is <strong>one mother dying every 50 minutes</strong> — claiming over <strong>11,000 women each year</strong>. In remote districts and informal settlements, maternal mortality reaches twice the urban rate because expectant mothers lack basic antenatal screening, iron supplements to fight chronic anaemia, and emergency obstetric care.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 4 Supporting Research Metric Cards */}
+                <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-ink/10 pt-8">
+                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">11,000</div>
+                    <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Annual Maternal Deaths</div>
+                    <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                      Pakistan accounts for over 4.1% of the entire global burden of maternal mortality (WHO).
+                    </p>
+                  </div>
+                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">44.3%</div>
+                    <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Rural Maternal Anaemia</div>
+                    <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                      Severe micronutrient deficiency creating critical risk of fatal postpartum hemorrhage (NNS).
+                    </p>
+                  </div>
+                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">51%</div>
+                    <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Unscreened Pregnancies</div>
+                    <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                      Rural mothers receiving zero or inadequate antenatal checks, leaving preeclampsia undetected (PDHS).
+                    </p>
+                  </div>
+                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">1 in 89</div>
+                    <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Lifetime Maternal Risk</div>
+                    <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                      Lifetime risk of maternal death for Pakistani women, vs. 1 in 4,900 in high-income nations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* EFL's 4-Tier Pregnancy Intervention Model */}
+              <div className="mt-16 sm:mt-20">
+                <div className="max-w-2xl">
+                  <span className="eyebrow">Our Ground Intervention</span>
+                  <h3 className="display-sm mt-3 text-ink">How EFL Protects Expectant Mothers</h3>
+                  <p className="mt-3 text-sm sm:text-base text-ink/70">
+                    By bringing clinical care and trained female health workers directly to rural courtyards and field tents, we eliminate the distance and financial barriers that cost mothers their lives.
+                  </p>
+                </div>
+
+                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {[
+                    {
+                      step: "01",
+                      title: "Antenatal Clinical Check-ups",
+                      icon: Stethoscope,
+                      desc: "Clinical blood pressure monitoring, fetal heart rate tracking, gestational screening, and preeclampsia triage in local medical tents.",
+                    },
+                    {
+                      step: "02",
+                      title: "Prenatal Iron & Micronutrients",
+                      icon: Pill,
+                      desc: "Full-course supplies of iron, folic acid, and calcium provided 100% free to eliminate gestational anaemia and prevent neural tube defects.",
+                    },
+                    {
+                      step: "03",
+                      title: "Doorstep Lady Health Visitors",
+                      icon: HeartPulse,
+                      desc: "Qualified female healthcare workers conducting home visits on charpais for private consultations, birth planning, and hygiene education.",
+                    },
+                    {
+                      step: "04",
+                      title: "Infant Nutrition & Clean Delivery",
+                      icon: Baby,
+                      desc: "Sterile delivery kits, Lactogen infant formula for vulnerable newborns, feeding bottles, postpartum pads, and emergency transport funds.",
+                    },
+                  ].map((tier) => {
+                    const Icon = tier.icon;
+                    return (
+                      <div
+                        key={tier.step}
+                        className="flex flex-col justify-between rounded-sm border border-ink/10 bg-background p-6 transition-all duration-300 hover:border-clay/40 hover:shadow-sm"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="numeral text-sm font-bold text-clay">{tier.step}</span>
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-clay/10 text-clay">
+                              <Icon className="h-4 w-4" />
+                            </div>
+                          </div>
+                          <h4 className="mt-4 font-display text-lg font-bold text-ink">{tier.title}</h4>
+                          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-ink/70">{tier.desc}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Photographic Showcase Cards */}
+              <div className="mt-16 sm:mt-20">
+                <span className="eyebrow">On the Ground</span>
+                <h3 className="display-sm mt-3 text-ink">Field Care in Action</h3>
+                <div className="mt-8 grid gap-6 sm:grid-cols-3">
+                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                      <img
+                        src={foundationMedia.maternalAntenatalCheckup}
+                        alt="Clinical Antenatal Checkup"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Clinical Care</span>
+                      <h4 className="font-display text-base font-bold text-ink mt-1">Antenatal Screening in Medical Tents</h4>
+                      <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                        Physicians and nurses measuring blood pressure and monitoring vitals of expectant mothers to prevent maternal hypertension and preeclampsia.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                      <img
+                        src={foundationMedia.maternalLhvConsultation}
+                        alt="Lady Health Visitor Home Consultation"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Community Outreach</span>
+                      <h4 className="font-display text-base font-bold text-ink mt-1">Doorstep Lady Health Visitor Care</h4>
+                      <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                        Certified health workers visiting families directly in village courtyards, providing compassionate consultations, medicine, and newborn checks on charpais.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                      <img
+                        src={foundationMedia.maternalEflCare}
+                        alt="EFL Nutrition Support and Infant Formula"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Newborn Nutrition</span>
+                      <h4 className="font-display text-base font-bold text-ink mt-1">Infant Formula & Postpartum Aid</h4>
+                      <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                        EFL volunteers distributing high-grade infant formula (Lactogen), safe feeding bottles, and maternal supplements to prevent infant malnourishment.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Direct Action Callout */}
+                <div className="mt-10 flex flex-wrap items-center justify-between gap-6 rounded-sm border border-clay/30 bg-clay/5 p-6 sm:p-8">
+                  <div>
+                    <h4 className="font-display text-xl font-bold text-ink">Support a Mother Through Safe Childbirth</h4>
+                    <p className="mt-1 text-xs sm:text-sm text-ink/70 max-w-xl">
+                      Your sponsorship funds a full package of prenatal micronutrients, Lady Health Visitor home consultations, clean birth delivery essentials, and emergency medical referral coverage.
+                    </p>
+                  </div>
+                  <Link
+                    to="/donate"
+                    search={{ project: "health-wash-community-wellbeing" }}
+                    className="bg-clay px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground hover:bg-clay-deep transition-colors"
+                  >
+                    Sponsor Maternal Care
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── six pillars section ── */}
+          <section className="border-b border-ink/10 bg-sand/40 px-5 py-24 sm:px-8">
           <div className="mx-auto max-w-[1600px]">
             <div className="max-w-3xl">
-              <span className="eyebrow">Integrated Health & WASH Framework</span>
+              <span className="eyebrow">Integrated Health, WASH & Maternal Framework</span>
               <h2 className="display-md mt-4 text-ink">
                 Six Pillars of Community Dignity & Wellbeing
               </h2>
               <p className="lede mt-5">
-                Education And Life Foundation unites clinical medical care with essential WASH initiatives.
-                By bridging direct clinical intervention, safe water infrastructure, hygiene awareness, and
-                dignified sanitation, we target preventative and curative health in Punjab&apos;s most underserved areas.
+                Education And Life Foundation unites clinical medical care, pregnancy support, and essential WASH initiatives.
+                By bridging direct clinical intervention, antenatal & postnatal monitoring, safe water infrastructure, hygiene awareness, and
+                dignified sanitation, we target preventative and curative health across Pakistan&apos;s most underserved areas.
               </p>
             </div>
 
@@ -400,14 +645,14 @@ function ProjectPage() {
                 },
                 {
                   num: "04",
-                  tag: "Women's Health",
-                  title: "Maternal Health & Menstrual Dignity",
+                  tag: "Maternal & Pregnancy",
+                  title: "Pregnancy Support & Maternal Dignity",
                   icon: HeartPulse,
-                  desc: "Providing women-led health education, safe menstrual hygiene kits, maternal care counsel, and confidential doctor consultations without social stigma.",
+                  desc: "Providing prenatal vitamins, iron supplementation, Lady Health Visitor antenatal consultations, postpartum follow-up, and safe menstrual hygiene education.",
                   points: [
-                    "Hygienic menstrual product distribution",
-                    "Reproductive health education",
-                    "Private doctor consultations",
+                    "Antenatal check-ups & postpartum monitoring",
+                    "Prenatal vitamin & iron distribution",
+                    "Confidential doctor consultations & hygiene kits",
                   ],
                 },
                 {
@@ -475,7 +720,8 @@ function ProjectPage() {
             </div>
           </div>
         </section>
-      )}
+      </>
+    )}
 
       {project.layout === "data" && (
         <section className="px-5 py-24 sm:px-8">
