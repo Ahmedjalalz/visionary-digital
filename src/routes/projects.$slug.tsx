@@ -21,10 +21,39 @@ export const Route = createFileRoute("/projects/$slug")({
     if (params.slug === "health-care-program" || params.slug === "wash-improvement") {
       throw redirect({ to: "/projects/$slug", params: { slug: "health-wash-community-wellbeing" } });
     }
+    const schoolBagAliases = [
+      "school-bag-distribution",
+      "school-bags-distribution",
+      "school-bag-distribution-program",
+      "school-bags-distribution-program",
+      "school-bag",
+      "schoolbag",
+      "schoolbags",
+    ];
+    if (schoolBagAliases.includes(params.slug)) {
+      throw redirect({ to: "/projects/$slug", params: { slug: "school-bags" } });
+    }
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
   },
+  notFoundComponent: () => (
+    <div className="flex min-h-[65vh] flex-col items-center justify-center px-4 text-center">
+      <span className="eyebrow text-clay">Programme Directory</span>
+      <h1 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-ink">
+        Project Not Found
+      </h1>
+      <p className="mt-3 max-w-md text-sm text-ink/70">
+        The requested programme could not be found or may have been relocated.
+      </p>
+      <Link
+        to="/projects"
+        className="mt-6 inline-flex items-center justify-center rounded-md bg-clay px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-clay-deep"
+      >
+        View All Programmes
+      </Link>
+    </div>
+  ),
   head: ({ loaderData }) => {
     if (!loaderData) {
       return { meta: [{ title: "Project not found — EFL" }, { name: "robots", content: "noindex" }] };

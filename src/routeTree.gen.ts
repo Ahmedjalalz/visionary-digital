@@ -16,6 +16,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as SchoolBagDistributionRouteImport } from './routes/school-bag-distribution'
+import { Route as SchoolBagsRouteImport } from './routes/school-bags'
 import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
@@ -55,6 +57,16 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchoolBagDistributionRoute = SchoolBagDistributionRouteImport.update({
+  id: '/school-bag-distribution',
+  path: '/school-bag-distribution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchoolBagsRoute = SchoolBagsRouteImport.update({
+  id: '/school-bags',
+  path: '/school-bags',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BagTrackingIdRoute = BagTrackingIdRouteImport.update({
   id: '/bag/$trackingId',
   path: '/bag/$trackingId',
@@ -79,6 +91,8 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/school-bag-distribution': typeof SchoolBagDistributionRoute
+  '/school-bags': typeof SchoolBagsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -91,6 +105,8 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/school-bag-distribution': typeof SchoolBagDistributionRoute
+  '/school-bags': typeof SchoolBagsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
@@ -104,6 +120,8 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/school-bag-distribution': typeof SchoolBagDistributionRoute
+  '/school-bags': typeof SchoolBagsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -118,6 +136,8 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/news'
+    | '/school-bag-distribution'
+    | '/school-bags'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -130,6 +150,8 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/news'
+    | '/school-bag-distribution'
+    | '/school-bags'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects'
@@ -142,6 +164,8 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/news'
+    | '/school-bag-distribution'
+    | '/school-bags'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -155,6 +179,8 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRoute
+  SchoolBagDistributionRoute: typeof SchoolBagDistributionRoute
+  SchoolBagsRoute: typeof SchoolBagsRoute
   BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -211,6 +237,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/school-bag-distribution': {
+      id: '/school-bag-distribution'
+      path: '/school-bag-distribution'
+      fullPath: '/school-bag-distribution'
+      preLoaderRoute: typeof SchoolBagDistributionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/school-bags': {
+      id: '/school-bags'
+      path: '/school-bags'
+      fullPath: '/school-bags'
+      preLoaderRoute: typeof SchoolBagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bag/$trackingId': {
       id: '/bag/$trackingId'
       path: '/bag/$trackingId'
@@ -243,6 +283,8 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   ImpactRoute: ImpactRoute,
   NewsRoute: NewsRoute,
+  SchoolBagDistributionRoute: SchoolBagDistributionRoute,
+  SchoolBagsRoute: SchoolBagsRoute,
   BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
