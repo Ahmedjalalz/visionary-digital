@@ -113,15 +113,17 @@ export function Counter({
   to,
   duration = 1800,
   className,
-  format = (n: number) => n.toLocaleString(),
+  decimals = 0,
+  format,
 }: {
   to: number;
   duration?: number;
   className?: string;
+  decimals?: number;
   format?: (n: number) => string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const reduce = useReducedMotion();
   const [value, setValue] = useState(0);
 
@@ -143,9 +145,21 @@ export function Counter({
     return () => cancelAnimationFrame(raf);
   }, [inView, to, duration, reduce]);
 
+  const defaultFormat = (n: number) => {
+    if (decimals > 0) {
+      return n.toLocaleString(undefined, {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      });
+    }
+    return Math.round(n).toLocaleString();
+  };
+
+  const formatter = format ?? defaultFormat;
+
   return (
     <span ref={ref} className={className}>
-      {format(inView ? value : 0)}
+      {formatter(inView ? value : 0)}
     </span>
   );
 }

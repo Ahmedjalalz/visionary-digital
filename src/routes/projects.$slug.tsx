@@ -12,7 +12,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { getProject, projects } from "@/data/projects";
-import { MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
+import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
 import { SchoolMap } from "@/components/site/SchoolMap";
 import { BagTracker } from "@/components/site/BagTracker";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
@@ -135,7 +135,15 @@ function ProjectPage() {
           <span className="eyebrow">The problem</span>
           <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
             <span className={`numeral text-[17vw] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
-              {project.problem.figure}
+              {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
+                <Counter
+                  to={Number(project.problem.figure.replace(/,/g, ""))}
+                  decimals={project.problem.figure.includes(".") ? 1 : 0}
+                  duration={1600}
+                />
+              ) : (
+                project.problem.figure
+              )}
             </span>
             <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
               {project.problem.unit}
@@ -398,7 +406,7 @@ function ProjectPage() {
                     </span>
                     <div className="mt-4 flex flex-wrap items-baseline gap-x-4">
                       <span className="numeral text-[18vw] leading-[0.78] sm:text-[7.5rem] font-bold text-clay">
-                        27
+                        <Counter to={27} duration={1400} />
                       </span>
                       <span className="font-display text-2xl sm:text-3xl font-bold uppercase leading-tight text-ink">
                         Mothers Every Day
@@ -421,28 +429,36 @@ function ProjectPage() {
                 {/* 4 Supporting Research Metric Cards */}
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-ink/10 pt-8">
                   <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
-                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">11,000</div>
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
+                      <Counter to={11000} duration={1600} />
+                    </div>
                     <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Annual Maternal Deaths</div>
                     <p className="mt-2 text-xs leading-relaxed text-ink/70">
                       Pakistan accounts for over 4.1% of the entire global burden of maternal mortality (WHO).
                     </p>
                   </div>
                   <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
-                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">44.3%</div>
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
+                      <Counter to={44.3} decimals={1} duration={1500} />%
+                    </div>
                     <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Rural Maternal Anaemia</div>
                     <p className="mt-2 text-xs leading-relaxed text-ink/70">
                       Severe micronutrient deficiency creating critical risk of fatal postpartum hemorrhage (NNS).
                     </p>
                   </div>
                   <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
-                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">51%</div>
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
+                      <Counter to={51} duration={1500} />%
+                    </div>
                     <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Unscreened Pregnancies</div>
                     <p className="mt-2 text-xs leading-relaxed text-ink/70">
                       Rural mothers receiving zero or inadequate antenatal checks, leaving preeclampsia undetected (PDHS).
                     </p>
                   </div>
                   <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
-                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">1 in 89</div>
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
+                      1 in <Counter to={89} duration={1500} />
+                    </div>
                     <div className="mt-1.5 text-xs font-bold uppercase tracking-wider text-clay">Lifetime Maternal Risk</div>
                     <p className="mt-2 text-xs leading-relaxed text-ink/70">
                       Lifetime risk of maternal death for Pakistani women, vs. 1 in 4,900 in high-income nations.
