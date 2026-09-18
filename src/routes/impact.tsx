@@ -89,12 +89,12 @@ function TestimonialCard({
   return (
     <div
       onClick={onSelect}
-      className={`group relative flex flex-col justify-between rounded-sm border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 select-none cursor-pointer ${className}`}
+      className={`group relative flex flex-col justify-between rounded-2xl border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 select-none cursor-pointer ${className}`}
     >
       <div>
         {/* Header: Category Badge & Project Link */}
         <div className="flex items-center justify-between gap-3 border-b border-ink/8 pb-3.5">
-          <span className="rounded bg-sand px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-clay">
+          <span className="rounded-full bg-sand px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-clay">
             {t.category}
           </span>
           <div className="flex items-center gap-2.5">
@@ -128,7 +128,7 @@ function TestimonialCard({
         </p>
 
         {/* Impact highlight pill */}
-        <div className="mt-4 flex items-center gap-2 rounded bg-clay/5 px-3 py-2 border border-clay/15">
+        <div className="mt-4 flex items-center gap-2 rounded-xl bg-clay/5 px-3.5 py-2 border border-clay/15">
           <CheckCircle2 className="h-4 w-4 shrink-0 text-clay" />
           <span className="text-xs font-semibold text-clay-deep leading-tight">
             {t.impactHighlight}
@@ -552,12 +552,12 @@ function ImpactPage() {
             open={!!selectedTestimonial}
             onOpenChange={(open) => !open && setSelectedTestimonial(null)}
           >
-            <DialogContent className="max-w-2xl bg-sand/98 p-6 sm:p-9 border border-ink/15 backdrop-blur-md">
+            <DialogContent className="max-w-2xl rounded-2xl bg-sand/98 p-6 sm:p-9 border border-ink/15 backdrop-blur-md shadow-2xl">
               {selectedTestimonial && (
                 <div>
                   {/* Category & Verified Badge */}
                   <div className="flex items-center justify-between border-b border-ink/10 pb-4">
-                    <span className="rounded bg-clay/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-clay">
+                    <span className="rounded-full bg-clay/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-clay">
                       {selectedTestimonial.category}
                     </span>
                     <span className="flex items-center gap-1.5 text-xs font-mono text-ink/60">
@@ -575,7 +575,7 @@ function ImpactPage() {
                   </blockquote>
 
                   {/* Highlight Pill */}
-                  <div className="mt-6 flex items-center gap-2.5 rounded-sm bg-clay/10 p-3.5 border border-clay/20">
+                  <div className="mt-6 flex items-center gap-2.5 rounded-xl bg-clay/10 p-3.5 border border-clay/20 shadow-2xs">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-clay" />
                     <span className="text-sm font-semibold text-clay-deep">
                       {selectedTestimonial.impactHighlight}
@@ -613,7 +613,7 @@ function ImpactPage() {
                       to="/projects/$slug"
                       params={{ slug: selectedTestimonial.projectSlug }}
                       onClick={() => setSelectedTestimonial(null)}
-                      className="inline-flex items-center gap-2 border border-ink/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:border-ink transition-colors"
+                      className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:border-ink transition-colors shadow-xs"
                     >
                       <span>Explore Project</span>
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -621,7 +621,7 @@ function ImpactPage() {
                     <Link
                       to="/donate"
                       onClick={() => setSelectedTestimonial(null)}
-                      className="inline-flex items-center gap-2 bg-clay px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+                      className="inline-flex items-center gap-2 rounded-full bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors shadow-xs"
                     >
                       <span>Support this Cause</span>
                     </Link>
@@ -682,11 +682,11 @@ function ImpactPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: index * 0.03 }}
-                  className="group flex flex-col justify-between rounded-sm border border-ink/10 bg-sand/20 p-6 hover:bg-sand/60 hover:border-clay/40 transition-all hover:shadow-md"
+                  className="group flex flex-col justify-between rounded-2xl border border-ink/10 bg-sand/20 p-6 shadow-xs hover:bg-sand/40 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div>
                     {/* Logo container */}
-                    <div className="flex h-20 items-center justify-center rounded bg-white p-4 border border-ink/8 shadow-xs">
+                    <div className="flex h-20 items-center justify-center rounded-xl bg-white p-4 border border-ink/8 shadow-2xs">
                       <img
                         src={p.logo}
                         alt={p.name}
@@ -696,7 +696,7 @@ function ImpactPage() {
                     </div>
 
                     <div className="mt-5 flex items-center justify-between gap-2">
-                      <span className="rounded bg-clay/10 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-clay">
+                      <span className="rounded-full bg-clay/10 px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-clay">
                         {p.country}
                       </span>
                       <span className="text-[0.65rem] font-mono text-ink/40">
@@ -724,7 +724,7 @@ function ImpactPage() {
                           key={slug}
                           to="/projects/$slug"
                           params={{ slug }}
-                          className="rounded bg-background px-2 py-1 text-[0.65rem] font-medium text-ink/75 border border-ink/10 hover:border-clay hover:text-clay transition-colors"
+                          className="rounded-full bg-background px-2.5 py-1 text-[0.65rem] font-medium text-ink/75 border border-ink/10 hover:border-clay hover:text-clay transition-colors shadow-2xs"
                         >
                           {slug.replace(/-/g, " ")}
                         </Link>
@@ -737,7 +737,7 @@ function ImpactPage() {
           </motion.div>
 
           {/* Join Coalition Callout */}
-          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-sm border border-clay/30 bg-sand/60 p-6 sm:p-8">
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-2xl border border-clay/30 bg-sand/60 p-6 sm:p-8 shadow-xs">
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-clay text-cream">
                 <Handshake className="h-6 w-6" />
@@ -753,7 +753,7 @@ function ImpactPage() {
             </div>
             <a
               href="#partner-form"
-              className="shrink-0 inline-flex items-center gap-2 rounded-sm bg-clay px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-clay px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors shadow-xs"
             >
               <span>Submit Partnership Form</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -779,7 +779,7 @@ function ImpactPage() {
             </div>
 
             <div className="lg:col-span-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm border border-white/15 shadow-xs">
                 <div className="numeral text-3xl font-extrabold text-cream">0%</div>
                 <div className="mt-2 font-display text-base font-bold text-cream">Zero Platform Cuts</div>
                 <p className="mt-2 text-xs text-cream/80 leading-relaxed">
@@ -787,7 +787,7 @@ function ImpactPage() {
                 </p>
               </div>
 
-              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm border border-white/15 shadow-xs">
                 <div className="numeral text-3xl font-extrabold text-cream">100%</div>
                 <div className="mt-2 font-display text-base font-bold text-cream">Direct to Field</div>
                 <p className="mt-2 text-xs text-cream/80 leading-relaxed">
@@ -795,7 +795,7 @@ function ImpactPage() {
                 </p>
               </div>
 
-              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm border border-white/15 shadow-xs">
                 <div className="numeral text-3xl font-extrabold text-cream">100%</div>
                 <div className="mt-2 font-display text-base font-bold text-cream">Traceable Bags</div>
                 <p className="mt-2 text-xs text-cream/80 leading-relaxed">
@@ -803,7 +803,7 @@ function ImpactPage() {
                 </p>
               </div>
 
-              <div className="rounded bg-white/10 p-6 backdrop-blur-sm border border-white/15">
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm border border-white/15 shadow-xs">
                 <div className="numeral text-3xl font-extrabold text-cream">Annual</div>
                 <div className="mt-2 font-display text-base font-bold text-cream">Public Audits</div>
                 <p className="mt-2 text-xs text-cream/80 leading-relaxed">
@@ -832,19 +832,19 @@ function ImpactPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/donate"
-              className="bg-clay px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:bg-clay-deep transition-colors"
+              className="rounded-full bg-clay px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:bg-clay-deep transition-colors shadow-xs"
             >
               Support the work
             </Link>
             <Link
               to="/book"
-              className="border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink transition-colors"
+              className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink transition-colors shadow-xs"
             >
               Book a meeting with team
             </Link>
             <Link
               to="/projects"
-              className="border border-clay/40 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay hover:bg-clay/10 transition-colors"
+              className="rounded-full border border-clay/40 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay hover:bg-clay/10 transition-colors shadow-xs"
             >
               Explore all projects
             </Link>
@@ -1011,7 +1011,7 @@ ${formData.proposal.trim() || "No additional message provided."}
               </div>
             </div>
 
-            <div className="mt-10 rounded-sm border border-ink/10 bg-background p-6">
+            <div className="mt-10 rounded-2xl border border-ink/10 bg-background p-6 shadow-xs">
               <div className="text-xs font-bold uppercase tracking-[0.16em] text-clay">
                 Direct Enquiries & Meetings
               </div>
@@ -1021,14 +1021,14 @@ ${formData.proposal.trim() || "No additional message provided."}
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link
                   to="/book"
-                  className="inline-flex items-center gap-2 rounded-sm bg-clay px-4 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-cream hover:bg-clay-deep transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full bg-clay px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-cream hover:bg-clay-deep transition-colors shadow-xs"
                 >
                   <span>Book a Zoom Briefing</span>
                   <ArrowRight className="h-3 w-3" />
                 </Link>
                 <a
                   href="mailto:info@educationandlifefoundation.org"
-                  className="inline-flex items-center gap-2 rounded-sm border border-ink/20 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-ink hover:border-ink transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-ink hover:border-ink transition-colors shadow-xs"
                 >
                   <Mail className="h-3 w-3" />
                   <span>Email Team</span>
@@ -1039,7 +1039,7 @@ ${formData.proposal.trim() || "No additional message provided."}
 
           {/* Right Column: Interactive Proposal Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-sm border border-ink/10 bg-background p-6 sm:p-10 shadow-sm">
+            <div className="rounded-2xl border border-ink/10 bg-background p-6 sm:p-10 shadow-xs">
               {submitted ? (
                 <div className="py-12 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 text-clay">
@@ -1066,13 +1066,13 @@ ${formData.proposal.trim() || "No additional message provided."}
                           proposal: "",
                         });
                       }}
-                      className="rounded-sm bg-sand px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-ink border border-ink/15 hover:border-ink transition-colors cursor-pointer"
+                      className="rounded-full bg-sand px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-ink border border-ink/15 hover:border-ink transition-colors cursor-pointer shadow-xs"
                     >
                       Submit Another Proposal
                     </button>
                     <Link
                       to="/projects"
-                      className="rounded-sm bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors"
+                      className="rounded-full bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay-deep transition-colors shadow-xs"
                     >
                       Explore Active Projects
                     </Link>
@@ -1102,7 +1102,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.orgName}
                         onChange={(e) => setFormData({ ...formData, orgName: e.target.value })}
                         placeholder="e.g. Global Giving Trust"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                     <div>
@@ -1115,7 +1115,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.contactName}
                         onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                         placeholder="e.g. Sarah Jenkins"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                   </div>
@@ -1131,7 +1131,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         placeholder="e.g. Director of Partnerships"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                     <div>
@@ -1143,7 +1143,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.country}
                         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                         placeholder="e.g. United Kingdom, USA, Germany"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                   </div>
@@ -1160,7 +1160,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="sarah@globalgiving.org"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                     <div>
@@ -1172,7 +1172,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+44 7911 123456"
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay"
                       />
                     </div>
                   </div>
@@ -1186,7 +1186,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                       <select
                         value={formData.orgType}
                         onChange={(e) => setFormData({ ...formData, orgType: e.target.value })}
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
                       >
                         {orgTypes.map((ot) => (
                           <option key={ot} value={ot}>
@@ -1202,7 +1202,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                       <select
                         value={formData.collabType}
                         onChange={(e) => setFormData({ ...formData, collabType: e.target.value })}
-                        className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
+                        className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 px-3 py-2.5 text-sm text-ink focus:border-clay focus:bg-background focus:outline-none"
                       >
                         {collabTypes.map((ct) => (
                           <option key={ct} value={ct}>
@@ -1226,7 +1226,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                             type="button"
                             key={opt}
                             onClick={() => toggleFocus(opt)}
-                            className={`rounded-sm px-3 py-1.5 text-xs font-medium transition-all cursor-pointer ${
+                            className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all cursor-pointer ${
                               isSelected
                                 ? "bg-clay text-cream border border-clay shadow-xs"
                                 : "bg-sand/60 text-ink/75 border border-ink/15 hover:border-ink/40 hover:text-ink"
@@ -1249,7 +1249,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                       value={formData.proposal}
                       onChange={(e) => setFormData({ ...formData, proposal: e.target.value })}
                       placeholder="Outline your organization's mission, target impact, proposed timeline, or grant framework..."
-                      className="mt-1.5 w-full rounded-sm border border-ink/20 bg-sand/30 p-3.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay leading-relaxed"
+                      className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 p-3.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay leading-relaxed"
                     />
                   </div>
 
@@ -1258,7 +1258,7 @@ ${formData.proposal.trim() || "No additional message provided."}
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-clay px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-lg hover:bg-clay-deep hover:shadow-clay/20 transition-all duration-200 disabled:opacity-60 cursor-pointer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-xs hover:bg-clay-deep transition-all duration-200 disabled:opacity-60 cursor-pointer"
                     >
                       {loading ? (
                         <>

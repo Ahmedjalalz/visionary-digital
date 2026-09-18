@@ -24,7 +24,7 @@ export function SchoolBagShortcut() {
     >
       <button
         onClick={handleScrollToTracker}
-        className="group relative flex items-center gap-3.5 rounded-full border border-white/60 bg-white/60 py-2.5 pl-3 pr-4.5 shadow-[0_8px_32px_rgba(29,78,216,0.18),inset_0_1px_1px_rgba(255,255,255,0.85)] ring-1 ring-black/5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/75 hover:border-clay/40 hover:shadow-[0_12px_40px_rgba(29,78,216,0.26),inset_0_1px_1px_rgba(255,255,255,0.95)] active:scale-95"
+        className="group relative flex items-center gap-3.5 rounded-full border border-white/60 bg-white/60 py-2.5 pl-3 pr-4.5 shadow-[0_8px_32px_rgba(179,40,36,0.12),inset_0_1px_1px_rgba(255,255,255,0.85)] ring-1 ring-black/5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/75 hover:border-clay/40 hover:shadow-[0_12px_40px_rgba(179,40,36,0.18),inset_0_1px_1px_rgba(255,255,255,0.95)] active:scale-95"
         title="Jump to Bag Tracker"
       >
         {/* Pulsing beacon */}
@@ -33,12 +33,12 @@ export function SchoolBagShortcut() {
           <span className="relative inline-flex h-3 w-3 rounded-full bg-clay" />
         </span>
 
-        {/* Official School in a Bag logo recolored to theme blue - enlarged */}
+        {/* Official School in a Bag original red logo */}
         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-clay/20 bg-clay/10 p-1.5 shadow-inner backdrop-blur-xs transition-transform duration-300 group-hover:scale-105">
           <img
-            src="/school-in-a-bag-logo-blue.png"
+            src="/school-in-a-bag-logo-red.png"
             alt="School in a Bag"
-            className="h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(29,78,216,0.25)] transition-transform duration-300 group-hover:scale-110"
+            className="h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(179,40,36,0.2)] transition-transform duration-300 group-hover:scale-110"
           />
         </div>
 

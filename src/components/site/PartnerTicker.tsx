@@ -52,7 +52,7 @@ export function PartnerTicker({ className = "", showTitle = true, speed = 22 }: 
                 className="group flex shrink-0 items-center gap-3 transition-transform hover:scale-105"
                 title={`${partner.name} (${partner.country}) — ${partner.role}`}
               >
-                <div className="flex h-8 sm:h-9 items-center justify-center rounded bg-white/90 px-2.5 py-1 shadow-xs border border-ink/8">
+                <div className="flex h-8 sm:h-9 items-center justify-center rounded-xl bg-white/90 px-2.5 py-1 shadow-xs border border-ink/8">
                   <img
                     src={partner.logo}
                     alt={partner.name}

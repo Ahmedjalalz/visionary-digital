@@ -16,6 +16,7 @@ import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motio
 import { SchoolMap } from "@/components/site/SchoolMap";
 import { BagTracker } from "@/components/site/BagTracker";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
+import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -42,6 +43,19 @@ export const Route = createFileRoute("/projects/$slug")({
     if (schoolBagAliases.includes(params.slug)) {
       throw redirect({ to: "/projects/$slug", params: { slug: "school-bags" } });
     }
+    const widowsAliases = [
+      "widows-welfare",
+      "widows-welfare-program",
+      "hope-and-freedom",
+      "hope-and-freedom-for-widows-headed-families-project",
+      "widows-program",
+    ];
+    if (widowsAliases.includes(params.slug)) {
+      throw redirect({
+        to: "/projects/$slug",
+        params: { slug: "hope-and-freedom-for-widows-headed-families" },
+      });
+    }
     const project = getProject(params.slug);
     if (!project) throw notFound();
     return { project };
@@ -57,7 +71,7 @@ export const Route = createFileRoute("/projects/$slug")({
       </p>
       <Link
         to="/projects"
-        className="mt-6 inline-flex items-center justify-center rounded-md bg-clay px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-clay-deep"
+        className="mt-6 inline-flex items-center justify-center rounded-full bg-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-all hover:bg-clay-deep shadow-xs"
       >
         View All Programmes
       </Link>
@@ -248,7 +262,7 @@ function ProjectPage() {
               }
 
               return (
-                <figure key={image} className={`group relative overflow-hidden bg-muted ${spanClass}`}>
+                <figure key={image} className={`group relative overflow-hidden rounded-xl border border-ink/10 bg-muted shadow-2xs ${spanClass}`}>
                   <img
                     src={image}
                     alt={`${project.name} field work ${index + 1}`}
@@ -290,11 +304,11 @@ function ProjectPage() {
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-4 border-t border-ink/10 pt-6">
-                  <div className="rounded-sm bg-background p-4 border border-ink/10">
+                  <div className="rounded-xl bg-background p-4 border border-ink/10 shadow-xs">
                     <div className="font-display text-3xl font-black text-clay">+78%</div>
                     <div className="mt-1 text-xs text-ink/65 uppercase tracking-wider font-semibold">School Attendance Rate</div>
                   </div>
-                  <div className="rounded-sm bg-background p-4 border border-ink/10">
+                  <div className="rounded-xl bg-background p-4 border border-ink/10 shadow-xs">
                     <div className="font-display text-3xl font-black text-clay">53,000</div>
                     <div className="mt-1 text-xs text-ink/65 uppercase tracking-wider font-semibold">Children Scale Target</div>
                   </div>
@@ -305,7 +319,7 @@ function ProjectPage() {
                     href="https://opus1foundation.org/music-of-the-heart/"
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 rounded-sm bg-ink px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay hover:text-ink transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream hover:bg-clay hover:text-ink transition-colors"
                   >
                     <span>Visit Opus 1 Initiative</span>
                     <ArrowUpRight className="h-4 w-4" />
@@ -316,7 +330,7 @@ function ProjectPage() {
               {/* Opus 1 Visual Showcase */}
               <div className="grid grid-cols-2 gap-4 lg:col-span-6">
                 <div className="space-y-4">
-                  <div className="overflow-hidden rounded-sm aspect-[4/5] bg-ink/10 shadow-md">
+                  <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
                     <img
                       src={foundationMedia.musicStudentSolo}
                       alt="Student practicing violin in Music of the Heart program"
@@ -324,7 +338,7 @@ function ProjectPage() {
                       className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
-                  <div className="overflow-hidden rounded-sm aspect-[4/3] bg-ink/10 shadow-md">
+                  <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
                       src={foundationMedia.musicClassViolins}
                       alt="Violins unpacked in EFL classroom"
@@ -334,7 +348,7 @@ function ProjectPage() {
                   </div>
                 </div>
                 <div className="space-y-4 pt-8">
-                  <div className="overflow-hidden rounded-sm aspect-[4/3] bg-ink/10 shadow-md">
+                  <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
                       src={foundationMedia.musicOrchestraClass}
                       alt="Classroom orchestra rehearsal session"
@@ -342,7 +356,7 @@ function ProjectPage() {
                       className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
-                  <div className="overflow-hidden rounded-sm aspect-[4/5] bg-ink/10 shadow-md">
+                  <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
                     <img
                       src={foundationMedia.musicConcertHall}
                       alt="Youth concert performance"
@@ -398,7 +412,7 @@ function ProjectPage() {
               </div>
 
               {/* The Problem Statement with the BIG NUMBER */}
-              <div className="mt-14 rounded-sm border border-clay/25 bg-background p-8 sm:p-12 shadow-sm">
+              <div className="mt-14 rounded-2xl border border-clay/25 bg-background p-8 sm:p-12 shadow-xs">
                 <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
                   <div className="lg:col-span-5">
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay">
@@ -428,7 +442,7 @@ function ProjectPage() {
 
                 {/* 4 Supporting Research Metric Cards */}
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-ink/10 pt-8">
-                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                  <div className="p-5 rounded-xl bg-sand/60 border border-ink/10 shadow-2xs">
                     <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
                       <Counter to={11000} duration={1600} />
                     </div>
@@ -437,7 +451,7 @@ function ProjectPage() {
                       Pakistan accounts for over 4.1% of the entire global burden of maternal mortality (WHO).
                     </p>
                   </div>
-                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                  <div className="p-5 rounded-xl bg-sand/60 border border-ink/10 shadow-2xs">
                     <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
                       <Counter to={44.3} decimals={1} duration={1500} />%
                     </div>
@@ -446,7 +460,7 @@ function ProjectPage() {
                       Severe micronutrient deficiency creating critical risk of fatal postpartum hemorrhage (NNS).
                     </p>
                   </div>
-                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                  <div className="p-5 rounded-xl bg-sand/60 border border-ink/10 shadow-2xs">
                     <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
                       <Counter to={51} duration={1500} />%
                     </div>
@@ -455,7 +469,7 @@ function ProjectPage() {
                       Rural mothers receiving zero or inadequate antenatal checks, leaving preeclampsia undetected (PDHS).
                     </p>
                   </div>
-                  <div className="p-5 rounded-sm bg-sand/60 border border-ink/5">
+                  <div className="p-5 rounded-xl bg-sand/60 border border-ink/10 shadow-2xs">
                     <div className="numeral text-3xl sm:text-4xl font-bold text-ink">
                       1 in <Counter to={89} duration={1500} />
                     </div>
@@ -508,7 +522,7 @@ function ProjectPage() {
                     return (
                       <div
                         key={tier.step}
-                        className="flex flex-col justify-between rounded-sm border border-ink/10 bg-background p-6 transition-all duration-300 hover:border-clay/40 hover:shadow-sm"
+                        className="flex flex-col justify-between rounded-2xl border border-ink/10 bg-background p-6 shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1"
                       >
                         <div>
                           <div className="flex items-center justify-between">
@@ -531,7 +545,7 @@ function ProjectPage() {
                 <span className="eyebrow">On the Ground</span>
                 <h3 className="display-sm mt-3 text-ink">Field Care in Action</h3>
                 <div className="mt-8 grid gap-6 sm:grid-cols-3">
-                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                  <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
                         src={foundationMedia.maternalAntenatalCheckup}
@@ -549,7 +563,7 @@ function ProjectPage() {
                     </div>
                   </div>
 
-                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                  <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
                         src={foundationMedia.maternalLhvConsultation}
@@ -567,7 +581,7 @@ function ProjectPage() {
                     </div>
                   </div>
 
-                  <div className="group overflow-hidden rounded-sm border border-ink/10 bg-background transition-colors duration-300 hover:border-clay/40">
+                  <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
                         src={foundationMedia.maternalEflCare}
@@ -587,7 +601,7 @@ function ProjectPage() {
                 </div>
 
                 {/* Direct Action Callout */}
-                <div className="mt-10 flex flex-wrap items-center justify-between gap-6 rounded-sm border border-clay/30 bg-clay/5 p-6 sm:p-8">
+                <div className="mt-10 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-clay/30 bg-clay/5 p-6 sm:p-8 shadow-xs">
                   <div>
                     <h4 className="font-display text-xl font-bold text-ink">Support a Mother Through Safe Childbirth</h4>
                     <p className="mt-1 text-xs sm:text-sm text-ink/70 max-w-xl">
@@ -597,7 +611,7 @@ function ProjectPage() {
                   <Link
                     to="/donate"
                     search={{ project: "health-wash-community-wellbeing" }}
-                    className="bg-clay px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground hover:bg-clay-deep transition-colors"
+                    className="rounded-full bg-clay px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground hover:bg-clay-deep transition-colors shadow-xs"
                   >
                     Sponsor Maternal Care
                   </Link>
@@ -700,7 +714,7 @@ function ProjectPage() {
                 return (
                   <div
                     key={pillar.num}
-                    className="flex flex-col justify-between rounded-sm border border-ink/10 bg-sand p-7 sm:p-8 transition-colors duration-300 hover:border-clay/40"
+                    className="flex flex-col justify-between rounded-2xl border border-ink/10 bg-sand/40 p-7 sm:p-8 shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1"
                   >
                     <div>
                       <div className="flex items-center justify-between">
@@ -739,9 +753,15 @@ function ProjectPage() {
       </>
     )}
 
+      {project.slug === "hope-and-freedom-for-widows-headed-families" && (
+        <section className="border-t border-ink/10 bg-background pt-16 sm:pt-24">
+          <WidowsProjectShowcase />
+        </section>
+      )}
+
       {project.layout === "data" && (
         <section className="px-5 py-24 sm:px-8">
-           <div className="mx-auto grid max-w-[1600px] gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+           <div className="mx-auto grid max-w-[1600px] gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs sm:grid-cols-2 lg:grid-cols-4">
             {["Enrol", "Train", "Practise", "Earn"].map((step, i) => (
                <div key={step} className="bg-sand p-8">
                 <span className="numeral text-sm text-clay">{String(i + 1).padStart(2, "0")}</span>
@@ -762,13 +782,13 @@ function ProjectPage() {
             <Link
               to="/donate"
               search={{ project: project.slug }}
-               className="bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep"
+               className="rounded-full bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep shadow-xs transition-colors"
             >
               Fund {project.name.split(" ").slice(0, 2).join(" ")}
             </Link>
             <Link
               to="/book"
-              className="border border-cream/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:border-cream"
+              className="rounded-full border border-cream/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-cream hover:border-cream shadow-xs transition-colors"
             >
               Talk to the team
             </Link>

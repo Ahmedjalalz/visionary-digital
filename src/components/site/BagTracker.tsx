@@ -51,9 +51,9 @@ export function BagTracker() {
             <span className="pulse-ring absolute inset-5 rounded-full border border-clay/40" />
             <span className="relative flex h-28 w-28 items-center justify-center">
               <img
-                src="/school-in-a-bag-logo-blue.png"
+                src="/school-in-a-bag-logo-red.png"
                 alt="School in a Bag"
-                className="float-slow h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_8px_20px_rgba(29,78,216,0.28)]"
+                className="float-slow h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_8px_20px_rgba(179,40,36,0.24)]"
               />
             </span>
           </span>
@@ -84,7 +84,7 @@ export function BagTracker() {
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg overflow-hidden rounded-xl border border-cream/70 bg-cream/90 p-8 shadow-xl backdrop-blur-2xl sm:p-10"
+              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-ink/15 bg-sand/95 p-8 shadow-2xl backdrop-blur-2xl sm:p-10"
             >
               <button
                 onClick={() => setOpen(false)}
@@ -96,7 +96,7 @@ export function BagTracker() {
 
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay/10 p-2">
                 <img
-                  src="/school-in-a-bag-logo-blue.png"
+                  src="/school-in-a-bag-logo-red.png"
                   alt="School in a Bag"
                   className="h-full w-full object-contain drop-shadow-xs"
                 />
@@ -136,7 +136,7 @@ export function BagTracker() {
                 <button
                   type="submit"
                   disabled={loading}
-                   className="mt-7 inline-flex w-full items-center justify-center gap-2 bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60"
+                   className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60 shadow-xs cursor-pointer"
                 >
                   {loading && <Loader2 className="h-4 w-4 animate-spin" />}
                   {loading ? "Looking up" : "Find this bag"}

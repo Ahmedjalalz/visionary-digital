@@ -73,7 +73,7 @@ export function SchoolMap() {
             className="absolute inset-0"
             zoom={14}
           />
-           <div className="pointer-events-none absolute bottom-6 left-6 max-w-xs border border-ink/10 bg-background/90 p-5 backdrop-blur-md">
+           <div className="pointer-events-none absolute bottom-6 left-6 max-w-xs rounded-2xl border border-ink/10 bg-background/90 p-5 backdrop-blur-md shadow-xs">
             <span className="eyebrow">Selected</span>
              <p className="mt-2 font-display text-lg font-bold leading-tight text-ink">{active.name}</p>
              <p className="text-sm text-ink/55">{active.area}</p>

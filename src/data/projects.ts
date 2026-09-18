@@ -189,59 +189,44 @@ export const projects: Project[] = [
   },
   {
     slug: "hope-and-freedom-for-widows-headed-families",
-    name: "Hope And Freedom For Widows Headed Families Project",
-    short: "Income, schooling and dignity for households a widow holds together alone.",
+    name: "Hope and Freedom for Widows-Headed Families Project",
+    short: "Comprehensive debt cancellation, safe housing, children's schooling, and micro-enterprise capital to permanently liberate widow-headed families from generational brick kiln debt bondage.",
     problem: {
-      figure: "1",
-      unit: "income",
-      line: "removed, and an entire household falls out of the economy.",
-      source: "EFL field reporting",
+      figure: "20,000",
+      unit: "kilns",
+      line: "operate across Pakistan where widows and children inherit bonded debts.",
+      source: "Azadi Freedom & EFL Field Intelligence",
     },
     context: [
-      "When a husband dies, a widow in a low-income community often loses housing security, credit and social standing in the same week.",
-      "Children are pulled out of school first, because their labour is worth more than their attendance.",
+      "When a husband passes away in low-income kiln settlements, his debt is forcibly transferred to his widow and children, condemning the family to generational bonded servitude under extreme deprivation.",
+      "Children are removed from school to mold clay and shovel coal, while widowed mothers struggle without healthcare, clean water, or legal protection.",
+      "Emergency food rations and sustainable livelihood tools are urgently required to ensure families achieve lasting self-sufficiency and never fall back into exploitation.",
     ],
     response: [
-      "Monthly food and financial support stabilises the household, while the children stay enrolled.",
-      "Mothers are moved into skills training and small-enterprise support so the family exits aid rather than depending on it.",
+      "We legally negotiate and discharge 100% of accumulated kiln loans, providing verified release certificates so families can never be claimed or coerced again.",
+      "We provide 6 months of prepaid rent in dignified community housing, monthly staple nutrition hampers, and emergency health stabilization.",
+      "Children are enrolled in accredited schools with uniforms and trackable backpacks, while mothers receive vocational sewing machines or mobile retail kiosks.",
     ],
     outcomes: [
-      { label: "Support", value: "Monthly, sustained" },
-      { label: "Children", value: "Kept in school" },
-      { label: "Goal", value: "Self-reliance" },
+      { label: "Sponsorship", value: "$1,850 Full Liberation" },
+      { label: "Debt Status", value: "100% Cancelled" },
+      { label: "Housing", value: "6 Months Rent Paid" },
+      { label: "Long-Term", value: "Micro-Business Owner" },
     ],
-    image: foundationMedia.widowsFoodRations,
-    gallery: [foundationMedia.widowsFoodRations, foundationMedia.skillsSewingMachine, foundationMedia.projectWidows],
+    image: "/images/widows/bottom/1.jpg",
+    gallery: [
+      "/images/widows/bottom/1.jpg",
+      "/images/widows/bottom/2.jpg",
+      "/images/widows/bottom/3.jpg",
+      "/images/widows/bottom/4.jpg",
+      foundationMedia.widowsFoodRations,
+      foundationMedia.skillsSewingMachine,
+      foundationMedia.projectWidows,
+      widows,
+    ],
     heroPosition: "object-[50%_35%]",
     accent: "clay",
     layout: "portrait",
-  },
-  {
-    slug: "widows-welfare",
-    name: "Widows Welfare Program",
-    short: "Monthly food and financial assistance for widows in acute need.",
-    problem: {
-      figure: "30",
-      unit: "days",
-      line: "is how far ahead a family in crisis can plan.",
-      source: "EFL field reporting",
-    },
-    context: [
-      "Before training or enterprise can matter, a household needs to eat this month.",
-    ],
-    response: [
-      "Monthly food packages and direct financial assistance, delivered consistently and without conditions that shame the recipient.",
-    ],
-    outcomes: [
-      { label: "Cycle", value: "Monthly" },
-      { label: "Support", value: "Food & cash" },
-      { label: "Principle", value: "Dignity first" },
-    ],
-    image: widows,
-    gallery: [widows, foundationMedia.widowsFoodRations, foundationMedia.projectWidows],
-    heroPosition: "object-[50%_34%]",
-    accent: "clay",
-    layout: "statement",
   },
   {
     slug: "community-digital-skills",
@@ -326,4 +311,16 @@ export const projects: Project[] = [
   },
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) => {
+  const widowsAliases = [
+    "widows-welfare",
+    "widows-welfare-program",
+    "hope-and-freedom-for-widows-headed-families-project",
+    "hope-and-freedom-for-widows-headed-families",
+    "hope-and-freedom",
+  ];
+  if (widowsAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "hope-and-freedom-for-widows-headed-families");
+  }
+  return projects.find((p) => p.slug === slug);
+};

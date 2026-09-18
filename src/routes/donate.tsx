@@ -132,7 +132,7 @@ function Donate() {
           </p>
           <Link
             to="/projects"
-            className="mt-10 inline-block border border-ink/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink"
+            className="mt-10 inline-block rounded-full border border-ink/30 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:border-ink shadow-xs transition-colors"
           >
             See the programmes
           </Link>
@@ -165,15 +165,15 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("bank")}
-                className={`flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "bank"
-                    ? "bg-clay text-primary-foreground shadow-sm"
-                    : "bg-sand/70 text-ink/70 hover:bg-sand hover:text-ink"
+                    ? "bg-clay text-primary-foreground shadow-xs"
+                    : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
                 }`}
               >
                 <Building2 className="h-4 w-4" />
                 <span>Bank Transfer</span>
-                <span className="hidden rounded bg-primary-foreground/20 px-1.5 py-0.5 text-[0.6rem] font-bold sm:inline">
+                <span className="hidden rounded-full bg-primary-foreground/20 px-2 py-0.5 text-[0.6rem] font-bold sm:inline">
                   Direct Wire
                 </span>
               </button>
@@ -181,15 +181,15 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("pledge")}
-                className={`flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "pledge"
-                    ? "bg-clay text-primary-foreground shadow-sm"
-                    : "bg-sand/70 text-ink/70 hover:bg-sand hover:text-ink"
+                    ? "bg-clay text-primary-foreground shadow-xs"
+                    : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
                 }`}
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Make a Pledge</span>
-                <span className="hidden rounded bg-clay/15 px-1.5 py-0.5 text-[0.6rem] font-bold text-clay sm:inline">
+                <span className="hidden rounded-full bg-clay/15 px-2 py-0.5 text-[0.6rem] font-bold text-clay sm:inline">
                   Custom
                 </span>
               </button>
@@ -197,10 +197,10 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("trust")}
-                className={`flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "trust"
-                    ? "bg-clay text-primary-foreground shadow-sm"
-                    : "bg-sand/70 text-ink/70 hover:bg-sand hover:text-ink"
+                    ? "bg-clay text-primary-foreground shadow-xs"
+                    : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
                 }`}
               >
                 <ShieldCheck className="h-4 w-4" />
@@ -246,7 +246,7 @@ function Donate() {
             <form onSubmit={submit} className="grid gap-14 lg:grid-cols-12">
               <div className="lg:col-span-6">
                 <span className="eyebrow">Choose an amount — USD</span>
-                <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {amounts.map((a) => (
                     <button
                       key={a}
@@ -256,7 +256,7 @@ function Donate() {
                         setCustom("");
                       }}
                       aria-pressed={amount === a}
-                      className={`rounded-sm border p-6 text-left transition-all cursor-pointer ${
+                      className={`rounded-xl border p-6 text-left transition-all cursor-pointer shadow-xs hover:border-clay/40 hover:shadow-md ${
                         amount === a
                           ? "border-clay bg-clay text-primary-foreground shadow-md"
                           : "border-ink/15 bg-sand/50 text-ink hover:border-clay hover:bg-sand"
@@ -288,7 +288,7 @@ function Donate() {
                   type="button"
                   onClick={() => setMonthly(!monthly)}
                   aria-pressed={monthly}
-                  className={`mt-8 inline-flex items-center gap-3 rounded-sm border px-5 py-3 text-xs uppercase tracking-[0.16em] transition-all cursor-pointer ${
+                  className={`mt-8 inline-flex items-center gap-3 rounded-full border px-5 py-3 text-xs uppercase tracking-[0.16em] transition-all cursor-pointer shadow-xs ${
                     monthly ? "border-clay bg-clay/10 text-clay font-bold" : "border-ink/20 text-ink/70 hover:border-ink"
                   }`}
                 >
@@ -297,7 +297,7 @@ function Donate() {
                 </button>
 
                 {amount && (
-                  <div className="mt-10 rounded-sm border border-clay/20 bg-clay/5 p-6">
+                  <div className="mt-10 rounded-2xl border border-clay/20 bg-clay/5 p-6 shadow-xs">
                     <span className="eyebrow text-clay">Direct Community Impact</span>
                     <p className="mt-2 font-serif text-2xl italic leading-snug text-ink">
                       "{impact[amount]}"
@@ -349,7 +349,7 @@ function Donate() {
                 <button
                   type="submit"
                   disabled={sending || !value}
-                  className="mt-10 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep disabled:opacity-40 cursor-pointer shadow-md"
+                  className="mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep disabled:opacity-40 cursor-pointer shadow-xs"
                 >
                   {sending && <Loader2 className="h-4 w-4 animate-spin" />}
                   Confirm Pledge: ${value || 0} {monthly ? "/ Month" : "One-Time"}
@@ -380,7 +380,7 @@ function Donate() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              <div className="rounded-sm border border-ink/10 bg-sand/40 p-8">
+              <div className="rounded-2xl border border-ink/10 bg-sand/40 p-8 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <ShieldCheck className="h-8 w-8 text-clay" />
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">100% Direct Model</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
@@ -390,7 +390,7 @@ function Donate() {
                 </p>
               </div>
 
-              <div className="rounded-sm border border-ink/10 bg-sand/40 p-8">
+              <div className="rounded-2xl border border-ink/10 bg-sand/40 p-8 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <BadgeCheck className="h-8 w-8 text-clay" />
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">Tax Exemption &amp; Receipts</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
@@ -400,7 +400,7 @@ function Donate() {
                 </p>
               </div>
 
-              <div className="rounded-sm border border-ink/10 bg-sand/40 p-8">
+              <div className="rounded-2xl border border-ink/10 bg-sand/40 p-8 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <CheckCircle2 className="h-8 w-8 text-clay" />
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">Traceable Projects</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
@@ -410,7 +410,7 @@ function Donate() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-sm border border-clay/20 bg-sand/60 p-8">
+            <div className="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-clay/20 bg-sand/60 p-8 shadow-xs">
               <div>
                 <h4 className="font-display text-xl font-bold text-ink">Need to discuss a corporate endowment or grant?</h4>
                 <p className="mt-1 text-sm text-ink/65">
@@ -420,14 +420,14 @@ function Donate() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/book"
-                  className="rounded-sm bg-clay px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground hover:bg-clay-deep"
+                  className="rounded-full bg-clay px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground hover:bg-clay-deep shadow-xs transition-colors"
                 >
                   Schedule a call
                 </Link>
                 <button
                   type="button"
                   onClick={() => setActiveTab("bank")}
-                  className="rounded-sm border border-ink/20 bg-background px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:border-ink cursor-pointer"
+                  className="rounded-full border border-ink/20 bg-background px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:border-ink cursor-pointer shadow-xs transition-colors"
                 >
                   View Wire Details
                 </button>
@@ -457,7 +457,7 @@ function CopyBadge({ text, label }: { text: string; label?: string }) {
       type="button"
       onClick={handleCopy}
       aria-label={`Copy ${label ?? text}`}
-      className="inline-flex items-center gap-1.5 rounded border border-ink/15 bg-background px-2.5 py-1 text-[0.68rem] font-medium text-ink/75 transition-all hover:border-clay hover:text-clay cursor-pointer active:scale-95"
+      className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-background px-3 py-1 text-[0.68rem] font-medium text-ink/75 transition-all hover:border-clay hover:text-clay cursor-pointer active:scale-95 shadow-2xs"
     >
       {copied ? (
         <>
@@ -501,13 +501,13 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
         </div>
 
         {/* Currency / Region pill */}
-        <div className="inline-flex rounded-sm border border-ink/15 bg-sand/60 p-1">
+        <div className="inline-flex rounded-full border border-ink/15 bg-sand/60 p-1 shadow-xs">
           <button
             type="button"
             onClick={() => setMethod("international")}
-            className={`flex items-center gap-2 rounded-sm px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
               method === "international"
-                ? "bg-ink text-cream shadow-sm"
+                ? "bg-ink text-cream shadow-xs"
                 : "text-ink/65 hover:text-ink"
             }`}
           >
@@ -517,9 +517,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
           <button
             type="button"
             onClick={() => setMethod("domestic")}
-            className={`flex items-center gap-2 rounded-sm px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
               method === "domestic"
-                ? "bg-ink text-cream shadow-sm"
+                ? "bg-ink text-cream shadow-xs"
                 : "text-ink/65 hover:text-ink"
             }`}
           >
@@ -530,7 +530,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
       </div>
 
       {/* ── EMBOSSED OFFICIAL FOUNDATION BANK VOUCHER CARD ── */}
-      <div className="mt-10 overflow-hidden rounded-md border border-ink/20 bg-gradient-to-br from-ink via-ink/95 to-clay/40 text-cream p-7 sm:p-10 shadow-xl relative">
+      <div className="mt-10 overflow-hidden rounded-2xl border border-ink/20 bg-gradient-to-br from-ink via-ink/95 to-clay/40 text-cream p-7 sm:p-10 shadow-xl relative">
         <div
           aria-hidden
           className="pointer-events-none absolute right-0 top-0 h-96 w-96 -translate-y-12 translate-x-20 rounded-full bg-clay/20 blur-3xl"
@@ -539,7 +539,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
         <div className="relative z-10">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-cream/15 pb-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded bg-cream/10 border border-cream/20">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cream/10 border border-cream/20">
                 <CreditCard className="h-6 w-6 text-cream" />
               </div>
               <div>
@@ -560,7 +560,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
               <button
                 type="button"
                 onClick={() => copyDossier(method)}
-                className="inline-flex items-center gap-2 rounded bg-clay px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:bg-clay-deep cursor-pointer shadow"
+                className="inline-flex items-center gap-2 rounded-full bg-clay px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:bg-clay-deep cursor-pointer shadow-xs"
               >
                 <Copy className="h-3.5 w-3.5" />
                 <span>Copy Full Wire File</span>
@@ -628,9 +628,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {/* Hop 1: Intermediary Bank */}
-              <div className="relative rounded-sm border border-ink/15 bg-sand/30 p-6">
+              <div className="relative rounded-2xl border border-ink/15 bg-sand/30 p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center justify-between">
-                  <span className="rounded bg-clay/10 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-clay">
+                  <span className="rounded-full bg-clay/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-clay">
                     Step 1 · Intermediary Bank
                   </span>
                   <Globe className="h-4 w-4 text-ink/40" />
@@ -663,9 +663,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
               </div>
 
               {/* Hop 2: Beneficiary Clearing Bank */}
-              <div className="relative rounded-sm border border-ink/15 bg-sand/30 p-6">
+              <div className="relative rounded-2xl border border-ink/15 bg-sand/30 p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center justify-between">
-                  <span className="rounded bg-clay/10 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-clay">
+                  <span className="rounded-full bg-clay/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-clay">
                     Step 2 · Beneficiary Bank
                   </span>
                   <Building2 className="h-4 w-4 text-ink/40" />
@@ -694,9 +694,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
               </div>
 
               {/* Hop 3: Final Beneficiary Account */}
-              <div className="relative rounded-sm border-2 border-clay/40 bg-clay/5 p-6">
+              <div className="relative rounded-2xl border-2 border-clay/40 bg-clay/5 p-6 sm:p-7 shadow-xs hover:border-clay hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-center justify-between">
-                  <span className="rounded bg-clay px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-primary-foreground">
+                  <span className="rounded-full bg-clay px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-primary-foreground">
                     Step 3 · Final Beneficiary
                   </span>
                   <BadgeCheck className="h-4 w-4 text-clay" />
@@ -734,7 +734,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
       {method === "domestic" && (
         <div className="mt-12 space-y-8">
           <div className="grid gap-6 md:grid-cols-12">
-            <div className="rounded-sm border border-ink/15 bg-sand/30 p-8 md:col-span-7">
+            <div className="rounded-2xl border border-ink/15 bg-sand/30 p-8 md:col-span-7 shadow-xs">
               <span className="eyebrow text-clay">Instant Domestic Transfer</span>
               <h3 className="mt-2 font-display text-2xl font-bold text-ink">
                 Send via Raast, Mobile Banking, or ATM
@@ -777,19 +777,19 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
               </dl>
             </div>
 
-            <div className="flex flex-col justify-between rounded-sm border border-ink/15 bg-background p-8 md:col-span-5">
+            <div className="flex flex-col justify-between rounded-2xl border border-ink/15 bg-background p-8 md:col-span-5 shadow-xs">
               <div>
                 <span className="eyebrow">Compatible Platforms</span>
                 <h4 className="mt-2 font-display text-xl font-bold text-ink">Works seamlessly with</h4>
                 <div className="mt-4 flex flex-wrap gap-2 text-xs">
                   {["Raast ID", "SadaPay", "NayaPay", "Easypaisa", "JazzCash", "Meezan", "HBL Mobile", "Faysal Digi", "Alfalah Orbit", "Standard Chartered"].map((app) => (
-                    <span key={app} className="rounded-sm border border-ink/10 bg-sand/60 px-2.5 py-1.5 font-medium text-ink/75">
+                    <span key={app} className="rounded-full border border-ink/10 bg-sand/60 px-3 py-1.5 font-medium text-ink/75 shadow-2xs">
                       {app}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-sm bg-clay/5 p-4 border border-clay/15 text-xs leading-relaxed text-ink/75">
+                <div className="mt-6 rounded-xl bg-clay/5 p-4 border border-clay/15 text-xs leading-relaxed text-ink/75">
                   <strong className="text-clay block mb-1">Transfer Note / Reference:</strong>
                   Enter your name or the project name (e.g. "School Bags", "Medical Camp") in the payment description so our finance desk can record your dedication.
                 </div>
@@ -799,10 +799,10 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
                 <button
                   type="button"
                   onClick={() => copyDossier("domestic")}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cream hover:bg-clay cursor-pointer transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-cream hover:bg-clay cursor-pointer transition-colors shadow-xs"
                 >
                   <Copy className="h-3.5 w-3.5" />
-                  Copy Pakistan Bank Details
+                  <span>Copy Pakistan Bank Details</span>
                 </button>
               </div>
             </div>
@@ -811,7 +811,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
       )}
 
       {/* ── VERIFICATION & ACKNOWLEDGEMENT BAR ── */}
-      <div className="mt-12 rounded-sm border border-ink/10 bg-sand/50 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="mt-12 rounded-2xl border border-ink/10 bg-sand/50 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xs">
         <div className="flex items-start gap-4">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-clay/10 text-clay mt-0.5">
             <MessageCircle className="h-5 w-5" />
@@ -829,7 +829,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             href="https://wa.me/923009475513?text=Hello%20EFL%20team%2C%20I%20have%20transferred%20a%20donation%20and%20attached%20the%20receipt%20for%20confirmation."
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center justify-center gap-2 rounded bg-emerald-700 px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-emerald-800 transition-colors cursor-pointer w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-emerald-800 transition-colors cursor-pointer w-full sm:w-auto shadow-xs"
           >
             <MessageCircle className="h-4 w-4" />
             <span>WhatsApp Receipt</span>
@@ -837,7 +837,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
           <button
             type="button"
             onClick={onSwitchToPledge}
-            className="inline-flex items-center justify-center gap-2 rounded border border-ink/25 bg-background px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:border-ink transition-colors cursor-pointer w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/25 bg-background px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:border-ink transition-colors cursor-pointer w-full sm:w-auto shadow-xs"
           >
             <span>Or Pledge Online</span>
             <ArrowRight className="h-3.5 w-3.5 text-clay" />

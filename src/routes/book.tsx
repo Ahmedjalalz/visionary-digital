@@ -135,13 +135,13 @@ function Book() {
               >
                 <Check className="h-10 w-10 text-clay" strokeWidth={1.3} />
                 <h2 className="display-md mt-6 max-w-[16ch] text-ink">Your meeting is booked.</h2>
-                <dl className="mt-10 grid max-w-3xl gap-px bg-ink/10 sm:grid-cols-3">
+                <dl className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
                   {[
                     ["Date", new Date(`${confirmed.date}T00:00:00`).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })],
                     ["Time", `${confirmed.time} PKT`],
                     ["Platform", confirmed.platform],
                   ].map(([k, v]) => (
-                    <div key={k} className="bg-background p-6">
+                    <div key={k} className="rounded-2xl border border-ink/10 bg-sand/30 p-6 shadow-xs">
                       <dt className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">{k}</dt>
                       <dd className="mt-2 font-display text-xl font-bold tracking-tight text-ink">{v}</dd>
                     </div>
@@ -164,14 +164,14 @@ function Book() {
                       <button
                         onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))}
                         aria-label="Previous month"
-                        className="border border-ink/20 px-3 py-1.5 text-ink/70 hover:border-clay hover:text-clay"
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/20 text-ink/70 hover:border-clay hover:text-clay cursor-pointer shadow-2xs transition-colors"
                       >
                         ←
                       </button>
                       <button
                         onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))}
                         aria-label="Next month"
-                        className="border border-ink/20 px-3 py-1.5 text-ink/70 hover:border-clay hover:text-clay"
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/20 text-ink/70 hover:border-clay hover:text-clay cursor-pointer shadow-2xs transition-colors"
                       >
                         →
                       </button>
@@ -196,12 +196,12 @@ function Book() {
                             setTime(null);
                           }}
                           aria-pressed={date === d.iso}
-                          className={`aspect-square text-sm transition-colors ${
+                          className={`aspect-square rounded-full text-sm transition-all flex items-center justify-center ${
                             date === d.iso
-                              ? "bg-clay font-semibold text-primary-foreground"
+                              ? "bg-clay font-bold text-primary-foreground shadow-xs"
                               : d.open
-                                ? "text-ink hover:bg-ink/10"
-                                : "text-ink/20"
+                                ? "text-ink hover:bg-clay/15 hover:text-clay font-medium"
+                                : "text-ink/20 cursor-not-allowed"
                           }`}
                         >
                           {d.day}
@@ -219,10 +219,10 @@ function Book() {
                             key={s}
                             onClick={() => setTime(s)}
                             aria-pressed={time === s}
-                            className={`border px-4 py-2.5 text-sm transition-colors ${
+                            className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                               time === s
-                                ? "border-clay bg-clay text-primary-foreground"
-                                : "border-ink/20 text-ink hover:border-clay"
+                                ? "border-clay bg-clay text-primary-foreground shadow-xs"
+                                : "border-ink/15 bg-background text-ink/75 hover:border-ink hover:text-ink"
                             }`}
                           >
                             {s}
@@ -283,7 +283,7 @@ function Book() {
                     <button
                       type="submit"
                       disabled={!date || !time || sending}
-                      className="inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:cursor-not-allowed disabled:opacity-40"
+                      className="inline-flex items-center gap-2 rounded-full bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:cursor-not-allowed disabled:opacity-40 shadow-xs cursor-pointer"
                     >
                       {sending && <Loader2 className="h-4 w-4 animate-spin" />}
                       Confirm booking

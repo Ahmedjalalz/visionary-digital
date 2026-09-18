@@ -100,14 +100,14 @@ function Hero() {
             >
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-sm bg-clay px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-lg transition-all hover:bg-clay-deep hover:shadow-clay/25"
+                className="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-lg transition-all hover:bg-clay-deep hover:shadow-clay/25"
               >
                 <span>Explore Our Programmes</span>
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/donate"
-                className="inline-flex items-center gap-2 rounded-sm border border-cream/30 bg-ink/40 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream backdrop-blur-md transition-all hover:border-cream hover:bg-ink/60"
+                className="inline-flex items-center gap-2 rounded-full border border-cream/30 bg-ink/40 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-cream backdrop-blur-md transition-all hover:border-cream hover:bg-ink/60 shadow-sm"
               >
                 <span>Donate to Field</span>
               </Link>
@@ -146,35 +146,35 @@ function ProjectsRail() {
             Explore all programmes <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-12 grid gap-x-6 gap-y-10 sm:gap-x-8 sm:gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {items.map(({ project, img, n }) => (
             <Link
               key={project.slug}
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className="group flex flex-col justify-between border-t border-ink/15 pt-5 transition-colors"
+              className="group flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
             >
               <div>
-                <div className="relative overflow-hidden bg-muted aspect-[16/10] rounded-xs">
+                <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs">
                   <img
                     src={img}
                     alt={project.name}
                     loading="lazy"
-                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
+                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.05]`}
                   />
                   <div className="absolute left-3 top-3 flex items-center gap-2">
-                    <span className="numeral bg-background/90 px-2 py-0.5 text-xs font-bold text-clay shadow-xs backdrop-blur-xs">
+                    <span className="numeral rounded-full bg-background/90 px-2.5 py-1 text-xs font-bold text-clay shadow-xs backdrop-blur-xs">
                       {n}
                     </span>
                     {project.problem?.figure && (
-                      <span className="bg-ink/80 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
+                      <span className="rounded-full bg-ink/80 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
                         {project.problem.figure} {project.problem.unit}
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-5">
                   <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
                     {project.name}
                   </h3>
@@ -184,11 +184,11 @@ function ProjectsRail() {
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-3 text-xs">
+              <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs">
                 <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">
                   {project.outcomes?.[0]?.value || "Direct Field Program"}
                 </span>
-                <span className="inline-flex items-center gap-1 font-semibold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
                   <span>Explore</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
@@ -199,7 +199,7 @@ function ProjectsRail() {
           {/* 12th Card: Directory Feature Tile completing the 4x3 grid */}
           <Link
             to="/projects"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-xs bg-ink p-6 sm:p-7 text-cream transition-transform duration-300 hover:shadow-lg aspect-[16/10] md:aspect-auto"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-6 sm:p-7 text-cream transition-all duration-300 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 aspect-[16/10] md:aspect-auto"
           >
             <div className="relative z-10">
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay-bright">
@@ -212,7 +212,7 @@ function ProjectsRail() {
                 From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
               </p>
             </div>
-            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-3 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay-bright transition-colors">
+            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-4 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay-bright transition-colors">
               <span>View full directory</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </div>
@@ -322,7 +322,7 @@ function Impact() {
 
           {/* Operational field photography trio */}
           <div className="mt-16 grid gap-5 sm:grid-cols-3">
-            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+            <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
                 src={foundationMedia.schoolStudents}
                 alt="EFL students in rural Punjab"
@@ -330,13 +330,13 @@ function Impact() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-4 right-4">
+              <div className="absolute bottom-4 left-5 right-5">
                 <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Direct Education</span>
                 <p className="font-display text-sm font-bold text-cream">Enrolment to Attendance</p>
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+            <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
                 src={foundationMedia.cleanWaterPump}
                 alt="Installed clean water hand pump"
@@ -344,13 +344,13 @@ function Impact() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-4 right-4">
+              <div className="absolute bottom-4 left-5 right-5">
                 <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Safe Water Points</span>
                 <p className="font-display text-sm font-bold text-cream">Preventing Waterborne Illness</p>
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-sm aspect-[4/3] bg-ink/10">
+            <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
                 src={foundationMedia.healthCampDoctor}
                 alt="Medical camp doctor examining patient"
@@ -358,7 +358,7 @@ function Impact() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-4 right-4">
+              <div className="absolute bottom-4 left-5 right-5">
                 <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Clinical Care</span>
                 <p className="font-display text-sm font-bold text-cream">Free Medicine & Diagnosis</p>
               </div>
@@ -393,7 +393,7 @@ function Story() {
       <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-12 sm:px-8 sm:py-16">
         <motion.div
           style={reduce ? {} : { x: quoteX }}
-          className="w-full max-w-2xl border-l-4 border-clay-bright bg-ink/85 p-8 backdrop-blur-md sm:p-10 shadow-2xl"
+          className="w-full max-w-2xl rounded-2xl border border-white/15 bg-ink/85 p-8 backdrop-blur-md sm:p-10 shadow-2xl"
         >
           <div className="flex items-center gap-2.5">
             <span className="h-2 w-2 rounded-full bg-clay-bright shadow-xs" />
@@ -492,7 +492,7 @@ function Location() {
           </dl>
           <Link
             to="/contact"
-            className="mt-10 inline-flex w-fit items-center gap-3 border border-clay px-6 py-3.5 text-xs uppercase tracking-[0.18em] text-clay transition-colors hover:bg-clay hover:text-ink"
+            className="mt-10 inline-flex w-fit items-center gap-3 rounded-full border border-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs"
           >
             All four branches <ArrowUpRight className="h-4 w-4" />
           </Link>
@@ -512,22 +512,22 @@ function FinalCta() {
         <h2 className="display-lg mt-6 max-w-[16ch]">
           Somewhere a child is one bag, one fee, one clinic away.
         </h2>
-        <div className="mt-12 flex flex-wrap gap-3">
+        <div className="mt-12 flex flex-wrap gap-3.5">
           <Link
             to="/donate"
-            className="bg-ink px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-clay hover:text-ink"
+            className="rounded-full bg-ink px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all hover:bg-clay hover:text-cream shadow-md"
           >
             Support a project
           </Link>
           <Link
             to="/book"
-            className="border border-ink/25 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:border-ink"
+            className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
           >
             Book a meeting
           </Link>
           <Link
             to="/about"
-            className="border border-ink/25 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:border-ink"
+            className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
           >
             Who we are
           </Link>

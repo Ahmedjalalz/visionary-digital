@@ -81,19 +81,18 @@ function ProjectsIndex() {
               <Filter className="h-3.5 w-3.5" /> Filter:
             </span>
             {filterCategories.map((cat) => (
-              <Button
+              <button
                 key={cat.id}
                 type="button"
-                variant="ghost"
                 onClick={() => setActiveFilter(cat.id)}
-                className={`h-auto rounded-none border-b-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] shadow-none ${
+                className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all cursor-pointer ${
                   activeFilter === cat.id
-                    ? "border-clay text-clay"
-                    : "border-transparent text-ink/55 hover:bg-transparent hover:text-ink"
+                    ? "bg-clay text-cream shadow-xs"
+                    : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
                 }`}
               >
                 {cat.label}
-              </Button>
+              </button>
             ))}
           </div>
         </div>
@@ -101,34 +100,34 @@ function ProjectsIndex() {
 
       <section className="relative bg-background pb-28 pt-12 sm:pt-16">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-x-6 gap-y-12 sm:gap-x-8 sm:gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((p) => (
               <Link
                 key={p.slug}
                 to="/projects/$slug"
                 params={{ slug: p.slug }}
-                className="group flex flex-col justify-between border-t border-ink/15 pt-5 transition-colors"
+                className="group flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
               >
                 <div>
-                  <div className="relative overflow-hidden bg-muted aspect-[16/10] rounded-xs">
+                  <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs">
                     <img
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
+                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
                     />
                     <div className="absolute left-3 top-3 flex items-center gap-2">
-                      <span className="numeral bg-background/90 px-2.5 py-1 text-xs font-semibold text-clay shadow-xs backdrop-blur-xs">
+                      <span className="numeral rounded-full bg-background/90 px-2.5 py-1 text-xs font-bold text-clay shadow-xs backdrop-blur-xs">
                         {String(projects.findIndex((item) => item.slug === p.slug) + 1).padStart(2, "0")}
                       </span>
                       {p.problem?.figure && (
-                        <span className="bg-ink/80 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
+                        <span className="rounded-full bg-ink/80 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
                           {p.problem.figure} {p.problem.unit}
                         </span>
                       )}
                     </div>
                   </div>
-                  <div className="mt-4">
+                  <div className="mt-5">
                     <h2 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
                       {p.name}
                     </h2>
@@ -137,11 +136,11 @@ function ProjectsIndex() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-3 text-xs">
+                <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs">
                   <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">
                     {p.outcomes?.[0]?.value || "Direct Field Program"}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-semibold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
+                  <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
                     <span>Explore</span>
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>

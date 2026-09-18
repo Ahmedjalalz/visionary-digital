@@ -73,7 +73,7 @@ function Contact() {
         </div>
 
         <div className="relative z-10 mx-auto -mt-14 max-w-[1600px] px-5 sm:-mt-16 sm:px-8">
-          <div className="grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs md:grid-cols-4">
             {branches.map((b, i) => {
               const isActive = i === active;
               return (
@@ -128,12 +128,12 @@ function Contact() {
             </div>
 
             {/* Visual grounding photo */}
-            <div className="mt-8 overflow-hidden rounded-sm aspect-[16/10] bg-ink/10 border border-ink/10 shadow-sm">
+            <div className="mt-8 overflow-hidden rounded-2xl aspect-[16/10] bg-ink/10 border border-ink/10 shadow-xs">
               <img
                 src={foundationMedia.heroCommunity}
                 alt="Education And Life Foundation community center in Lahore"
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ function Contact() {
             <button
               type="submit"
               disabled={sending}
-               className="mt-10 inline-flex items-center gap-2 bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60"
+               className="mt-10 inline-flex items-center gap-2 rounded-full bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-clay-deep disabled:opacity-60 shadow-xs cursor-pointer"
             >
               {sending && <Loader2 className="h-4 w-4 animate-spin" />}
               Send message

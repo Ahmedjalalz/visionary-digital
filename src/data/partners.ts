@@ -62,7 +62,7 @@ export const partners: Partner[] = [
     logo: barnabasAid,
     focus: "Humanitarian Relief & Vulnerable Families",
     role: "Food Support & Crisis Intervention Partner",
-    collaborations: ["widows-welfare", "hope-and-freedom-for-widows-headed-families"],
+    collaborations: ["hope-and-freedom-for-widows-headed-families"],
   },
   {
     id: "vision-for-asia",
@@ -82,7 +82,7 @@ export const partners: Partner[] = [
     logo: happyToHelp,
     focus: "Grassroots Community Assistance",
     role: "Family Ration Packs & Education Support",
-    collaborations: ["education-for-all", "widows-welfare"],
+    collaborations: ["education-for-all", "hope-and-freedom-for-widows-headed-families"],
   },
   {
     id: "paul-aid-trust",
@@ -142,7 +142,7 @@ export const partners: Partner[] = [
     logo: azadiFreedom,
     focus: "Human Dignity & Freedom from Destitution",
     role: "Widow Dignity & Small-Business Grants",
-    collaborations: ["widows-welfare", "hope-and-freedom-for-widows-headed-families"],
+    collaborations: ["hope-and-freedom-for-widows-headed-families"],
   },
   {
     id: "consistent-life-network",

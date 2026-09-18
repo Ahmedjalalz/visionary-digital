@@ -113,7 +113,7 @@ function HistoryRail() {
           <motion.ol ref={trackRef} style={reduce ? {} : { x }} className="flex items-stretch gap-8 pl-8 pr-8">
             {history.map((h, i) => (
               <li key={h.year} className="w-[440px] shrink-0">
-                <div className="relative h-[240px] overflow-hidden rounded-[2px]">
+                <div className="relative h-[240px] overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
                   <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
                   <div className="absolute inset-0 bg-ink/45" />
                   <span className="numeral absolute bottom-4 left-5 text-5xl text-cream">{h.year}</span>
@@ -135,7 +135,7 @@ function HistoryRail() {
         <ol className="mt-8 space-y-10">
           {history.map((h) => (
             <li key={h.year}>
-              <div className="relative h-52 overflow-hidden rounded-[2px]">
+              <div className="relative h-52 overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
                 <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
                 <div className="absolute inset-0 bg-ink/45" />
                 <span className="numeral absolute bottom-3 left-4 text-4xl text-cream">{h.year}</span>
@@ -262,8 +262,8 @@ function About() {
               },
             ].map((s, i) => (
               <Rise key={s.title} delay={i * 0.05}>
-                <div className="group relative overflow-hidden rounded-sm border border-ink/10 bg-sand/30 transition-all hover:border-clay/50 hover:bg-sand/60 hover:shadow-md">
-                  <div className="relative h-48 w-full overflow-hidden bg-ink/10">
+                <div className="group relative rounded-2xl border border-ink/10 bg-sand/35 p-6 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="relative h-48 w-full overflow-hidden rounded-xl bg-ink/10 shadow-2xs">
                     <img
                       src={s.img}
                       alt={s.title}
@@ -271,14 +271,14 @@ function About() {
                       className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
-                    <span className="absolute left-3 top-3 rounded-sm bg-ink/80 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-sm">
+                    <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-xs shadow-xs">
                       {s.badge}
                     </span>
                     <span className="numeral absolute bottom-2.5 right-3 text-2xl font-black text-cream/70">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="p-6">
+                  <div className="mt-5">
                     <h3 className="font-display text-xl font-bold leading-tight text-ink group-hover:text-clay transition-colors">
                       {s.title}
                     </h3>
@@ -306,10 +306,10 @@ function About() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((m, i) => (
               <Rise key={m.name} delay={i * 0.06}>
-                <figure className="group relative aspect-[3/4] overflow-hidden rounded-[2px] bg-ink/10">
+                <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <img
                     src={m.img}
                     alt={`${m.name}, ${m.role}`}
@@ -342,11 +342,11 @@ function About() {
       <section className="paper px-5 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-end justify-between gap-8">
           <h2 className="display-lg max-w-[14ch]">Come and see the work.</h2>
-          <div className="flex flex-wrap gap-3">
-            <Link to="/projects" className="bg-clay px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep">
+          <div className="flex flex-wrap gap-3.5">
+            <Link to="/projects" className="rounded-full bg-clay px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep shadow-md">
               The projects
             </Link>
-            <Link to="/book" className="border border-ink/25 px-8 py-5 text-xs font-semibold uppercase tracking-[0.18em] hover:border-ink">
+            <Link to="/book" className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs">
               Book a meeting
             </Link>
           </div>

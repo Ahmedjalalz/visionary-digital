@@ -65,7 +65,7 @@ function BagDetails() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-background px-5 py-16 text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 p-3.5 shadow-inner">
           <img
-            src="/school-in-a-bag-logo-blue.png"
+            src="/school-in-a-bag-logo-red.png"
             alt="School in a Bag"
             className="h-full w-full object-contain"
           />
@@ -81,14 +81,14 @@ function BagDetails() {
           <button
             type="button"
             onClick={() => setShowErrorTrackForm((prev) => !prev)}
-            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-sm bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-lg transition-all hover:bg-clay-deep hover:shadow-clay/25 active:scale-[0.98]"
+            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-xs transition-all hover:bg-clay-deep active:scale-[0.98] cursor-pointer"
           >
             <Search className="h-4 w-4 transition-transform group-hover:scale-110" />
             <span>Track Another Bag</span>
           </button>
           <Link
             to="/"
-            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-sm bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-md transition-all hover:bg-ink/85 active:scale-[0.98]"
+            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-xs transition-all hover:bg-ink/85 active:scale-[0.98] cursor-pointer"
           >
             <Globe className="h-4 w-4 transition-transform group-hover:scale-110" />
             <span>Back to Website</span>
@@ -104,7 +104,7 @@ function BagDetails() {
                 navigate({ to: "/bag/$trackingId", params: { trackingId: id } });
               }
             }}
-            className="w-full max-w-md rounded-sm border border-ink/15 bg-sand/70 p-4 text-left shadow-sm"
+            className="w-full max-w-md rounded-2xl border border-ink/15 bg-sand/70 p-5 text-left shadow-xs"
           >
             <label
               htmlFor="error-track-input"
@@ -120,11 +120,11 @@ function BagDetails() {
                 onChange={(e) => setErrorTrackId(e.target.value)}
                 placeholder="e.g. 143492 or EFL-2026-0001"
                 autoFocus
-                className="flex-1 rounded-sm border border-ink/20 bg-background px-3.5 py-2.5 text-sm text-ink focus:border-clay focus:outline-none"
+                className="flex-1 rounded-xl border border-ink/20 bg-background px-3.5 py-2.5 text-sm text-ink focus:border-clay focus:outline-none"
               />
               <button
                 type="submit"
-                className="rounded-sm bg-clay px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-clay-deep transition-colors"
+                className="rounded-full bg-clay px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-clay-deep transition-colors shadow-xs cursor-pointer"
               >
                 Track
               </button>
@@ -234,11 +234,11 @@ function BagDetails() {
           </dl>
 
           {/* ── High Attention Action Buttons ── */}
-          <div className="mt-12 overflow-hidden rounded-sm border-2 border-clay/30 bg-sand/90 p-6 sm:p-8 shadow-sm">
+          <div className="mt-12 overflow-hidden rounded-2xl border-2 border-clay/30 bg-sand/90 p-6 sm:p-8 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2">
                 <img
-                  src="/school-in-a-bag-logo-blue.png"
+                  src="/school-in-a-bag-logo-red.png"
                   alt="School in a Bag"
                   className="h-full w-full object-contain"
                 />
@@ -260,7 +260,7 @@ function BagDetails() {
               <button
                 type="button"
                 onClick={() => setShowQuickTrack((prev) => !prev)}
-                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-sm bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-lg hover:bg-clay-deep hover:shadow-clay/30 transition-all duration-200 active:scale-[0.98]"
+                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-xs hover:bg-clay-deep transition-all duration-200 active:scale-[0.98] cursor-pointer"
               >
                 <Search className="h-4 w-4 transition-transform group-hover:scale-110" />
                 <span>Track Another Bag</span>
@@ -268,7 +268,7 @@ function BagDetails() {
 
               <Link
                 to="/"
-                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-sm bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-md hover:bg-ink/85 transition-all duration-200 active:scale-[0.98]"
+                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-xs hover:bg-ink/85 transition-all duration-200 active:scale-[0.98] cursor-pointer"
               >
                 <Globe className="h-4 w-4 transition-transform group-hover:scale-110" />
                 <span>Back to Website</span>
@@ -295,11 +295,11 @@ function BagDetails() {
                     }}
                     placeholder="e.g. 193444 or EFL-2026-0001"
                     autoFocus
-                    className="flex-1 rounded-sm border border-ink/20 bg-background px-4 py-3 font-display text-base text-ink placeholder:text-ink/30 focus:border-clay focus:outline-none focus:ring-1 focus:ring-clay"
+                    className="flex-1 rounded-xl border border-ink/20 bg-background px-4 py-3 font-display text-base text-ink placeholder:text-ink/30 focus:border-clay focus:outline-none focus:ring-1 focus:ring-clay"
                   />
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-sm bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep transition-colors"
+                    className="inline-flex items-center justify-center rounded-full bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground hover:bg-clay-deep transition-colors shadow-xs cursor-pointer"
                   >
                     Track Now
                   </button>

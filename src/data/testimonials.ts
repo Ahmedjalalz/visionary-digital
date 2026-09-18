@@ -119,8 +119,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-widows-welfare",
-    projectSlug: "widows-welfare",
-    projectName: "Widows Welfare Program",
+    projectSlug: "hope-and-freedom-for-widows-headed-families",
+    projectName: "Hope and Freedom for Widows-Headed Families Project",
     category: "Widows & Families",
     name: "Bilquis Begum",
     role: "Welfare Beneficiary (Age 72)",

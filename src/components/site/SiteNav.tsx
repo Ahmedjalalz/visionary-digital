@@ -164,7 +164,7 @@ export function SiteNav() {
                           transition={{ duration: 0.18, ease: "easeOut" }}
                            className="absolute left-1/2 top-full z-50 w-[min(740px,calc(100vw-3rem))] -translate-x-1/2 pt-2"
                         >
-                          <div className="overflow-hidden rounded-sm border border-ink/12 bg-background/98 p-6 shadow-2xl backdrop-blur-2xl">
+                          <div className="overflow-hidden rounded-2xl border border-ink/10 bg-background/98 p-6 shadow-2xl backdrop-blur-2xl">
                             {/* Header */}
                             <div className="flex items-center justify-between pb-4 border-b border-ink/10">
                               <div>
@@ -195,7 +195,7 @@ export function SiteNav() {
                                     to="/projects/$slug"
                                     params={{ slug: p.slug }}
                                     onClick={() => setProjectsDropdownOpen(false)}
-                                    className={`group flex items-start gap-2.5 rounded px-2.5 py-2 transition-colors ${
+                                    className={`group flex items-start gap-2.5 rounded-xl px-3 py-2 transition-colors ${
                                       isActive ? "bg-clay/10" : "hover:bg-sand/70"
                                     }`}
                                   >
@@ -211,7 +211,7 @@ export function SiteNav() {
                                         className={`font-display text-[13px] leading-snug tracking-tight transition-colors ${
                                           isActive
                                             ? "font-bold text-clay"
-                                            : "font-medium text-ink group-hover:text-clay"
+                                             : "font-medium text-ink group-hover:text-clay"
                                         }`}
                                       >
                                         {p.name}
@@ -243,16 +243,16 @@ export function SiteNav() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <Link
               to="/donate"
-              className="hidden border border-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-clay transition-colors hover:bg-clay/10 sm:inline-block"
+              className="hidden rounded-full border border-clay px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs sm:inline-block"
             >
               Donate
             </Link>
             <Link
               to="/book"
-              className="hidden bg-clay px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-clay-deep sm:inline-block"
+              className="hidden rounded-full bg-clay px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs sm:inline-block"
             >
               Book a meeting
             </Link>
@@ -260,7 +260,7 @@ export function SiteNav() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] border border-ink/20 text-ink lg:hidden"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-full border border-ink/20 text-ink transition-colors hover:border-clay hover:text-clay lg:hidden cursor-pointer"
             >
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`} />
               <span className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
@@ -316,7 +316,7 @@ export function SiteNav() {
                           <button
                             type="button"
                             onClick={() => setMobileProjectsOpen((v) => !v)}
-                            className="flex h-11 w-11 items-center justify-center rounded border border-ink/15 text-ink"
+                            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:border-clay"
                             aria-label="Toggle projects submenu"
                             aria-expanded={mobileProjectsOpen}
                           >
@@ -383,14 +383,14 @@ export function SiteNav() {
                 <Link
                   to="/donate"
                   onClick={() => setOpen(false)}
-                  className="inline-block border border-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-clay"
+                  className="inline-block rounded-full border border-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs"
                 >
                   Donate
                 </Link>
                 <Link
                   to="/book"
                   onClick={() => setOpen(false)}
-                  className="inline-block bg-clay px-6 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground"
+                  className="inline-block rounded-full bg-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs"
                 >
                   Book a meeting
                 </Link>
