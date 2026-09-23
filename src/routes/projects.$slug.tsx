@@ -14,9 +14,11 @@ import {
 import { getProject, projects } from "@/data/projects";
 import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
 import { SchoolMap } from "@/components/site/SchoolMap";
+import { ProvincialEducationCensus } from "@/components/site/ProvincialEducationCensus";
 import { BagTracker } from "@/components/site/BagTracker";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
 import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
+import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -106,42 +108,64 @@ export const Route = createFileRoute("/projects/$slug")({
 function ProjectPage() {
   const { project } = Route.useLoaderData();
   const others = projects.filter((p) => p.slug !== project.slug).slice(0, 4);
-  const accentClass =
-    project.accent === "moss" ? "text-moss" : project.accent === "sand" ? "text-sand" : "text-clay";
+  const accentClass = project.accent === "moss" ? "text-moss" : "text-clay";
 
   const splitHero = ["portrait", "data", "map", "object"].includes(project.layout);
   const centeredHero = project.layout === "map" || project.layout === "object";
 
   return (
     <article className="bg-background">
-      <section className={`relative overflow-hidden ${splitHero ? "grid min-h-[72svh] lg:grid-cols-2" : "flex min-h-[68svh] sm:min-h-[76svh] flex-col justify-end"}`}>
-        <ParallaxImage
-          src={project.image}
-          alt={project.name}
-          className={splitHero ? "relative min-h-[48svh] lg:order-2 lg:min-h-[72svh]" : "absolute inset-0"}
-          imgClassName={project.heroPosition}
-          strength={60}
-          scaleFrom={1.12}
-          priority
-        />
-        {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/28 to-ink/10" />}
-
-        <div className={`relative z-10 flex flex-col justify-end px-5 py-12 sm:px-8 sm:py-16 ${splitHero ? "bg-sand lg:order-1 lg:px-[8vw]" : "mx-auto w-full max-w-[1600px]"}`}>
-          <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
-            <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "text-cream/75"}`}>Initiative Portfolio</span>
-            <h1
-              className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "text-cream"} ${
-                project.name.length > 34
-                  ? "text-[clamp(2.5rem,5vw,5.2rem)]"
-                  : "text-[clamp(3rem,6vw,6.4rem)]"
-              }`}
-            >
-              <MaskLines lines={[project.name]} />
-            </h1>
-            <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "text-cream/80"}`}>{project.short}</p>
+      {project.slug === "hope-and-freedom-for-widows-headed-families" ? (
+        <section className="relative overflow-hidden bg-sand/35 pt-12 pb-10 sm:pt-16 sm:pb-16 border-b border-ink/10">
+          <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-clay/20 bg-clay/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-clay">
+                <span>Initiative Portfolio · Widows Welfare</span>
+              </div>
+              <h1 className="mt-5 font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.08]">
+                {project.name}
+              </h1>
+              <p className="mt-5 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed text-ink/75">
+                {project.short}
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+
+          {/* Centerpiece auto-switching hero carousel */}
+          <div className="mt-6 sm:mt-10">
+            <WidowsHeroCarousel />
+          </div>
+        </section>
+      ) : (
+        <section className={`relative overflow-hidden ${splitHero ? "grid min-h-[72svh] lg:grid-cols-2" : "flex min-h-[68svh] sm:min-h-[76svh] flex-col justify-end"}`}>
+          <ParallaxImage
+            src={project.image}
+            alt={project.name}
+            className={splitHero ? "relative min-h-[48svh] lg:order-2 lg:min-h-[72svh]" : "absolute inset-0"}
+            imgClassName={project.heroPosition}
+            strength={60}
+            scaleFrom={1.12}
+            priority
+          />
+          {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/28 to-ink/10" />}
+
+          <div className={`relative z-10 flex flex-col justify-end px-5 py-12 sm:px-8 sm:py-16 ${splitHero ? "bg-sand lg:order-1 lg:px-[8vw]" : "mx-auto w-full max-w-[1600px]"}`}>
+            <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
+              <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "text-cream/75"}`}>Initiative Portfolio</span>
+              <h1
+                className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "text-cream"} ${
+                  project.name.length > 34
+                    ? "text-[clamp(2.5rem,5vw,5.2rem)]"
+                    : "text-[clamp(3rem,6vw,6.4rem)]"
+                }`}
+              >
+                {project.name}
+              </h1>
+              <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "text-cream/80"}`}>{project.short}</p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── the problem, huge ── */}
       <section className="border-b border-ink/10 px-5 py-20 sm:px-8 sm:py-28">
@@ -182,6 +206,11 @@ function ProjectPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Provincial Education Census Broadsheet for education initiatives ── */}
+      {(project.slug === "school-bags" || project.slug === "education-for-all") && (
+        <ProvincialEducationCensus showHeadline={project.slug !== "education-for-all"} />
+      )}
 
       {/* ── response, treated differently per layout ── */}
       {project.layout === "horizontal" ? (

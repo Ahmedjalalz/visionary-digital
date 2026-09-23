@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowRight, ChevronDown, Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
+import { siteSocials } from "@/components/icons/SocialIcons";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -13,13 +14,6 @@ const primary = [
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ] as const;
-
-const topSocials = [
-  { href: "http://instagram.com/educationandlifefoundation1", label: "Instagram", Icon: Instagram },
-  { href: "http://facebook.com/profile.php?id=61582388637046", label: "Facebook", Icon: Facebook },
-  { href: "https://wa.me/923009475513", label: "WhatsApp", Icon: MessageCircle },
-  { href: "http://youtube.com/@EducationAndLifeFoundation", label: "YouTube", Icon: Youtube },
-];
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -73,27 +67,29 @@ export function SiteNav() {
               href="https://www.google.com/maps?q=31.507582468159587,74.2878023190929"
               target="_blank"
               rel="noreferrer noopener"
+              title="EFL Head Office — 181 Raza Block, Allama Iqbal Town, Lahore"
               className="flex items-center gap-1.5 transition-colors hover:text-clay"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-clay" />
               </span>
-              <span className="tabular-nums">31.507582468159587, 74.2878023190929</span>
+              <span className="tabular-nums font-medium">31.508, 74.288</span>
             </a>
 
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2.5">
-                {topSocials.map(({ href, label, Icon }) => (
+                {siteSocials.map(({ href, label, title, Icon }) => (
                   <a
                     key={label}
                     href={href}
-                    target="_blank"
-                    rel="noreferrer noopener"
+                    target={href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
                     aria-label={label}
-                    className="text-ink/55 transition-colors hover:text-clay"
+                    title={title}
+                    className="text-ink/60 transition-colors hover:text-clay"
                   >
-                    <Icon className="h-3 w-3" strokeWidth={1.6} />
+                    <Icon className="h-3.5 w-3.5" />
                   </a>
                 ))}
               </div>
@@ -394,6 +390,22 @@ export function SiteNav() {
                 >
                   Book a meeting
                 </Link>
+              </div>
+
+              <div className="mt-8 flex items-center gap-3 pt-6 border-t border-ink/10">
+                {siteSocials.map(({ href, label, title, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("mailto:") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
+                    aria-label={label}
+                    title={title}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-all hover:border-clay hover:text-clay"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
               </div>
             </div>
           </motion.div>

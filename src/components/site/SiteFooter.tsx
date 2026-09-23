@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
+import { siteSocials } from "@/components/icons/SocialIcons";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -13,13 +13,6 @@ const nav = [
   { to: "/donate", label: "Donation" },
   { to: "/book", label: "Book a Meeting" },
 ] as const;
-
-const socials = [
-  { href: "http://instagram.com/educationandlifefoundation1", label: "Instagram", Icon: Instagram },
-  { href: "http://facebook.com/profile.php?id=61582388637046", label: "Facebook", Icon: Facebook },
-  { href: "https://wa.me/923009475513", label: "WhatsApp", Icon: MessageCircle },
-  { href: "http://youtube.com/@EducationAndLifeFoundation", label: "YouTube", Icon: Youtube },
-];
 
 export const branches = [
   {
@@ -117,17 +110,18 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
-            <div className="mt-7 flex gap-3">
-              {socials.map(({ href, label, Icon }) => (
+            <div className="mt-7 flex flex-wrap gap-3">
+              {siteSocials.map(({ href, label, title, Icon }) => (
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noreferrer noopener"
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
                   aria-label={label}
+                  title={title}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-all hover:border-clay hover:text-clay hover:shadow-xs"
                 >
-                  <Icon className="h-4 w-4" strokeWidth={1.5} />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>

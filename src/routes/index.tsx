@@ -388,24 +388,52 @@ function Story() {
         strength={16}
         scaleFrom={1.04}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-ink/20" />
+      {/* Refined ambient overlay that keeps the photo details visible to refract through the glass */}
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-ink/25 to-black/10" />
 
       <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-12 sm:px-8 sm:py-16">
         <motion.div
           style={reduce ? {} : { x: quoteX }}
-          className="w-full max-w-2xl rounded-2xl border border-white/15 bg-ink/85 p-8 backdrop-blur-md sm:p-10 shadow-2xl"
+          className="realistic-blue-glass relative w-full max-w-2xl rounded-3xl p-8 sm:p-12 shadow-2xl"
         >
-          <div className="flex items-center gap-2.5">
-            <span className="h-2 w-2 rounded-full bg-clay-bright shadow-xs" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright">One Story</span>
+          {/* Realistic physical glass reflection & optical flare layers */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 select-none overflow-hidden rounded-[inherit]"
+          >
+            {/* Prismatic internal flare glow */}
+            <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-clay-bright/25 blur-3xl" />
+
+            {/* Diagonal specular surface light reflection */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/28 via-white/8 to-transparent [mask-image:linear-gradient(125deg,black_25%,transparent_60%)]" />
+
+            {/* Silky frosted glass diffusion texture */}
+            <div className="absolute inset-0 opacity-[0.10] mix-blend-overlay [background-image:url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'160\' height=\'160\' filter=\'url(%23n)\' opacity=\'0.7\'/%3E%3C/svg%3E')]" />
+
+            {/* Decorative subtle serif quote watermark */}
+            <span className="absolute -right-4 -top-8 font-serif text-[11rem] font-normal leading-none text-white/[0.07]">
+              “
+            </span>
           </div>
-          <p className="mt-3 font-display text-xl sm:text-2xl font-bold tracking-tight text-cream">
-            Nasreen — Lahore
-          </p>
-          <p className="text-xs sm:text-sm font-medium text-cream/75">Widows Welfare Program</p>
-          <blockquote className="mt-6 font-serif text-3xl sm:text-4xl lg:text-[2.65rem] lg:leading-[1.18] italic text-cream">
-            “They did not ask me to prove I was poor. They asked what my children needed.”
-          </blockquote>
+
+          <div className="relative z-10">
+            {/* Frosted pill badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/12 px-3.5 py-1.5 backdrop-blur-md shadow-inner">
+              <span className="h-2 w-2 rounded-full bg-clay-bright shadow-[0_0_8px_#62B7FF]" />
+              <span className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-white">One Story</span>
+            </div>
+
+            <p className="mt-4 font-display text-xl sm:text-2xl font-bold tracking-tight text-white drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.55)]">
+              Nasreen — Lahore
+            </p>
+            <p className="text-xs sm:text-sm font-medium text-white/85 drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
+              Widows Welfare Program
+            </p>
+
+            <blockquote className="mt-6 font-serif text-3xl sm:text-4xl lg:text-[2.65rem] lg:leading-[1.18] italic text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.65)]">
+              “They did not ask me to prove I was poor. They asked what my children needed.”
+            </blockquote>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -83,7 +83,7 @@ export const projects: Project[] = [
     image: foundationMedia.bagsCeremony,
     gallery: [foundationMedia.schoolStudents, foundationMedia.bagsCeremony, schoolwork],
     heroPosition: "object-[50%_42%]",
-    accent: "sand",
+    accent: "clay",
     layout: "object",
   },
   {
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     image: foundationMedia.digitalSkillsLab,
     gallery: [foundationMedia.digitalSkillsLab, foundationMedia.projectDigital, digital],
     heroPosition: "object-center",
-    accent: "sand",
+    accent: "clay",
     layout: "data",
   },
   {
@@ -279,7 +279,7 @@ export const projects: Project[] = [
     image: foundationMedia.skillsSewingMachine,
     gallery: [foundationMedia.skillsSewingMachine, skills, foundationMedia.projectWidows],
     heroPosition: "object-[50%_40%]",
-    accent: "sand",
+    accent: "clay",
     layout: "horizontal",
   },
   {

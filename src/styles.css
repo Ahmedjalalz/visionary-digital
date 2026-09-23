@@ -320,3 +320,27 @@
 @utility pulse-ring {
   animation: efl-pulse-ring 2.4s ease-out infinite;
 }
+
+@utility realistic-blue-glass {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 57, 135, 0.42) 0%,
+    rgba(20, 48, 85, 0.50) 45%,
+    rgba(6, 18, 40, 0.68) 100%
+  );
+  backdrop-filter: blur(28px) saturate(210%) contrast(106%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%) contrast(106%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.40);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1.5px solid rgba(13, 57, 135, 0.45);
+  box-shadow:
+    0 35px 70px -15px rgba(4, 14, 30, 0.8),
+    0 15px 35px -8px rgba(13, 57, 135, 0.5),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 35px 0 rgba(98, 183, 255, 0.18);
+}

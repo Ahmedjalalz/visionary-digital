@@ -26,8 +26,8 @@ import {
 } from "@/data/widowsProgramData";
 
 export function WidowsProjectShowcase() {
-  const [selectedTestimony, setSelectedTestimony] = useState<WidowTestimony>(widowsTestimonies[0]);
-  const [openFaq, setOpenFaq] = useState<string | null>(widowsFaqs[0].id);
+  const [selectedTestimony, setSelectedTestimony] = useState<WidowTestimony>(widowsTestimonies[0]!);
+  const [openFaq, setOpenFaq] = useState<string | null>(widowsFaqs[0]?.id ?? null);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
 
   const toggleFaq = (id: string) => {
