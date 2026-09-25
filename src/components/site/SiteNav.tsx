@@ -61,18 +61,18 @@ export function SiteNav() {
       <header
         className="sticky top-0 z-50 w-full border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500"
       >
-        <div className="border-b border-ink/10 bg-sand/70">
-          <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-5 py-[3px] text-[0.6rem] tracking-[0.12em] text-ink/60 sm:px-8">
+        <div className="border-b border-white/10 bg-ink text-cream">
+          <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-5 py-[3px] text-[0.6rem] tracking-[0.12em] text-cream/70 sm:px-8">
             <a
               href="https://www.google.com/maps?q=31.507582468159587,74.2878023190929"
               target="_blank"
               rel="noreferrer noopener"
-              title="EFL Head Office — 181 Raza Block, Allama Iqbal Town, Lahore"
-              className="flex items-center gap-1.5 transition-colors hover:text-clay"
+              title="ELF Head Office — 181 Raza Block, Allama Iqbal Town, Lahore"
+              className="flex items-center gap-1.5 transition-colors hover:text-cream text-cream/80"
             >
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-clay" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay-bright opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-clay-bright" />
               </span>
               <span className="tabular-nums font-medium">31.508, 74.288</span>
             </a>
@@ -87,13 +87,13 @@ export function SiteNav() {
                     rel={href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
                     aria-label={label}
                     title={title}
-                    className="text-ink/60 transition-colors hover:text-clay"
+                    className="text-cream/70 transition-colors hover:text-cream"
                   >
                     <Icon className="h-3.5 w-3.5" />
                   </a>
                 ))}
               </div>
-              <a href="tel:+923009475513" className="hidden transition-colors hover:text-clay sm:inline">
+              <a href="tel:+923009475513" className="hidden transition-colors hover:text-cream text-cream/80 sm:inline">
                 +92 300 9475513
               </a>
             </div>
@@ -110,7 +110,7 @@ export function SiteNav() {
           >
             <img
               src={logo}
-              alt="EFL Logo"
+              alt="ELF Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
             />
             <div className="flex flex-col">
@@ -278,7 +278,7 @@ export function SiteNav() {
               <div className="flex items-center gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
                 <img
                   src={logo}
-                  alt="EFL Logo"
+                  alt="ELF Logo"
                   className="h-10 w-10 object-contain shrink-0"
                 />
                 <div>

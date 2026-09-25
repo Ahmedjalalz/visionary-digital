@@ -13,9 +13,9 @@ export const Route = createFileRoute("/book")({
       {
         name: "description",
         content:
-          "Choose a date and time to speak with the EFL team about partnerships, sponsorship or volunteering.",
+          "Choose a date and time to speak with the ELF team about partnerships, sponsorship or volunteering.",
       },
-      { property: "og:title", content: "Book a meeting with EFL" },
+      { property: "og:title", content: "Book a meeting with ELF" },
       { property: "og:description", content: "Pick a date, pick a time, tell us how to reach you." },
     ],
   }),

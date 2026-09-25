@@ -3,13 +3,17 @@ import {
   Activity,
   ArrowUpRight,
   Baby,
+  Calculator,
   Droplets,
+  FileSpreadsheet,
   HeartPulse,
   Music,
   Pill,
+  Scale,
   ShieldCheck,
   Sparkles,
   Stethoscope,
+  TrendingUp,
 } from "lucide-react";
 import { getProject, projects } from "@/data/projects";
 import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
@@ -19,6 +23,7 @@ import { BagTracker } from "@/components/site/BagTracker";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
 import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
 import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
+import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsGallery";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -81,7 +86,7 @@ export const Route = createFileRoute("/projects/$slug")({
   ),
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Project not found — EFL" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Project not found — ELF" }, { name: "robots", content: "noindex" }] };
     }
     const { project } = loaderData;
     const title = `${project.name} — Education and Life Foundation`;
@@ -191,7 +196,7 @@ function ProjectPage() {
             {project.problem.line}
           </p>
           <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
-            Source: {project.problem.source} — figures pending final EFL verification
+            Source: {project.problem.source} — figures pending final ELF verification
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-12">
@@ -224,7 +229,7 @@ function ProjectPage() {
             </span>
           </div>
           <div className="mx-auto mt-12 max-w-[1600px] px-5 sm:px-8">
-            <h2 className="display-md max-w-[16ch] text-ink">What EFL does about it.</h2>
+            <h2 className="display-md max-w-[16ch] text-ink">What ELF does about it.</h2>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
               {project.response.map((r, i) => (
                 <Rise key={i} delay={i * 0.08}>
@@ -251,15 +256,51 @@ function ProjectPage() {
 
       {/* ── outcomes strip ── */}
       <section className="border-y border-ink/10 bg-sand px-5 py-12 sm:px-8 sm:py-14">
-        <div className="mx-auto grid max-w-[1600px] gap-8 sm:grid-cols-3">
-          {project.outcomes.map((o) => (
-            <div key={o.label}>
-              <div className="text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">{o.label}</div>
-              <div className="mt-2 font-display text-3xl font-bold text-ink">
-                {o.value}
+        <div className={`mx-auto grid max-w-[1600px] gap-8 ${project.outcomes.length === 4 ? "grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"}`}>
+          {project.outcomes.map((o) => {
+            const inner = (
+              <>
+                <div className="flex items-center gap-1.5 text-[0.66rem] uppercase tracking-[0.2em] text-ink/45">
+                  <span>{o.label}</span>
+                  {o.href && (
+                    <span className="inline-flex items-center text-clay font-bold group-hover:translate-y-0.5 transition-transform">
+                      ↓
+                    </span>
+                  )}
+                </div>
+                <div className={`mt-2 font-display text-2xl sm:text-3xl font-bold transition-colors ${o.href ? "text-ink group-hover:text-clay" : "text-ink"}`}>
+                  {o.value}
+                </div>
+              </>
+            );
+
+            if (o.href) {
+              return (
+                <a
+                  key={o.label}
+                  href={o.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const targetId = o.href!.replace(/^#/, "");
+                    const el = document.getElementById(targetId);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="group block cursor-pointer rounded-xl -m-2 p-2 transition-colors hover:bg-ink/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+                  title={`Jump to ${o.label} section`}
+                >
+                  {inner}
+                </a>
+              );
+            }
+
+            return (
+              <div key={o.label}>
+                {inner}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -296,7 +337,7 @@ function ProjectPage() {
                     src={image}
                     alt={`${project.name} field work ${index + 1}`}
                     loading="lazy"
-                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-center"} transition-transform duration-700 group-hover:scale-[1.035]`}
+                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-[center_20%]"} transition-transform duration-700 group-hover:scale-[1.035]`}
                   />
                 </figure>
               );
@@ -309,7 +350,8 @@ function ProjectPage() {
       {project.slug === "education-for-all" && <SchoolMap />}
 
       {project.slug === "music-of-the-heart" && (
-        <section className="relative overflow-hidden bg-sand px-5 py-20 sm:px-8 sm:py-28 border-y border-ink/10">
+        <>
+          <section className="relative overflow-hidden bg-sand px-5 py-20 sm:px-8 sm:py-28 border-y border-ink/10">
           <div className="mx-auto max-w-[1600px]">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-6">
@@ -364,15 +406,15 @@ function ProjectPage() {
                       src={foundationMedia.musicStudentSolo}
                       alt="Student practicing violin in Music of the Heart program"
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
                       src={foundationMedia.musicClassViolins}
-                      alt="Violins unpacked in EFL classroom"
+                      alt="Violins unpacked in ELF classroom"
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -382,7 +424,7 @@ function ProjectPage() {
                       src={foundationMedia.musicOrchestraClass}
                       alt="Classroom orchestra rehearsal session"
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
@@ -390,7 +432,7 @@ function ProjectPage() {
                       src={foundationMedia.musicConcertHall}
                       alt="Youth concert performance"
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -398,6 +440,8 @@ function ProjectPage() {
             </div>
           </div>
         </section>
+        <MusicalInstrumentsGallery />
+      </>
       )}
 
       {project.slug === "school-bags" && (
@@ -424,7 +468,7 @@ function ProjectPage() {
       {project.slug === "health-wash-community-wellbeing" && (
         <>
           {/* ── dedicated pregnant women support section ── */}
-          <section className="border-y border-ink/10 bg-sand/30 px-5 py-24 sm:px-8 sm:py-28">
+          <section id="pregnant-women-support" className="scroll-mt-24 border-y border-ink/10 bg-sand/30 px-5 py-24 sm:px-8 sm:py-28">
             <div className="mx-auto max-w-[1600px]">
               {/* Eyebrow & Headline */}
               <div className="max-w-3xl">
@@ -510,11 +554,11 @@ function ProjectPage() {
                 </div>
               </div>
 
-              {/* EFL's 4-Tier Pregnancy Intervention Model */}
+              {/* ELF's 4-Tier Pregnancy Intervention Model */}
               <div className="mt-16 sm:mt-20">
                 <div className="max-w-2xl">
                   <span className="eyebrow">Our Ground Intervention</span>
-                  <h3 className="display-sm mt-3 text-ink">How EFL Protects Expectant Mothers</h3>
+                  <h3 className="display-sm mt-3 text-ink">How ELF Protects Expectant Mothers</h3>
                   <p className="mt-3 text-sm sm:text-base text-ink/70">
                     By bringing clinical care and trained female health workers directly to rural courtyards and field tents, we eliminate the distance and financial barriers that cost mothers their lives.
                   </p>
@@ -579,7 +623,7 @@ function ProjectPage() {
                       <img
                         src={foundationMedia.maternalAntenatalCheckup}
                         alt="Clinical Antenatal Checkup"
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -597,7 +641,7 @@ function ProjectPage() {
                       <img
                         src={foundationMedia.maternalLhvConsultation}
                         alt="Lady Health Visitor Home Consultation"
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -614,8 +658,8 @@ function ProjectPage() {
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
                         src={foundationMedia.maternalEflCare}
-                        alt="EFL Nutrition Support and Infant Formula"
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        alt="ELF Nutrition Support and Infant Formula"
+                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -623,7 +667,7 @@ function ProjectPage() {
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Newborn Nutrition</span>
                       <h4 className="font-display text-base font-bold text-ink mt-1">Infant Formula & Postpartum Aid</h4>
                       <p className="mt-2 text-xs leading-relaxed text-ink/70">
-                        EFL volunteers distributing high-grade infant formula (Lactogen), safe feeding bottles, and maternal supplements to prevent infant malnourishment.
+                        ELF volunteers distributing high-grade infant formula (Lactogen), safe feeding bottles, and maternal supplements to prevent infant malnourishment.
                       </p>
                     </div>
                   </div>
@@ -788,13 +832,163 @@ function ProjectPage() {
         </section>
       )}
 
+      {project.slug === "capacity-building" && (
+        <section id="financial-consultation" className="scroll-mt-24 border-t border-ink/10 bg-sand/30 px-5 py-24 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-[1600px]">
+            {/* Eyebrow & Headline */}
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-clay">
+                <Calculator className="h-4 w-4" />
+                Specialized Advisory Module · Fiscal Stewardship
+              </div>
+              <h2 className="display-md mt-5 text-ink">
+                Financial Consultation &amp; Institutional Governance
+              </h2>
+              <p className="lede mt-5 text-ink/75">
+                Compassion begins the work, but financial discipline ensures it survives. Education And Life Foundation deploys senior accountants, non-profit legal specialists, and fiscal advisors directly to grassroots schools, clinics, and welfare initiatives to institute transparent bookkeeping, audit resilience, and sustainable budgeting.
+              </p>
+            </div>
+
+            {/* 4 Pillars of Financial Consultation */}
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  num: "01",
+                  tag: "Cashflow & Planning",
+                  title: "Budgeting & Cashflow Management",
+                  icon: Calculator,
+                  desc: "Structuring detailed operational budgets for community schools, free clinics, and field centers to eliminate sudden deficits and ensure reliable monthly funding.",
+                  deliverables: [
+                    "Itemized operational expenditure models",
+                    "Emergency contingency reserve planning",
+                    "12-month rolling cashflow forecasts",
+                  ],
+                },
+                {
+                  num: "02",
+                  tag: "Accounting & Audits",
+                  title: "Bookkeeping Systems & Audit Prep",
+                  icon: FileSpreadsheet,
+                  desc: "Transitioning grassroots partners from informal cash boxes to verifiable double-entry accounting ledgers and digital cloud spreadsheets ready for formal third-party audit.",
+                  deliverables: [
+                    "Standardized non-profit chart of accounts",
+                    "Monthly bank reconciliations & receipts trail",
+                    "Annual external audit readiness protocols",
+                  ],
+                },
+                {
+                  num: "03",
+                  tag: "Legal & Compliance",
+                  title: "Regulatory Compliance & Non-Profit Law",
+                  icon: Scale,
+                  desc: "Advising local committees on charity registration deeds, tax exemption under Pakistani law (FBR 2(36) and PCP certification), and ethical board governance.",
+                  deliverables: [
+                    "Charity registration & renewal filing support",
+                    "Tax-exempt status & withholding compliance",
+                    "Board governance charters & meeting minutes",
+                  ],
+                },
+                {
+                  num: "04",
+                  tag: "Micro-Enterprise",
+                  title: "Cooperative & Livelihood Advisory",
+                  icon: TrendingUp,
+                  desc: "Providing tailored financial counseling to vocational graduates, women's tailoring clusters, and small artisan groups to break debt cycles and reinvest earnings wisely.",
+                  deliverables: [
+                    "Predatory debt liquidation roadmaps",
+                    "Unit economics & pricing margins",
+                    "Community rotating savings & credit groups",
+                  ],
+                },
+              ].map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.num}
+                    className="flex flex-col justify-between rounded-2xl border border-ink/10 bg-background p-7 sm:p-8 shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="numeral text-sm font-bold text-clay">{pillar.num}</span>
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink/5 text-ink">
+                          <Icon className="h-4 w-4" />
+                        </div>
+                      </div>
+                      <span className="mt-4 inline-block text-[11px] font-bold uppercase tracking-[0.18em] text-ink/50">
+                        {pillar.tag}
+                      </span>
+                      <h3 className="mt-1 font-display text-xl font-bold text-ink">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-ink/75">
+                        {pillar.desc}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 border-t border-ink/10 pt-4">
+                      <ul className="space-y-2">
+                        {pillar.deliverables.map((d) => (
+                          <li key={d} className="flex items-start gap-2 text-xs font-medium text-ink/80">
+                            <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
+                            <span>{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Strategic Callout Banner */}
+            <div className="mt-12 rounded-2xl border border-ink/10 bg-sand p-8 sm:p-10 shadow-xs">
+              <div className="grid gap-6 md:grid-cols-12 md:items-center">
+                <div className="md:col-span-8">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay">
+                    Verified Stewardship Policy
+                  </span>
+                  <h3 className="display-sm mt-2 text-ink">
+                    Why Financial Consultation Protects Vulnerable Communities
+                  </h3>
+                  <p className="mt-3 text-sm sm:text-base leading-relaxed text-ink/70">
+                    When grassroots organizations implement disciplined financial controls, zero donor funds are wasted, service delivery never halts unexpectedly, and international philanthropic partners invest with absolute confidence.
+                  </p>
+                </div>
+                <div className="md:col-span-4 md:text-right">
+                  <Link
+                    to="/book"
+                    className="inline-flex items-center justify-center rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-xs hover:bg-clay-deep transition-colors"
+                  >
+                    Request Consultation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {project.layout === "data" && (
         <section className="px-5 py-24 sm:px-8">
            <div className="mx-auto grid max-w-[1600px] gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs sm:grid-cols-2 lg:grid-cols-4">
-            {["Enrol", "Train", "Practise", "Earn"].map((step, i) => (
-               <div key={step} className="bg-sand p-8">
+            {(project.slug === "capacity-building"
+              ? [
+                  { step: "Fiscal Audit", desc: "Diagnostic review of books, ledger practices, and operating overheads" },
+                  { step: "Consultation", desc: "Tailored financial controls, budgeting models, and compliance roadmaps" },
+                  { step: "Implementation", desc: "Staff training on accounting software, reconciliations, and reporting" },
+                  { step: "Sustained Autonomy", desc: "Audited financial transparency and continuous organizational resilience" },
+                ]
+              : [
+                  { step: "Enrol", desc: "Community outreach and student selection" },
+                  { step: "Train", desc: "Structured vocational and digital coursework" },
+                  { step: "Practise", desc: "Hands-on projects and supervised field practicals" },
+                  { step: "Earn", desc: "Certified market placement and independent income" },
+                ]
+            ).map((item, i) => (
+              <div key={item.step} className="bg-sand p-8">
                 <span className="numeral text-sm text-clay">{String(i + 1).padStart(2, "0")}</span>
-                 <div className="mt-4 font-display text-2xl font-bold text-ink">{step}</div>
+                <div className="mt-4 font-display text-2xl font-bold text-ink">{item.step}</div>
+                <p className="mt-2 text-xs text-ink/65 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

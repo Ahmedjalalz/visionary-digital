@@ -9,8 +9,8 @@ export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
       { title: "Dispatches & Field Notes — Education And Life Foundation" },
-      { name: "description", content: "Authentic field updates, programme milestones and stories from EFL's work across Pakistan." },
-      { property: "og:title", content: "Dispatches & News — EFL" },
+      { name: "description", content: "Authentic field updates, programme milestones and stories from ELF's work across Pakistan." },
+      { property: "og:title", content: "Dispatches & News — ELF" },
       { property: "og:description", content: "Field reports and programme milestones from Education And Life Foundation." },
     ],
   }),
@@ -28,6 +28,7 @@ export interface DispatchPost {
   body: string;
   fullStory: string[];
   img: string;
+  imgPosition?: string;
 }
 
 const posts: DispatchPost[] = [
@@ -42,10 +43,11 @@ const posts: DispatchPost[] = [
     body: "Enrolment opens with complete educational kits provided in full — eliminating the three financial hurdles that most often prevent impoverished children from continuing their schooling.",
     fullStory: [
       "Every new academic term in Pakistan brings a silent crisis for low-income families: the compounded cost of brand-new school bags, mandatory uniforms, textbooks, and year-long stationery supplies.",
-      "At EFL's flagship school campus in Raza Block, Allama Iqbal Town, Lahore, over 1,200 enrolled students received comprehensive academic kits in partnership with School in a Bag UK and local community donors.",
-      "Each child received a weather-resistant satchel packed with notebooks, pens, pencils, geometry tins, water bottles, and hygiene essentials. By eliminating these direct expenses, EFL ensures zero students drop out due to economic strain."
+      "At ELF's flagship school campus in Raza Block, Allama Iqbal Town, Lahore, over 1,200 enrolled students received comprehensive academic kits in partnership with School in a Bag UK and local community donors.",
+      "Each child received a weather-resistant satchel packed with notebooks, pens, pencils, geometry tins, water bottles, and hygiene essentials. By eliminating these direct expenses, ELF ensures zero students drop out due to economic strain."
     ],
     img: foundationMedia.bagsCeremony,
+    imgPosition: "object-[center_16%]",
   },
   {
     id: "music-of-the-heart",
@@ -62,6 +64,7 @@ const posts: DispatchPost[] = [
       "Field observations confirm that participating children show elevated discipline, improved emotional wellbeing, and an extraordinary 78% increase in regular classroom attendance."
     ],
     img: foundationMedia.musicClassViolins,
+    imgPosition: "object-[center_20%]",
   },
   {
     id: "mobile-medical-camp-sheikhupura",
@@ -74,10 +77,11 @@ const posts: DispatchPost[] = [
     body: "Free diagnostic consultations, blood testing, and essential prescription medications provided directly to families who would otherwise have to journey over 40 kilometers for clinical care.",
     fullStory: [
       "For families living along the rural belt of Sheikhupura, accessing a qualified physician often requires hours of travel over dirt roads and prohibitive consultation fees.",
-      "EFL's mobile clinical team—comprising general practitioners, pediatricians, ophthalmologists, and certified pharmacists—established a two-day camp providing complete primary care, diabetic screening, and free dispensary medication.",
+      "ELF's mobile clinical team—comprising general practitioners, pediatricians, ophthalmologists, and certified pharmacists—established a two-day camp providing complete primary care, diabetic screening, and free dispensary medication.",
       "Over 640 men, women, and children were examined, with critical cases referred to Lahore specialized tertiary hospitals with transportation and treatment fully subsidized by the foundation."
     ],
     img: foundationMedia.healthCampDoctor,
+    imgPosition: "object-[center_14%]",
   },
   {
     id: "vocational-sewing-machines",
@@ -89,11 +93,12 @@ const posts: DispatchPost[] = [
     title: "80 Industrial Sewing Machines Handed Over to Graduating Vocational Trainees",
     body: "Turning short-term relief into lifelong dignity. Graduating women receive commercial-grade machinery and tailoring contracts, establishing independent household incomes.",
     fullStory: [
-      "Charity provides immediate relief, but technical skills build generational resilience. EFL's 6-month certified vocational tailoring curriculum completed its latest training cohort this July.",
+      "Charity provides immediate relief, but technical skills build generational resilience. ELF's 6-month certified vocational tailoring curriculum completed its latest training cohort this July.",
       "Eighty women—many of whom are sole providers or widows supporting young children—graduated after passing rigorous machine operation, garment cutting, and stitching examinations.",
       "Upon completion, each graduate was presented with an industrial-grade electric sewing machine, starting fabric stock, and local vendor production orders, securing guaranteed monthly income for their households."
     ],
     img: foundationMedia.skillsSewingMachine,
+    imgPosition: "object-[center_22%]",
   },
   {
     id: "widows-rations-cycle",
@@ -105,11 +110,12 @@ const posts: DispatchPost[] = [
     title: "Monthly Nutrition & Rations Cycle Reaches 250 Widow-Headed Families",
     body: "Flour, pulses, cooking oil, and urgent medicine delivered without humiliating public queues — upholding dignity for mothers bearing the sole responsibility of household survival.",
     fullStory: [
-      "Widows in impoverished communities carry an immense burden of stigma and economic destitution. EFL's monthly sustenance program replaces sporadic charity with guaranteed monthly nutrition boxes.",
+      "Widows in impoverished communities carry an immense burden of stigma and economic destitution. ELF's monthly sustenance program replaces sporadic charity with guaranteed monthly nutrition boxes.",
       "Each 45kg parcel provides high-grade whole wheat flour, lentils, cooking oil, tea, sugar, and essential hygiene supplies, packed to feed a household of five for 30 full days.",
       "Deliveries are made discreetly to each recipient's doorstep, completely doing away with humiliating public queues and preserving the absolute dignity of every mother."
     ],
     img: foundationMedia.widowsFoodRations,
+    imgPosition: "object-[center_20%]",
   },
   {
     id: "classroom-infrastructure-upgrades",
@@ -122,10 +128,11 @@ const posts: DispatchPost[] = [
     body: "Children deserve learning environments that honor their potential. Physical infrastructure overhauls ensure safe, well-lit spaces where students can focus on math and literacy.",
     fullStory: [
       "A classroom without proper desks or ventilation drastically undermines student concentration, particularly during Punjab's extreme summer temperatures.",
-      "EFL's school infrastructure team completed physical renovations across four village community school facilities, installing dual-seater ergonomic wooden benches, magnetic dry-erase boards, solar-powered ceiling fans, and LED fixtures.",
+      "ELF's school infrastructure team completed physical renovations across four village community school facilities, installing dual-seater ergonomic wooden benches, magnetic dry-erase boards, solar-powered ceiling fans, and LED fixtures.",
       "Teachers report that classroom engagement, posture, and written penmanship have markedly improved, transforming previously austere spaces into vibrant hubs of learning."
     ],
     img: foundationMedia.classroomDesks,
+    imgPosition: "object-center",
   },
 ];
 
@@ -196,7 +203,7 @@ function News() {
                         <img
                           src={posts[0].img}
                           alt={posts[0].title}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          className={`h-full w-full object-cover ${posts[0].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
                         />
                         <div className="absolute left-4 top-4">
                           <span className="rounded-full bg-clay px-3.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-cream shadow-xs">
@@ -248,7 +255,7 @@ function News() {
                           <img
                             src={p.img}
                             alt={p.title}
-                            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
                           />
                           <div className="absolute left-3 top-3">
                             <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
@@ -323,7 +330,7 @@ function News() {
                         <img
                           src={posts[3].img}
                           alt={posts[3].title}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          className={`h-full w-full object-cover ${posts[3].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
                         />
                         <div className="absolute right-4 top-4">
                           <span className="rounded-full bg-ink/80 backdrop-blur-xs px-3.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-cream shadow-xs">
@@ -349,7 +356,7 @@ function News() {
                           <img
                             src={p.img}
                             alt={p.title}
-                            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
                           />
                           <div className="absolute left-3 top-3">
                             <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
@@ -400,7 +407,7 @@ function News() {
                         <img
                           src={p.img}
                           alt={p.title}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
                         />
                         <div className="absolute left-3 top-3">
                           <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
@@ -449,7 +456,7 @@ function News() {
                 <img
                   src={activeDispatch.img}
                   alt={activeDispatch.title}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full object-cover ${activeDispatch.imgPosition || "object-[center_20%]"}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-8 sm:right-8">

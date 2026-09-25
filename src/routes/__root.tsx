@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "EFL works with deprived communities across Pakistan: education, healthcare, safe water and support for families carrying more than they should.",
+          "ELF works with deprived communities across Pakistan: education, healthcare, safe water and support for families carrying more than they should.",
       },
       { name: "author", content: "Education and Life Foundation" },
       { property: "og:title", content: "Education and Life Foundation" },

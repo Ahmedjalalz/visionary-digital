@@ -47,7 +47,7 @@ export const Route = createFileRoute("/impact")({
       {
         name: "description",
         content:
-          "Witness the real outcomes of EFL's programmes across Pakistan through field testimonies, verified outcomes, and our global partner foundations.",
+          "Witness the real outcomes of ELF's programmes across Pakistan through field testimonies, verified outcomes, and our global partner foundations.",
       },
       { property: "og:title", content: "Our Impact — Education and Life Foundation" },
       {
@@ -307,8 +307,8 @@ function ImpactPage() {
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-cream/15 bg-ink/50 shadow-2xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full group">
                 <img
                   src={heroImg}
-                  alt="EFL field work with communities in Punjab"
-                  className="h-full w-full object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  alt="ELF field work with communities in Punjab"
+                  className="h-full w-full object-cover object-[center_22%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
               </div>

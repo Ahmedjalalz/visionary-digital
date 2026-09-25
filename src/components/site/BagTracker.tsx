@@ -122,7 +122,7 @@ export function BagTracker() {
                     setValue(e.target.value);
                     setError(null);
                   }}
-                  placeholder="EFL-2026-0001"
+                  placeholder="ELF-2026-0001"
                   autoComplete="off"
                   aria-invalid={!!error}
                   aria-describedby={error ? "tracking-error" : undefined}
@@ -142,7 +142,7 @@ export function BagTracker() {
                   {loading ? "Looking up" : "Find this bag"}
                 </button>
                  <p className="mt-4 text-center text-xs text-ink/40">
-                  Try EFL-2026-0001 to see a delivered bag.
+                  Try ELF-2026-0001 to see a delivered bag.
                 </p>
               </form>
             </motion.div>

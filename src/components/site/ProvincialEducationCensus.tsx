@@ -88,7 +88,7 @@ export function ProvincialEducationCensus({
           <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-ink/70">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-clay" />
-              <span className="font-bold text-ink">EFL Special Broadsheet Report</span>
+              <span className="font-bold text-ink">ELF Special Broadsheet Report</span>
               <span className="hidden sm:inline text-ink/40">·</span>
               <span className="hidden sm:inline">National Education Crisis Desk</span>
             </div>
@@ -337,7 +337,7 @@ export function ProvincialEducationCensus({
                 Why a single bag changes the provincial drop-out trajectory.
               </h4>
               <p className="text-sm sm:text-base leading-relaxed text-ink/75">
-                In government surveys and EFL field reporting across Punjab, Sindh, KPK, and Balochistan, the primary trigger for absenteeism is rarely a lack of desire to learn — it is acute poverty manifesting in missing stationery, torn notebooks, or shame from being sent home for lack of materials.
+                In government surveys and ELF field reporting across Punjab, Sindh, KPK, and Balochistan, the primary trigger for absenteeism is rarely a lack of desire to learn — it is acute poverty manifesting in missing stationery, torn notebooks, or shame from being sent home for lack of materials.
               </p>
               <p className="text-sm sm:text-base leading-relaxed text-ink/75">
                 By equipping a child with a durable, year-long school bag packed with every required textbook, notebook, pencil case, and geometry set, Education And Life Foundation eliminates the immediate financial burden on vulnerable families, ensuring the child remains enrolled and protected in school.
@@ -354,7 +354,7 @@ export function ProvincialEducationCensus({
 
         {/* Newspaper Bottom Folio */}
         <div className="mt-8 border-t border-ink/20 pt-3 flex flex-wrap items-center justify-between text-[11px] font-mono uppercase tracking-[0.16em] text-ink/50">
-          <span>Education and Life Foundation (EFL) · Registered Charity</span>
+          <span>Education and Life Foundation (ELF) · Registered Charity</span>
           <span>Demographic Baseline 2026</span>
         </div>
       </div>

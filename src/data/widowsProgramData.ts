@@ -144,7 +144,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/1-shehnaz-anayat.jpg",
     role: "Widowed Mother & Daughter",
     story:
-      "Shehnaz and her daughter Shavita were trapped in kiln labor following the sudden death of her husband. Left without economic security, they were crushed under compounded debts to kiln managers. Through EFL sponsorship, their debt was fully cleared, unlocking dignity, safe housing, and school enrollment for young Shavita.",
+      "Shehnaz and her daughter Shavita were trapped in kiln labor following the sudden death of her husband. Left without economic security, they were crushed under compounded debts to kiln managers. Through ELF sponsorship, their debt was fully cleared, unlocking dignity, safe housing, and school enrollment for young Shavita.",
     debt: "Bonded kiln debt discharged",
     status: "Liberated & Home Stabilized",
     quote:
@@ -156,7 +156,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/2-sukhnari-arif.jpg",
     role: "Widow & Mother of 4 Children",
     story:
-      "After her husband died from an untreated chronic illness, Sukhnari became solely responsible for four young children. To survive and buy food, she entered the brick kilns under high-interest loans. EFL stepped in to liquidate her debt in full and funded a home-based sewing workstation.",
+      "After her husband died from an untreated chronic illness, Sukhnari became solely responsible for four young children. To survive and buy food, she entered the brick kilns under high-interest loans. ELF stepped in to liquidate her debt in full and funded a home-based sewing workstation.",
     debt: "Full kiln debt discharged",
     status: "Independent Micro-Tailor",
     quote:
@@ -168,7 +168,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/18-naila-vikram.jpg",
     role: "Mother of Alisha (5) & Jessica (2)",
     story:
-      "Naila lost her husband to kidney disease after months of painful dialysis. To pay for hospital care, they borrowed 150,000 PKR from a kiln owner. Working 6 hours daily alone with two toddlers, her remaining debt was 70,744 PKR. EFL cleared the debt and provided an emergency living allowance.",
+      "Naila lost her husband to kidney disease after months of painful dialysis. To pay for hospital care, they borrowed 150,000 PKR from a kiln owner. Working 6 hours daily alone with two toddlers, her remaining debt was 70,744 PKR. ELF cleared the debt and provided an emergency living allowance.",
     debt: "70,744 PKR remaining loan cleared",
     status: "Transitional Support & Healthcare",
     quote:
@@ -192,7 +192,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/50-bashira-arif.jpg",
     role: "Mother of 4 (Caregiver to disabled son)",
     story:
-      "Her husband died of blood cancer 18 years ago, forcing her sons to abandon school for the kilns. Her son Faris has lived with severe mental disability since birth. Suffering from hypertension and diabetes without electricity or clean water, EFL provided debt relief, medicine, and living stipends.",
+      "Her husband died of blood cancer 18 years ago, forcing her sons to abandon school for the kilns. Her son Faris has lived with severe mental disability since birth. Suffering from hypertension and diabetes without electricity or clean water, ELF provided debt relief, medicine, and living stipends.",
     debt: "50,000 PKR loan cleared",
     status: "Medical Stipend & Safe Living",
     quote:
@@ -204,7 +204,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/21-suriya-barkat.jpg",
     role: "Widowed Mother of 3",
     story:
-      "Suriya endured unrelenting kiln bondage following her husband's death. EFL negotiated complete debt cancellation, paid 6 months of housing rent, and provided startup capital for a home poultry and micro-dairy enterprise.",
+      "Suriya endured unrelenting kiln bondage following her husband's death. ELF negotiated complete debt cancellation, paid 6 months of housing rent, and provided startup capital for a home poultry and micro-dairy enterprise.",
     debt: "Generational debt broken",
     status: "Self-Reliant Dairy & Poultry",
     quote:
@@ -216,7 +216,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/17-parveen-aslam.jpg",
     role: "Widowed Mother of 3",
     story:
-      "Trapped by arbitrary deductions and interest rates at a peri-urban kiln, Parveen could never lower her debt. EFL intervened with legal backing, cleared the principal sum, and gifted her a tailoring machine with starter fabrics.",
+      "Trapped by arbitrary deductions and interest rates at a peri-urban kiln, Parveen could never lower her debt. ELF intervened with legal backing, cleared the principal sum, and gifted her a tailoring machine with starter fabrics.",
     debt: "Predatory kiln loan cancelled",
     status: "Tailoring & Craft Business",
     quote:
@@ -228,11 +228,11 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/16-raees-boota.jpg",
     role: "Widow & School-Age Children",
     story:
-      "Destitute after the loss of the household head, this entire family was absorbed into bonded kiln servitude. EFL achieved complete legal release, relocated them safely, and enrolled the children back in school with full supplies.",
+      "Destitute after the loss of the household head, this entire family was absorbed into bonded kiln servitude. ELF achieved complete legal release, relocated them safely, and enrolled the children back in school with full supplies.",
     debt: "Complete legal bond release",
     status: "Children Enrolled in School",
     quote:
-      "Education was stolen from us in the mud pits, but EFL brought our children back into the classroom.",
+      "Education was stolen from us in the mud pits, but ELF brought our children back into the classroom.",
   },
   {
     id: "shameem-james",
@@ -240,7 +240,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/41-shameem-james-masih.jpg",
     role: "Widowed Grandmother & Guardian",
     story:
-      "Caring for orphaned grandchildren after her husband and son passed, Shameem faced imminent eviction and malnutrition. EFL provided immediate living stipends, emergency food hampers, and pediatric clinical checkups.",
+      "Caring for orphaned grandchildren after her husband and son passed, Shameem faced imminent eviction and malnutrition. ELF provided immediate living stipends, emergency food hampers, and pediatric clinical checkups.",
     debt: "Eviction & medical debt cleared",
     status: "Family Dignity Restored",
     quote:
@@ -252,7 +252,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/25-razia-manzoor.jpg",
     role: "Widowed Mother",
     story:
-      "Widowed in an isolated brick kiln cluster, Razia suffered withheld wages and verbal coercion. EFL secured her official legal release deed and equipped her with an urban mobile grocery kiosk.",
+      "Widowed in an isolated brick kiln cluster, Razia suffered withheld wages and verbal coercion. ELF secured her official legal release deed and equipped her with an urban mobile grocery kiosk.",
     debt: "Full debt liquidation",
     status: "Mobile Kiosk Owner",
     quote:
@@ -264,7 +264,7 @@ export const widowsTestimonies: WidowTestimony[] = [
     image: "/images/widows/testimonies/49-azrah-bashir.jpg",
     role: "Widowed Mother",
     story:
-      "Azrah struggled under compounded debt from expensive hospitalizations before her husband passed away. EFL stepped in with complete medical bill settlement, debt liquidation, and regular welfare food hampers.",
+      "Azrah struggled under compounded debt from expensive hospitalizations before her husband passed away. ELF stepped in with complete medical bill settlement, debt liquidation, and regular welfare food hampers.",
     debt: "Hospitalization debt cleared",
     status: "Healthcare & Monthly Aid",
     quote:

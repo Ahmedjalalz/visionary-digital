@@ -67,7 +67,7 @@ function parseSiabHtml(html: string, id: string): TrackedBag | null {
     match(/id="PackedByName" value="(.*?)"/i) ||
     match(/<div class="tracklabel">Packed by<\/div>[\s\S]*?<h3[^>]*>(.*?)<\/h3>/i);
 
-  // Normalize status to EFL stages: "Packed" | "In Transit" | "Delivered"
+  // Normalize status to ELF stages: "Packed" | "In Transit" | "Delivered"
   let status = "In Transit";
   const sLower = rawStatus.toLowerCase();
   if (sLower.includes("arrived") || sLower.includes("delivered")) {
@@ -125,10 +125,16 @@ export const fetchLiveBagDetails = createServerFn({ method: "GET" })
 
     // 2. Fallback to Supabase if ever recorded locally
     try {
+      const altTrackingId = trackingId.startsWith("ELF-")
+        ? trackingId.replace(/^ELF-/i, "EFL-")
+        : trackingId.startsWith("EFL-")
+        ? trackingId.replace(/^EFL-/i, "ELF-")
+        : trackingId;
+
       const { data } = await supabase
         .from("school_bags")
         .select("*")
-        .ilike("tracking_id", trackingId)
+        .or(`tracking_id.ilike.${trackingId},tracking_id.ilike.${altTrackingId}`)
         .maybeSingle();
 
       if (data) {

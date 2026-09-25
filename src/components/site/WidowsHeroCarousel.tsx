@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 export const WIDOWS_HERO_IMAGES = Array.from({ length: 28 }, (_, i) => ({
   src: `/images/widows/hero/${i + 1}.jpg`,
-  alt: `EFL Widows Welfare & Family Liberation Program — Field Photograph ${i + 1}`,
+  alt: `ELF Widows Welfare & Family Liberation Program — Field Photograph ${i + 1}`,
 }));
 
 export function WidowsHeroCarousel() {
@@ -97,7 +97,7 @@ export function WidowsHeroCarousel() {
                         src={img.src}
                         alt={img.alt}
                         loading={index < 4 ? "eager" : "lazy"}
-                        className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out"
+                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-1000 ease-out"
                       />
 
                       {/* Ambient gradient overlay for depth */}

@@ -1,15 +1,15 @@
-# Education And Life Foundation (EFL) — Official Brand Style Guide & Design System
+# Education And Life Foundation (ELF) — Official Brand Style Guide & Design System
 
 > **Document Version:** `2026.1 (Production Release)`  
 > **Target Audience:** Graphic Designers, Art Directors, UI/UX Designers, Print Vendors, and Marketing Teams  
-> **Organization:** Education And Life Foundation (EFL) · Established 2003 · Lahore, Punjab, Pakistan  
+> **Organization:** Education And Life Foundation (ELF) · Established 2003 · Lahore, Punjab, Pakistan  
 > **Core Mission:** Grassroots education, healthcare, safe drinking water, and widow family dignity across underprivileged communities.
 
 ---
 
 ## Visual Summary & Design System Sheet
 
-![EFL Brand Style Guide Illustration](file:///C:/Users/Ahmad/.gemini/antigravity/brain/01384132-1dc1-44da-a9c1-bfe3786c585a/ELF_Brand_Style_Guide.png)
+![ELF Brand Style Guide Illustration](file:///C:/Users/Ahmad/.gemini/antigravity/brain/01384132-1dc1-44da-a9c1-bfe3786c585a/ELF_Brand_Style_Guide.png)
 
 ---
 
@@ -70,7 +70,7 @@ When designing infographics, pie charts, donor impact breakdowns, and annual rep
 
 ## 3. Typography System — The Editorial Trio
 
-EFL employs three distinct Google Fonts that work in harmony across digital and print collateral.
+ELF employs three distinct Google Fonts that work in harmony across digital and print collateral.
 
 ```html
 <!-- Google Fonts Embed Code -->

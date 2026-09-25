@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
     role: "Mother of three students",
     location: "Sheikhupura District, Punjab",
     quote:
-      "When my husband fell ill, I was told my daughters would have to leave schooling. EFL came to our doorstep, covered their fees, uniforms and books without a single condition. Today all three are at the top of their grades.",
+      "When my husband fell ill, I was told my daughters would have to leave schooling. ELF came to our doorstep, covered their fees, uniforms and books without a single condition. Today all three are at the top of their grades.",
     impactHighlight: "3 children retained in continuous schooling",
     partnerName: "Happy to Help Foundation UK",
   },
@@ -48,7 +48,7 @@ export const testimonials: Testimonial[] = [
     role: "Certified Community Midwife",
     location: "Chunian Tehsil, Kasur",
     quote:
-      "Before EFL's 18-month midwifery cohort and clinical toolkit, women in our cluster had to travel two hours on tractor trolleys to reach emergency labor wards. In the last year, I safely delivered 48 healthy babies right in our village.",
+      "Before ELF's 18-month midwifery cohort and clinical toolkit, women in our cluster had to travel two hours on tractor trolleys to reach emergency labor wards. In the last year, I safely delivered 48 healthy babies right in our village.",
     impactHighlight: "48 safe village deliveries in 12 months",
     partnerName: "Women & Girls First USA",
   },
@@ -74,7 +74,7 @@ export const testimonials: Testimonial[] = [
     role: "Patient & Village Elder (Age 68)",
     location: "Nankana Sahib District",
     quote:
-      "I was going blind from cataracts and had no savings left for treatment. The EFL medical camp doctors examined me, gave me free prescription medication, and arranged my eye surgery with zero expense to my family.",
+      "I was going blind from cataracts and had no savings left for treatment. The ELF medical camp doctors examined me, gave me free prescription medication, and arranged my eye surgery with zero expense to my family.",
     impactHighlight: "Free consultation, eye surgery & full medicine course",
     partnerName: "Vision for Asia Germany",
   },
@@ -87,7 +87,7 @@ export const testimonials: Testimonial[] = [
     role: "Primary School Administrator",
     location: "Okara Border Belt, Punjab",
     quote:
-      "Our children used to fall sick constantly with typhoid and stomach infections from shallow groundwater. EFL installed deep-bore solar filtration and modern washrooms. Sick days dropped to near zero within two terms.",
+      "Our children used to fall sick constantly with typhoid and stomach infections from shallow groundwater. ELF installed deep-bore solar filtration and modern washrooms. Sick days dropped to near zero within two terms.",
     impactHighlight: "Clean drinking water for 450+ school children",
     partnerName: "Vision for Asia Germany",
   },
@@ -100,7 +100,7 @@ export const testimonials: Testimonial[] = [
     role: "Young Mother",
     location: "Sheikhupura Rural",
     quote:
-      "EFL provided monthly prenatal vitamins, iron supplements, and direct check-ups throughout my pregnancy. Having a registered lady health visitor check on me gave me the confidence that my child would be born healthy.",
+      "ELF provided monthly prenatal vitamins, iron supplements, and direct check-ups throughout my pregnancy. Having a registered lady health visitor check on me gave me the confidence that my child would be born healthy.",
     impactHighlight: "Healthy full-term birth and postpartum care kit",
     partnerName: "Consistent Life Network USA",
   },
@@ -113,7 +113,7 @@ export const testimonials: Testimonial[] = [
     role: "Widow & Tailoring Entrepreneur",
     location: "Lahore, Punjab",
     quote:
-      "When my husband passed, I had no savings and four young dependents. EFL did not just drop food and leave; they paid my children's fees and gifted me an industrial sewing machine with fabric supplies. Now I take commercial stitching orders.",
+      "When my husband passed, I had no savings and four young dependents. ELF did not just drop food and leave; they paid my children's fees and gifted me an industrial sewing machine with fabric supplies. Now I take commercial stitching orders.",
     impactHighlight: "Independent monthly income of PKR 42,000+",
     partnerName: "Barnabas Aid UK",
   },
@@ -126,7 +126,7 @@ export const testimonials: Testimonial[] = [
     role: "Welfare Beneficiary (Age 72)",
     location: "Raza Block, Lahore",
     quote:
-      "At my age, standing in humiliating queues for ration handouts breaks the spirit. EFL delivers our grocery packages and monthly emergency stipend directly to our door with respect, every month on time without fail.",
+      "At my age, standing in humiliating queues for ration handouts breaks the spirit. ELF delivers our grocery packages and monthly emergency stipend directly to our door with respect, every month on time without fail.",
     impactHighlight: "Continuous dignity-first monthly family food basket",
     partnerName: "Azadi Freedom Germany",
   },
@@ -139,7 +139,7 @@ export const testimonials: Testimonial[] = [
     role: "Cohort Graduate & Freelance Web Developer",
     location: "Lahore Suburbs",
     quote:
-      "I had never touched a modern computer until the EFL IT lab opened. In 6 months, their instructors taught me office software, digital graphics, and client communications. Today I earn online from international clients.",
+      "I had never touched a modern computer until the ELF IT lab opened. In 6 months, their instructors taught me office software, digital graphics, and client communications. Today I earn online from international clients.",
     impactHighlight: "Earning sustainable foreign remittance independently",
     partnerName: "Youth for Christ International USA",
   },
@@ -152,7 +152,7 @@ export const testimonials: Testimonial[] = [
     role: "Vocational Electrical Graduate",
     location: "Kasur District",
     quote:
-      "I was working as an underpaid day laborer with zero job security. EFL’s 4-month technical electric wiring course gave me certified training and a starter toolbag. I am now a certified electrical subcontractor.",
+      "I was working as an underpaid day laborer with zero job security. ELF’s 4-month technical electric wiring course gave me certified training and a starter toolbag. I am now a certified electrical subcontractor.",
     impactHighlight: "Permanent trade certification & full kit sponsorship",
     partnerName: "TBF Trust UK",
   },
@@ -165,7 +165,7 @@ export const testimonials: Testimonial[] = [
     role: "District Field Supervisor",
     location: "Punjab Field Operations",
     quote:
-      "Sustainable charity is not about outside experts coming and going; it is about training locals who stay. EFL equips us with transparent record-keeping, supply chain tracking, and disaster response skills.",
+      "Sustainable charity is not about outside experts coming and going; it is about training locals who stay. ELF equips us with transparent record-keeping, supply chain tracking, and disaster response skills.",
     impactHighlight: "35+ grassroots field leaders certified in governance",
     partnerName: "Paul Aid Trust New Zealand",
   },

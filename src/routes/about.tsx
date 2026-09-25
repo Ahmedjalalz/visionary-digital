@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Who EFL is, our origins since 2003, and how a Lahore-based NGO serves marginalized communities across Punjab.",
+          "Who ELF is, our origins since 2003, and how a Lahore-based NGO serves marginalized communities across Punjab.",
       },
       { property: "og:title", content: "About Education And Life Foundation" },
       {
@@ -38,7 +38,7 @@ const team = [
     role: "Founder & Chairperson",
     img: foundationMedia.chairpersonPortrait,
     detail:
-      "Guides EFL's strategic direction, stewardship of partner trust, and signs off every programme before it reaches a community.",
+      "Guides ELF's strategic direction, stewardship of partner trust, and signs off every programme before it reaches a community.",
   },
   {
     name: "Dr. Zoya Khan",
@@ -64,7 +64,7 @@ const team = [
 ];
 
 const history = [
-  { year: "Origins", title: "A response, not a plan", body: "EFL begins as direct assistance to families in Lahore who had fallen out of every other net — food, fees, medicine.", img: foundationMedia.widowsFoodRations },
+  { year: "Origins", title: "A response, not a plan", body: "ELF begins as direct assistance to families in Lahore who had fallen out of every other net — food, fees, medicine.", img: foundationMedia.widowsFoodRations },
   { year: "Schools", title: "Classrooms open", body: "Free schooling formalises: tuition, books, uniforms and stationery covered so cost stops deciding who learns.", img: foundationMedia.classroomDesks },
   { year: "Health", title: "Camps go rural", body: "Medical camps move out of the city into districts where the nearest clinic is a journey rather than a walk.", img: foundationMedia.healthCampDoctor },
   { year: "Water", title: "WASH added", body: "Safe water and sanitation become a programme in their own right after illness keeps emptying classrooms.", img: washImg },
@@ -155,7 +155,7 @@ function About() {
     <>
       {/* hero — typographic, image behind */}
       <section className="relative flex min-h-[68svh] w-full flex-col justify-end overflow-hidden pb-14 pt-24 sm:min-h-[76svh] sm:pb-20">
-        <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an EFL village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_32%]" priority strength={45} />
+        <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an ELF village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_15%]" priority strength={45} />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/82 via-ink/42 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
@@ -268,7 +268,7 @@ function About() {
                       src={s.img}
                       alt={s.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
                     <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-xs shadow-xs">

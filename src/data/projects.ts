@@ -20,7 +20,7 @@ export interface Project {
   problem: { figure: string; unit: string; line: string; source: string };
   context: string[];
   response: string[];
-  outcomes: { label: string; value: string }[];
+  outcomes: { label: string; value: string; href?: string }[];
   image: string;
   gallery: string[];
   heroPosition: string;
@@ -44,7 +44,7 @@ export const projects: Project[] = [
       "For girls in rural districts the odds narrow further — a single school fee can end an education permanently.",
     ],
     response: [
-      "EFL runs and supports free community schooling, covering tuition, books, uniforms and stationery so that cost never becomes the reason a child leaves.",
+      "ELF runs and supports free community schooling, covering tuition, books, uniforms and stationery so that cost never becomes the reason a child leaves.",
       "Teachers are trained and paid locally, and families receive follow-up so enrolment turns into attendance.",
     ],
     outcomes: [
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.schoolStudents,
     gallery: [foundationMedia.classroomDesks, foundationMedia.schoolUniforms, education],
-    heroPosition: "object-[50%_32%]",
+    heroPosition: "object-[50%_18%]",
     accent: "clay",
     layout: "map",
   },
@@ -66,7 +66,7 @@ export const projects: Project[] = [
       figure: "1",
       unit: "bag",
       line: "is often the difference between attending and dropping out.",
-      source: "EFL field reporting",
+      source: "ELF field reporting",
     },
     context: [
       "Stationery is not a small thing. When a family cannot supply a notebook, a child is sent home, and being sent home repeatedly ends in leaving.",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.bagsCeremony,
     gallery: [foundationMedia.schoolStudents, foundationMedia.bagsCeremony, schoolwork],
-    heroPosition: "object-[50%_42%]",
+    heroPosition: "object-[50%_16%]",
     accent: "clay",
     layout: "object",
   },
@@ -100,16 +100,16 @@ export const projects: Project[] = [
       "Most maternal deaths are preventable with a skilled attendant present. In remote districts, there often isn't one.",
     ],
     response: [
-      "EFL trains and equips community midwives so safe delivery does not depend on reaching a distant hospital in time.",
+      "ELF trains and equips community midwives so safe delivery does not depend on reaching a distant hospital in time.",
     ],
     outcomes: [
       { label: "Trained", value: "Community midwives" },
       { label: "Placed", value: "In home districts" },
-      { label: "Focus", value: "Safe delivery" },
+      { label: "Focus", value: "Safe Delivery & Serve the Community" },
     ],
     image: midwifery,
     gallery: [midwifery, foundationMedia.maternalClinic, foundationMedia.clinicBanner],
-    heroPosition: "object-[50%_30%]",
+    heroPosition: "object-[50%_18%]",
     accent: "clay",
     layout: "portrait",
   },
@@ -128,7 +128,7 @@ export const projects: Project[] = [
       "The challenge extends beyond physical access; it requires keeping children motivated, emotionally regulated, and eager to learn. Poverty, trauma, and child labor cause vulnerable children to withdraw and drop out. Music is uniquely positioned to engage cognitive, emotional, physical, and social dimensions simultaneously.",
     ],
     response: [
-      "In strategic partnership with the Opus 1 Foundation USA, EFL treats music not as an extracurricular pastime, but as a strategic educational intervention. Daily structured music classes and violin instruction are integrated directly into the school curriculum across Lahore.",
+      "In strategic partnership with the Opus 1 Foundation USA, ELF treats music not as an extracurricular pastime, but as a strategic educational intervention. Daily structured music classes and violin instruction are integrated directly into the school curriculum across Lahore.",
       "Research shows underprivileged students participating in arts programs are 78% more likely to show up to school, with academic gains equivalent to +3 additional months of progress (Education Endowment Foundation). Supported by Advisory Council leader Dr. Jonathan Addleton (Rector of Forman Christian College, former US Ambassador & USAID Mission Director) and instrument pledges from George Mason University's Mason Community Arts Academy ('Instruments in the Attic') and Hungry for Music, the initiative is scaling from 10 pilot schools to 53,000 children across 3 Pakistani cities over ten years.",
     ],
     outcomes: [
@@ -143,7 +143,7 @@ export const projects: Project[] = [
       foundationMedia.musicOrchestraClass,
       foundationMedia.musicStudentSolo,
     ],
-    heroPosition: "object-[50%_40%]",
+    heroPosition: "object-[50%_22%]",
     accent: "clay",
     layout: "statement",
   },
@@ -162,14 +162,14 @@ export const projects: Project[] = [
       "The burden falls heaviest on expectant mothers and young women, who face acute barriers to prenatal nutrition, antenatal check-ups, and menstrual hygiene in communities where public healthcare facilities are often a multi-hour journey rather than a local resource.",
     ],
     response: [
-      "EFL deploys mobile medical camps staffed by qualified physicians, offering direct diagnostic consultations, blood screenings, and free prescription medications directly within remote village clusters.",
+      "ELF deploys mobile medical camps staffed by qualified physicians, offering direct diagnostic consultations, blood screenings, and free prescription medications directly within remote village clusters.",
       "We support expectant mothers with Lady Health Visitor consultations, prenatal vitamins, iron supplements, nutrition guidance, and structured postnatal follow-up to ensure safe deliveries.",
       "We engineer deep-bore water extraction points, solar-powered filtration stations, and hygienic school washrooms—pairing every infrastructure project with community-led hygiene and maternal health education.",
     ],
     outcomes: [
       { label: "Safe Water", value: "Laboratory-Tested Points" },
       { label: "Clinical Outreach", value: "100% Free Care & Medicine" },
-      { label: "Maternal Care", value: "Antenatal & Postnatal Support" },
+      { label: "Maternal Care", value: "Antenatal & Postnatal Support", href: "#pregnant-women-support" },
       { label: "Dignity & WASH", value: "School & Community Facilities" },
     ],
     image: foundationMedia.washSchoolHygiene,
@@ -183,7 +183,7 @@ export const projects: Project[] = [
       foundationMedia.healthCampDoctor,
       foundationMedia.clinicBanner,
     ],
-    heroPosition: "object-center",
+    heroPosition: "object-[50%_14%]",
     accent: "moss",
     layout: "statement",
   },
@@ -195,7 +195,7 @@ export const projects: Project[] = [
       figure: "20,000",
       unit: "kilns",
       line: "operate across Pakistan where widows and children inherit bonded debts.",
-      source: "Azadi Freedom & EFL Field Intelligence",
+      source: "Azadi Freedom & ELF Field Intelligence",
     },
     context: [
       "When a husband passes away in low-income kiln settlements, his debt is forcibly transferred to his widow and children, condemning the family to generational bonded servitude under extreme deprivation.",
@@ -224,7 +224,7 @@ export const projects: Project[] = [
       foundationMedia.projectWidows,
       widows,
     ],
-    heroPosition: "object-[50%_35%]",
+    heroPosition: "object-[50%_20%]",
     accent: "clay",
     layout: "portrait",
   },
@@ -236,7 +236,7 @@ export const projects: Project[] = [
       figure: "1",
       unit: "laptop",
       line: "away from an income that does not depend on geography.",
-      source: "EFL field reporting",
+      source: "ELF field reporting",
     },
     context: [
       "Remote work has redrawn who can earn — but only for people who can already use a computer confidently.",
@@ -251,7 +251,7 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.digitalSkillsLab,
     gallery: [foundationMedia.digitalSkillsLab, foundationMedia.projectDigital, digital],
-    heroPosition: "object-center",
+    heroPosition: "object-[50%_22%]",
     accent: "clay",
     layout: "data",
   },
@@ -263,7 +263,7 @@ export const projects: Project[] = [
       figure: "0",
       unit: "qualifications",
       line: "and the only work available is the work that keeps you poor.",
-      source: "EFL field reporting",
+      source: "ELF field reporting",
     },
     context: [
       "Without a trade, low-income workers rotate through daily-wage labour with no path upward and no protection.",
@@ -278,30 +278,34 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.skillsSewingMachine,
     gallery: [foundationMedia.skillsSewingMachine, skills, foundationMedia.projectWidows],
-    heroPosition: "object-[50%_40%]",
+    heroPosition: "object-[50%_24%]",
     accent: "clay",
     layout: "horizontal",
   },
   {
     slug: "capacity-building",
     name: "Capacity Building Program",
-    short: "Strengthening the people and partners who deliver the work locally.",
+    short: "Strengthening local leadership, robust financial consultation, and transparent stewardship so community-driven initiatives achieve lasting independence.",
     problem: {
-      figure: "1",
-      unit: "generation",
-      line: "of local leaders decides whether change outlasts the funding.",
-      source: "EFL programme design",
+      figure: "84",
+      unit: "percent",
+      line: "of grassroots welfare initiatives fail within three years due to absent financial planning and accounting opacity.",
+      source: "Pakistan Centre for Philanthropy & NGO Governance Survey",
     },
     context: [
-      "Programmes fail when they are delivered to a community rather than by one.",
+      "Most community initiatives across Pakistan do not struggle from a lack of dedication — they struggle because local teams lack formal training in financial management, compliance, and institutional governance.",
+      "Without structured financial consultation and bookkeeping protocols, grassroots schools, free dispensaries, and vocational centers struggle to manage cash flow, navigate regulatory audits, or prove fiscal integrity to donors.",
     ],
     response: [
-      "EFL trains teachers, health workers, volunteers and partner organisations — governance, delivery, reporting and follow-through.",
+      "ELF provides hands-on financial consultation and organizational governance training to community leaders, school administrators, and grassroots welfare partners.",
+      "Our certified accounting and governance mentors guide local institutions through operational budgeting, transparent ledger tracking, formal audit readiness, and tax-exempt compliance under Pakistani non-profit laws.",
+      "Beyond institutional advisory, we offer micro-financial counseling to community cooperative leaders and vocational graduates—teaching debt mitigation, cash reserves management, and sustainable reinvestment.",
     ],
     outcomes: [
-      { label: "Trains", value: "Teams & partners" },
-      { label: "Builds", value: "Local leadership" },
-      { label: "Result", value: "Durable programmes" },
+      { label: "Financial Consultation", value: "Audit & Budget Advisory", href: "#financial-consultation" },
+      { label: "Governance", value: "Transparent Accounting" },
+      { label: "Compliance", value: "Non-Profit Certification" },
+      { label: "Local Leaders", value: "Equipped for Autonomy" },
     ],
     image: capacity,
     gallery: [capacity, foundationMedia.communityLeadPortrait, community],

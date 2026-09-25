@@ -48,7 +48,7 @@ export const branches = [
 export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden border-t border-ink/10 bg-sand pt-20 text-ink">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+      <div className="mx-auto max-w-[1600px] px-5 pb-16 sm:px-8 sm:pb-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <img src={logo} alt="Education and Life Foundation" className="h-24 w-24 object-contain" />
@@ -127,13 +127,14 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-
-        <div className="mt-20 flex flex-col gap-4 border-t border-ink/10 py-8 text-[0.7rem] uppercase tracking-[0.18em] text-ink/70 font-medium sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} Education and Life Foundation</span>
-          <span>Lahore · Auckland · Toronto · Berlin</span>
-        </div>
       </div>
 
+      <div className="border-t border-ink/20 bg-ink text-cream">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-4 px-5 py-6 text-[0.7rem] uppercase tracking-[0.18em] text-cream/80 font-medium sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <span>© {new Date().getFullYear()} Education and Life Foundation</span>
+          <span className="text-cream/65">Lahore · Auckland · Toronto · Berlin</span>
+        </div>
+      </div>
     </footer>
   );
 }

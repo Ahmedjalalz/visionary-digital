@@ -12,9 +12,9 @@ export const Route = createFileRoute("/projects/")({
       {
         name: "description",
         content:
-          "Explore EFL programmes across education, health, maternal care, clean water, skills training, and widow welfare in Pakistan.",
+          "Explore ELF programmes across education, health, maternal care, clean water, skills training, and widow welfare in Pakistan.",
       },
-      { property: "og:title", content: "EFL Programmes & Initiatives" },
+      { property: "og:title", content: "ELF Programmes & Initiatives" },
       {
         property: "og:description",
         content: "Every programme is built around one specific, urgent problem in Pakistan.",

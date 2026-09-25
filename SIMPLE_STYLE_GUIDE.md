@@ -1,4 +1,4 @@
-# Education and Life Foundation (EFL) — Quick Style Sheet
+# Education and Life Foundation (ELF) — Quick Style Sheet
 
 > **One-page cheat sheet for graphic designers.**  
 > Includes the essential color palette, fonts, and exact font sizes.
@@ -7,7 +7,7 @@
 
 ## Visual Summary Sheet (Send this image to your designer)
 
-![EFL Quick Style Guide](file:///C:/Users/Ahmad/.gemini/antigravity/brain/01384132-1dc1-44da-a9c1-bfe3786c585a/SIMPLE_STYLE_GUIDE.png)
+![ELF Quick Style Guide](file:///C:/Users/Ahmad/.gemini/antigravity/brain/01384132-1dc1-44da-a9c1-bfe3786c585a/SIMPLE_STYLE_GUIDE.png)
 
 ---
 

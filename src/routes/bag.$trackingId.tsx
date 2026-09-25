@@ -10,8 +10,8 @@ export const Route = createFileRoute("/bag/$trackingId")({
   head: () => ({
     meta: [
       { title: "School bag tracking — Education and Life Foundation" },
-      { name: "description", content: "Follow a sponsored EFL school bag from packing to the child who receives it." },
-      { property: "og:title", content: "School bag tracking — EFL" },
+      { name: "description", content: "Follow a sponsored ELF school bag from packing to the child who receives it." },
+      { property: "og:title", content: "School bag tracking — ELF" },
       { property: "og:description", content: "This isn't a tracking number. It's a real child." },
       { name: "robots", content: "noindex" },
     ],
@@ -118,7 +118,7 @@ function BagDetails() {
                 type="text"
                 value={errorTrackId}
                 onChange={(e) => setErrorTrackId(e.target.value)}
-                placeholder="e.g. 143492 or EFL-2026-0001"
+                placeholder="e.g. 143492 or ELF-2026-0001"
                 autoFocus
                 className="flex-1 rounded-xl border border-ink/20 bg-background px-3.5 py-2.5 text-sm text-ink focus:border-clay focus:outline-none"
               />
@@ -293,7 +293,7 @@ function BagDetails() {
                       setAnotherId(e.target.value);
                       setQuickTrackError(null);
                     }}
-                    placeholder="e.g. 193444 or EFL-2026-0001"
+                    placeholder="e.g. 193444 or ELF-2026-0001"
                     autoFocus
                     className="flex-1 rounded-xl border border-ink/20 bg-background px-4 py-3 font-display text-base text-ink placeholder:text-ink/30 focus:border-clay focus:outline-none focus:ring-1 focus:ring-clay"
                   />
@@ -308,7 +308,7 @@ function BagDetails() {
                   <p className="mt-2 text-xs text-destructive font-medium">{quickTrackError}</p>
                 )}
                 <div className="mt-3 flex items-center justify-between text-xs text-ink/50">
-                  <span>Try: 143492 or EFL-2026-0001</span>
+                  <span>Try: 143492 or ELF-2026-0001</span>
                   <Link
                     to="/projects/$slug"
                     params={{ slug: "school-bags" }}
@@ -328,8 +328,8 @@ function BagDetails() {
             src={data.photo_url ?? fallbackPhoto}
             alt={
               data.student_name
-                ? `${data.student_name} with the school bag delivered by EFL`
-                : "A student with an EFL school bag"
+                ? `${data.student_name} with the school bag delivered by ELF`
+                : "A student with an ELF school bag"
             }
             className="absolute inset-0"
             strength={50}

@@ -50,7 +50,7 @@ export function WidowsProjectShowcase() {
                       <img
                         src="/images/widows/bottom/1.jpg"
                         alt="A Legacy of Hope Sponsorship"
-                        className="h-full w-full object-cover opacity-85 transition-transform duration-700 hover:scale-105"
+                        className="h-full w-full object-cover object-[center_20%] opacity-85 transition-transform duration-700 hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
@@ -303,7 +303,7 @@ export function WidowsProjectShowcase() {
                   <img
                     src={selectedTestimony.image}
                     alt={selectedTestimony.name}
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-[10px] font-semibold tracking-wider text-cream backdrop-blur-xs">
                     {selectedTestimony.status}
@@ -368,7 +368,7 @@ export function WidowsProjectShowcase() {
                       <img
                         src={t.image}
                         alt={t.name}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
                       />
                     </div>
@@ -417,7 +417,7 @@ export function WidowsProjectShowcase() {
                   <img
                     src={imgSrc}
                     alt={`Field Welfare Outreach ${idx + 1}`}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -453,7 +453,7 @@ export function WidowsProjectShowcase() {
                     <img
                       src={imgSrc}
                       alt={`Scrolling Record ${idx + 1}`}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>

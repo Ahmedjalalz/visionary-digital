@@ -220,7 +220,7 @@ function ProjectsRail() {
               aria-hidden
               className="pointer-events-none absolute -bottom-8 -right-6 select-none font-display text-7xl font-black tracking-tighter text-cream/[0.04]"
             >
-              EFL
+              ELF
             </div>
           </Link>
         </div>
@@ -266,7 +266,7 @@ function Impact() {
       <section className="relative h-[75svh] min-h-[460px] overflow-hidden">
         <ParallaxImage
           src={foundationMedia.classroomDesks}
-          alt="School students studying in an EFL supported classroom"
+          alt="School students studying in an ELF supported classroom"
           className="absolute inset-0"
           strength={60}
         />
@@ -293,7 +293,7 @@ function Impact() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <h2 className="display-md max-w-[18ch]">How the work actually happens.</h2>
             <p className="max-w-sm text-sm leading-relaxed text-ink/60">
-              Six repeatable moves. Everything EFL runs is some combination of them.
+              Six repeatable moves. Everything ELF runs is some combination of them.
             </p>
           </div>
           <ul className="mt-14">
@@ -325,9 +325,9 @@ function Impact() {
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
                 src={foundationMedia.schoolStudents}
-                alt="EFL students in rural Punjab"
+                alt="ELF students in rural Punjab"
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -355,7 +355,7 @@ function Impact() {
                 src={foundationMedia.healthCampDoctor}
                 alt="Medical camp doctor examining patient"
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -382,7 +382,7 @@ function Story() {
     <section ref={ref} className="relative h-[82svh] min-h-[520px] overflow-hidden bg-background">
       <ParallaxImage
         src={foundationMedia.widowsFoodRations}
-        alt="EFL team delivering essential food rations and family welfare support"
+        alt="ELF team delivering essential food rations and family welfare support"
         className="absolute inset-0"
         imgClassName="object-[63%_32%]"
         strength={16}
@@ -479,7 +479,7 @@ function Location() {
         <div className="relative min-h-[420px] lg:min-h-[75svh]">
           <MapEmbed
             query="181 Raza Block, Allama Iqbal Town, Lahore, Pakistan"
-            title="Map showing the EFL head office in Allama Iqbal Town, Lahore"
+            title="Map showing the ELF head office in Allama Iqbal Town, Lahore"
             className="absolute inset-0"
             zoom={15}
           />

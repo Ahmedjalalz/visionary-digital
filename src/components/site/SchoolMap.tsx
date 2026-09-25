@@ -8,9 +8,9 @@ export interface School {
   query: string;
 }
 
-/** Schools supported by EFL. Replace with verified EFL records when supplied. */
+/** Schools supported by ELF. Replace with verified ELF records when supplied. */
 export const schools: School[] = [
-  { name: "EFL Community School — Raza Block", area: "Allama Iqbal Town, Lahore", students: 240, query: "181 Raza Block, Allama Iqbal Town, Lahore, Pakistan" },
+  { name: "ELF Community School — Raza Block", area: "Allama Iqbal Town, Lahore", students: 240, query: "181 Raza Block, Allama Iqbal Town, Lahore, Pakistan" },
   { name: "Govt. Primary School, Chak 42", area: "Sheikhupura District", students: 180, query: "Sheikhupura, Punjab, Pakistan" },
   { name: "Learning Centre — Kot Lakhpat", area: "Kot Lakhpat, Lahore", students: 130, query: "Kot Lakhpat, Lahore, Pakistan" },
   { name: "Girls' Study Centre — Green Town", area: "Green Town, Lahore", students: 95, query: "Green Town, Lahore, Pakistan" },
@@ -61,7 +61,7 @@ export function SchoolMap() {
             );
           })}
            <p className="px-5 py-6 text-xs uppercase tracking-[0.16em] text-ink/40 sm:px-8">
-            Student counts are indicative and pending EFL verification.
+            Student counts are indicative and pending ELF verification.
           </p>
         </div>
 

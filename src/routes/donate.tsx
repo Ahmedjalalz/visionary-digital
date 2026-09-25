@@ -145,7 +145,7 @@ function Donate() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[50svh] sm:min-h-[56svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-14 sm:pt-20 sm:pb-16">
-        <ParallaxImage src={foundationMedia.schoolStudents} alt="A classroom of students in Punjab supported by EFL" className="absolute inset-0" strength={60} priority />
+        <ParallaxImage src={foundationMedia.schoolStudents} alt="A classroom of students in Punjab supported by ELF" className="absolute inset-0" strength={60} priority />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
@@ -209,7 +209,7 @@ function Donate() {
             </div>
 
             <a
-              href="https://wa.me/923009475513?text=Hello%20EFL%20team%2C%20I%20would%20like%20to%20confirm%20my%20donation."
+              href="https://wa.me/923009475513?text=Hello%20ELF%20team%2C%20I%20would%20like%20to%20confirm%20my%20donation."
               target="_blank"
               rel="noreferrer noopener"
               className="hidden items-center gap-2 text-xs font-medium text-ink/65 transition-colors hover:text-clay md:flex"
@@ -394,7 +394,7 @@ function Donate() {
                 <BadgeCheck className="h-8 w-8 text-clay" />
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">Tax Exemption &amp; Receipts</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  EFL is an officially registered non-profit organization under the Laws of Pakistan. We
+                  ELF is an officially registered non-profit organization under the Laws of Pakistan. We
                   issue formal stamped donation receipts for all bank wires and local transfers, eligible
                   for tax reporting and audit purposes.
                 </p>
@@ -826,7 +826,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
 
         <div className="flex flex-wrap gap-3 w-full sm:w-auto">
           <a
-            href="https://wa.me/923009475513?text=Hello%20EFL%20team%2C%20I%20have%20transferred%20a%20donation%20and%20attached%20the%20receipt%20for%20confirmation."
+            href="https://wa.me/923009475513?text=Hello%20ELF%20team%2C%20I%20have%20transferred%20a%20donation%20and%20attached%20the%20receipt%20for%20confirmation."
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-700 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-emerald-800 transition-colors cursor-pointer w-full sm:w-auto shadow-xs"

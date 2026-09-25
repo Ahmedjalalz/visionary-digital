@@ -15,9 +15,9 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Reach EFL in Lahore, Auckland, Toronto or Berlin. Address, phone, email and a direct message form.",
+          "Reach ELF in Lahore, Auckland, Toronto or Berlin. Address, phone, email and a direct message form.",
       },
-      { property: "og:title", content: "Contact EFL" },
+      { property: "og:title", content: "Contact ELF" },
       { property: "og:description", content: "Four locations, one foundation. Write, call or visit." },
     ],
   }),
@@ -56,7 +56,7 @@ function Contact() {
         <div className="mx-auto grid max-w-[1600px] gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8"><span className="eyebrow">Four places, one foundation</span>
           <h1 className="display-lg mt-4 max-w-[13ch] text-ink"><MaskLines lines={["Lahore. Auckland.", "Toronto. Berlin."]} /></h1></div>
-          <p className="max-w-md text-base leading-relaxed text-ink/65 lg:col-span-4">Begin in Lahore or reach the nearest EFL team. Every enquiry arrives with people who understand the work.</p>
+          <p className="max-w-md text-base leading-relaxed text-ink/65 lg:col-span-4">Begin in Lahore or reach the nearest ELF team. Every enquiry arrives with people who understand the work.</p>
         </div>
       </section>
 
@@ -66,7 +66,7 @@ function Contact() {
           <MapEmbed
             key={branch.query}
             query={branch.query}
-            title={`Map showing EFL presence in ${branch.city}`}
+            title={`Map showing ELF presence in ${branch.city}`}
             className="absolute inset-0"
             zoom={branch.country === "Pakistan" ? 15 : 11}
           />
@@ -133,7 +133,7 @@ function Contact() {
                 src={foundationMedia.heroCommunity}
                 alt="Education And Life Foundation community center in Lahore"
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                className="h-full w-full object-cover object-[center_24%] transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
