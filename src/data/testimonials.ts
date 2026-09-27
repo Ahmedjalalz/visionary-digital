@@ -132,8 +132,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-digital-skills",
-    projectSlug: "community-digital-skills",
-    projectName: "Community Digital Skills Program",
+    projectSlug: "community-digital-skills-developments",
+    projectName: "Community & Digital Skills Developments",
     category: "Skills & Livelihoods",
     name: "Hamza Tariq",
     role: "Cohort Graduate & Freelance Web Developer",
@@ -145,8 +145,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "test-skill-dev",
-    projectSlug: "skill-development",
-    projectName: "Skill Development Program",
+    projectSlug: "community-digital-skills-developments",
+    projectName: "Community & Digital Skills Developments",
     category: "Skills & Livelihoods",
     name: "Muhammad Bilal",
     role: "Vocational Electrical Graduate",

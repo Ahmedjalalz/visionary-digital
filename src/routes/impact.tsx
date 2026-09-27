@@ -33,7 +33,7 @@ import { partners } from "@/data/partners";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 import { MaskLines, Rise, ParallaxImage } from "@/components/site/motion-primitives";
-import heroImg from "@/assets/official-local/community.jpg";
+const heroImg = "/images/pregnant/pregnant-15.jpg";
 import {
   Dialog,
   DialogContent,

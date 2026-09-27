@@ -46,8 +46,8 @@ const posts: DispatchPost[] = [
       "At ELF's flagship school campus in Raza Block, Allama Iqbal Town, Lahore, over 1,200 enrolled students received comprehensive academic kits in partnership with School in a Bag UK and local community donors.",
       "Each child received a weather-resistant satchel packed with notebooks, pens, pencils, geometry tins, water bottles, and hygiene essentials. By eliminating these direct expenses, ELF ensures zero students drop out due to economic strain."
     ],
-    img: foundationMedia.bagsCeremony,
-    imgPosition: "object-[center_16%]",
+    img: "/images/wash/wash-s-6.jpg",
+    imgPosition: "object-[center_18%]",
   },
   {
     id: "music-of-the-heart",
@@ -63,7 +63,7 @@ const posts: DispatchPost[] = [
       "Guided by international advisory from former U.S. Ambassador Dr. Jonathan Addleton and backed by classical instrument pledges from George Mason University's Mason Community Arts Academy, string ensembles have been integrated into weekly schedules.",
       "Field observations confirm that participating children show elevated discipline, improved emotional wellbeing, and an extraordinary 78% increase in regular classroom attendance."
     ],
-    img: foundationMedia.musicClassViolins,
+    img: "/images/music/news-orchestra.jpg",
     imgPosition: "object-[center_20%]",
   },
   {
@@ -80,8 +80,8 @@ const posts: DispatchPost[] = [
       "ELF's mobile clinical team—comprising general practitioners, pediatricians, ophthalmologists, and certified pharmacists—established a two-day camp providing complete primary care, diabetic screening, and free dispensary medication.",
       "Over 640 men, women, and children were examined, with critical cases referred to Lahore specialized tertiary hospitals with transportation and treatment fully subsidized by the foundation."
     ],
-    img: foundationMedia.healthCampDoctor,
-    imgPosition: "object-[center_14%]",
+    img: "/images/pregnant/pregnant-13.jpg",
+    imgPosition: "object-[center_20%]",
   },
   {
     id: "vocational-sewing-machines",
@@ -97,8 +97,8 @@ const posts: DispatchPost[] = [
       "Eighty women—many of whom are sole providers or widows supporting young children—graduated after passing rigorous machine operation, garment cutting, and stitching examinations.",
       "Upon completion, each graduate was presented with an industrial-grade electric sewing machine, starting fabric stock, and local vendor production orders, securing guaranteed monthly income for their households."
     ],
-    img: foundationMedia.skillsSewingMachine,
-    imgPosition: "object-[center_22%]",
+    img: "/images/skills/community/community-skill-6.jpg",
+    imgPosition: "object-[center_20%]",
   },
   {
     id: "widows-rations-cycle",
@@ -114,7 +114,7 @@ const posts: DispatchPost[] = [
       "Each 45kg parcel provides high-grade whole wheat flour, lentils, cooking oil, tea, sugar, and essential hygiene supplies, packed to feed a household of five for 30 full days.",
       "Deliveries are made discreetly to each recipient's doorstep, completely doing away with humiliating public queues and preserving the absolute dignity of every mother."
     ],
-    img: foundationMedia.widowsFoodRations,
+    img: "/images/widows/scrolling/18.jpg",
     imgPosition: "object-[center_20%]",
   },
   {
@@ -131,8 +131,8 @@ const posts: DispatchPost[] = [
       "ELF's school infrastructure team completed physical renovations across four village community school facilities, installing dual-seater ergonomic wooden benches, magnetic dry-erase boards, solar-powered ceiling fans, and LED fixtures.",
       "Teachers report that classroom engagement, posture, and written penmanship have markedly improved, transforming previously austere spaces into vibrant hubs of learning."
     ],
-    img: foundationMedia.classroomDesks,
-    imgPosition: "object-center",
+    img: "/images/wash/wash-s-7.jpg",
+    imgPosition: "object-[center_20%]",
   },
 ];
 

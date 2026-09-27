@@ -24,6 +24,7 @@ import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
 import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
 import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
 import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsGallery";
+import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentShowcase";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -61,6 +62,22 @@ export const Route = createFileRoute("/projects/$slug")({
       throw redirect({
         to: "/projects/$slug",
         params: { slug: "hope-and-freedom-for-widows-headed-families" },
+      });
+    }
+    const skillsAliases = [
+      "community-digital-skills",
+      "skill-development",
+      "skills-development",
+      "skills-developement",
+      "community-digital-skills-development",
+      "community-and-digital-skills-developments",
+      "comminity-and-digital-skills-developments",
+      "comminity-digital-skills-developments",
+    ];
+    if (skillsAliases.includes(params.slug)) {
+      throw redirect({
+        to: "/projects/$slug",
+        params: { slug: "community-digital-skills-developments" },
       });
     }
     const project = getProject(params.slug);
@@ -109,6 +126,33 @@ export const Route = createFileRoute("/projects/$slug")({
   },
   component: ProjectPage,
 });
+
+const midwiferyPhotoDetails = [
+  {
+    title: "Graduating Certified Midwives",
+    desc: "Frontline graduates displaying their official Community Midwifery Training Center certifications.",
+  },
+  {
+    title: "Classroom Clinical Theory",
+    desc: "Midwifery students in interactive lectures on antenatal screening, vitals, and danger sign triage.",
+  },
+  {
+    title: "Community Center Milestone",
+    desc: "Faculty, students, and community elders celebrating the expansion of maternal healthcare services.",
+  },
+  {
+    title: "Trainer Mentorship & Recognition",
+    desc: "Master obstetric trainers validating competency across standard safe delivery protocols.",
+  },
+  {
+    title: "Clinical Bedside Care",
+    desc: "Compassionate bedside monitoring for expectant and postpartum mothers in rural health facilities.",
+  },
+  {
+    title: "Sterile Delivery Tools & Practical",
+    desc: "Hands-on practical training with surgical delivery instruments, aseptic clamps, and infant care.",
+  },
+];
 
 function ProjectPage() {
   const { project } = Route.useLoaderData();
@@ -339,6 +383,19 @@ function ProjectPage() {
                     loading="lazy"
                     className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-[center_20%]"} transition-transform duration-700 group-hover:scale-[1.035]`}
                   />
+                  {project.slug === "midwifery-program" && midwiferyPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Dispatch
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {midwiferyPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {midwiferyPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
                 </figure>
               );
             })}
@@ -411,8 +468,8 @@ function ProjectPage() {
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
-                      src={foundationMedia.musicClassViolins}
-                      alt="Violins unpacked in ELF classroom"
+                      src="/images/music/music-lesson.jpg"
+                      alt="Student learning violin in classroom session"
                       loading="lazy"
                       className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
                     />
@@ -621,7 +678,7 @@ function ProjectPage() {
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
-                        src={foundationMedia.maternalAntenatalCheckup}
+                        src="/images/pregnant/pregnant-10.jpg"
                         alt="Clinical Antenatal Checkup"
                         className="h-full w-full object-cover object-[center_18%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
@@ -639,7 +696,7 @@ function ProjectPage() {
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
-                        src={foundationMedia.maternalLhvConsultation}
+                        src="/images/pregnant/pregnant-11.jpg"
                         alt="Lady Health Visitor Home Consultation"
                         className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
@@ -657,7 +714,7 @@ function ProjectPage() {
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
                       <img
-                        src={foundationMedia.maternalEflCare}
+                        src="/images/pregnant/pregnant-14.jpg"
                         alt="ELF Nutrition Support and Infant Formula"
                         className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
@@ -830,6 +887,10 @@ function ProjectPage() {
         <section className="border-t border-ink/10 bg-background pt-16 sm:pt-24">
           <WidowsProjectShowcase />
         </section>
+      )}
+
+      {project.slug === "community-digital-skills-developments" && (
+        <SkillsDevelopmentShowcase />
       )}
 
       {project.slug === "capacity-building" && (

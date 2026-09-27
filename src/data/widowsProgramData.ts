@@ -343,7 +343,6 @@ export const widowsFaqs: WidowFaqItem[] = [
 
 export const widowsGalleryImages = {
   bottom: [
-    "/images/widows/bottom/1.jpg",
     "/images/widows/bottom/2.jpg",
     "/images/widows/bottom/3.jpg",
     "/images/widows/bottom/4.jpg",
@@ -355,20 +354,16 @@ export const widowsGalleryImages = {
     "/images/widows/scrolling/2.jpg",
     "/images/widows/scrolling/3.jpg",
     "/images/widows/scrolling/4.jpg",
-    "/images/widows/scrolling/5.jpg",
     "/images/widows/scrolling/6.jpg",
     "/images/widows/scrolling/7.jpg",
     "/images/widows/scrolling/8.jpg",
     "/images/widows/scrolling/9.jpg",
     "/images/widows/scrolling/10.jpg",
     "/images/widows/scrolling/11.jpg",
-    "/images/widows/scrolling/12.jpg",
     "/images/widows/scrolling/13.jpg",
     "/images/widows/scrolling/14.jpg",
     "/images/widows/scrolling/15.jpg",
-    "/images/widows/scrolling/16.jpg",
     "/images/widows/scrolling/17.jpg",
-    "/images/widows/scrolling/18.jpg",
     "/images/widows/scrolling/19.jpg",
     "/images/widows/scrolling/20.jpg",
     "/images/widows/scrolling/21.jpg",

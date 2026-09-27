@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import heroImg from "@/assets/official-local/community.jpg";
-import educationImg from "@/assets/official-local/education.jpg";
-import widowsImg from "@/assets/official-local/widows.jpg";
-import washImg from "@/assets/official-local/family.jpg";
-import healthImg from "@/assets/official-local/health.jpg";
-import digitalImg from "@/assets/official-local/digital.jpg";
+// educationImg unused
+// widowsImg unused
+// washImg unused
+// healthImg unused
+// digitalImg unused
 import { foundationMedia } from "@/data/foundationMedia";
 
 import { projects } from "@/data/projects";
@@ -324,7 +324,7 @@ function Impact() {
           <div className="mt-16 grid gap-5 sm:grid-cols-3">
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
-                src={foundationMedia.schoolStudents}
+                src={foundationMedia.schoolUniforms}
                 alt="ELF students in rural Punjab"
                 loading="lazy"
                 className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 group-hover:scale-105"
@@ -338,10 +338,10 @@ function Impact() {
 
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
-                src={foundationMedia.cleanWaterPump}
+                src="/images/wash/wash-b-3.jpg"
                 alt="Installed clean water hand pump"
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -352,10 +352,10 @@ function Impact() {
 
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
               <img
-                src={foundationMedia.healthCampDoctor}
+                src="/images/pregnant/pregnant-7.jpg"
                 alt="Medical camp doctor examining patient"
                 loading="lazy"
-                className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -381,7 +381,7 @@ function Story() {
   return (
     <section ref={ref} className="relative h-[82svh] min-h-[520px] overflow-hidden bg-background">
       <ParallaxImage
-        src={foundationMedia.widowsFoodRations}
+        src="/images/widows/scrolling/12.jpg"
         alt="ELF team delivering essential food rations and family welfare support"
         className="absolute inset-0"
         imgClassName="object-[63%_32%]"

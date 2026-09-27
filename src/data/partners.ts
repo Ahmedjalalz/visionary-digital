@@ -92,7 +92,7 @@ export const partners: Partner[] = [
     logo: paulAid,
     focus: "Southern Hemisphere Humanitarian Outreach",
     role: "Classroom Sponsorship & Basic Needs",
-    collaborations: ["education-for-all", "skill-development"],
+    collaborations: ["education-for-all", "community-digital-skills-developments"],
   },
   {
     id: "youth-for-christ",
@@ -102,7 +102,7 @@ export const partners: Partner[] = [
     logo: youthForChrist,
     focus: "Youth Development & Digital Literacy",
     role: "Youth Cohorts & Vocational Skills Partner",
-    collaborations: ["community-digital-skills", "capacity-building"],
+    collaborations: ["community-digital-skills-developments", "capacity-building"],
   },
   {
     id: "adventure-aid",
@@ -122,7 +122,7 @@ export const partners: Partner[] = [
     logo: tbfTrust,
     focus: "Sustainable Livelihoods & Training",
     role: "Vocational Tools & Apprentice Support",
-    collaborations: ["skill-development", "hope-and-freedom-for-widows-headed-families"],
+    collaborations: ["community-digital-skills-developments", "hope-and-freedom-for-widows-headed-families"],
   },
   {
     id: "opus-1-foundation",

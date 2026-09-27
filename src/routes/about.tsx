@@ -2,12 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
 
-import heroImg from "@/assets/official-local/community.jpg";
-import educationImg from "@/assets/official-local/education.jpg";
-import healthImg from "@/assets/official-local/health.jpg";
-import washImg from "@/assets/official-local/family.jpg";
-import widowsImg from "@/assets/official-local/widows.jpg";
-import digitalImg from "@/assets/official-local/digital.jpg";
+// heroImg unused
+// educationImg unused
+// healthImg unused
+// washImg removed
+// widowsImg unused
+// digitalImg unused
+import skillsImg from "@/assets/official-local/skills.jpg";
 import { foundationMedia } from "@/data/foundationMedia";
 
 import { MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
@@ -50,7 +51,7 @@ const team = [
   {
     name: "Dr. Sonu Bashir",
     role: "Chief Health Coordinator",
-    img: foundationMedia.healthCampDoctor,
+    img: "/images/pregnant/pregnant-6.jpg",
     detail:
       "Directs mobile rural medical camps, free medicine dispensaries, and coordinates community midwifery placement across Punjab.",
   },
@@ -64,12 +65,12 @@ const team = [
 ];
 
 const history = [
-  { year: "Origins", title: "A response, not a plan", body: "ELF begins as direct assistance to families in Lahore who had fallen out of every other net — food, fees, medicine.", img: foundationMedia.widowsFoodRations },
-  { year: "Schools", title: "Classrooms open", body: "Free schooling formalises: tuition, books, uniforms and stationery covered so cost stops deciding who learns.", img: foundationMedia.classroomDesks },
-  { year: "Health", title: "Camps go rural", body: "Medical camps move out of the city into districts where the nearest clinic is a journey rather than a walk.", img: foundationMedia.healthCampDoctor },
-  { year: "Water", title: "WASH added", body: "Safe water and sanitation become a programme in their own right after illness keeps emptying classrooms.", img: washImg },
-  { year: "Skills", title: "From aid to income", body: "Vocational and digital training launch so families exit assistance instead of depending on it.", img: foundationMedia.skillsSewingMachine },
-  { year: "Today", title: "Programmes across four countries", body: "Supporters in Pakistan, New Zealand, Canada and Germany fund work delivered by teams who live where it happens.", img: foundationMedia.schoolStudents },
+  { year: "Origins", title: "A response, not a plan", body: "ELF begins as direct assistance to families in Lahore who had fallen out of every other net — food, fees, medicine.", img: "/images/widows/scrolling/5.jpg" },
+  { year: "Schools", title: "Classrooms open", body: "Free schooling formalises: tuition, books, uniforms and stationery covered so cost stops deciding who learns.", img: "/images/wash/wash-s-2.jpg" },
+  { year: "Health", title: "Camps go rural", body: "Medical camps move out of the city into districts where the nearest clinic is a journey rather than a walk.", img: "/images/pregnant/pregnant-9.jpg" },
+  { year: "Water", title: "WASH added", body: "Safe water and sanitation become a programme in their own right after illness keeps emptying classrooms.", img: "/images/wash/wash-s-4.jpg" },
+  { year: "Skills", title: "From aid to income", body: "Vocational and digital training launch so families exit assistance instead of depending on it.", img: skillsImg },
+  { year: "Today", title: "Programmes across four countries", body: "Supporters in Pakistan, New Zealand, Canada and Germany fund work delivered by teams who live where it happens.", img: "/images/wash/wash-s-1.jpg" },
 ];
 
 function HistoryRail() {
@@ -155,7 +156,7 @@ function About() {
     <>
       {/* hero — typographic, image behind */}
       <section className="relative flex min-h-[68svh] w-full flex-col justify-end overflow-hidden pb-14 pt-24 sm:min-h-[76svh] sm:pb-20">
-        <ParallaxImage src={foundationMedia.schoolStudents} alt="Children outside an ELF village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_15%]" priority strength={45} />
+        <ParallaxImage src="/images/wash/wash-b-1.jpg" alt="Children outside an ELF village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_15%]" priority strength={45} />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/82 via-ink/42 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
@@ -227,13 +228,13 @@ function About() {
               {
                 title: "Free Education For Underprivileged",
                 desc: "Tuition, uniforms, textbooks, and daily stationery for children across Punjab who would otherwise be out of school.",
-                img: foundationMedia.schoolStudents,
+                img: foundationMedia.projectEducation,
                 badge: "Education",
               },
               {
                 title: "Monthly Rations & Widow Support",
                 desc: "Direct nutritional rations and living stipends delivered with dignity to households headed solely by widows.",
-                img: foundationMedia.widowsFoodRations,
+                img: "/images/widows/scrolling/16.jpg",
                 badge: "Welfare",
               },
               {
@@ -245,13 +246,13 @@ function About() {
               {
                 title: "Safe Water & Rural Hand Pumps",
                 desc: "Clean drinking water wells and school sanitation infrastructure protecting children from waterborne illness.",
-                img: foundationMedia.cleanWaterPump,
+                img: "/images/wash/wash-b-6.jpg",
                 badge: "WASH",
               },
               {
                 title: "Vocational Skills & Micro-Enterprise",
                 desc: "Industrial sewing machines and computer literacy cohorts turning immediate relief into lifelong self-reliance.",
-                img: foundationMedia.skillsSewingMachine,
+                img: "/images/skills/community/community-skill-7.jpg",
                 badge: "Livelihoods",
               },
               {

@@ -1,12 +1,12 @@
 import education from "@/assets/official-local/education.jpg";
 import schoolwork from "@/assets/official-local/schoolwork.jpg";
-import community from "@/assets/official-local/community.jpg";
+// community unused
 import family from "@/assets/official-local/family.jpg";
 import widows from "@/assets/official-local/widows.jpg";
 import health from "@/assets/official-local/health.jpg";
 import midwifery from "@/assets/official-local/midwifery.jpg";
 import digital from "@/assets/official-local/digital.jpg";
-import skills from "@/assets/official-local/skills.jpg";
+// skills unused
 import capacity from "@/assets/official-local/capacity.jpg";
 import { foundationMedia } from "./foundationMedia";
 
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       { label: "Reach", value: "Punjab communities" },
     ],
     image: foundationMedia.schoolStudents,
-    gallery: [foundationMedia.classroomDesks, foundationMedia.schoolUniforms, education],
+    gallery: [foundationMedia.schoolStudents, education, schoolwork],
     heroPosition: "object-[50%_18%]",
     accent: "clay",
     layout: "map",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
       { label: "Delivered to", value: "A named child" },
     ],
     image: foundationMedia.bagsCeremony,
-    gallery: [foundationMedia.schoolStudents, foundationMedia.bagsCeremony, schoolwork],
+    gallery: [foundationMedia.bagsCeremony, "/images/wash/wash-s-5.jpg", schoolwork],
     heroPosition: "object-[50%_16%]",
     accent: "clay",
     layout: "object",
@@ -107,8 +107,15 @@ export const projects: Project[] = [
       { label: "Placed", value: "In home districts" },
       { label: "Focus", value: "Safe Delivery & Serve the Community" },
     ],
-    image: midwifery,
-    gallery: [midwifery, foundationMedia.maternalClinic, foundationMedia.clinicBanner],
+    image: "/images/midwifery/midwifery-1.jpg",
+    gallery: [
+      "/images/midwifery/midwifery-1.jpg",
+      "/images/midwifery/midwifery-2.jpg",
+      "/images/midwifery/midwifery-3.jpg",
+      "/images/midwifery/midwifery-4.jpg",
+      "/images/midwifery/midwifery-5.jpg",
+      "/images/midwifery/midwifery-6.jpg",
+    ],
     heroPosition: "object-[50%_18%]",
     accent: "clay",
     layout: "portrait",
@@ -140,8 +147,6 @@ export const projects: Project[] = [
     image: foundationMedia.musicClassViolins,
     gallery: [
       foundationMedia.musicClassViolins,
-      foundationMedia.musicOrchestraClass,
-      foundationMedia.musicStudentSolo,
     ],
     heroPosition: "object-[50%_22%]",
     accent: "clay",
@@ -172,15 +177,15 @@ export const projects: Project[] = [
       { label: "Maternal Care", value: "Antenatal & Postnatal Support", href: "#pregnant-women-support" },
       { label: "Dignity & WASH", value: "School & Community Facilities" },
     ],
-    image: foundationMedia.washSchoolHygiene,
+    image: "/images/wash/wash-b-2.jpg",
     gallery: [
-      foundationMedia.washSchoolHygiene,
-      foundationMedia.maternalAntenatalCheckup,
-      foundationMedia.washHandPump,
-      foundationMedia.maternalLhvConsultation,
-      foundationMedia.maternalEflCare,
+      "/images/wash/wash-b-2.jpg",
+      "/images/pregnant/pregnant-2.jpg",
+      "/images/wash/wash-b-4.jpg",
+      "/images/pregnant/pregnant-4.jpg",
+      "/images/wash/wash-s-3.jpg",
+      "/images/pregnant/pregnant-8.jpg",
       foundationMedia.washSoapDistribution,
-      foundationMedia.healthCampDoctor,
       foundationMedia.clinicBanner,
     ],
     heroPosition: "object-[50%_14%]",
@@ -213,14 +218,8 @@ export const projects: Project[] = [
       { label: "Housing", value: "6 Months Rent Paid" },
       { label: "Long-Term", value: "Micro-Business Owner" },
     ],
-    image: "/images/widows/bottom/1.jpg",
+    image: foundationMedia.projectWidows,
     gallery: [
-      "/images/widows/bottom/1.jpg",
-      "/images/widows/bottom/2.jpg",
-      "/images/widows/bottom/3.jpg",
-      "/images/widows/bottom/4.jpg",
-      foundationMedia.widowsFoodRations,
-      foundationMedia.skillsSewingMachine,
       foundationMedia.projectWidows,
       widows,
     ],
@@ -229,58 +228,38 @@ export const projects: Project[] = [
     layout: "portrait",
   },
   {
-    slug: "community-digital-skills",
-    name: "Community Digital Skills Program",
-    short: "Computer and online-work literacy for people the digital economy skipped.",
+    slug: "community-digital-skills-developments",
+    name: "Community & Digital Skills Developments",
+    short: "Dual-track technical empowerment combining modern digital literacy and market-ready vocational trades for sustainable household self-reliance.",
     problem: {
-      figure: "1",
-      unit: "laptop",
-      line: "away from an income that does not depend on geography.",
-      source: "ELF field reporting",
+      figure: "2.1",
+      unit: "million",
+      line: "young people enter Pakistan's workforce annually without digital literacy or certified technical trades.",
+      source: "Pakistan Labour Force Survey & UNDP Youth Development Report",
     },
     context: [
-      "Remote work has redrawn who can earn — but only for people who can already use a computer confidently.",
+      "Economic vulnerability in marginalized communities is driven by a dual structural challenge: a severe deficit in foundational computer literacy required for the modern remote service economy, and the absence of certified vocational trades that offer alternatives to exploitative daily-wage manual labor.",
+      "Young people and women bear the greatest brunt of this barrier. Without access to dedicated computer workstations or hands-on trade apprenticeships, families remain trapped in intergenerational poverty cycles where earning capacity is strictly capped by geography and physical toil.",
     ],
     response: [
-      "Structured training in computer basics, office tools, and freelancing fundamentals, aimed especially at women and young people.",
+      "ELF delivers an integrated dual-stream development pipeline: modern digital skills academies teaching computer applications, office productivity, and freelancing fundamentals, paired with community vocational training hubs offering industrial stitching, tailoring, and micro-business establishment.",
+      "Both tracks are fully equipped with hands-on practice facilities—including dedicated computer workstations and heavy-duty sewing machines distributed to certified graduates for immediate home enterprise and dignified income generation.",
     ],
     outcomes: [
-      { label: "Format", value: "Cohort training" },
-      { label: "Priority", value: "Women & youth" },
-      { label: "Outcome", value: "Employable skills" },
+      { label: "Digital Track", value: "Computer Literacy & Freelance", href: "#digital-skills-section" },
+      { label: "Vocational Track", value: "Certified Stitching & Trades", href: "#community-skills-section" },
+      { label: "Equipment Support", value: "Machines & Lab Access", href: "#equipment-pathway-section" },
+      { label: "Target Demographics", value: "Vulnerable Women & Youth" },
     ],
     image: foundationMedia.digitalSkillsLab,
-    gallery: [foundationMedia.digitalSkillsLab, foundationMedia.projectDigital, digital],
-    heroPosition: "object-[50%_22%]",
+    gallery: [
+      foundationMedia.digitalSkillsLab,
+      digital,
+      foundationMedia.skillsSewingMachine,
+    ],
+    heroPosition: "object-[50%_25%]",
     accent: "clay",
-    layout: "data",
-  },
-  {
-    slug: "skill-development",
-    name: "Skill Development Program",
-    short: "Practical trades and training that convert directly into earnings.",
-    problem: {
-      figure: "0",
-      unit: "qualifications",
-      line: "and the only work available is the work that keeps you poor.",
-      source: "ELF field reporting",
-    },
-    context: [
-      "Without a trade, low-income workers rotate through daily-wage labour with no path upward and no protection.",
-    ],
-    response: [
-      "Hands-on vocational training — stitching, technical trades, small business fundamentals — followed by placement or start-up support.",
-    ],
-    outcomes: [
-      { label: "Training", value: "Hands-on" },
-      { label: "After", value: "Placement support" },
-      { label: "Aim", value: "Independence" },
-    ],
-    image: foundationMedia.skillsSewingMachine,
-    gallery: [foundationMedia.skillsSewingMachine, skills, foundationMedia.projectWidows],
-    heroPosition: "object-[50%_24%]",
-    accent: "clay",
-    layout: "horizontal",
+    layout: "statement",
   },
   {
     slug: "capacity-building",
@@ -308,7 +287,7 @@ export const projects: Project[] = [
       { label: "Local Leaders", value: "Equipped for Autonomy" },
     ],
     image: capacity,
-    gallery: [capacity, foundationMedia.communityLeadPortrait, community],
+    gallery: [capacity, family],
     heroPosition: "object-[50%_22%]",
     accent: "moss",
     layout: "data",
@@ -326,5 +305,21 @@ export const getProject = (slug: string) => {
   if (widowsAliases.includes(slug)) {
     return projects.find((p) => p.slug === "hope-and-freedom-for-widows-headed-families");
   }
+
+  const skillsAliases = [
+    "community-digital-skills-developments",
+    "community-and-digital-skills-developments",
+    "comminity-and-digital-skills-developments",
+    "comminity-digital-skills-developments",
+    "community-digital-skills-development",
+    "community-digital-skills",
+    "skill-development",
+    "skills-development",
+    "skills-developement",
+  ];
+  if (skillsAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "community-digital-skills-developments");
+  }
+
   return projects.find((p) => p.slug === slug);
 };
