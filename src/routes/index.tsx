@@ -15,6 +15,7 @@ import { projects } from "@/data/projects";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
+import { ProjectHighlightCards } from "@/components/site/ProjectHighlightCards";
 
 
 export const Route = createFileRoute("/")({
@@ -75,7 +76,7 @@ function Hero() {
             >
               <span className="h-px w-10 bg-cream/65" />
               <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-cream/80">
-                Lahore, Pakistan · Since 2003
+                Lahore, Pakistan
               </span>
             </motion.div>
 
@@ -182,6 +183,9 @@ function ProjectsRail() {
                     {project.short}
                   </p>
                 </div>
+
+                {/* Moving slider with mini squarish highlight cards */}
+                <ProjectHighlightCards project={project} />
               </div>
 
               <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs">
@@ -270,16 +274,17 @@ function Impact() {
           className="absolute inset-0"
           strength={60}
         />
-        <div className="absolute inset-0 bg-ink/55" />
+        <div className="absolute inset-0 bg-ink/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-ink/40" />
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8">
-            <h2 className="display-xl text-cream">
+            <h2 className="display-xl !text-cream drop-shadow-md">
               <MaskLines lines={["One child"]} />
             </h2>
             <div className="mt-6 max-w-xl pl-[4%]">
               <MaskLines
                 lines={["can change the arithmetic", "of an entire family."]}
-                className="font-serif text-2xl italic leading-tight text-cream sm:text-4xl"
+                className="font-serif text-2xl italic leading-tight !text-cream drop-shadow-md sm:text-4xl"
                 delay={0.15}
               />
             </div>

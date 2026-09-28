@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { getProject, projects } from "@/data/projects";
 import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
-import { SchoolMap } from "@/components/site/SchoolMap";
 import { ProvincialEducationCensus } from "@/components/site/ProvincialEducationCensus";
 import { BagTracker } from "@/components/site/BagTracker";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
@@ -196,13 +195,13 @@ function ProjectPage() {
             scaleFrom={1.12}
             priority
           />
-          {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/28 to-ink/10" />}
+          {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/92 via-ink/50 to-ink/20" />}
 
           <div className={`relative z-10 flex flex-col justify-end px-5 py-12 sm:px-8 sm:py-16 ${splitHero ? "bg-sand lg:order-1 lg:px-[8vw]" : "mx-auto w-full max-w-[1600px]"}`}>
             <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
-              <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "text-cream/75"}`}>Initiative Portfolio</span>
+              <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "!text-clay-bright drop-shadow-xs"}`}>Initiative Portfolio</span>
               <h1
-                className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "text-cream"} ${
+                className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "!text-cream drop-shadow-md"} ${
                   project.name.length > 34
                     ? "text-[clamp(2.5rem,5vw,5.2rem)]"
                     : "text-[clamp(3rem,6vw,6.4rem)]"
@@ -210,7 +209,7 @@ function ProjectPage() {
               >
                 {project.name}
               </h1>
-              <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "text-cream/80"}`}>{project.short}</p>
+              <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "!text-cream/90 drop-shadow-xs"}`}>{project.short}</p>
             </div>
           </div>
         </section>
@@ -404,8 +403,6 @@ function ProjectPage() {
       </section>
 
       {/* ── project-specific experience ── */}
-      {project.slug === "education-for-all" && <SchoolMap />}
-
       {project.slug === "music-of-the-heart" && (
         <>
           <section className="relative overflow-hidden bg-sand px-5 py-20 sm:px-8 sm:py-28 border-y border-ink/10">
@@ -1061,7 +1058,7 @@ function ProjectPage() {
         <ParallaxImage src={project.gallery.at(-1) ?? project.image} alt="" className="absolute inset-0" strength={45} />
         <div className="absolute inset-0 bg-ink/70" />
         <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-center px-5 sm:px-8">
-          <h2 className="display-lg max-w-[14ch] text-cream">Support this work.</h2>
+          <h2 className="display-lg max-w-[14ch] !text-cream drop-shadow-md">Support this work.</h2>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               to="/donate"

@@ -1,22 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Clock, Globe, Info, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { MaskLines } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
-      { title: "Book a meeting — Education and Life Foundation" },
+      { title: "Book a meeting (UTC) — Education and Life Foundation" },
       {
         name: "description",
         content:
-          "Choose a date and time to speak with the ELF team about partnerships, sponsorship or volunteering.",
+          "Choose a date and time to speak with the ELF team about partnerships, sponsorship or volunteering. All meeting slots are in UTC.",
       },
-      { property: "og:title", content: "Book a meeting with ELF" },
-      { property: "og:description", content: "Pick a date, pick a time, tell us how to reach you." },
+      { property: "og:title", content: "Book a meeting with ELF (UTC)" },
+      { property: "og:description", content: "Pick a date, pick a time in UTC, tell us how to reach you." },
     ],
   }),
   component: Book,
@@ -24,8 +24,148 @@ export const Route = createFileRoute("/book")({
 
 const platforms = ["Google Meet", "Zoom", "Phone call", "WhatsApp", "In person — Lahore"];
 
+// Converted from host's New Zealand Time (NZT) availability:
+// Mon, Fri, Sat, Sun: 9:00 AM – 12:05 AM NZT  -> 21:00 (prev day) – 12:00 UTC
+// Tue, Wed, Thu: 4:00 PM – 12:05 AM NZT       -> 04:00 – 12:00 UTC
+const DEFAULT_UTC_SLOTS: Record<number, string[]> = {
+  // Sunday (0)
+  0: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "21:00", "22:00", "23:00"],
+  // Monday (1)
+  1: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"],
+  // Tuesday (2)
+  2: ["04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"],
+  // Wednesday (3)
+  3: ["04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"],
+  // Thursday (4)
+  4: ["04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "21:00", "22:00", "23:00"],
+  // Friday (5)
+  5: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "21:00", "22:00", "23:00"],
+  // Saturday (6)
+  6: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "21:00", "22:00", "23:00"],
+};
+
 function toISO(d: Date) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function TimezoneNotice() {
+  const [utcTime, setUtcTime] = useState("");
+  const [localTime, setLocalTime] = useState("");
+  const [localTz, setLocalTz] = useState("");
+
+  useEffect(() => {
+    function update() {
+      const now = new Date();
+      setUtcTime(
+        now.toLocaleTimeString("en-GB", {
+          timeZone: "UTC",
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }) + " UTC",
+      );
+      setLocalTime(
+        now.toLocaleTimeString(undefined, {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }),
+      );
+      try {
+        const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const offset = -now.getTimezoneOffset() / 60;
+        const offsetStr = `UTC${offset >= 0 ? "+" : ""}${offset}`;
+        setLocalTz(`${tzName} (${offsetStr})`);
+      } catch {
+        setLocalTz("Local");
+      }
+    }
+    update();
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="mb-12 rounded-3xl border-2 border-clay/30 bg-gradient-to-br from-sand/90 via-sand/40 to-white p-6 sm:p-8 shadow-sm">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="space-y-2.5">
+          <div className="inline-flex items-center gap-2 rounded-full bg-clay px-3.5 py-1 text-[0.72rem] font-bold uppercase tracking-wider text-white shadow-xs">
+            <Globe className="h-3.5 w-3.5" />
+            Timezone Standard
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-ink">
+            All Time Slots Are Based on <span className="text-clay underline decoration-clay/40 underline-offset-4">UTC</span>
+          </h2>
+          <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-ink/80">
+            Please note: When selecting an appointment time below, all options are in <strong>Coordinated Universal Time (UTC)</strong>.
+            Our host availability from New Zealand Time (NZT) has been converted to UTC for universal clarity.
+          </p>
+        </div>
+
+        {/* Live Clocks Side-by-Side */}
+        <div className="flex flex-wrap gap-3 sm:gap-4 shrink-0">
+          <div className="flex-1 sm:flex-initial rounded-2xl bg-ink p-5 text-white shadow-md min-w-[160px]">
+            <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-widest text-clay-tint">
+              <Clock className="h-3.5 w-3.5 text-clay" />
+              Current UTC Time
+            </div>
+            <div className="mt-1.5 font-mono text-2xl font-bold tracking-tight text-white">
+              {utcTime || "--:--:-- UTC"}
+            </div>
+            <div className="mt-1 text-[0.7rem] text-white/60">Booking reference</div>
+          </div>
+
+          <div className="flex-1 sm:flex-initial rounded-2xl border border-ink/15 bg-white/90 p-5 text-ink shadow-sm min-w-[160px]">
+            <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-widest text-ink/50">
+              <Globe className="h-3.5 w-3.5 text-ink/70" />
+              Your Local Time
+            </div>
+            <div className="mt-1.5 font-mono text-2xl font-bold tracking-tight text-ink">
+              {localTime || "--:--:--"}
+            </div>
+            <div className="mt-1 truncate text-[0.7rem] font-medium text-ink/65 max-w-[150px]" title={localTz}>
+              {localTz || "Your system"}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Host schedule conversion reference */}
+      <div className="mt-6 border-t border-ink/10 pt-4">
+        <details className="group" open>
+          <summary className="flex cursor-pointer items-center justify-between text-xs font-semibold uppercase tracking-wider text-ink/75 hover:text-clay">
+            <span className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-clay" />
+              Host Availability: New Zealand Time (NZT) converted to UTC
+            </span>
+            <span className="text-sm font-bold transition-transform group-open:rotate-180">▾</span>
+          </summary>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 text-xs">
+            <div className="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-2xs">
+              <span className="font-bold text-ink text-sm">Monday, Friday, Saturday, Sunday</span>
+              <div className="mt-1.5 text-ink/70">
+                NZT: <span className="font-semibold text-ink">9:00 AM – 12:05 AM (NZT)</span>
+              </div>
+              <div className="mt-1 text-clay font-medium">
+                ➔ Converted UTC: <span className="font-bold text-ink">21:00 (prev day) – 12:00 UTC</span>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-2xs">
+              <span className="font-bold text-ink text-sm">Tuesday, Wednesday, Thursday</span>
+              <div className="mt-1.5 text-ink/70">
+                NZT: <span className="font-semibold text-ink">4:00 PM – 12:05 AM (NZT)</span>
+              </div>
+              <div className="mt-1 text-clay font-medium">
+                ➔ Converted UTC: <span className="font-bold text-ink">04:00 – 12:00 UTC</span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  );
 }
 
 function Book() {
@@ -67,9 +207,10 @@ function Book() {
         const d = new Date(month.getFullYear(), month.getMonth(), i + 1);
         const iso = toISO(d);
         const row = availability?.weekdays.find((w) => w.weekday === d.getDay());
+        const hasDbSlots = !!row?.is_active && (row?.slots?.length ?? 0) > 0;
+        const hasDefaultSlots = (DEFAULT_UTC_SLOTS[d.getDay()]?.length ?? 0) > 0;
         const open =
-          !!row?.is_active &&
-          (row?.slots?.length ?? 0) > 0 &&
+          (hasDbSlots || hasDefaultSlots) &&
           !availability?.blocked.has(iso) &&
           iso >= today;
         return { iso, day: i + 1, open, weekday: d.getDay() };
@@ -78,9 +219,11 @@ function Book() {
   }, [month, availability]);
 
   const slots = useMemo(() => {
-    if (!date || !availability) return [];
+    if (!date) return [];
     const wd = new Date(`${date}T00:00:00`).getDay();
-    return availability.weekdays.find((w) => w.weekday === wd)?.slots ?? [];
+    const dbSlots = availability?.weekdays.find((w) => w.weekday === wd)?.slots;
+    if (dbSlots && dbSlots.length > 0) return dbSlots;
+    return DEFAULT_UTC_SLOTS[wd] ?? ["04:00", "06:00", "08:00", "10:00", "11:00"];
   }, [date, availability]);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -95,7 +238,7 @@ function Book() {
       purpose: String(fd.get("purpose") ?? "") || null,
       platform,
       meeting_date: date,
-      meeting_time: time,
+      meeting_time: `${time} UTC`,
     });
     setSending(false);
     if (error) {
@@ -117,7 +260,7 @@ function Book() {
             <MaskLines lines={["Thirty minutes,", "properly spent."]} />
           </h1>
           <p className="lede mt-6 max-w-2xl text-ink/75">
-            Partnerships, sponsorship, volunteering or a question about a programme — pick a slot and we
+            Partnerships, sponsorship, volunteering or a question about a programme — pick a slot in UTC and we
             will meet you there.
           </p>
         </div>
@@ -125,6 +268,9 @@ function Book() {
 
       <section className="bg-background px-5 pb-24 pt-12 sm:px-8 sm:pb-28 sm:pt-16">
         <div className="mx-auto max-w-[1600px]">
+          {/* Prominent UTC banner */}
+          <TimezoneNotice />
+
           <AnimatePresence mode="wait">
             {confirmed ? (
               <motion.div
@@ -138,7 +284,7 @@ function Book() {
                 <dl className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
                   {[
                     ["Date", new Date(`${confirmed.date}T00:00:00`).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })],
-                    ["Time", `${confirmed.time} PKT`],
+                    ["Time", `${confirmed.time} UTC`],
                     ["Platform", confirmed.platform],
                   ].map(([k, v]) => (
                     <div key={k} className="rounded-2xl border border-ink/10 bg-sand/30 p-6 shadow-xs">
@@ -149,7 +295,7 @@ function Book() {
                 </dl>
                 <p className="mt-8 max-w-xl text-sm text-ink/60">
                   The team has your request and will send joining details to the email address you gave.
-                  Need to change it? Write to info@educationandlifefoundation.org.
+                  Please remember this meeting is scheduled for <strong>{confirmed.time} UTC</strong>. Need to change it? Write to info@educationandlifefoundation.org.
                 </p>
               </motion.div>
             ) : (
@@ -200,7 +346,7 @@ function Book() {
                             date === d.iso
                               ? "bg-clay font-bold text-primary-foreground shadow-xs"
                               : d.open
-                                ? "text-ink hover:bg-clay/15 hover:text-clay font-medium"
+                                ? "text-ink hover:bg-clay/15 hover:text-clay font-medium cursor-pointer"
                                 : "text-ink/20 cursor-not-allowed"
                           }`}
                         >
@@ -212,7 +358,12 @@ function Book() {
 
                   {date && (
                     <div className="mt-10">
-                      <span className="eyebrow">Available times — PKT</span>
+                      <div className="flex items-center justify-between">
+                        <span className="eyebrow text-clay font-bold">Available times — UTC</span>
+                        <span className="rounded-full bg-clay/10 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-clay">
+                          UTC Slots
+                        </span>
+                      </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         {slots.map((s) => (
                           <button
@@ -225,7 +376,7 @@ function Book() {
                                 : "border-ink/15 bg-background text-ink/75 hover:border-ink hover:text-ink"
                             }`}
                           >
-                            {s}
+                            {s} UTC
                           </button>
                         ))}
                         {slots.length === 0 && (
@@ -288,10 +439,10 @@ function Book() {
                       {sending && <Loader2 className="h-4 w-4 animate-spin" />}
                       Confirm booking
                     </button>
-                    <p className="text-sm text-ink/50">
+                    <p className="text-sm font-medium text-ink/70">
                       {date && time
-                        ? `${new Date(`${date}T00:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long" })} at ${time}`
-                        : "Choose a date and time first."}
+                        ? `${new Date(`${date}T00:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long" })} at ${time} UTC`
+                        : "Choose a date and time first (all times UTC)."}
                     </p>
                   </div>
                 </form>

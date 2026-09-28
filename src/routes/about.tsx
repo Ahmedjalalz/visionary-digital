@@ -21,7 +21,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Who ELF is, our origins since 2003, and how a Lahore-based NGO serves marginalized communities across Punjab.",
+          "Who ELF is, our origins, and how a Lahore-based NGO serves marginalized communities across Punjab.",
       },
       { property: "og:title", content: "About Education And Life Foundation" },
       {
@@ -157,11 +157,12 @@ function About() {
       {/* hero — typographic, image behind */}
       <section className="relative flex min-h-[68svh] w-full flex-col justify-end overflow-hidden pb-14 pt-24 sm:min-h-[76svh] sm:pb-20">
         <ParallaxImage src="/images/wash/wash-b-1.jpg" alt="Children outside an ELF village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_15%]" priority strength={45} />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/82 via-ink/42 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/65 to-ink/20" />
+        <div className="absolute inset-0 bg-ink/30" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright block mb-3">Founded 2003 · Lahore, Pakistan</span>
-            <h1 className="display-xl max-w-[12ch] text-cream">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright block mb-3">Lahore, Pakistan</span>
+            <h1 className="display-xl max-w-[12ch] !text-cream drop-shadow-md">
               <MaskLines lines={["To uplift", "the deprived", "community."]} />
             </h1>
           </div>

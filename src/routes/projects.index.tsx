@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowUpRight, Filter } from "lucide-react";
 import { projects } from "@/data/projects";
 import { MaskLines } from "@/components/site/motion-primitives";
+import { ProjectHighlightCards } from "@/components/site/ProjectHighlightCards";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/")({
@@ -135,6 +136,9 @@ function ProjectsIndex() {
                       {p.short}
                     </p>
                   </div>
+
+                  {/* Moving slider with mini squarish highlight cards */}
+                  <ProjectHighlightCards project={p} />
                 </div>
                 <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs">
                   <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">

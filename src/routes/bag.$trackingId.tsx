@@ -337,7 +337,7 @@ function BagDetails() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-8 sm:p-12">
-            <p className="font-serif text-3xl italic leading-tight text-cream sm:text-5xl">
+            <p className="font-serif text-3xl italic leading-tight !text-cream drop-shadow-md sm:text-5xl">
               This isn't a tracking number.
               <br />
               It's {data.student_name ?? "a real child"}.
