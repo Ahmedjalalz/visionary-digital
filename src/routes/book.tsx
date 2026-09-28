@@ -2,9 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Clock, Globe, Info, Loader2 } from "lucide-react";
+import { Check, Clock, Globe, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { MaskLines } from "@/components/site/motion-primitives";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -22,7 +29,14 @@ export const Route = createFileRoute("/book")({
   component: Book,
 });
 
-const platforms = ["Google Meet", "Zoom", "Phone call", "WhatsApp", "In person — Lahore"];
+const platforms = [
+  "Zoom",
+  "Meet",
+  "Teams",
+  "WhatsApp/Call",
+  "Phone",
+  "In Person - Lahore",
+];
 
 // Converted from host's New Zealand Time (NZT) availability:
 // Mon, Fri, Sat, Sun: 9:00 AM – 12:05 AM NZT  -> 21:00 (prev day) – 12:00 UTC
@@ -88,81 +102,64 @@ function TimezoneNotice() {
   }, []);
 
   return (
-    <div className="mb-12 rounded-3xl border-2 border-clay/30 bg-gradient-to-br from-sand/90 via-sand/40 to-white p-6 sm:p-8 shadow-sm">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="space-y-2.5">
-          <div className="inline-flex items-center gap-2 rounded-full bg-clay px-3.5 py-1 text-[0.72rem] font-bold uppercase tracking-wider text-white shadow-xs">
-            <Globe className="h-3.5 w-3.5" />
-            Timezone Standard
+    <div className="mb-12 rounded-2xl border border-ink/10 bg-sand/40 p-6 sm:p-7 shadow-xs">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+        {/* Left: Clear, concise typography */}
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-clay" />
+            </span>
+            <span className="eyebrow text-clay text-[0.68rem] font-bold tracking-[0.2em]">
+              Timezone Standard · UTC
+            </span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-ink">
-            All Time Slots Are Based on <span className="text-clay underline decoration-clay/40 underline-offset-4">UTC</span>
+          <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-ink">
+            All appointment times are selected in <span className="text-clay">UTC</span>
           </h2>
-          <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-ink/80">
-            Please note: When selecting an appointment time below, all options are in <strong>Coordinated Universal Time (UTC)</strong>.
-            Our host availability from New Zealand Time (NZT) has been converted to UTC for universal clarity.
+          <p className="max-w-xl text-xs sm:text-sm text-ink/70">
+            Host availability is converted from New Zealand Time (NZT) to standard Universal Time.
           </p>
         </div>
 
-        {/* Live Clocks Side-by-Side */}
-        <div className="flex flex-wrap gap-3 sm:gap-4 shrink-0">
-          <div className="flex-1 sm:flex-initial rounded-2xl bg-ink p-5 text-white shadow-md min-w-[160px]">
-            <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-widest text-clay-tint">
-              <Clock className="h-3.5 w-3.5 text-clay" />
-              Current UTC Time
+        {/* Right: Unified, sleek dual-clock pill widget */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 rounded-xl border border-ink/10 bg-background p-1.5 shadow-2xs">
+          <div className="flex items-center gap-2 rounded-lg bg-ink px-3.5 py-2 text-white">
+            <Clock className="h-3.5 w-3.5 text-clay" />
+            <div>
+              <div className="text-[0.58rem] font-bold uppercase tracking-wider text-white/55">Current UTC</div>
+              <div className="font-mono text-sm sm:text-base font-bold text-white tracking-tight">{utcTime || "--:--:-- UTC"}</div>
             </div>
-            <div className="mt-1.5 font-mono text-2xl font-bold tracking-tight text-white">
-              {utcTime || "--:--:-- UTC"}
-            </div>
-            <div className="mt-1 text-[0.7rem] text-white/60">Booking reference</div>
           </div>
-
-          <div className="flex-1 sm:flex-initial rounded-2xl border border-ink/15 bg-white/90 p-5 text-ink shadow-sm min-w-[160px]">
-            <div className="flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-widest text-ink/50">
-              <Globe className="h-3.5 w-3.5 text-ink/70" />
-              Your Local Time
-            </div>
-            <div className="mt-1.5 font-mono text-2xl font-bold tracking-tight text-ink">
-              {localTime || "--:--:--"}
-            </div>
-            <div className="mt-1 truncate text-[0.7rem] font-medium text-ink/65 max-w-[150px]" title={localTz}>
-              {localTz || "Your system"}
+          <div className="flex items-center gap-2 rounded-lg bg-sand/60 px-3.5 py-2 text-ink">
+            <Globe className="h-3.5 w-3.5 text-ink/40" />
+            <div>
+              <div className="text-[0.58rem] font-bold uppercase tracking-wider text-ink/45 truncate max-w-[130px]" title={localTz}>
+                {localTz || "Your Time"}
+              </div>
+              <div className="font-mono text-sm sm:text-base font-bold text-ink tracking-tight">{localTime || "--:--:--"}</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Host schedule conversion reference */}
-      <div className="mt-6 border-t border-ink/10 pt-4">
-        <details className="group" open>
-          <summary className="flex cursor-pointer items-center justify-between text-xs font-semibold uppercase tracking-wider text-ink/75 hover:text-clay">
-            <span className="flex items-center gap-2">
-              <Info className="h-4 w-4 text-clay" />
-              Host Availability: New Zealand Time (NZT) converted to UTC
-            </span>
-            <span className="text-sm font-bold transition-transform group-open:rotate-180">▾</span>
-          </summary>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 text-xs">
-            <div className="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-2xs">
-              <span className="font-bold text-ink text-sm">Monday, Friday, Saturday, Sunday</span>
-              <div className="mt-1.5 text-ink/70">
-                NZT: <span className="font-semibold text-ink">9:00 AM – 12:05 AM (NZT)</span>
-              </div>
-              <div className="mt-1 text-clay font-medium">
-                ➔ Converted UTC: <span className="font-bold text-ink">21:00 (prev day) – 12:00 UTC</span>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-2xs">
-              <span className="font-bold text-ink text-sm">Tuesday, Wednesday, Thursday</span>
-              <div className="mt-1.5 text-ink/70">
-                NZT: <span className="font-semibold text-ink">4:00 PM – 12:05 AM (NZT)</span>
-              </div>
-              <div className="mt-1 text-clay font-medium">
-                ➔ Converted UTC: <span className="font-bold text-ink">04:00 – 12:00 UTC</span>
-              </div>
-            </div>
+      {/* Schedule Strip: Clean, balanced, no nested card boxes */}
+      <div className="mt-5 grid gap-3 border-t border-ink/10 pt-4 sm:grid-cols-2 text-xs">
+        <div className="flex items-center justify-between rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
+          <div>
+            <span className="font-bold text-ink">Mon, Fri, Sat, Sun</span>
+            <span className="ml-2 text-[0.68rem] text-ink/50 font-medium">9:00 AM – 12:05 AM NZT</span>
           </div>
-        </details>
+          <span className="font-mono font-bold text-clay text-[0.78rem]">21:00 (prev) – 12:00 UTC</span>
+        </div>
+        <div className="flex items-center justify-between rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
+          <div>
+            <span className="font-bold text-ink">Tue, Wed, Thu</span>
+            <span className="ml-2 text-[0.68rem] text-ink/50 font-medium">4:00 PM – 12:05 AM NZT</span>
+          </div>
+          <span className="font-mono font-bold text-clay text-[0.78rem]">04:00 – 12:00 UTC</span>
+        </div>
       </div>
     </div>
   );
@@ -395,23 +392,31 @@ function Book() {
                     <BookField label="Phone (optional)" name="phone" />
                     <div>
                       <label
-                        htmlFor="platform"
+                        id="platform-label"
                         className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
                       >
                         Platform
                       </label>
-                      <select
-                        id="platform"
-                        value={platform}
-                        onChange={(e) => setPlatform(e.target.value)}
-                        className="mt-3 w-full border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
-                      >
-                        {platforms.map((p) => (
-                          <option key={p} value={p} className="bg-background text-ink">
-                            {p}
-                          </option>
-                        ))}
-                      </select>
+                      <Select value={platform} onValueChange={setPlatform}>
+                        <SelectTrigger
+                          aria-labelledby="platform-label"
+                          className="mt-2.5 h-12 w-full rounded-xl border border-ink/20 bg-background/80 px-4 text-base font-semibold text-ink shadow-2xs hover:border-clay/60 focus:border-clay focus:ring-1 focus:ring-clay cursor-pointer transition-colors"
+                        >
+                          <SelectValue placeholder="Select platform" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl border border-ink/15 bg-background shadow-xl text-ink">
+                          {platforms.map((p) => (
+                            <SelectItem
+                              key={p}
+                              value={p}
+                              className="rounded-lg py-2.5 px-3 text-sm font-semibold text-ink hover:bg-sand/70 focus:bg-sand/70 focus:text-clay cursor-pointer transition-colors"
+                            >
+                              {p}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <input type="hidden" name="platform" value={platform} />
                     </div>
                   </div>
 
