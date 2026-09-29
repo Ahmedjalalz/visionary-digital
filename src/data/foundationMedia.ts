@@ -63,5 +63,9 @@ export const foundationMedia = {
   projectHealth: washSchoolHygiene,
   projectWash: washHandPump,
   projectWidows,
+  projectSchoolBags: "/images/school-bags/IMG_9835.JPG",
+  schoolBagsHero: "/images/school-bags/IMG_9835.JPG",
+  schoolBagsCohort: "/images/school-bags/IMG_9475.JPG",
+  schoolBagsClassroom: "/images/school-bags/DSC09384.JPG",
 };
 

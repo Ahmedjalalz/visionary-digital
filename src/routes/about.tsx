@@ -33,34 +33,125 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const team = [
+interface BoardMember {
+  name: string;
+  role: string;
+  credentials?: string;
+  badge?: string;
+  img: string;
+  detail: string;
+  position?: string;
+}
+
+const boardMembers: BoardMember[] = [
   {
-    name: "Abdul Rahman Khan",
-    role: "Founder & Chairperson",
-    img: foundationMedia.chairpersonPortrait,
+    name: "Mr. Tasneem Najam",
+    role: "Chairman",
+    credentials: "M.A. Economics (FCCU)",
+    badge: "Executive Board",
+    img: "/images/board/tasneem-najam.png",
+    position: "object-[center_18%]",
     detail:
-      "Guides ELF's strategic direction, stewardship of partner trust, and signs off every programme before it reaches a community.",
+      "Brings over three decades of distinguished leadership in Pakistan's education sector as an educator, school owner, and institutional administrator. Former Owner and Principal of Saint Matthew's Cambridge School (1986–2016), Head & Hostel Superintendent at Christian Vocational Training Center Narowal, and Vice Chairman of Assemblies of God Church overseeing nine community schools across suburban Punjab.",
   },
   {
-    name: "Dr. Zoya Khan",
-    role: "Programme Director — Education",
-    img: foundationMedia.directorPortrait,
+    name: "Ms. Anita Qaiser",
+    role: "Vice Chairperson",
+    credentials: "BA (Hons) Biblical & Applied Theology (Mattersey Hall, UK)",
+    badge: "Executive Board",
+    img: "/images/board/anita-qaiser.png",
+    position: "object-[center_18%]",
     detail:
-      "Leads community schooling, teacher development, classroom infrastructure, and the daily attendance tracking that keeps vulnerable students enrolled.",
+      "Dedicated community and ministry leader serving since 1986 across Pakistan's four provinces, Gilgit-Baltistan, and Parachinar. Specializes in youth empowerment, family counseling, and leadership development, bringing extensive pastoral governance and community care to ELF's humanitarian programs.",
   },
   {
-    name: "Dr. Sonu Bashir",
-    role: "Chief Health Coordinator",
-    img: "/images/pregnant/pregnant-6.jpg",
+    name: "Rev. Zeeshan Hameed",
+    role: "Founder & International Director",
+    credentials: "BS (Hons) Educational Science (FCCU) · Univ. of Auckland",
+    badge: "Executive Board",
+    img: "/images/board/zeeshan-hameed.jpg",
+    position: "object-[center_15%]",
     detail:
-      "Directs mobile rural medical camps, free medicine dispensaries, and coordinates community midwifery placement across Punjab.",
+      "Founder and International Director of Education and Life Foundation. Leading non-profit initiatives since 2017, he spearheads ELF's international donor relations, strategic project planning, institutional capacity building, and cross-border partnerships connecting global resources directly to grassroots Pakistani communities.",
   },
   {
-    name: "Tariq Mahmood",
-    role: "Community Lead — Welfare & WASH",
-    img: foundationMedia.communityLeadPortrait,
+    name: "Dr. Sana Rafaqat",
+    role: "General Secretary",
+    credentials: "Ph.D. Biotechnology (Molecular Human Genetics)",
+    badge: "Executive Board",
+    img: "/images/board/sana-rafaqat.jpg",
+    position: "object-[center_18%]",
     detail:
-      "Oversees monthly widow welfare rations, clean water hand-pump installations, and vocational skills placement cohorts.",
+      "Accomplished scientist and researcher with over 40 peer-reviewed scientific publications in international journals. With over six years of experience in quality assurance, clinical research management, and university teaching, she oversees ELF's institutional governance, statutory compliance, and healthcare initiatives.",
+  },
+  {
+    name: "Mr. Ejaz Pervaz",
+    role: "Chief Financial Officer",
+    badge: "Executive Board",
+    img: "/images/board/ejaz-pervaz.png",
+    position: "object-[center_18%]",
+    detail:
+      "Chief Financial Officer of Education and Life Foundation. Oversees financial governance, budgeting, external audits, and fiscal stewardship, ensuring that all donor contributions and institutional funds are deployed with rigorous transparency and maximum direct impact.",
+  },
+  {
+    name: "Mr. Sohail Hameed",
+    role: "Finance Secretary",
+    credentials: "B.Com (Hailey College of Commerce)",
+    badge: "Executive Board",
+    img: "/images/board/sohail-hameed.png",
+    position: "object-[center_18%]",
+    detail:
+      "Businessman with over 11 years of voluntary church financial administration. Holds a Bachelor of Commerce from Hailey College of Commerce and manages ELF's daily accounting, fiscal allocations, disbursement verification, and transparent reporting systems.",
+  },
+  {
+    name: "Prof. Kamran Rehmat",
+    role: "Office Secretary",
+    credentials: "MPhil Economics (NCBA&E) · MSc Economics (FCCU)",
+    badge: "Executive Board",
+    img: "/images/board/kamran-rehmat.png",
+    position: "object-[center_18%]",
+    detail:
+      "Economics Professor in the Punjab government sector (Government Associate College for Boys, Lahore) and former Human Rights Defender with the National Commission for Justice and Peace (NCJP). Directs official administration, secretarial documentation, and minority welfare advocacy for ELF.",
+  },
+  {
+    name: "Rev. Samuel Bhatti",
+    role: "Program Lead — Azadi Freedom",
+    credentials: "Master in Theology",
+    badge: "Programs Leadership",
+    img: "/images/board/samuel-bhatti.png",
+    position: "object-[center_18%]",
+    detail:
+      "Founder and Program Lead of Azadi Freedom under ELF. With a background directing a German non-profit in Pakistan, he advances UN Sustainable Development Goals through vocational skills training, micro-business grants, and rights-based social inclusion for marginalized communities.",
+  },
+  {
+    name: "Rev. Javed Mukhtar",
+    role: "Press Secretary",
+    credentials: "Motivational Speaker & Consultant",
+    badge: "Communications",
+    img: "/images/board/javed-mukhtar.jpg",
+    position: "object-[center_18%]",
+    detail:
+      "Press Secretary of Education and Life Foundation. Renowned motivational speaker and community consultant steering ELF's public communication, media outreach, and storytelling to highlight grassroots needs and rally community support.",
+  },
+  {
+    name: "Prof. Dr. Christy Munir",
+    role: "Former Chairman",
+    credentials: "Ph.D. Chemistry (Wayne State, USA) · Professor Emeritus (FCCU)",
+    badge: "Professor Emeritus",
+    img: "/images/board/christy-munir.png",
+    position: "object-[center_18%]",
+    detail:
+      "Former Chairman of ELF and Professor Emeritus of Inorganic Chemistry at Forman Christian College (A Chartered University). Over 40 years of academic and institutional leadership, including Vice Principal and Principal of FCCU, with 50+ published scientific papers guiding ELF's founding vision.",
+  },
+  {
+    name: "Prof. Rev. Aslam Yuhanna",
+    role: "Former Chairman",
+    credentials: "M.Sc. Economics (Colorado State, USA) · Professor Emeritus (FCCU)",
+    badge: "Professor Emeritus",
+    img: "/images/board/aslam-yuhanna.png",
+    position: "object-[center_18%]",
+    detail:
+      "Former Chairman of ELF and Professor Emeritus of Economics at Forman Christian College (1970–2007). Former Chairman of the Pakistan Assemblies of God and current Chairman of Assemblies of God Church, Lahore, providing lifelong spiritual wisdom, educational leadership, and ethical stewardship.",
   },
 ];
 
@@ -295,42 +386,57 @@ function About() {
         </div>
       </section>
 
-      {/* team — the card IS the image */}
-      <section className="bg-background px-5 pb-16 sm:px-8 sm:pb-20">
+      {/* Board of Members — leadership & governance */}
+      <section className="bg-background px-5 pb-16 sm:px-8 sm:pb-24 border-b border-ink/10">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
-              <span className="eyebrow">Leadership</span>
-              <h2 className="display-md mt-2 max-w-[14ch] text-ink">Meet the People Behind It</h2>
+              <span className="eyebrow">Governance & Stewardship</span>
+              <h2 className="display-md mt-2 max-w-[16ch] text-ink">Board of Directors & Officers</h2>
             </div>
-            <p className="max-w-sm text-sm text-ink/55">
-              Experienced leaders and ground coordinators dedicated to transparent, compassionate execution.
+            <p className="max-w-md text-sm leading-relaxed text-ink/65">
+              Distinguished educators, researchers, and community leaders providing strategic oversight, financial accountability, and grassroots direction for Education and Life Foundation.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((m, i) => (
-              <Rise key={m.name} delay={i * 0.06}>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {boardMembers.map((m, i) => (
+              <Rise key={m.name} delay={i * 0.04}>
                 <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <img
                     src={m.img}
                     alt={`${m.name}, ${m.role}`}
                     loading="lazy"
-                    className="h-full w-full object-cover object-[center_22%] transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                    className={`h-full w-full object-cover ${m.position || "object-[center_20%]"} transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                  <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                    <div className="font-display text-xl sm:text-2xl font-bold leading-tight tracking-tight text-cream">
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/35 to-transparent" />
+                  
+                  {m.badge && (
+                    <div className="absolute top-3 left-3">
+                      <span className="rounded-full bg-ink/75 backdrop-blur-md border border-cream/15 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-cream/90 shadow-xs">
+                        {m.badge}
+                      </span>
+                    </div>
+                  )}
+
+                  <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-6 transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+                    <div className="font-display text-lg sm:text-xl font-bold leading-tight tracking-tight text-cream">
                       {m.name}
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-cream/70">{m.role}</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.14em] font-semibold text-clay-bright">{m.role}</div>
+                    {m.credentials && (
+                      <div className="mt-0.5 text-[11px] text-cream/65 line-clamp-1">{m.credentials}</div>
+                    )}
                   </figcaption>
-                  <div className="absolute inset-0 flex flex-col justify-end bg-ink/90 p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100">
-                    <div className="font-display text-xl sm:text-2xl font-bold tracking-tight text-cream">{m.name}</div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.16em] text-cream/70">{m.role}</div>
-                    <p className="mt-3 text-sm leading-relaxed text-cream/80">{m.detail}</p>
+
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink via-ink/95 to-ink/40 p-5 sm:p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-clay-bright">{m.role}</div>
+                    <div className="mt-1 font-display text-lg sm:text-xl font-bold tracking-tight text-cream leading-snug">{m.name}</div>
+                    {m.credentials && (
+                      <div className="mt-1 text-[11px] font-medium text-cream/70 border-b border-cream/15 pb-2">{m.credentials}</div>
+                    )}
+                    <p className="mt-2.5 text-xs sm:text-[13px] leading-relaxed text-cream/85 overflow-y-auto max-h-[52%] pr-1">{m.detail}</p>
                   </div>
-                  {/* mobile: details always readable below the fold of the image */}
                   <p className="sr-only">{m.detail}</p>
                 </figure>
               </Rise>

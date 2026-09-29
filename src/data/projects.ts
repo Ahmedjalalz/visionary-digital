@@ -1,13 +1,10 @@
 import education from "@/assets/official-local/education.jpg";
 import schoolwork from "@/assets/official-local/schoolwork.jpg";
 // community unused
-import family from "@/assets/official-local/family.jpg";
 import widows from "@/assets/official-local/widows.jpg";
 import health from "@/assets/official-local/health.jpg";
 import midwifery from "@/assets/official-local/midwifery.jpg";
 import digital from "@/assets/official-local/digital.jpg";
-// skills unused
-import capacity from "@/assets/official-local/capacity.jpg";
 import { foundationMedia } from "./foundationMedia";
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
@@ -80,9 +77,18 @@ export const projects: Project[] = [
       { label: "Contents", value: "Full year of supplies" },
       { label: "Delivered to", value: "A named child" },
     ],
-    image: foundationMedia.bagsCeremony,
-    gallery: [foundationMedia.bagsCeremony, "/images/wash/wash-s-5.jpg", schoolwork],
-    heroPosition: "object-[50%_16%]",
+    image: "/images/school-bags/IMG_9835.JPG",
+    gallery: [
+      "/images/school-bags/IMG_9475.JPG",
+      "/images/school-bags/DSC09384.JPG",
+      "/images/school-bags/IMG_9835.JPG",
+      "/images/school-bags/DSC01043.JPG",
+      "/images/school-bags/DSC01207.JPG",
+      "/images/school-bags/DSC01252.JPG",
+      "/images/school-bags/DSC02848.JPG",
+      "/images/school-bags/DSC01220.JPG",
+    ],
+    heroPosition: "object-[center_15%]",
     accent: "clay",
     layout: "object",
   },
@@ -181,12 +187,12 @@ export const projects: Project[] = [
     gallery: [
       "/images/wash/wash-b-2.jpg",
       "/images/pregnant/pregnant-2.jpg",
-      "/images/wash/wash-b-4.jpg",
+      "/images/wash/wash-s-1.jpg",
       "/images/pregnant/pregnant-4.jpg",
       "/images/wash/wash-s-3.jpg",
       "/images/pregnant/pregnant-8.jpg",
       foundationMedia.washSoapDistribution,
-      foundationMedia.clinicBanner,
+      "/images/wash/wash-s-7.jpg",
     ],
     heroPosition: "object-[50%_14%]",
     accent: "moss",
@@ -286,9 +292,18 @@ export const projects: Project[] = [
       { label: "Compliance", value: "Non-Profit Certification" },
       { label: "Local Leaders", value: "Equipped for Autonomy" },
     ],
-    image: capacity,
-    gallery: [capacity, family],
-    heroPosition: "object-[50%_22%]",
+    image: "/images/capacity-building/capacity-1.jpg",
+    gallery: [
+      "/images/capacity-building/capacity-1.jpg",
+      "/images/capacity-building/capacity-2.jpg",
+      "/images/capacity-building/capacity-3.jpg",
+      "/images/capacity-building/capacity-4.jpg",
+      "/images/capacity-building/capacity-5.jpg",
+      "/images/capacity-building/capacity-6.jpg",
+      "/images/capacity-building/capacity-7.jpg",
+      "/images/capacity-building/capacity-8.jpg",
+    ],
+    heroPosition: "object-[50%_25%]",
     accent: "moss",
     layout: "data",
   },

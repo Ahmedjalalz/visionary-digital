@@ -153,6 +153,76 @@ const midwiferyPhotoDetails = [
   },
 ];
 
+const schoolBagsPhotoDetails = [
+  {
+    title: "Distribution Day Celebration",
+    desc: "Primary school students proudly holding their serialized, sponsor-funded School in a Bag backpacks.",
+  },
+  {
+    title: "Active Classroom Learning",
+    desc: "Pupils at their desks equipped with fresh textbooks, exercise notebooks, and learning materials with their teacher.",
+  },
+  {
+    title: "Tracked Backpack #174563",
+    desc: "Featured student wearing her dedicated School in a Bag kit, complete with lunchbox and refillable water bottle.",
+  },
+  {
+    title: "Primary Cohort Handover (Bags 190938–190943)",
+    desc: "Young learners outside their classroom displaying verified, donor-sponsored backpacks.",
+  },
+  {
+    title: "Girls Secondary Education (Bags 191629–191632)",
+    desc: "Empowering female students with full academic sets to ensure continuous retention and learning.",
+  },
+  {
+    title: "Boys Secondary Cohort (Bags 191633–191637)",
+    desc: "Equipping young male students from vulnerable families with complete year-long learning resources.",
+  },
+  {
+    title: "Direct District Handover (Bags 191315–191319)",
+    desc: "Direct, accountable delivery into the hands of named children across underserved districts.",
+  },
+  {
+    title: "Full Uniform & Equipment Milestone",
+    desc: "Students in school uniform fully prepared for the academic year with essential learning kits.",
+  },
+];
+
+const capacityBuildingPhotoDetails = [
+  {
+    title: "Financial Literacy & Consultation",
+    desc: "National Financial Literacy Program (NFLP) session with Sindh Bank covering transparent bookkeeping, banking, and budgeting.",
+  },
+  {
+    title: "Women's Leadership & Governance",
+    desc: "Senior community executive mentoring local female leaders and administrators on civic participation and institutional stewardship.",
+  },
+  {
+    title: "Grassroots Community Council",
+    desc: "Outdoor village leadership consultation bringing local elders and women together to deliberate community development priorities.",
+  },
+  {
+    title: "Female Leadership & Advocacy",
+    desc: "Dedicated workshop hall empowering community women with organizational, advocacy, and vocational leadership skills.",
+  },
+  {
+    title: "Interactive Classroom Training",
+    desc: "Youth and prospective community leaders engaged in structured curriculum studies, textbooks, and interactive lectures.",
+  },
+  {
+    title: "Institutional Planning Workshop",
+    desc: "Facilitator leading whiteboard sessions on program management, project implementation, and milestone tracking.",
+  },
+  {
+    title: "Participatory Village Dialogue",
+    desc: "Grassroots community gathering under open skies fostering cooperative problem-solving and collective community ownership.",
+  },
+  {
+    title: "Collaborative Workshop Session",
+    desc: "Community women actively participating in roundtable discussions, sharing ground realities and collaborative solutions.",
+  },
+];
+
 function ProjectPage() {
   const { project } = Route.useLoaderData();
   const others = projects.filter((p) => p.slug !== project.slug).slice(0, 4);
@@ -392,6 +462,32 @@ function ProjectPage() {
                       </h4>
                       <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
                         {midwiferyPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
+                  {project.slug === "school-bags" && schoolBagsPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Dispatch
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {schoolBagsPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {schoolBagsPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
+                  {project.slug === "capacity-building" && capacityBuildingPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Dispatch
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {capacityBuildingPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {capacityBuildingPhotoDetails[index].desc}
                       </p>
                     </div>
                   )}
