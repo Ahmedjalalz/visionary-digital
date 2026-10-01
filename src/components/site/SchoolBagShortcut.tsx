@@ -24,7 +24,7 @@ export function SchoolBagShortcut() {
     >
       <button
         onClick={handleScrollToTracker}
-        className="group relative flex items-center gap-3.5 rounded-full border border-white/60 bg-white/60 py-2.5 pl-3 pr-4.5 shadow-[0_8px_32px_rgba(179,40,36,0.12),inset_0_1px_1px_rgba(255,255,255,0.85)] ring-1 ring-black/5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/75 hover:border-clay/40 hover:shadow-[0_12px_40px_rgba(179,40,36,0.18),inset_0_1px_1px_rgba(255,255,255,0.95)] active:scale-95"
+        className="group relative flex items-center gap-3.5 rounded-full border border-white/60 bg-white/60 py-2.5 pl-3 pr-4.5 shadow-[0_8px_32px_rgba(179,40,36,0.12),inset_0_1px_1px_rgba(255,255,255,0.85)] ring-1 ring-black/5 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/75 hover:border-clay/40 hover:shadow-[0_12px_40px_rgba(179,40,36,0.18),inset_0_1px_1px_rgba(255,255,255,0.95)] active:scale-95 dark:bg-card/85 dark:border-white/15 dark:shadow-[0_8px_32px_rgba(0,0,0,0.45)] dark:hover:bg-card"
         title="Jump to Bag Tracker"
       >
         {/* Pulsing beacon */}

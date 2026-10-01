@@ -686,7 +686,7 @@ function ImpactPage() {
                 >
                   <div>
                     {/* Logo container */}
-                    <div className="flex h-20 items-center justify-center rounded-xl bg-white p-4 border border-ink/8 shadow-2xs">
+                    <div className="flex h-20 items-center justify-center rounded-xl bg-white p-4 border border-ink/8 shadow-2xs dark:bg-card/90 dark:border-white/10">
                       <img
                         src={p.logo}
                         alt={p.name}

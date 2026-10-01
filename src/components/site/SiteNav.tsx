@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
+import { ThemeToggle } from "@/hooks/use-theme";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -58,9 +59,7 @@ export function SiteNav() {
 
   return (
     <>
-      <header
-        className="sticky top-0 z-50 w-full border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500"
-      >
+      <header className="sticky top-0 z-50 w-full border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500">
         <div className="border-b border-white/10 bg-ink text-cream">
           <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-5 py-[3px] text-[0.6rem] tracking-[0.12em] text-cream/70 sm:px-8">
             <a
@@ -93,7 +92,10 @@ export function SiteNav() {
                   </a>
                 ))}
               </div>
-              <a href="tel:+923009475513" className="hidden transition-colors hover:text-cream text-cream/80 sm:inline">
+              <a
+                href="tel:+923009475513"
+                className="hidden transition-colors hover:text-cream text-cream/80 sm:inline"
+              >
                 +92 300 9475513
               </a>
             </div>
@@ -111,7 +113,7 @@ export function SiteNav() {
             <img
               src={logo}
               alt="ELF Logo"
-              className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
+              className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
             />
             <div className="flex flex-col">
               <span className="font-display text-[0.8rem] sm:text-[0.95rem] font-bold uppercase tracking-wide text-ink leading-tight group-hover:text-clay transition-colors">
@@ -158,7 +160,7 @@ export function SiteNav() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 4, scale: 0.985 }}
                           transition={{ duration: 0.18, ease: "easeOut" }}
-                           className="absolute left-1/2 top-full z-50 w-[min(740px,calc(100vw-3rem))] -translate-x-1/2 pt-2"
+                          className="absolute left-1/2 top-full z-50 w-[min(740px,calc(100vw-3rem))] -translate-x-1/2 pt-2"
                         >
                           <div className="overflow-hidden rounded-2xl border border-ink/10 bg-background/98 p-6 shadow-2xl backdrop-blur-2xl">
                             {/* Header */}
@@ -207,7 +209,7 @@ export function SiteNav() {
                                         className={`font-display text-[13px] leading-snug tracking-tight transition-colors ${
                                           isActive
                                             ? "font-bold text-clay"
-                                             : "font-medium text-ink group-hover:text-clay"
+                                            : "font-medium text-ink group-hover:text-clay"
                                         }`}
                                       >
                                         {p.name}
@@ -239,7 +241,8 @@ export function SiteNav() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <ThemeToggle />
             <Link
               to="/donate"
               className="hidden rounded-full border border-clay px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs sm:inline-block"
@@ -258,8 +261,12 @@ export function SiteNav() {
               aria-label={open ? "Close menu" : "Open menu"}
               className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-full border border-ink/20 text-ink transition-colors hover:border-clay hover:text-clay lg:hidden cursor-pointer"
             >
-              <span className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`} />
-              <span className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
+              <span
+                className={`block h-px w-4 bg-current transition-transform ${open ? "translate-y-[3px] rotate-45" : ""}`}
+              />
+              <span
+                className={`block h-px w-4 bg-current transition-transform ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
+              />
             </button>
           </div>
         </div>
@@ -275,20 +282,23 @@ export function SiteNav() {
             className="fixed inset-0 z-40 overflow-y-auto bg-background pt-24 pb-16"
           >
             <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-              <div className="flex items-center gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
-                <img
-                  src={logo}
-                  alt="ELF Logo"
-                  className="h-10 w-10 object-contain shrink-0"
-                />
-                <div>
-                  <span className="font-display text-sm font-bold uppercase tracking-wide text-ink block">
-                    Education And Life Foundation
-                  </span>
-                  <span className="text-[0.62rem] font-medium tracking-[0.12em] text-clay uppercase block">
-                    Uplifting the Lives of Communities
-                  </span>
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
+                <div className="flex items-center gap-3 min-w-0">
+                  <img
+                    src={logo}
+                    alt="ELF Logo"
+                    className="h-10 w-10 object-contain shrink-0 rounded-lg p-0.5 dark:bg-white/95"
+                  />
+                  <div className="min-w-0">
+                    <span className="font-display text-sm font-bold uppercase tracking-wide text-ink block truncate">
+                      Education And Life Foundation
+                    </span>
+                    <span className="text-[0.62rem] font-medium tracking-[0.12em] text-clay uppercase block">
+                      Uplifting the Lives of Communities
+                    </span>
+                  </div>
                 </div>
+                <ThemeToggle showLabel className="shrink-0" />
               </div>
               <ul className="border-t border-ink/10">
                 {primary.map((item, i) => {

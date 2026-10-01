@@ -3,6 +3,7 @@ import { ShieldCheck, FileCheck, Award, BadgeCheck } from "lucide-react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
+import { ThemeToggle } from "@/hooks/use-theme";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -52,14 +53,19 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1600px] px-5 pb-16 sm:px-8 sm:pb-20">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <img src={logo} alt="Education and Life Foundation" className="h-24 w-24 object-contain" />
+            <img
+              src={logo}
+              alt="Education and Life Foundation"
+              className="h-24 w-24 object-contain rounded-2xl p-1.5 transition-all dark:bg-white/95"
+            />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">
               Education and Life Foundation is a non-governmental organisation working with deprived
               communities across Pakistan — education, healthcare, water, and support for families
               carrying more than they should.
             </p>
             <p className="mt-6 font-serif text-2xl leading-snug text-ink/90">
-              “To build a better life for the community, and to aid those who cannot help themselves.”
+              “To build a better life for the community, and to aid those who cannot help
+              themselves.”
             </p>
           </div>
 
@@ -97,7 +103,7 @@ export function SiteFooter() {
             <h3 className="eyebrow">Contact</h3>
             <a
               href="mailto:info@educationandlifefoundation.org"
-               className="mt-5 block text-sm text-ink/80 transition-colors hover:text-clay"
+              className="mt-5 block text-sm text-ink/80 transition-colors hover:text-clay"
             >
               info@educationandlifefoundation.org
             </a>
@@ -107,11 +113,11 @@ export function SiteFooter() {
                   <div className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-clay">
                     {b.country}
                   </div>
-                   <div className="mt-1 text-sm leading-snug text-ink/60">{b.address}</div>
+                  <div className="mt-1 text-sm leading-snug text-ink/60">{b.address}</div>
                 </li>
               ))}
             </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               {siteSocials.map(({ href, label, title, Icon }) => (
                 <a
                   key={label}
@@ -125,6 +131,7 @@ export function SiteFooter() {
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
+              <ThemeToggle className="h-10 w-10" />
             </div>
           </div>
         </div>
@@ -145,7 +152,9 @@ export function SiteFooter() {
                 </span>
               </div>
               <p className="mt-2 text-xs leading-relaxed text-ink/70">
-                Education And Life Foundation (ELF) is an accredited non-profit organization operating in full compliance with federal and provincial regulatory bodies in Pakistan.
+                Education And Life Foundation (ELF) is an accredited non-profit organization
+                operating in full compliance with federal and provincial regulatory bodies in
+                Pakistan.
               </p>
             </div>
 
@@ -173,7 +182,10 @@ export function SiteFooter() {
                   <span className="block text-[0.62rem] font-bold uppercase tracking-wider text-ink/50">
                     Charity Number
                   </span>
-                  <span className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight truncate" title="PB-2194002019418135">
+                  <span
+                    className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight truncate"
+                    title="PB-2194002019418135"
+                  >
                     PB-2194002019418135
                   </span>
                   <span className="block text-[0.65rem] text-ink/65">
@@ -223,7 +235,9 @@ export function SiteFooter() {
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>© {new Date().getFullYear()} Education and Life Foundation</span>
             <span className="hidden text-cream/40 sm:inline">|</span>
-            <span className="text-cream/65 lowercase text-[0.68rem] tracking-normal">Registered Non-Profit (RP/11181-L/S/18/728)</span>
+            <span className="text-cream/65 lowercase text-[0.68rem] tracking-normal">
+              Registered Non-Profit (RP/11181-L/S/18/728)
+            </span>
           </div>
           <span className="text-cream/65">Lahore · Auckland · Toronto · Berlin</span>
         </div>

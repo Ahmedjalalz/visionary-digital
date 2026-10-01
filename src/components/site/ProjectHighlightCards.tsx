@@ -95,7 +95,7 @@ export function ProjectHighlightCards({ project, speed = 10 }: ProjectHighlightC
           {loopItems.map((item, idx) => (
             <div
               key={`${item.stat}-${idx}`}
-              className="group/card flex h-[76px] w-[86px] sm:h-[82px] sm:w-[92px] shrink-0 flex-col items-center justify-center rounded-lg border border-ink/10 bg-white/90 p-2 text-center shadow-2xs transition-all duration-200 group-hover/card:border-clay/40 group-hover/card:bg-white group-hover/card:shadow-xs"
+              className="group/card flex h-[76px] w-[86px] sm:h-[82px] sm:w-[92px] shrink-0 flex-col items-center justify-center rounded-lg border border-ink/10 bg-white/90 p-2 text-center shadow-2xs transition-all duration-200 group-hover/card:border-clay/40 group-hover/card:bg-white group-hover/card:shadow-xs dark:bg-card/90 dark:group-hover/card:bg-card"
             >
               <span className="font-display text-xs sm:text-[0.82rem] font-extrabold tracking-tight text-clay leading-tight line-clamp-1">
                 {item.stat}

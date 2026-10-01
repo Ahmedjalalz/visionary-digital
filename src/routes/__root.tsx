@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/hooks/use-theme";
 
 function NotFoundComponent() {
   return (
@@ -90,7 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Education and Life Foundation" },
       {
         property: "og:description",
-        content: "Uplifting the lives of communities across Pakistan through education, health and dignity.",
+        content:
+          "Uplifting the lives of communities across Pakistan through education, health and dignity.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -119,6 +121,11 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('elf-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d)){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body>
         {children}
@@ -133,14 +140,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteNav />
-      <main id="content" className="relative w-full">
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <Toaster position="bottom-right" />
+      <ThemeProvider>
+        <SiteNav />
+        <main id="content" className="relative w-full">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <Toaster position="bottom-right" />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
-

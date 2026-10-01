@@ -125,7 +125,7 @@ export function WidowsHeroCarousel() {
           type="button"
           onClick={scrollPrev}
           aria-label="Previous photograph"
-          className="absolute left-5 sm:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/60 bg-white/75 sm:bg-white/85 backdrop-blur-md text-ink shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white hover:text-clay active:scale-95 focus:outline-none focus:ring-2 focus:ring-clay"
+          className="absolute left-5 sm:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/60 bg-white/75 sm:bg-white/85 backdrop-blur-md text-ink shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white hover:text-clay active:scale-95 focus:outline-none focus:ring-2 focus:ring-clay dark:border-white/15 dark:bg-card/85 dark:hover:bg-card dark:text-foreground"
         >
           <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
         </button>
@@ -134,7 +134,7 @@ export function WidowsHeroCarousel() {
           type="button"
           onClick={scrollNext}
           aria-label="Next photograph"
-          className="absolute right-5 sm:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/60 bg-white/75 sm:bg-white/85 backdrop-blur-md text-ink shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white hover:text-clay active:scale-95 focus:outline-none focus:ring-2 focus:ring-clay"
+          className="absolute right-5 sm:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/60 bg-white/75 sm:bg-white/85 backdrop-blur-md text-ink shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white hover:text-clay active:scale-95 focus:outline-none focus:ring-2 focus:ring-clay dark:border-white/15 dark:bg-card/85 dark:hover:bg-card dark:text-foreground"
         >
           <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
         </button>

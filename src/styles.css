@@ -67,8 +67,9 @@
 
   /* Ink Navy #143055 for Headings, Dark Sections, and Accents */
   --ink: #143055;
+  --ink-text-base: #08121f;
   /* Ultra-readable dark text #08121F for Body Text & Copy */
-  --body-text: #08121F;
+  --body-text: #08121f;
 
   --cream: oklch(1 0 0);
   --sand: oklch(0.975 0.008 255);
@@ -78,19 +79,19 @@
   --moss: oklch(0.51 0.125 255);
 
   --background: oklch(1 0 0);
-  --foreground: #08121F;
+  --foreground: #08121f;
   --card: oklch(1 0 0);
-  --card-foreground: #08121F;
+  --card-foreground: #08121f;
   --popover: oklch(1 0 0);
-  --popover-foreground: #08121F;
+  --popover-foreground: #08121f;
   --primary: oklch(0.368 0.139 261);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.975 0.008 255);
-  --secondary-foreground: #08121F;
+  --secondary-foreground: #08121f;
   --muted: oklch(0.955 0.008 255);
-  --muted-foreground: #08121F;
+  --muted-foreground: #08121f;
   --accent: oklch(0.94 0.015 255);
-  --accent-foreground: #08121F;
+  --accent-foreground: #08121f;
   --destructive: oklch(0.6 0.21 27);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.368 0.139 261 / 16%);
@@ -102,29 +103,101 @@
   --chart-4: oklch(0.52 0.09 225);
   --chart-5: oklch(0.42 0.14 265);
   --sidebar: oklch(0.975 0.008 255);
-  --sidebar-foreground: #08121F;
+  --sidebar-foreground: #08121f;
   --sidebar-primary: oklch(0.368 0.139 261);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.93 0.03 250);
-  --sidebar-accent-foreground: #08121F;
+  --sidebar-accent-foreground: #08121f;
   --sidebar-border: oklch(0.368 0.139 261 / 16%);
   --sidebar-ring: oklch(0.368 0.139 261);
 }
 
-/* Pale-blue editorial surface. */
+.dark {
+  /*
+   * Google & Antigravity styled dark theme:
+   * Relaxed, soft slate-gray background (#17191e / ~13% lightness) — avoids harsh pitch black (#000000).
+   * Elevated cards and surfaces (#20242c) with smooth, easy-on-the-eyes contrast.
+   */
+  --ink: #f0f4f8;
+  --ink-text-base: #f0f4f8;
+  --body-text: #cfd6e0;
+
+  --cream: #ffffff;
+  --sand: #1e2229;
+
+  --background: #17191e;
+  --foreground: #f0f4f8;
+  --card: #20242c;
+  --card-foreground: #f0f4f8;
+  --popover: #20242c;
+  --popover-foreground: #f0f4f8;
+
+  /* Elevated brand blues with high legibility and vibrancy */
+  --clay: #4d8df7;
+  --clay-bright: #72b0ff;
+  --clay-deep: #3b7ee8;
+  --moss: #38bdf8;
+
+  --primary: #4d8df7;
+  --primary-foreground: #ffffff;
+  --secondary: #242832;
+  --secondary-foreground: #e2e8f0;
+  --muted: #20242c;
+  --muted-foreground: #94a3b8;
+  --accent: #282e3a;
+  --accent-foreground: #f8fafc;
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.11);
+  --input: rgba(255, 255, 255, 0.16);
+  --ring: #4d8df7;
+
+  --chart-1: #4d8df7;
+  --chart-2: #38bdf8;
+  --chart-3: #818cf8;
+  --chart-4: #34d399;
+  --chart-5: #fbbf24;
+
+  --sidebar: #191c22;
+  --sidebar-foreground: #f0f4f8;
+  --sidebar-primary: #4d8df7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #242832;
+  --sidebar-accent-foreground: #f0f4f8;
+  --sidebar-border: rgba(255, 255, 255, 0.11);
+  --sidebar-ring: #4d8df7;
+}
+
+/* Pale-blue editorial surface in light mode, slate-charcoal layer in dark. */
 .paper {
   --background: var(--sand);
-  --foreground: #08121F;
+  --foreground: #08121f;
   --card: oklch(0.99 0.004 250);
-  --card-foreground: #08121F;
+  --card-foreground: #08121f;
   --clay: oklch(0.368 0.139 261);
-  --muted-foreground: #08121F;
+  --muted-foreground: #08121f;
   --border: oklch(0.17 0.045 262 / 16%);
   --input: oklch(0.17 0.045 262 / 20%);
   --secondary: oklch(0.9 0.03 250);
-  --secondary-foreground: #08121F;
+  --secondary-foreground: #08121f;
   background-color: var(--sand);
-  color: #08121F;
+  color: #08121f;
+}
+
+.dark .paper {
+  --background: var(--sand);
+  --foreground: var(--foreground);
+  --card: var(--card);
+  --card-foreground: var(--card-foreground);
+  --clay: var(--clay);
+  --muted-foreground: var(--muted-foreground);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.16);
+  --secondary: var(--secondary);
+  --secondary-foreground: var(--foreground);
+  background-color: var(--sand);
+  color: var(--body-text);
 }
 
 @layer base {
@@ -141,7 +214,7 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--body-text, #08121F);
+    color: var(--body-text, #08121f);
     font-family: var(--font-sans);
     font-weight: 420;
     line-height: 1.65;
@@ -151,13 +224,13 @@
   }
 
   p {
-    color: var(--body-text, #08121F);
+    color: var(--body-text, #08121f);
     line-height: 1.68;
     letter-spacing: -0.006em;
   }
 
   p.text-ink {
-    color: #08121F !important;
+    color: var(--ink-text-base) !important;
   }
 
   ::selection {
@@ -180,11 +253,22 @@
   }
 
   /* Ensure headings on dark containers or with text-cream/text-white are always light */
-  .bg-ink h1, .bg-ink h2, .bg-ink h3, .bg-ink h4,
-  [class*="bg-ink/"] h1, [class*="bg-ink/"] h2, [class*="bg-ink/"] h3,
-  .text-cream h1, .text-cream h2, .text-cream h3,
-  h1.text-cream, h2.text-cream, h3.text-cream,
-  h1.text-white, h2.text-white, h3.text-white {
+  .bg-ink h1,
+  .bg-ink h2,
+  .bg-ink h3,
+  .bg-ink h4,
+  [class*="bg-ink/"] h1,
+  [class*="bg-ink/"] h2,
+  [class*="bg-ink/"] h3,
+  .text-cream h1,
+  .text-cream h2,
+  .text-cream h3,
+  h1.text-cream,
+  h2.text-cream,
+  h3.text-cream,
+  h1.text-white,
+  h2.text-white,
+  h3.text-white {
     color: var(--cream) !important;
   }
 
@@ -268,35 +352,120 @@
   font-size: clamp(1.05rem, 1.15vw, 1.22rem);
   font-weight: 450;
   line-height: 1.68;
-  color: #08121F;
+  color: var(--body-text);
   opacity: 0.96;
   max-width: 62ch;
 }
 
-/* Global body text contrast & opacity reinforcement: ultra-readable #08121F */
+/* Global body text contrast & opacity reinforcement: automatically adapts to theme */
 .text-ink\/40 {
-  color: color-mix(in srgb, #08121F 65%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 48%, transparent) !important;
+}
+.text-ink\/45 {
+  color: color-mix(in srgb, var(--ink-text-base) 54%, transparent) !important;
 }
 .text-ink\/50 {
-  color: color-mix(in srgb, #08121F 74%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 60%, transparent) !important;
 }
 .text-ink\/55 {
-  color: color-mix(in srgb, #08121F 78%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 66%, transparent) !important;
 }
 .text-ink\/60 {
-  color: color-mix(in srgb, #08121F 84%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 72%, transparent) !important;
 }
 .text-ink\/65 {
-  color: color-mix(in srgb, #08121F 88%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 78%, transparent) !important;
 }
 .text-ink\/70 {
-  color: color-mix(in srgb, #08121F 92%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 84%, transparent) !important;
 }
 .text-ink\/75 {
-  color: color-mix(in srgb, #08121F 95%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 90%, transparent) !important;
 }
 .text-ink\/80 {
-  color: color-mix(in srgb, #08121F 97%, transparent) !important;
+  color: color-mix(in srgb, var(--ink-text-base) 95%, transparent) !important;
+}
+.text-ink\/85 {
+  color: color-mix(in srgb, var(--ink-text-base) 97%, transparent) !important;
+}
+.text-ink\/90 {
+  color: color-mix(in srgb, var(--ink-text-base) 98%, transparent) !important;
+}
+
+/* Dark Mode Fine-Tuning for Containers, Overlays & Borders */
+.dark .bg-ink {
+  background-color: #12151b !important;
+}
+.dark .bg-ink\/90 {
+  background-color: rgba(18, 21, 27, 0.9) !important;
+}
+.dark .bg-ink\/80 {
+  background-color: rgba(18, 21, 27, 0.8) !important;
+}
+.dark .bg-ink\/75 {
+  background-color: rgba(18, 21, 27, 0.75) !important;
+}
+.dark .bg-ink\/70 {
+  background-color: rgba(18, 21, 27, 0.7) !important;
+}
+.dark .bg-ink\/60 {
+  background-color: rgba(18, 21, 27, 0.6) !important;
+}
+.dark .bg-ink\/45 {
+  background-color: rgba(18, 21, 27, 0.45) !important;
+}
+.dark .bg-ink\/30 {
+  background-color: rgba(18, 21, 27, 0.3) !important;
+}
+.dark .bg-ink\/20 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .bg-ink\/15 {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+.dark .bg-ink\/10 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Subtle, refined dark mode borders */
+.dark .border-ink\/10 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .border-ink\/15 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+.dark .border-ink\/20 {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+.dark .border-ink\/25 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.dark .border-ink\/30 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+.dark .border-ink\/40 {
+  border-color: rgba(255, 255, 255, 0.32) !important;
+}
+
+/* Interactive borders on hover */
+.dark .hover\:border-ink:hover,
+.dark [class*="hover:border-ink"]:hover {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Registration cards and frosted light surfaces */
+.dark .bg-white\/85,
+.dark .bg-white\/90 {
+  background-color: rgba(32, 36, 44, 0.85) !important;
+}
+.dark .hover\:bg-white:hover {
+  background-color: #272c37 !important;
+}
+
+/* Form input elements */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(240, 244, 248, 0.35) !important;
 }
 
 @utility rule-line {
@@ -400,14 +569,14 @@
   background: linear-gradient(
     135deg,
     rgba(13, 57, 135, 0.42) 0%,
-    rgba(20, 48, 85, 0.50) 45%,
+    rgba(20, 48, 85, 0.5) 45%,
     rgba(6, 18, 40, 0.68) 100%
   );
   backdrop-filter: blur(28px) saturate(210%) contrast(106%);
   -webkit-backdrop-filter: blur(28px) saturate(210%) contrast(106%);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-top: 1.5px solid rgba(255, 255, 255, 0.55);
-  border-left: 1.5px solid rgba(255, 255, 255, 0.40);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.4);
   border-right: 1px solid rgba(255, 255, 255, 0.16);
   border-bottom: 1.5px solid rgba(13, 57, 135, 0.45);
   box-shadow:
