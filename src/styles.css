@@ -67,6 +67,7 @@
 
   /* Ink Navy #143055 for Headings, Dark Sections, and Accents */
   --ink: #143055;
+  --heading-color: #143055;
   --ink-text-base: #08121f;
   /* Ultra-readable dark text #08121F for Body Text & Copy */
   --body-text: #08121f;
@@ -117,8 +118,10 @@
    * Google & Antigravity styled dark theme:
    * Relaxed, soft slate-gray background (#17191e / ~13% lightness) — avoids harsh pitch black (#000000).
    * Elevated cards and surfaces (#20242c) with smooth, easy-on-the-eyes contrast.
+   * Preserves Ink Navy (#143055) for all image overlays, vignettes, fog & gradients (no white fog).
    */
-  --ink: #f0f4f8;
+  --ink: #143055;
+  --heading-color: #f0f4f8;
   --ink-text-base: #f0f4f8;
   --body-text: #cfd6e0;
 
@@ -244,7 +247,7 @@
   h4,
   h5,
   h6 {
-    color: var(--ink); /* #143055 */
+    color: var(--heading-color, var(--ink));
     font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: 0;
@@ -392,39 +395,25 @@
   color: color-mix(in srgb, var(--ink-text-base) 98%, transparent) !important;
 }
 
-/* Dark Mode Fine-Tuning for Containers, Overlays & Borders */
-.dark .bg-ink {
-  background-color: #12151b !important;
+/* Text color adaptivity for dark mode */
+.dark .text-ink {
+  color: var(--ink-text-base);
 }
-.dark .bg-ink\/90 {
-  background-color: rgba(18, 21, 27, 0.9) !important;
+
+.dark .hover\:text-clay:hover,
+.dark [class*="hover:text-clay"]:hover {
+  color: var(--clay) !important;
 }
-.dark .bg-ink\/80 {
-  background-color: rgba(18, 21, 27, 0.8) !important;
+.dark .group:hover .group-hover\:text-clay {
+  color: var(--clay) !important;
 }
-.dark .bg-ink\/75 {
-  background-color: rgba(18, 21, 27, 0.75) !important;
+.dark .hover\:text-clay-deep:hover,
+.dark [class*="hover:text-clay-deep"]:hover {
+  color: var(--clay-deep) !important;
 }
-.dark .bg-ink\/70 {
-  background-color: rgba(18, 21, 27, 0.7) !important;
-}
-.dark .bg-ink\/60 {
-  background-color: rgba(18, 21, 27, 0.6) !important;
-}
-.dark .bg-ink\/45 {
-  background-color: rgba(18, 21, 27, 0.45) !important;
-}
-.dark .bg-ink\/30 {
-  background-color: rgba(18, 21, 27, 0.3) !important;
-}
-.dark .bg-ink\/20 {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-}
-.dark .bg-ink\/15 {
-  background-color: rgba(255, 255, 255, 0.06) !important;
-}
-.dark .bg-ink\/10 {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+.dark .hover\:text-ink:hover,
+.dark [class*="hover:text-ink"]:hover {
+  color: #ffffff !important;
 }
 
 /* Subtle, refined dark mode borders */

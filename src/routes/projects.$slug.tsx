@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import {
   Activity,
+  ArrowRight,
   ArrowUpRight,
   Baby,
   Calculator,
@@ -233,6 +234,45 @@ function ProjectPage() {
 
   return (
     <article className="bg-background">
+      {project.slug === "school-bags" && (
+        <aside
+          aria-label="Implementing Partnership Announcement"
+          className="border-b border-ink/10 bg-sand/65 dark:bg-card/75 py-4 sm:py-5 px-5 sm:px-8"
+        >
+          <div className="mx-auto max-w-[1600px] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-clay/20 bg-background/80 dark:bg-background/90 p-2 shadow-xs">
+                <img
+                  src="/school-in-a-bag-logo-red.png"
+                  alt="School in a Bag"
+                  className="h-full w-full object-contain drop-shadow-xs"
+                />
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <span className="inline-flex items-center rounded-full bg-clay/10 px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-clay">
+                    On-Ground Implementing Partner
+                  </span>
+                  <span className="text-[0.65rem] text-ink/40 hidden sm:inline">•</span>
+                  <span className="text-[0.68rem] font-medium text-ink/60 hidden sm:inline">
+                    UK Registered Charity No. 1186311
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm leading-relaxed text-ink/80 max-w-4xl">
+                  <span className="font-semibold text-ink">School In A Bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School In A Bag organization.
+                </p>
+              </div>
+            </div>
+            <a
+              href="#bag-tracker"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-clay/40 bg-clay/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-clay hover:bg-clay hover:text-cream transition-all self-start md:self-center"
+            >
+              <span>Track A Bag</span>
+              <ArrowRight className="h-3 w-3" />
+            </a>
+          </div>
+        </aside>
+      )}
       {project.slug === "hope-and-freedom-for-widows-headed-families" ? (
         <section className="relative overflow-hidden bg-sand/35 pt-12 pb-10 sm:pt-16 sm:pb-16 border-b border-ink/10">
           <div className="mx-auto max-w-[1600px] px-5 sm:px-8">

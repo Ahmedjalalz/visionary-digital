@@ -1,8 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowLeft, Globe, Loader2, Search } from "lucide-react";
-import fallbackPhoto from "@/assets/project-education.jpg";
+import { ArrowLeft, ArrowRight, Globe, Loader2, Search } from "lucide-react";
 import { ParallaxImage } from "@/components/site/motion-primitives";
 import { fetchLiveBagDetails } from "@/lib/bag-tracker-service";
 
@@ -20,6 +19,49 @@ export const Route = createFileRoute("/bag/$trackingId")({
 });
 
 const stages = ["Packed", "In Transit", "Delivered"];
+
+function SchoolInABagBanner() {
+  return (
+    <aside
+      aria-label="Implementing Partnership Announcement"
+      className="border-b border-ink/10 bg-sand/65 dark:bg-card/75 py-4 sm:py-5 px-5 sm:px-8"
+    >
+      <div className="mx-auto max-w-[1600px] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-start sm:items-center gap-4">
+          <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-clay/20 bg-background/80 dark:bg-background/90 p-2 shadow-xs">
+            <img
+              src="/school-in-a-bag-logo-red.png"
+              alt="School in a Bag"
+              className="h-full w-full object-contain drop-shadow-xs"
+            />
+          </div>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2 mb-1">
+              <span className="inline-flex items-center rounded-full bg-clay/10 px-2.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-clay">
+                On-Ground Implementing Partner
+              </span>
+              <span className="text-[0.65rem] text-ink/40 hidden sm:inline">•</span>
+              <span className="text-[0.68rem] font-medium text-ink/60 hidden sm:inline">
+                UK Registered Charity No. 1186311
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm leading-relaxed text-ink/80 max-w-4xl">
+              <span className="font-semibold text-ink">School In A Bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School In A Bag organization.
+            </p>
+          </div>
+        </div>
+        <Link
+          to="/projects/$slug"
+          params={{ slug: "school-bags" }}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-clay/40 bg-clay/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-clay hover:bg-clay hover:text-cream transition-all self-start md:self-center"
+        >
+          <span>School Bags Project</span>
+          <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
+    </aside>
+  );
+}
 
 function BagDetails() {
   const { trackingId } = Route.useParams();
@@ -62,83 +104,86 @@ function BagDetails() {
 
   if (isError || !data) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-background px-5 py-16 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 p-3.5 shadow-inner">
-          <img
-            src="/school-in-a-bag-logo-red.png"
-            alt="School in a Bag"
-            className="h-full w-full object-contain"
-          />
-        </div>
-        <h1 className="display-md max-w-[16ch] text-ink">We couldn't find that bag.</h1>
-        <p className="max-w-md text-sm leading-relaxed text-ink/65">
-          The tracking ID <span className="font-bold text-clay">{trackingId}</span> isn't in our live records.
-          Check the number on your sponsorship receipt, or try tracking another bag.
-        </p>
+      <div className="flex min-h-screen flex-col bg-background text-ink">
+        <SchoolInABagBanner />
+        <div className="flex flex-1 flex-col items-center justify-center gap-6 px-5 py-16 text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 p-3.5 shadow-inner">
+            <img
+              src="/school-in-a-bag-logo-red.png"
+              alt="School in a Bag"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <h1 className="display-md max-w-[16ch] text-ink">We couldn't find that bag.</h1>
+          <p className="max-w-md text-sm leading-relaxed text-ink/65">
+            The tracking ID <span className="font-bold text-clay">{trackingId}</span> isn't in our live records.
+            Check the number on your sponsorship receipt, or try tracking another bag.
+          </p>
 
-        {/* Immediate-attention buttons in error state */}
-        <div className="mt-2 flex w-full max-w-md flex-col items-stretch gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={() => setShowErrorTrackForm((prev) => !prev)}
-            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-xs transition-all hover:bg-clay-deep active:scale-[0.98] cursor-pointer"
-          >
-            <Search className="h-4 w-4 transition-transform group-hover:scale-110" />
-            <span>Track Another Bag</span>
-          </button>
+          {/* Immediate-attention buttons in error state */}
+          <div className="mt-2 flex w-full max-w-md flex-col items-stretch gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => setShowErrorTrackForm((prev) => !prev)}
+              className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-clay px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground shadow-xs transition-all hover:bg-clay-deep active:scale-[0.98] cursor-pointer"
+            >
+              <Search className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span>Track Another Bag</span>
+            </button>
+            <Link
+              to="/"
+              className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-xs transition-all hover:bg-ink/85 active:scale-[0.98] cursor-pointer"
+            >
+              <Globe className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span>Back to Website</span>
+            </Link>
+          </div>
+
+          {showErrorTrackForm && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const id = errorTrackId.trim();
+                if (id) {
+                  navigate({ to: "/bag/$trackingId", params: { trackingId: id } });
+                }
+              }}
+              className="w-full max-w-md rounded-2xl border border-ink/15 bg-sand/70 p-5 text-left shadow-xs"
+            >
+              <label
+                htmlFor="error-track-input"
+                className="block text-[0.66rem] font-bold uppercase tracking-[0.18em] text-ink/60"
+              >
+                Enter Bag ID
+              </label>
+              <div className="mt-2 flex gap-2">
+                <input
+                  id="error-track-input"
+                  type="text"
+                  value={errorTrackId}
+                  onChange={(e) => setErrorTrackId(e.target.value)}
+                  placeholder="e.g. 143492 or ELF-2026-0001"
+                  autoFocus
+                  className="flex-1 rounded-xl border border-ink/20 bg-background px-3.5 py-2.5 text-sm text-ink focus:border-clay focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="rounded-full bg-clay px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-clay-deep transition-colors shadow-xs cursor-pointer"
+                >
+                  Track
+                </button>
+              </div>
+            </form>
+          )}
+
           <Link
-            to="/"
-            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-cream shadow-xs transition-all hover:bg-ink/85 active:scale-[0.98] cursor-pointer"
+            to="/projects/$slug"
+            params={{ slug: "school-bags" }}
+            className="link-underline mt-4 text-xs uppercase tracking-[0.18em] text-ink/50"
           >
-            <Globe className="h-4 w-4 transition-transform group-hover:scale-110" />
-            <span>Back to Website</span>
+            Return to School Bag Distribution Program →
           </Link>
         </div>
-
-        {showErrorTrackForm && (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const id = errorTrackId.trim();
-              if (id) {
-                navigate({ to: "/bag/$trackingId", params: { trackingId: id } });
-              }
-            }}
-            className="w-full max-w-md rounded-2xl border border-ink/15 bg-sand/70 p-5 text-left shadow-xs"
-          >
-            <label
-              htmlFor="error-track-input"
-              className="block text-[0.66rem] font-bold uppercase tracking-[0.18em] text-ink/60"
-            >
-              Enter Bag ID
-            </label>
-            <div className="mt-2 flex gap-2">
-              <input
-                id="error-track-input"
-                type="text"
-                value={errorTrackId}
-                onChange={(e) => setErrorTrackId(e.target.value)}
-                placeholder="e.g. 143492 or ELF-2026-0001"
-                autoFocus
-                className="flex-1 rounded-xl border border-ink/20 bg-background px-3.5 py-2.5 text-sm text-ink focus:border-clay focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-clay px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-clay-deep transition-colors shadow-xs cursor-pointer"
-              >
-                Track
-              </button>
-            </div>
-          </form>
-        )}
-
-        <Link
-          to="/projects/$slug"
-          params={{ slug: "school-bags" }}
-          className="link-underline mt-4 text-xs uppercase tracking-[0.18em] text-ink/50"
-        >
-          Return to School Bag Distribution Program →
-        </Link>
       </div>
     );
   }
@@ -156,6 +201,7 @@ function BagDetails() {
 
   return (
     <article className="bg-background text-ink">
+      <SchoolInABagBanner />
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         {/* information side */}
         <div className="flex flex-col justify-center px-5 py-14 sm:px-10 sm:py-20">

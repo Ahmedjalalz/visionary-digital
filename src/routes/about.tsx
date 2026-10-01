@@ -1,13 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
+import { ArrowRight, CheckCircle2, GraduationCap, HandHeart, Heart } from "lucide-react";
 
-// heroImg unused
-// educationImg unused
-// healthImg unused
-// washImg removed
-// widowsImg unused
-// digitalImg unused
 import skillsImg from "@/assets/official-local/skills.jpg";
 import { foundationMedia } from "@/data/foundationMedia";
 
@@ -299,6 +294,313 @@ function About() {
           <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
             To build a better life for the community, and to aid those who cannot help themselves.
           </p>
+        </div>
+      </section>
+
+      {/* Our Story — A Story That Began with Compassion */}
+      <section id="our-story" className="border-b border-ink/10 bg-background py-20 sm:py-28">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          {/* Header */}
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-clay/20 bg-clay/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-clay">
+              <Heart className="h-3.5 w-3.5 fill-clay" />
+              <span>Our Origins & Story</span>
+            </div>
+            <h2 className="display-lg mt-4 text-ink">
+              A Story That Began with Compassion
+            </h2>
+            <p className="mt-5 text-lg sm:text-xl font-medium leading-relaxed text-ink/80">
+              Education and Life Foundation (ELF) began with a simple but deeply held belief: every person deserves dignity, opportunity, and hope, regardless of their circumstances.
+            </p>
+          </div>
+
+          {/* Section 1: The Roots & Widows Welfare */}
+          <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="space-y-6 lg:col-span-7 text-base sm:text-lg leading-relaxed text-ink/75">
+              <p>
+                The roots of ELF can be traced to <strong className="text-ink font-semibold">Irshad Bibi</strong>, whose compassion for widows, vulnerable children, and struggling families inspired her sons, <strong className="text-ink font-semibold">Zeeshan Hameed</strong> and <strong className="text-ink font-semibold">Sohail Hameed</strong>, to take practical action.
+              </p>
+              <p>
+                Irshad Bibi had a particular concern for widows who were raising children with very limited resources and little financial security. Seeing their daily struggles inspired the family to begin helping widows with their immediate needs. What started with supporting individual families gradually developed into a structured <strong className="text-ink font-semibold">Widows Welfare Project</strong>.
+              </p>
+              <p>
+                But the needs they encountered went far beyond food and immediate assistance. Many of the widows and disadvantaged families they met were also struggling to educate their children. The family recognized that while emergency assistance could help people through a difficult moment, education could help change the direction of a child's life.
+              </p>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-sand/30 dark:bg-card/60 p-6 sm:p-8 shadow-xs">
+                <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-ink/10">
+                  <img
+                    src={foundationMedia.widowsFoodRations}
+                    alt="ELF Widows Welfare distribution in Punjab"
+                    className="h-full w-full object-cover object-[center_30%]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-xs font-bold uppercase tracking-wider text-cream/90 bg-ink/70 backdrop-blur-xs px-3 py-1 rounded-full">
+                    Widows Welfare Initiative
+                  </span>
+                </div>
+                <blockquote className="mt-6 border-l-2 border-clay pl-4 italic text-sm text-ink/75 leading-relaxed">
+                  "Seeing their daily struggles inspired the family to begin helping widows with their immediate needs — turning personal compassion into lifelong community commitment."
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 2: Education Became Part of Our Mission */}
+          <div className="mt-16 rounded-3xl border border-ink/10 bg-sand/25 dark:bg-card/40 p-8 sm:p-12">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7 space-y-5">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-clay">
+                  <GraduationCap className="h-4 w-4" />
+                  <span>Transforming Lives Through Learning</span>
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">
+                  Education Became Part of Our Mission
+                </h3>
+                <p className="text-base sm:text-lg leading-relaxed text-ink/75">
+                  This realization led to the establishment of a school for disadvantaged children and, subsequently, support for other schools already serving vulnerable communities.
+                </p>
+                <p className="text-base sm:text-lg leading-relaxed text-ink/75">
+                  Over time, the initiative grew to <strong className="text-ink font-semibold">support 12 schools</strong>, helping children from disadvantaged backgrounds gain access to education and learning opportunities.
+                </p>
+                <p className="text-base sm:text-lg leading-relaxed text-ink/80 font-medium border-l-2 border-clay pl-4">
+                  Education remains one of the central pillars of ELF because we believe that poverty should never determine whether a child has the opportunity to learn, develop their abilities, and dream about a better future.
+                </p>
+              </div>
+              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div className="rounded-2xl border border-ink/10 bg-background/80 dark:bg-card p-6 text-center shadow-xs">
+                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-clay">12</span>
+                  <p className="mt-2 text-xs uppercase tracking-wider font-bold text-ink/60">Community Schools Supported</p>
+                </div>
+                <div className="rounded-2xl border border-ink/10 bg-background/80 dark:bg-card p-6 text-center shadow-xs">
+                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-ink">100%</span>
+                  <p className="mt-2 text-xs uppercase tracking-wider font-bold text-ink/60">Free Tuition & Supplies</p>
+                </div>
+                <div className="col-span-2 relative h-44 overflow-hidden rounded-2xl border border-ink/10">
+                  <img
+                    src={foundationMedia.schoolStudents}
+                    alt="Children learning at supported schools"
+                    className="h-full w-full object-cover object-[center_35%]"
+                  />
+                  <div className="absolute inset-0 bg-ink/20" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Growing into Education and Life Foundation */}
+          <div className="mt-16 grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <div className="rounded-3xl border border-ink/10 bg-ink p-8 sm:p-10 text-cream shadow-md">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright">Formal Incorporation</span>
+                <div className="mt-3 font-display text-4xl sm:text-5xl font-extrabold text-cream">
+                  Registered 2018
+                </div>
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-cream/80">
+                  What began as a family response to the struggles of widows and children gradually developed into an organization addressing different dimensions of poverty and vulnerability.
+                </p>
+                <div className="mt-6 pt-6 border-t border-cream/15 text-xs text-cream/70 leading-relaxed">
+                  Through years of working directly with communities, ELF learned that sustainable change requires a combination of education, practical assistance, skills, opportunity, and long-term support.
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7 order-1 lg:order-2 space-y-5 text-base sm:text-lg leading-relaxed text-ink/75">
+              <span className="eyebrow">Institutional Growth</span>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">
+                Growing into Education and Life Foundation
+              </h3>
+              <p>
+                As the work expanded, <strong className="text-ink font-semibold">Education and Life Foundation was formally registered in 2018</strong>.
+              </p>
+              <p>
+                What began as a family response to the struggles of widows and children gradually developed into an organization addressing different dimensions of poverty and vulnerability.
+              </p>
+              <p>
+                Through years of working directly with communities, ELF learned that sustainable change requires a combination of education, practical assistance, skills, opportunity, and long-term support.
+              </p>
+              <p>
+                This understanding led to the development of additional programs that continue to serve vulnerable and deprived communities today.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 4 & 5: Skills + Standing with Christians (2 Column Editorial) */}
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {/* Skills */}
+            <div className="flex flex-col justify-between rounded-3xl border border-ink/10 bg-sand/30 dark:bg-card/50 p-8 sm:p-10 shadow-xs">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-clay block mb-3">Livelihoods & Dignity</span>
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Building Skills and Creating Opportunities
+                </h3>
+                <div className="mt-5 space-y-4 text-sm sm:text-base leading-relaxed text-ink/75">
+                  <p>
+                    One of these initiatives is our <strong className="text-ink font-semibold">Skill Development Project</strong>, which helps young people and adults from disadvantaged backgrounds learn practical and vocational skills.
+                  </p>
+                  <p>
+                    Many capable young people grow up with limited access to professional training or employment opportunities. ELF seeks to bridge this gap by connecting individuals with skills that can help them earn an income, support their families, and move toward greater independence.
+                  </p>
+                  <p className="font-medium text-ink/85 border-l-2 border-clay pl-3">
+                    For us, development is not simply about giving someone assistance for today. Wherever possible, it is about helping people develop the knowledge, confidence, and skills they need to build a more sustainable tomorrow.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink/60">
+                <CheckCircle2 className="h-4 w-4 text-clay" />
+                <span>Practical Training · Vocational Literacy · Independence</span>
+              </div>
+            </div>
+
+            {/* Standing with Christian communities */}
+            <div className="flex flex-col justify-between rounded-3xl border border-ink/10 bg-sand/30 dark:bg-card/50 p-8 sm:p-10 shadow-xs">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-clay block mb-3">Faith, Dignity & Compassion</span>
+                <h3 className="font-display text-2xl font-bold text-ink">
+                  Standing with Persecuted and Vulnerable Christians
+                </h3>
+                <div className="mt-5 space-y-4 text-sm sm:text-base leading-relaxed text-ink/75">
+                  <p>
+                    ELF has a particular commitment to serving poor, vulnerable, and persecuted Christian communities in Pakistan, while responding to human need with compassion and dignity.
+                  </p>
+                  <p>
+                    Christian families living in disadvantaged communities can face a combination of poverty, limited opportunities, social exclusion, and religious discrimination. ELF works alongside such communities through education, skills development, welfare assistance, healthcare-related initiatives, emergency response, and other community-based programs.
+                  </p>
+                  <p className="font-medium text-ink/85 border-l-2 border-clay pl-3">
+                    Our approach is rooted in relationship. We seek to understand the needs of communities, work alongside local people, and develop practical responses that can make a meaningful difference in their lives.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink/60">
+                <HandHeart className="h-4 w-4 text-clay" />
+                <span>Relationship-Rooted · Community-Led · Compassionate</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 6 & 7: Crisis Response & Children/Widows at the Heart */}
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {/* Crisis */}
+            <div className="rounded-3xl border border-ink/10 bg-background p-8 sm:p-10 shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-clay block mb-3">Rapid Action</span>
+              <h3 className="font-display text-2xl font-bold text-ink">
+                Responding in Times of Crisis
+              </h3>
+              <div className="mt-5 space-y-4 text-sm sm:text-base leading-relaxed text-ink/75">
+                <p>
+                  Our commitment to vulnerable communities becomes especially important when disaster or violence suddenly changes people's lives.
+                </p>
+                <p>
+                  ELF has responded to communities affected by flooding and other disasters, as well as incidents of violence and terrorism affecting Christian communities. In times of emergency, families may lose homes, belongings, livelihoods, and their sense of security within a matter of hours.
+                </p>
+                <p>
+                  Through our emergency and disaster response work, we seek to stand alongside affected families by providing practical assistance according to the needs of each situation and supporting communities as they begin the difficult process of recovery.
+                </p>
+                <blockquote className="mt-4 rounded-2xl bg-sand/40 dark:bg-card/80 p-4 italic font-medium text-ink">
+                  "We believe that people should not have to face their darkest moments alone."
+                </blockquote>
+              </div>
+            </div>
+
+            {/* Children and Widows */}
+            <div className="rounded-3xl border border-ink/10 bg-background p-8 sm:p-10 shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-clay block mb-3">Our Core Heartbeat</span>
+              <h3 className="font-display text-2xl font-bold text-ink">
+                Children and Widows Remain at the Heart of Our Story
+              </h3>
+              <div className="mt-5 space-y-4 text-sm sm:text-base leading-relaxed text-ink/75">
+                <p>
+                  Although ELF has grown and developed new areas of work, children and widows remain especially close to our heart. <strong className="text-ink font-semibold">They represent where our journey began.</strong>
+                </p>
+                <p>
+                  We continue to encounter children who are eager to learn but whose families struggle to afford educational necessities. We meet widows carrying enormous responsibilities while trying to provide food, education, and security for their children. We also meet young people who have determination and ability but lack the opportunities needed to turn their potential into a livelihood.
+                </p>
+                <p>
+                  Behind every project are real people, real families, and real stories.
+                </p>
+                <p className="font-semibold text-ink text-base sm:text-lg border-l-2 border-clay pl-4">
+                  That is why our work is not simply about delivering projects. It is about people.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 8: The 5-Point Guiding Compass */}
+          <div className="mt-16 overflow-hidden rounded-3xl bg-ink p-8 sm:p-12 text-cream shadow-xl">
+            <div className="max-w-3xl">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright">The Guiding Principle</span>
+              <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-cream mt-2 leading-tight">
+                From Compassion to Lasting Change
+              </h3>
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-cream/80">
+                Since its registration in 2018, Education and Life Foundation has continued to develop programs that respond to both immediate needs and longer-term challenges. Our journey has taken us from supporting widows to educating children, developing vocational skills, supporting healthcare initiatives, assisting vulnerable families, and responding when communities face disasters and emergencies.
+              </p>
+              <p className="mt-3 text-xs uppercase tracking-widest font-semibold text-clay-bright">
+                Yet the principle behind our work has remained the same:
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-5">
+              {[
+                { step: "01", verb: "See", desc: "the need." },
+                { step: "02", verb: "Care", desc: "for the person." },
+                { step: "03", verb: "Take", desc: "practical action." },
+                { step: "04", verb: "Create", desc: "opportunity." },
+                { step: "05", verb: "Restore", desc: "hope." },
+              ].map((p) => (
+                <div key={p.step} className="rounded-2xl border border-cream/15 bg-white/5 p-5 backdrop-blur-xs">
+                  <span className="text-[11px] font-bold text-clay-bright">{p.step}</span>
+                  <div className="mt-2 font-display text-xl font-bold text-cream">{p.verb}</div>
+                  <div className="text-xs text-cream/70 mt-0.5">{p.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-cream/15 max-w-4xl text-sm sm:text-base leading-relaxed text-cream/80">
+              We are grateful for the donors, churches, charitable organizations, volunteers, professionals, community leaders, and friends who have joined us on this journey. Their partnership has helped transform compassion into practical assistance for people who need it most.
+            </div>
+          </div>
+
+          {/* Section 9: Our Journey Continues */}
+          <div className="mt-16 rounded-3xl border border-ink/10 bg-sand/35 dark:bg-card/70 p-8 sm:p-12">
+            <div className="max-w-4xl">
+              <span className="eyebrow">The Road Ahead</span>
+              <h3 className="font-display text-2xl sm:text-4xl font-bold text-ink mt-2">
+                Our Journey Continues
+              </h3>
+              <div className="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-ink/75">
+                <p>
+                  What began with Irshad Bibi's compassion for widows and vulnerable children has grown into a continuing mission carried forward through Education and Life Foundation.
+                </p>
+                <p>
+                  Today, ELF continues to stand alongside disadvantaged families and persecuted Christian communities through programs designed to provide education, skills, practical support, dignity, and opportunities for a better future.
+                </p>
+                <p className="font-display text-xl sm:text-2xl font-bold text-ink pt-2">
+                  There is still much more to do.
+                </p>
+                <p className="border-l-4 border-clay pl-5 text-ink/90 font-medium italic">
+                  "And as long as there are children waiting for an opportunity to learn, widows struggling to provide for their families, young people searching for a path toward independence, and communities needing support in times of crisis, Education and Life Foundation will continue working to turn compassion into action and hope into opportunity."
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4 pt-4">
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-xs hover:bg-clay-deep transition-all"
+                >
+                  <span>Explore Our Projects</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/donate"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-background/80 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:bg-ink hover:text-cream transition-all shadow-xs"
+                >
+                  <span>Support Our Mission</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
