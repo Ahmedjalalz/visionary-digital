@@ -49,32 +49,47 @@ export const branches = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-ink/10 bg-sand pt-20 text-ink">
-      <div className="mx-auto max-w-[1600px] px-5 pb-16 sm:px-8 sm:pb-20">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <img
-              src={logo}
-              alt="Education and Life Foundation"
-              className="h-24 w-24 object-contain rounded-2xl p-1.5 transition-all dark:bg-white/95"
-            />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/60">
-              Education and Life Foundation is a non-governmental organisation working with deprived
-              communities across Pakistan — education, healthcare, water, and support for families
-              carrying more than they should.
-            </p>
-            <p className="mt-6 font-serif text-2xl leading-snug text-ink/90">
-              “To build a better life for the community, and to aid those who cannot help
-              themselves.”
+    <footer className="relative overflow-hidden border-t border-ink/10 bg-sand pt-10 sm:pt-12 text-ink">
+      <div className="mx-auto max-w-[1600px] px-5 pb-8 sm:px-8 sm:pb-10">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-12">
+          {/* Brand & Mission */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <img
+                  src={logo}
+                  alt="Education and Life Foundation"
+                  className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-xl p-1 transition-all bg-white/85 dark:bg-white/95 shadow-2xs"
+                />
+                <div>
+                  <span className="font-display text-base sm:text-lg font-bold tracking-tight text-ink block leading-snug">
+                    Education and Life Foundation
+                  </span>
+                  <span className="text-[0.65rem] uppercase tracking-[0.16em] font-semibold text-clay block">
+                    Established · Lahore, Pakistan
+                  </span>
+                </div>
+              </div>
+              <p className="mt-3.5 max-w-sm text-xs sm:text-[13px] leading-relaxed text-ink/70">
+                A registered non-profit organization serving marginalized and vulnerable communities across
+                Pakistan through education, healthcare, livelihoods, and humanitarian relief.
+              </p>
+            </div>
+            <p className="mt-4 font-serif text-sm sm:text-base italic leading-snug text-ink/80 border-l-2 border-clay pl-3">
+              “To build a better life for the community, and to aid those who cannot help themselves.”
             </p>
           </div>
 
+          {/* Navigation */}
           <div className="lg:col-span-2">
             <h3 className="eyebrow">Navigate</h3>
-            <ul className="mt-5 space-y-2.5">
+            <ul className="mt-3.5 space-y-1.5 sm:space-y-2">
               {nav.map((n) => (
                 <li key={n.to}>
-                  <Link to={n.to} className="text-sm text-ink/70 transition-colors hover:text-clay">
+                  <Link
+                    to={n.to}
+                    className="text-xs sm:text-[13px] text-ink/75 transition-colors hover:text-clay"
+                  >
                     {n.label}
                   </Link>
                 </li>
@@ -82,15 +97,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
+          {/* Projects */}
           <div className="lg:col-span-3">
-            <h3 className="eyebrow">Projects</h3>
-            <ul className="mt-5 space-y-2.5">
+            <h3 className="eyebrow">Initiatives</h3>
+            <ul className="mt-3.5 space-y-1.5 sm:space-y-2">
               {projects.map((p) => (
                 <li key={p.slug}>
                   <Link
                     to="/projects/$slug"
                     params={{ slug: p.slug }}
-                    className="text-sm leading-snug text-ink/70 transition-colors hover:text-clay"
+                    className="text-xs sm:text-[13px] leading-snug text-ink/75 transition-colors hover:text-clay line-clamp-1"
                   >
                     {p.name}
                   </Link>
@@ -99,25 +115,30 @@ export function SiteFooter() {
             </ul>
           </div>
 
+          {/* Contact & Global Presence */}
           <div className="lg:col-span-3">
-            <h3 className="eyebrow">Contact</h3>
+            <h3 className="eyebrow">Contact &amp; Offices</h3>
             <a
               href="mailto:info@educationandlifefoundation.org"
-              className="mt-5 block text-sm text-ink/80 transition-colors hover:text-clay"
+              className="mt-3.5 block text-xs sm:text-[13px] font-medium text-ink/85 transition-colors hover:text-clay truncate"
             >
               info@educationandlifefoundation.org
             </a>
-            <ul className="mt-6 space-y-4">
+
+            <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
               {branches.map((b) => (
-                <li key={b.country}>
-                  <div className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-clay">
-                    {b.country}
-                  </div>
-                  <div className="mt-1 text-sm leading-snug text-ink/60">{b.address}</div>
-                </li>
+                <div key={b.country} className="text-xs">
+                  <span className="font-semibold text-clay text-[0.64rem] uppercase tracking-wider block">
+                    {b.city}
+                  </span>
+                  <span className="text-[11px] text-ink/65 leading-tight line-clamp-1">
+                    {b.address}
+                  </span>
+                </div>
               ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               {siteSocials.map(({ href, label, title, Icon }) => (
                 <a
                   key={label}
@@ -126,120 +147,101 @@ export function SiteFooter() {
                   rel={href.startsWith("mailto:") ? undefined : "noreferrer noopener"}
                   aria-label={label}
                   title={title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-all hover:border-clay hover:text-clay hover:shadow-xs"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-all hover:border-clay hover:text-clay hover:bg-clay/10"
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-3.5 w-3.5" />
                 </a>
               ))}
-              <ThemeToggle className="h-10 w-10" />
+              <ThemeToggle className="h-8 w-8" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Official Government & Regulatory Registrations Strip */}
-      <div className="border-t border-ink/10 bg-sand/65 py-8 sm:py-10">
-        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div className="max-w-md">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay opacity-70" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-clay" />
-                </span>
-                <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-clay">
-                  Legal Status &amp; Registrations
-                </span>
-              </div>
-              <p className="mt-2 text-xs leading-relaxed text-ink/70">
-                Education And Life Foundation (ELF) is an accredited non-profit organization
-                operating in full compliance with federal and provincial regulatory bodies in
-                Pakistan.
-              </p>
+      {/* Darker Strip with Integrated Legal Registrations & Copyright */}
+      <div className="border-t border-ink/20 bg-ink text-cream">
+        <div className="mx-auto max-w-[1600px] px-5 py-5 sm:px-8 sm:py-6">
+          {/* Legal Status & Registrations inside darker strip */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-4 sm:pb-5 border-b border-cream/15">
+            <div className="flex items-center gap-2.5 shrink-0">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay-bright opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-clay-bright" />
+              </span>
+              <span className="text-[0.66rem] font-bold uppercase tracking-[0.2em] text-clay-bright">
+                Accredited Legal Status &amp; Registrations
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 flex-1 lg:max-w-4xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 flex-1 lg:max-w-4xl">
               {/* Reg 1: Societies Act */}
-              <div className="flex items-start gap-3 rounded-xl border border-ink/10 bg-white/85 p-3.5 shadow-2xs backdrop-blur-xs transition-all hover:border-clay/40 hover:bg-white hover:shadow-xs">
-                <FileCheck className="mt-0.5 h-4 w-4 shrink-0 text-clay" />
+              <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
+                <FileCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.62rem] font-bold uppercase tracking-wider text-ink/50">
-                    Govt. Registration
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                    Govt. Reg
                   </span>
-                  <span className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight">
+                  <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
                     RP/11181-L/S/18/728
-                  </span>
-                  <span className="block text-[0.65rem] text-ink/65">
-                    Societies Registration Act
                   </span>
                 </div>
               </div>
 
               {/* Reg 2: Charity Commission */}
-              <div className="flex items-start gap-3 rounded-xl border border-ink/10 bg-white/85 p-3.5 shadow-2xs backdrop-blur-xs transition-all hover:border-clay/40 hover:bg-white hover:shadow-xs">
-                <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-clay" />
+              <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
+                <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.62rem] font-bold uppercase tracking-wider text-ink/50">
-                    Charity Number
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                    Punjab Charity
                   </span>
                   <span
-                    className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight truncate"
+                    className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate"
                     title="PB-2194002019418135"
                   >
                     PB-2194002019418135
-                  </span>
-                  <span className="block text-[0.65rem] text-ink/65">
-                    Punjab Charity Commission
                   </span>
                 </div>
               </div>
 
               {/* Reg 3: PCP */}
-              <div className="flex items-start gap-3 rounded-xl border border-ink/10 bg-white/85 p-3.5 shadow-2xs backdrop-blur-xs transition-all hover:border-clay/40 hover:bg-white hover:shadow-xs">
-                <Award className="mt-0.5 h-4 w-4 shrink-0 text-clay" />
+              <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
+                <Award className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.62rem] font-bold uppercase tracking-wider text-ink/50">
-                    PCP Registered ID
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                    PCP Certified
                   </span>
-                  <span className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight">
+                  <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
                     PCP/2022/1056
-                  </span>
-                  <span className="block text-[0.65rem] text-ink/65">
-                    Pakistan Centre for Philanthropy
                   </span>
                 </div>
               </div>
 
               {/* Reg 4: Tax Exemption */}
-              <div className="flex items-start gap-3 rounded-xl border border-ink/10 bg-white/85 p-3.5 shadow-2xs backdrop-blur-xs transition-all hover:border-clay/40 hover:bg-white hover:shadow-xs">
-                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-clay" />
+              <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
+                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.62rem] font-bold uppercase tracking-wider text-ink/50">
-                    Tax Exemption
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                    FBR Tax Exempt
                   </span>
-                  <span className="block font-mono text-xs font-bold text-ink sm:text-[0.82rem] tracking-tight">
-                    Section 2(36)2
-                  </span>
-                  <span className="block text-[0.65rem] text-ink/65">
-                    Income Tax Ordinance · FBR
+                  <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
+                    Sec. 2(36)2
                   </span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="border-t border-ink/20 bg-ink text-cream">
-        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 px-5 py-6 text-[0.7rem] uppercase tracking-[0.16em] text-cream/80 font-medium sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span>© {new Date().getFullYear()} Education and Life Foundation</span>
-            <span className="hidden text-cream/40 sm:inline">|</span>
-            <span className="text-cream/65 lowercase text-[0.68rem] tracking-normal">
-              Registered Non-Profit (RP/11181-L/S/18/728)
-            </span>
+          {/* Bottom Copyright & Global Presence */}
+          <div className="flex flex-col gap-2 pt-3.5 sm:pt-4 text-[0.68rem] uppercase tracking-[0.15em] text-cream/75 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+              <span>© {new Date().getFullYear()} Education and Life Foundation</span>
+              <span className="hidden text-cream/35 sm:inline">|</span>
+              <span className="text-cream/60 lowercase tracking-normal text-[0.66rem]">
+                Non-governmental organisation registered in Pakistan
+              </span>
+            </div>
+            <span className="text-cream/60">Lahore · Auckland · Toronto · Berlin</span>
           </div>
-          <span className="text-cream/65">Lahore · Auckland · Toronto · Berlin</span>
         </div>
       </div>
     </footer>

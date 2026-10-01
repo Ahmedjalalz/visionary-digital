@@ -281,17 +281,21 @@ function About() {
         </div>
       </section>
 
-      {/* vision / mission — split, oversized */}
-      <section className="grid md:grid-cols-2">
-        <div className="flex flex-col justify-between gap-12 bg-clay px-5 py-16 text-primary-foreground sm:px-10 sm:py-20">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] opacity-80">Vision</span>
-          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
+      {/* vision / mission — split, oversized with hover color switch */}
+      <section className="group/vm grid md:grid-cols-2 cursor-pointer transition-all duration-700">
+        <div className="flex flex-col justify-between gap-12 bg-clay text-primary-foreground px-5 py-16 sm:px-10 sm:py-20 transition-all duration-500 ease-in-out group-hover/vm:bg-sand group-hover/vm:text-ink">
+          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary-foreground/80 transition-colors duration-500 group-hover/vm:text-clay">
+            Vision
+          </span>
+          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl text-primary-foreground transition-colors duration-500 group-hover/vm:text-ink">
             To uplift the deprived community in Pakistan.
           </p>
         </div>
-        <div className="flex flex-col justify-between gap-12 bg-sand px-5 py-16 text-ink sm:px-10 sm:py-20">
-          <span className="eyebrow">Mission</span>
-          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
+        <div className="flex flex-col justify-between gap-12 bg-sand text-ink px-5 py-16 sm:px-10 sm:py-20 transition-all duration-500 ease-in-out group-hover/vm:bg-clay group-hover/vm:text-primary-foreground">
+          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-clay transition-colors duration-500 group-hover/vm:text-primary-foreground/80">
+            Mission
+          </span>
+          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl text-ink transition-colors duration-500 group-hover/vm:text-primary-foreground">
             To build a better life for the community, and to aid those who cannot help themselves.
           </p>
         </div>
@@ -349,13 +353,13 @@ function About() {
 
           {/* Section 2: Education Became Part of Our Mission */}
           <div className="mt-16 rounded-3xl border border-ink/10 bg-sand/25 dark:bg-card/40 p-8 sm:p-12">
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-              <div className="lg:col-span-7 space-y-5">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7 space-y-6">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-clay">
                   <GraduationCap className="h-4 w-4" />
                   <span>Transforming Lives Through Learning</span>
                 </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">
+                <h3 className="font-display text-2xl sm:text-4xl font-bold text-ink leading-tight">
                   Education Became Part of Our Mission
                 </h3>
                 <p className="text-base sm:text-lg leading-relaxed text-ink/75">
@@ -364,27 +368,47 @@ function About() {
                 <p className="text-base sm:text-lg leading-relaxed text-ink/75">
                   Over time, the initiative grew to <strong className="text-ink font-semibold">support 12 schools</strong>, helping children from disadvantaged backgrounds gain access to education and learning opportunities.
                 </p>
-                <p className="text-base sm:text-lg leading-relaxed text-ink/80 font-medium border-l-2 border-clay pl-4">
+                <p className="text-base sm:text-lg leading-relaxed text-ink/85 font-medium border-l-2 border-clay pl-4">
                   Education remains one of the central pillars of ELF because we believe that poverty should never determine whether a child has the opportunity to learn, develop their abilities, and dream about a better future.
                 </p>
+
+                {/* Key Statistics Highlights */}
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  <div className="rounded-2xl border border-ink/10 bg-background/90 dark:bg-card p-5 sm:p-6 shadow-xs">
+                    <span className="font-display text-3xl sm:text-4xl font-extrabold text-clay">12</span>
+                    <p className="mt-1.5 text-xs uppercase tracking-wider font-bold text-ink/65">
+                      Community Schools Supported
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-ink/10 bg-background/90 dark:bg-card p-5 sm:p-6 shadow-xs">
+                    <span className="font-display text-3xl sm:text-4xl font-extrabold text-ink">100%</span>
+                    <p className="mt-1.5 text-xs uppercase tracking-wider font-bold text-ink/65">
+                      Free Tuition &amp; Supplies
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-ink/10 bg-background/80 dark:bg-card p-6 text-center shadow-xs">
-                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-clay">12</span>
-                  <p className="mt-2 text-xs uppercase tracking-wider font-bold text-ink/60">Community Schools Supported</p>
-                </div>
-                <div className="rounded-2xl border border-ink/10 bg-background/80 dark:bg-card p-6 text-center shadow-xs">
-                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-ink">100%</span>
-                  <p className="mt-2 text-xs uppercase tracking-wider font-bold text-ink/60">Free Tuition & Supplies</p>
-                </div>
-                <div className="col-span-2 relative h-44 overflow-hidden rounded-2xl border border-ink/10">
-                  <img
-                    src={foundationMedia.schoolStudents}
-                    alt="Children learning at supported schools"
-                    className="h-full w-full object-cover object-[center_35%]"
-                  />
-                  <div className="absolute inset-0 bg-ink/20" />
-                </div>
+
+              {/* Student Portrait & Learning Materials */}
+              <div className="lg:col-span-5">
+                <figure className="group relative overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 shadow-md">
+                  <div className="aspect-[3/4] w-full overflow-hidden">
+                    <img
+                      src={foundationMedia.schoolStudents}
+                      alt="Smiling ELF student studying with open textbook and coursework"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-85" />
+                  <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-cream">
+                    <span className="inline-flex items-center rounded-full bg-clay px-3 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-cream shadow-xs">
+                      Free Education Program
+                    </span>
+                    <p className="mt-2 text-xs sm:text-sm font-medium leading-relaxed text-cream/90">
+                      Every student is supported with uniforms, bags, certified textbooks, and foundational learning resources.
+                    </p>
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
