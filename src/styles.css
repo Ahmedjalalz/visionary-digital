@@ -520,6 +520,21 @@
   }
 }
 
+@utility marquee-track-seamless {
+  animation: efl-marquee-seamless 35s linear infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes efl-marquee-seamless {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
 @keyframes efl-float {
   0%,
   100% {
