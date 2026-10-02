@@ -81,7 +81,7 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
 
   return (
     <div
-      className="relative mt-4 w-full overflow-hidden rounded-xl border border-ink/8 bg-sand/35 py-2 transition-colors dark:border-white/8 dark:bg-white/[0.02]"
+      className="relative mt-4 w-full overflow-hidden rounded-xl border border-ink/8 bg-sand/40 py-2.5 transition-colors dark:border-white/8 dark:bg-white/[0.03]"
       aria-label={`${project.name} highlights ticker`}
     >
       {/* Constantly moving marquee track wrapper with smooth CSS mask fade (no clipped boxes) */}
@@ -97,18 +97,18 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
         <div className="flex w-max">
           {/* Primary Track */}
           <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
+            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
             style={{ animationDuration: `${speed}s` }}
           >
             {baseItems.map((item, idx) => (
               <div
                 key={`h1-${item.stat}-${idx}`}
-                className="group/chip flex h-9 shrink-0 items-center gap-2 rounded-xl border border-ink/10 bg-white/95 px-3 py-1 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-clay/50 hover:bg-white hover:shadow-xs dark:border-white/10 dark:bg-card/90 dark:hover:border-clay-bright/50"
+                className="group/card flex h-[54px] shrink-0 flex-col justify-center rounded-xl border border-ink/12 bg-white px-4 py-2 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-ink/40 hover:shadow-xs dark:border-white/15 dark:bg-card/90"
               >
-                <span className="inline-flex items-center rounded-lg bg-clay/10 px-2 py-0.5 font-display text-[11px] sm:text-xs font-black tracking-tight text-clay dark:bg-clay/20 dark:text-clay-bright leading-none whitespace-nowrap">
+                <span className="font-display text-sm sm:text-[0.92rem] font-black tracking-tight text-ink dark:text-white leading-none">
                   {item.stat}
                 </span>
-                <span className="text-[11px] sm:text-xs font-semibold text-ink/80 dark:text-cream/85 leading-none whitespace-nowrap pr-0.5">
+                <span className="mt-1.5 text-[11px] sm:text-xs font-semibold text-ink/75 dark:text-cream/80 leading-none whitespace-nowrap">
                   {item.label}
                 </span>
               </div>
@@ -117,19 +117,19 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
 
           {/* Duplicate Track for 100% seamless infinite loop */}
           <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
+            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
             style={{ animationDuration: `${speed}s` }}
             aria-hidden="true"
           >
             {baseItems.map((item, idx) => (
               <div
                 key={`h2-${item.stat}-${idx}`}
-                className="group/chip flex h-9 shrink-0 items-center gap-2 rounded-xl border border-ink/10 bg-white/95 px-3 py-1 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-clay/50 hover:bg-white hover:shadow-xs dark:border-white/10 dark:bg-card/90 dark:hover:border-clay-bright/50"
+                className="group/card flex h-[54px] shrink-0 flex-col justify-center rounded-xl border border-ink/12 bg-white px-4 py-2 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-ink/40 hover:shadow-xs dark:border-white/15 dark:bg-card/90"
               >
-                <span className="inline-flex items-center rounded-lg bg-clay/10 px-2 py-0.5 font-display text-[11px] sm:text-xs font-black tracking-tight text-clay dark:bg-clay/20 dark:text-clay-bright leading-none whitespace-nowrap">
+                <span className="font-display text-sm sm:text-[0.92rem] font-black tracking-tight text-ink dark:text-white leading-none">
                   {item.stat}
                 </span>
-                <span className="text-[11px] sm:text-xs font-semibold text-ink/80 dark:text-cream/85 leading-none whitespace-nowrap pr-0.5">
+                <span className="mt-1.5 text-[11px] sm:text-xs font-semibold text-ink/75 dark:text-cream/80 leading-none whitespace-nowrap">
                   {item.label}
                 </span>
               </div>

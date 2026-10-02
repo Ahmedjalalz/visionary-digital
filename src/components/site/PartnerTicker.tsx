@@ -64,7 +64,7 @@ export function PartnerTicker({ className = "", showTitle = true, speed = 35 }: 
                     />
                   </div>
                   <div className="hidden flex-col md:flex">
-                    <span className="font-display text-sm sm:text-base font-bold leading-tight text-ink/85 group-hover:text-clay transition-colors whitespace-nowrap">
+                    <span className="font-display text-sm sm:text-base font-bold leading-tight text-ink/85 group-hover:text-ink dark:group-hover:text-white transition-colors whitespace-nowrap">
                       {partner.name}
                     </span>
                     <span className="text-[0.7rem] sm:text-xs font-semibold tracking-wider text-ink/50 uppercase whitespace-nowrap">
@@ -96,7 +96,7 @@ export function PartnerTicker({ className = "", showTitle = true, speed = 35 }: 
                     />
                   </div>
                   <div className="hidden flex-col md:flex">
-                    <span className="font-display text-sm sm:text-base font-bold leading-tight text-ink/85 group-hover:text-clay transition-colors whitespace-nowrap">
+                    <span className="font-display text-sm sm:text-base font-bold leading-tight text-ink/85 group-hover:text-ink dark:group-hover:text-white transition-colors whitespace-nowrap">
                       {partner.name}
                     </span>
                     <span className="text-[0.7rem] sm:text-xs font-semibold tracking-wider text-ink/50 uppercase whitespace-nowrap">

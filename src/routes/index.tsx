@@ -153,10 +153,10 @@ function ProjectsRail() {
               key={project.slug}
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className="group relative flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-white/75 dark:bg-card/75 backdrop-blur-xs p-5 sm:p-6 shadow-xs hover:border-clay/45 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-white/75 dark:bg-card/75 backdrop-blur-xs p-5 sm:p-6 shadow-xs hover:border-ink/35 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
             >
               {/* Top ambient hover accent line */}
-              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay/70 to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-ink/0 via-ink/70 to-ink/0 dark:from-white/0 dark:via-white/70 dark:to-white/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               <div>
                 <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs group-hover:shadow-xs transition-shadow">
@@ -168,7 +168,7 @@ function ProjectsRail() {
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
                   <div className="absolute left-3 top-3 flex items-center gap-2">
-                    <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-clay shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-clay-bright ring-1 ring-black/5 dark:ring-white/10">
+                    <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-ink shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-white ring-1 ring-black/5 dark:ring-white/10">
                       {n}
                     </span>
                     {project.problem?.figure && (
@@ -180,7 +180,7 @@ function ProjectsRail() {
                 </div>
 
                 <div className="mt-4.5 sm:mt-5">
-                  <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
+                  <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-ink/80 dark:group-hover:text-white sm:text-xl line-clamp-1">
                     {project.name}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/70 dark:text-cream/70 line-clamp-2 min-h-[2.6rem]">
@@ -194,12 +194,12 @@ function ProjectsRail() {
 
               <div className="mt-5 flex items-center justify-between border-t border-ink/8 dark:border-white/10 pt-4 text-xs">
                 <span className="inline-flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-wider text-ink/55 dark:text-cream/55">
-                  <span className="h-1.5 w-1.5 rounded-full bg-clay/80" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-ink/80 dark:bg-white/80" />
                   {project.outcomes?.[0]?.value || "Direct Field Program"}
                 </span>
-                <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-clay transition-colors group-hover:text-clay-deep dark:group-hover:text-clay-bright">
+                <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-ink dark:text-cream transition-colors group-hover:text-ink">
                   <span>Explore</span>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-clay/10 text-clay transition-all duration-300 group-hover:bg-clay group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-white dark:bg-white/10 dark:text-white dark:group-hover:bg-white dark:group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </span>
                 </span>
