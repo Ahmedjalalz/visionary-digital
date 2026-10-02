@@ -153,48 +153,55 @@ function ProjectsRail() {
               key={project.slug}
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className="group flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-background p-6 sm:p-7 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="group relative flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-white/75 dark:bg-card/75 backdrop-blur-xs p-5 sm:p-6 shadow-xs hover:border-clay/45 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
             >
+              {/* Top ambient hover accent line */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay/70 to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
               <div>
-                <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs">
+                <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs group-hover:shadow-xs transition-shadow">
                   <img
                     src={img}
                     alt={project.name}
                     loading="lazy"
-                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.05]`}
+                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
                   <div className="absolute left-3 top-3 flex items-center gap-2">
-                    <span className="numeral rounded-full bg-background/90 px-2.5 py-1 text-xs font-bold text-clay shadow-xs backdrop-blur-xs">
+                    <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-clay shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-clay-bright ring-1 ring-black/5 dark:ring-white/10">
                       {n}
                     </span>
                     {project.problem?.figure && (
-                      <span className="rounded-full bg-ink/80 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-cream backdrop-blur-xs">
+                      <span className="inline-flex items-center rounded-full bg-ink/90 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-white shadow-xs backdrop-blur-md ring-1 ring-white/15">
                         {project.problem.figure} {project.problem.unit}
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-5">
+                <div className="mt-4.5 sm:mt-5">
                   <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-clay sm:text-xl line-clamp-1">
                     {project.name}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/65 line-clamp-2">
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70 dark:text-cream/70 line-clamp-2 min-h-[2.6rem]">
                     {project.short}
                   </p>
                 </div>
 
-                {/* Moving slider with mini squarish highlight cards */}
+                {/* Highlights ticker */}
                 <ProjectHighlightCards project={project} />
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-xs">
-                <span className="text-[0.68rem] font-medium uppercase tracking-wider text-ink/50">
+              <div className="mt-5 flex items-center justify-between border-t border-ink/8 dark:border-white/10 pt-4 text-xs">
+                <span className="inline-flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-wider text-ink/55 dark:text-cream/55">
+                  <span className="h-1.5 w-1.5 rounded-full bg-clay/80" />
                   {project.outcomes?.[0]?.value || "Direct Field Program"}
                 </span>
-                <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-clay transition-transform group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-clay transition-colors group-hover:text-clay-deep dark:group-hover:text-clay-bright">
                   <span>Explore</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-clay/10 text-clay transition-all duration-300 group-hover:bg-clay group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </span>
                 </span>
               </div>
             </Link>
@@ -203,8 +210,9 @@ function ProjectsRail() {
           {/* 12th Card: Directory Feature Tile completing the 4x3 grid */}
           <Link
             to="/projects"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-6 sm:p-7 text-cream transition-all duration-300 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 aspect-[16/10] md:aspect-auto"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-5 sm:p-6 text-cream transition-all duration-300 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 aspect-[16/10] md:aspect-auto"
           >
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay-bright to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <div className="relative z-10">
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay-bright">
                 Complete Field Directory
@@ -216,9 +224,11 @@ function ProjectsRail() {
                 From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
               </p>
             </div>
-            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/20 pt-4 text-xs font-bold uppercase tracking-[0.16em] text-cream group-hover:text-clay-bright transition-colors">
+            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/15 pt-4 text-xs font-bold uppercase tracking-[0.16em] text-cream transition-colors group-hover:text-clay-bright">
               <span>View full directory</span>
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-cream transition-all duration-300 group-hover:bg-clay-bright group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </span>
             </div>
             <div
               aria-hidden

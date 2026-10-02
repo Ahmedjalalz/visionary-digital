@@ -81,7 +81,7 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
 
   return (
     <div
-      className="relative mt-4 w-full overflow-hidden rounded-xl border border-clay/15 bg-gradient-to-r from-sand/70 via-sand/30 to-sand/70 py-2.5 transition-colors dark:border-clay/25 dark:bg-card/40"
+      className="relative mt-4 w-full overflow-hidden rounded-xl border border-ink/8 bg-sand/35 py-2 transition-colors dark:border-white/8 dark:bg-white/[0.02]"
       aria-label={`${project.name} highlights ticker`}
     >
       {/* Constantly moving marquee track wrapper with smooth CSS mask fade (no clipped boxes) */}
@@ -89,57 +89,49 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
         className="group/highlight-ticker overflow-hidden w-full"
         style={{
           maskImage:
-            "linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%)",
+            "linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%)",
         }}
       >
         <div className="flex w-max">
           {/* Primary Track */}
           <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
+            className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
             style={{ animationDuration: `${speed}s` }}
           >
             {baseItems.map((item, idx) => (
               <div
                 key={`h1-${item.stat}-${idx}`}
-                className="group/card relative flex h-[52px] shrink-0 items-center rounded-xl border border-clay/20 bg-gradient-to-r from-white via-white to-clay/[0.07] pl-3 pr-4 py-1.5 shadow-2xs backdrop-blur-xs transition-all duration-300 hover:border-clay/50 hover:shadow-xs dark:border-clay/30 dark:from-card/95 dark:via-card/90 dark:to-clay/15 dark:hover:border-clay-bright"
+                className="group/chip flex h-9 shrink-0 items-center gap-2 rounded-xl border border-ink/10 bg-white/95 px-3 py-1 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-clay/50 hover:bg-white hover:shadow-xs dark:border-white/10 dark:bg-card/90 dark:hover:border-clay-bright/50"
               >
-                {/* Theme color gradient accent pill */}
-                <div className="mr-2.5 flex h-6 w-1 shrink-0 rounded-full bg-gradient-to-b from-clay to-clay/40 transition-transform duration-200 group-hover/card:scale-y-110 dark:from-clay-bright dark:to-clay/50" />
-                <div className="flex flex-col justify-center">
-                  <span className="font-display text-xs sm:text-[0.82rem] font-black tracking-tight text-clay leading-none dark:text-clay-bright">
-                    {item.stat}
-                  </span>
-                  <span className="mt-1 text-[11px] font-semibold text-ink/85 dark:text-cream/90 leading-none whitespace-nowrap">
-                    {item.label}
-                  </span>
-                </div>
+                <span className="inline-flex items-center rounded-lg bg-clay/10 px-2 py-0.5 font-display text-[11px] sm:text-xs font-black tracking-tight text-clay dark:bg-clay/20 dark:text-clay-bright leading-none whitespace-nowrap">
+                  {item.stat}
+                </span>
+                <span className="text-[11px] sm:text-xs font-semibold text-ink/80 dark:text-cream/85 leading-none whitespace-nowrap pr-0.5">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
 
           {/* Duplicate Track for 100% seamless infinite loop */}
           <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
+            className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
             style={{ animationDuration: `${speed}s` }}
             aria-hidden="true"
           >
             {baseItems.map((item, idx) => (
               <div
                 key={`h2-${item.stat}-${idx}`}
-                className="group/card relative flex h-[52px] shrink-0 items-center rounded-xl border border-clay/20 bg-gradient-to-r from-white via-white to-clay/[0.07] pl-3 pr-4 py-1.5 shadow-2xs backdrop-blur-xs transition-all duration-300 hover:border-clay/50 hover:shadow-xs dark:border-clay/30 dark:from-card/95 dark:via-card/90 dark:to-clay/15 dark:hover:border-clay-bright"
+                className="group/chip flex h-9 shrink-0 items-center gap-2 rounded-xl border border-ink/10 bg-white/95 px-3 py-1 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-clay/50 hover:bg-white hover:shadow-xs dark:border-white/10 dark:bg-card/90 dark:hover:border-clay-bright/50"
               >
-                {/* Theme color gradient accent pill */}
-                <div className="mr-2.5 flex h-6 w-1 shrink-0 rounded-full bg-gradient-to-b from-clay to-clay/40 transition-transform duration-200 group-hover/card:scale-y-110 dark:from-clay-bright dark:to-clay/50" />
-                <div className="flex flex-col justify-center">
-                  <span className="font-display text-xs sm:text-[0.82rem] font-black tracking-tight text-clay leading-none dark:text-clay-bright">
-                    {item.stat}
-                  </span>
-                  <span className="mt-1 text-[11px] font-semibold text-ink/85 dark:text-cream/90 leading-none whitespace-nowrap">
-                    {item.label}
-                  </span>
-                </div>
+                <span className="inline-flex items-center rounded-lg bg-clay/10 px-2 py-0.5 font-display text-[11px] sm:text-xs font-black tracking-tight text-clay dark:bg-clay/20 dark:text-clay-bright leading-none whitespace-nowrap">
+                  {item.stat}
+                </span>
+                <span className="text-[11px] sm:text-xs font-semibold text-ink/80 dark:text-cream/85 leading-none whitespace-nowrap pr-0.5">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
