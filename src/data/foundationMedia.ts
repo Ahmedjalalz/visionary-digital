@@ -6,7 +6,7 @@ import communityLeadPortrait from "@/assets/field/community-lead.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import projectDigital from "@/assets/project-digital.jpg";
 import projectEducation from "@/assets/project-education.jpg";
-import projectWidows from "@/assets/project-widows.jpg";
+import projectWidows from "@/assets/official-local/widows.jpg";
 import washHandPump from "@/assets/projects/wash-hand-pump.jpg";
 import washSchoolHygiene from "@/assets/projects/wash-school-hygiene.jpg";
 import washSoapDistribution from "@/assets/projects/wash-soap-distribution.jpg";

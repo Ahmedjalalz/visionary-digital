@@ -232,6 +232,10 @@
     letter-spacing: -0.006em;
   }
 
+  .text-ink {
+    color: var(--heading-color, var(--ink)) !important;
+  }
+
   p.text-ink {
     color: var(--ink-text-base) !important;
   }
@@ -260,9 +264,6 @@
   .bg-ink h2,
   .bg-ink h3,
   .bg-ink h4,
-  [class*="bg-ink/"] h1,
-  [class*="bg-ink/"] h2,
-  [class*="bg-ink/"] h3,
   .text-cream h1,
   .text-cream h2,
   .text-cream h3,

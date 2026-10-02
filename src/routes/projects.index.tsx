@@ -36,7 +36,12 @@ const filterCategories = [
 ] as const;
 
 function getProjectCategory(slug: string): string {
-  if (slug === "education-for-all" || slug === "music-of-the-heart" || slug === "school-bags") {
+  if (
+    slug === "education-for-all" ||
+    slug === "music-of-the-heart" ||
+    slug === "school-bags" ||
+    slug === "faith-hope-love-for-every-child"
+  ) {
     return "education";
   }
   if (
@@ -121,15 +126,10 @@ function ProjectsIndex() {
                       className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
-                    <div className="absolute left-3 top-3 flex items-center gap-2">
+                    <div className="absolute left-3 top-3 flex items-center">
                       <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-ink shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-white ring-1 ring-black/5 dark:ring-white/10">
                         {String(projects.findIndex((item) => item.slug === p.slug) + 1).padStart(2, "0")}
                       </span>
-                      {p.problem?.figure && (
-                        <span className="inline-flex items-center rounded-full bg-ink/90 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-white shadow-xs backdrop-blur-md ring-1 ring-white/15">
-                          {p.problem.figure} {p.problem.unit}
-                        </span>
-                      )}
                     </div>
                   </div>
                   <div className="mt-4.5 sm:mt-5">

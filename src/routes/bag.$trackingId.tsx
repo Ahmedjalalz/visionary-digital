@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowLeft, ArrowRight, Globe, Loader2, Search } from "lucide-react";
 import { ParallaxImage } from "@/components/site/motion-primitives";
 import { fetchLiveBagDetails } from "@/lib/bag-tracker-service";
+import fallbackPhoto from "@/assets/project-education.jpg";
 
 export const Route = createFileRoute("/bag/$trackingId")({
   head: () => ({

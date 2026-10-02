@@ -25,10 +25,26 @@ import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
 import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
 import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsGallery";
 import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentShowcase";
+import { FaithHopeLoveShowcase } from "@/components/site/FaithHopeLoveShowcase";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
+    const childCareAliases = [
+      "faith-hope-love",
+      "faith-hope-and-love",
+      "orphan-care",
+      "child-protection",
+      "faith-hope-love-for-every-child-project",
+      "every-child",
+    ];
+    if (childCareAliases.includes(params.slug)) {
+      throw redirect({
+        to: "/projects/$slug",
+        params: { slug: "faith-hope-love-for-every-child" },
+      });
+    }
+
     const healthWashAliases = [
       "health-care-program",
       "wash-improvement",
@@ -1024,6 +1040,14 @@ function ProjectPage() {
 
       {project.slug === "community-digital-skills-developments" && (
         <SkillsDevelopmentShowcase />
+      )}
+
+      {project.slug === "faith-hope-love-for-every-child" && (
+        <section className="border-t border-ink/10 bg-background pt-16 sm:pt-24 px-5 sm:px-8">
+          <div className="mx-auto max-w-[1600px]">
+            <FaithHopeLoveShowcase />
+          </div>
+        </section>
       )}
 
       {project.slug === "capacity-building" && (

@@ -226,10 +226,11 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.projectWidows,
     gallery: [
-      foundationMedia.projectWidows,
       widows,
+      "/images/widows/scrolling/12.jpg",
+      "/images/widows/scrolling/18.jpg",
     ],
-    heroPosition: "object-[50%_20%]",
+    heroPosition: "object-[50%_25%]",
     accent: "clay",
     layout: "portrait",
   },
@@ -307,9 +308,58 @@ export const projects: Project[] = [
     accent: "moss",
     layout: "data",
   },
+  {
+    slug: "faith-hope-love-for-every-child",
+    name: "Faith, Hope & Love for Every Child",
+    short: "Orphan care, education and comprehensive child protection walking alongside Pakistan's most vulnerable children.",
+    problem: {
+      figure: "1,655+",
+      unit: "vulnerable children",
+      line: "are actively protected, educated, and cared for across our child welfare initiatives.",
+      source: "ELF Child Protection & Orphan Care Intelligence",
+    },
+    context: [
+      "Every child deserves to be loved, protected, educated, and given the opportunity to build a hopeful future. At Education And Life Foundation (ELF), we believe that children who have lost parental care, live with a single parent, experience extreme poverty, face disability, or remain trapped in cycles of exploitation should never be forgotten.",
+      "ELF works with vulnerable children and families in communities where poverty and limited resources place children at serious risk of dropping out of school, exploitation, neglect, or a life without opportunity.",
+      "Our work is rooted in compassion and Christian values, with a commitment to serve children with dignity, regardless of their circumstances.",
+    ],
+    response: [
+      "We provide continuous, long-term care to 35 orphaned girls, helping meet their educational and essential needs so they grow in confidence and prepare for a safe, independent future.",
+      "We support more than 500 students from single-parent families with tuition and supplies, and over 1,000 students from families experiencing modern slavery so education becomes a pathway beyond generational poverty.",
+      "We provide targeted educational and specialized assistance to approximately 120 children who are deaf, blind, or living with disabilities, ensuring every child participates fully in family, school, and community life.",
+    ],
+    outcomes: [
+      { label: "Orphan Care", value: "35 Girls in Long-Term Care" },
+      { label: "Single-Parent Support", value: "500+ Students Funded" },
+      { label: "Freedom From Bondage", value: "1,000+ Enrolled Students" },
+      { label: "Special Needs & Disability", value: "120 Children Assisted" },
+    ],
+    image: foundationMedia.schoolUniforms,
+    gallery: [
+      foundationMedia.schoolUniforms,
+      foundationMedia.classroomDesks,
+      foundationMedia.schoolStudents,
+      "/images/school-bags/DSC09384.JPG",
+    ],
+    heroPosition: "object-[50%_25%]",
+    accent: "clay",
+    layout: "statement",
+  },
 ];
 
 export const getProject = (slug: string) => {
+  const childCareAliases = [
+    "faith-hope-love-for-every-child",
+    "faith-hope-love",
+    "faith-hope-and-love",
+    "orphan-care",
+    "child-protection",
+    "faith-hope-love-for-every-child-project",
+  ];
+  if (childCareAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "faith-hope-love-for-every-child");
+  }
+
   const widowsAliases = [
     "widows-welfare",
     "widows-welfare-program",

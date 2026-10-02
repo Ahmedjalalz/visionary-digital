@@ -55,6 +55,14 @@ export const PROJECT_HIGHLIGHTS: Record<string, ProjectHighlight[]> = {
     { stat: "Grassroots", label: "Local Leaders Trained" },
     { stat: "Compliance", label: "Non-Profit Advisory" },
   ],
+  "faith-hope-love-for-every-child": [
+    { stat: "35 Girls", label: "Orphan Long-Term Care" },
+    { stat: "500+", label: "Single-Parent Students" },
+    { stat: "1,000+", label: "Freedom From Slavery" },
+    { stat: "120 Kids", label: "Special Needs & Deaf/Blind" },
+    { stat: "1,655+", label: "Total Children Protected" },
+    { stat: "100%", label: "Education & Dignity" },
+  ],
 };
 
 interface ProjectHighlightCardsProps {
@@ -80,60 +88,74 @@ export function ProjectHighlightCards({ project, speed = 20 }: ProjectHighlightC
   }
 
   return (
-    <div
-      className="relative mt-4 w-full overflow-hidden rounded-xl border border-ink/8 bg-sand/40 py-2.5 transition-colors dark:border-white/8 dark:bg-white/[0.03]"
-      aria-label={`${project.name} highlights ticker`}
-    >
-      {/* Constantly moving marquee track wrapper with smooth CSS mask fade (no clipped boxes) */}
-      <div
-        className="group/highlight-ticker overflow-hidden w-full"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%)",
-        }}
-      >
-        <div className="flex w-max">
-          {/* Primary Track */}
-          <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
-            style={{ animationDuration: `${speed}s` }}
-          >
-            {baseItems.map((item, idx) => (
-              <div
-                key={`h1-${item.stat}-${idx}`}
-                className="group/card flex h-[54px] shrink-0 flex-col justify-center rounded-xl border border-ink/12 bg-white px-4 py-2 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-ink/40 hover:shadow-xs dark:border-white/15 dark:bg-card/90"
-              >
-                <span className="font-display text-sm sm:text-[0.92rem] font-black tracking-tight text-ink dark:text-white leading-none">
-                  {item.stat}
-                </span>
-                <span className="mt-1.5 text-[11px] sm:text-xs font-semibold text-ink/75 dark:text-cream/80 leading-none whitespace-nowrap">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
+    <div className="mt-4.5 border-t border-ink/8 pt-3.5 dark:border-white/8">
+      {/* Structural header so the ticker is anchored and belongs to the card */}
+      <div className="mb-2 flex items-center justify-between px-0.5">
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-ink/55 dark:text-cream/55">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+          Field Highlights
+        </span>
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-ink/40 dark:text-cream/40">
+          Live Data
+        </span>
+      </div>
 
-          {/* Duplicate Track for 100% seamless infinite loop */}
-          <div
-            className="marquee-track-seamless flex shrink-0 items-center gap-2.5 pr-2.5 group-hover/highlight-ticker:[animation-play-state:paused]"
-            style={{ animationDuration: `${speed}s` }}
-            aria-hidden="true"
-          >
-            {baseItems.map((item, idx) => (
-              <div
-                key={`h2-${item.stat}-${idx}`}
-                className="group/card flex h-[54px] shrink-0 flex-col justify-center rounded-xl border border-ink/12 bg-white px-4 py-2 shadow-2xs backdrop-blur-xs transition-all duration-200 hover:border-ink/40 hover:shadow-xs dark:border-white/15 dark:bg-card/90"
-              >
-                <span className="font-display text-sm sm:text-[0.92rem] font-black tracking-tight text-ink dark:text-white leading-none">
-                  {item.stat}
-                </span>
-                <span className="mt-1.5 text-[11px] sm:text-xs font-semibold text-ink/75 dark:text-cream/80 leading-none whitespace-nowrap">
-                  {item.label}
-                </span>
-              </div>
-            ))}
+      {/* Premium frosted blue glass tray with specular top rim & ambient depth */}
+      <div
+        className="relative w-full overflow-hidden rounded-xl border border-ink/10 border-t-white/90 bg-gradient-to-b from-[#ebf3fe]/85 via-[#f0f6ff]/60 to-[#e2edfd]/50 p-1.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.95),0_2px_8px_-2px_rgba(20,48,85,0.08)] backdrop-blur-md transition-all dark:border-white/12 dark:border-t-white/25 dark:bg-gradient-to-b dark:from-[#1d375f]/50 dark:via-[#142948]/35 dark:to-[#0f2038]/45 dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_4px_12px_rgba(0,0,0,0.25)]"
+        aria-label={`${project.name} highlights ticker`}
+      >
+        {/* Constantly moving marquee track wrapper with tight 12px mask fade for maximum card visibility */}
+        <div
+          className="group/highlight-ticker overflow-hidden w-full"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%)",
+          }}
+        >
+          <div className="flex w-max">
+            {/* Primary Track */}
+            <div
+              className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
+              style={{ animationDuration: `${speed}s` }}
+            >
+              {baseItems.map((item, idx) => (
+                <div
+                  key={`h1-${item.stat}-${idx}`}
+                  className="group/chip flex h-[46px] shrink-0 flex-col justify-center rounded-lg bg-ink px-3 py-1 text-white shadow-[0_2px_6px_rgba(20,48,85,0.2)] border border-ink/30 transition-transform hover:scale-[1.02] dark:bg-[#132a4a] dark:border-white/20"
+                >
+                  <span className="font-display text-xs sm:text-[13px] font-black tracking-tight text-white leading-tight">
+                    {item.stat}
+                  </span>
+                  <span className="mt-0.5 text-[10.5px] font-medium text-white/80 leading-tight whitespace-nowrap">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Duplicate Track for 100% seamless infinite loop */}
+            <div
+              className="marquee-track-seamless flex shrink-0 items-center gap-2 pr-2 group-hover/highlight-ticker:[animation-play-state:paused]"
+              style={{ animationDuration: `${speed}s` }}
+              aria-hidden="true"
+            >
+              {baseItems.map((item, idx) => (
+                <div
+                  key={`h2-${item.stat}-${idx}`}
+                  className="group/chip flex h-[46px] shrink-0 flex-col justify-center rounded-lg bg-ink px-3 py-1 text-white shadow-[0_2px_6px_rgba(20,48,85,0.2)] border border-ink/30 transition-transform hover:scale-[1.02] dark:bg-[#132a4a] dark:border-white/20"
+                >
+                  <span className="font-display text-xs sm:text-[13px] font-black tracking-tight text-white leading-tight">
+                    {item.stat}
+                  </span>
+                  <span className="mt-0.5 text-[10.5px] font-medium text-white/80 leading-tight whitespace-nowrap">
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

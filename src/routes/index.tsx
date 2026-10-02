@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import heroImg from "@/assets/official-local/community.jpg";
+import elfLogoWhite from "@/assets/official-local/elf-logo-white.png";
 // educationImg unused
 // widowsImg unused
 // washImg unused
@@ -166,16 +167,10 @@ function ProjectsRail() {
                     loading="lazy"
                     className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
-                  <div className="absolute left-3 top-3 flex items-center gap-2">
+                  <div className="absolute left-3 top-3 flex items-center">
                     <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-ink shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-white ring-1 ring-black/5 dark:ring-white/10">
                       {n}
                     </span>
-                    {project.problem?.figure && (
-                      <span className="inline-flex items-center rounded-full bg-ink/90 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-white shadow-xs backdrop-blur-md ring-1 ring-white/15">
-                        {project.problem.figure} {project.problem.unit}
-                      </span>
-                    )}
                   </div>
                 </div>
 
@@ -213,28 +208,34 @@ function ProjectsRail() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-5 sm:p-6 text-cream transition-all duration-300 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 aspect-[16/10] md:aspect-auto"
           >
             <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay-bright to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+            {/* Large Watermark Logo covering almost the entire card with proper padding/margins */}
+            <div className="pointer-events-none absolute inset-4 sm:inset-5 flex items-center justify-center select-none overflow-hidden z-0">
+              <img
+                src={elfLogoWhite}
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full max-h-[85%] max-w-[85%] object-contain opacity-[0.07] transition-opacity duration-500 group-hover:opacity-[0.13]"
+              />
+            </div>
+
             <div className="relative z-10">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-clay-bright">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/80">
                 Complete Field Directory
               </span>
               <h3 className="mt-3 font-display text-xl font-bold text-cream sm:text-2xl">
-                Explore All 11 Programmes
+                Explore All Programs
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-cream/75">
                 From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
               </p>
             </div>
+
             <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/15 pt-4 text-xs font-bold uppercase tracking-[0.16em] text-cream transition-colors group-hover:text-clay-bright">
               <span>View full directory</span>
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-cream transition-all duration-300 group-hover:bg-clay-bright group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
-            </div>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-8 -right-6 select-none font-display text-7xl font-black tracking-tighter text-cream/[0.04]"
-            >
-              ELF
             </div>
           </Link>
         </div>
