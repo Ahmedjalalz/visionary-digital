@@ -14,10 +14,10 @@ export const PROJECT_HIGHLIGHTS: Record<string, ProjectHighlight[]> = {
     { stat: "26M", label: "Out-of-School Gap" },
   ],
   "school-bags": [
-    { stat: "100%", label: "Trackable by Sponsor" },
-    { stat: "Full Year", label: "Supplies & Notebooks" },
-    { stat: "Named", label: "Direct Handover" },
+    { stat: "Direct", label: "Child Handover" },
     { stat: "Zero", label: "Dropout Risk" },
+    { stat: "100%", label: "Trackable by Sponsor" },
+    { stat: "Full Year", label: "Supplies & Notes" },
   ],
   "midwifery-program": [
     { stat: "4,800+", label: "Safe Village Births" },

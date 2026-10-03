@@ -16,7 +16,7 @@ import { projects } from "@/data/projects";
 import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
-import { ProjectHighlightCards } from "@/components/site/ProjectHighlightCards";
+import { ProjectCard } from "@/components/site/ProjectCard";
 
 
 export const Route = createFileRoute("/")({
@@ -130,12 +130,6 @@ function Hero() {
 /* ─────────────────────  PROJECTS (horizontal)  ───────────────────── */
 
 function ProjectsRail() {
-  const items = projects.map((project, i) => ({
-    project,
-    img: project.image,
-    n: String(i + 1).padStart(2, "0"),
-  }));
-
   return (
     <section id="our-work" className="bg-sand px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-[1600px]">
@@ -149,63 +143,18 @@ function ProjectsRail() {
           </Link>
         </div>
         <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ project, img, n }) => (
-            <Link
+          {projects.map((project, index) => (
+            <ProjectCard
               key={project.slug}
-              to="/projects/$slug"
-              params={{ slug: project.slug }}
-              className="group relative flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-white/75 dark:bg-card/75 backdrop-blur-xs p-5 sm:p-6 shadow-xs hover:border-ink/35 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
-            >
-              {/* Top ambient hover accent line */}
-              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-ink/0 via-ink/70 to-ink/0 dark:from-white/0 dark:via-white/70 dark:to-white/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-              <div>
-                <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs group-hover:shadow-xs transition-shadow">
-                  <img
-                    src={img}
-                    alt={project.name}
-                    loading="lazy"
-                    className={`h-full w-full object-cover ${project.heroPosition} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
-                  />
-                  <div className="absolute left-3 top-3 flex items-center">
-                    <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-ink shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-white ring-1 ring-black/5 dark:ring-white/10">
-                      {n}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-4.5 sm:mt-5">
-                  <h3 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-ink/80 dark:group-hover:text-white sm:text-xl line-clamp-1">
-                    {project.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/70 dark:text-cream/70 line-clamp-2 min-h-[2.6rem]">
-                    {project.short}
-                  </p>
-                </div>
-
-                {/* Highlights ticker */}
-                <ProjectHighlightCards project={project} />
-              </div>
-
-              <div className="mt-5 flex items-center justify-between border-t border-ink/8 dark:border-white/10 pt-4 text-xs">
-                <span className="inline-flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-wider text-ink/55 dark:text-cream/55">
-                  <span className="h-1.5 w-1.5 rounded-full bg-ink/80 dark:bg-white/80" />
-                  {project.outcomes?.[0]?.value || "Direct Field Program"}
-                </span>
-                <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-ink dark:text-cream transition-colors group-hover:text-ink">
-                  <span>Explore</span>
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-white dark:bg-white/10 dark:text-white dark:group-hover:bg-white dark:group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </span>
-                </span>
-              </div>
-            </Link>
+              project={project}
+              index={index}
+            />
           ))}
 
-          {/* 12th Card: Directory Feature Tile completing the 4x3 grid */}
+          {/* 10th Card: Directory Feature Tile completing the grid */}
           <Link
             to="/projects"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-5 sm:p-6 text-cream transition-all duration-300 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 aspect-[16/10] md:aspect-auto"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[28px] border border-ink/10 bg-ink p-6 sm:p-7 text-cream transition-all duration-300 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 min-h-[380px]"
           >
             <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay-bright to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

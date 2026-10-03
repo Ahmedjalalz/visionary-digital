@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowUpRight, Filter } from "lucide-react";
 import { projects } from "@/data/projects";
 import { MaskLines } from "@/components/site/motion-primitives";
-import { ProjectHighlightCards } from "@/components/site/ProjectHighlightCards";
+import { ProjectCard } from "@/components/site/ProjectCard";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/")({
@@ -107,57 +107,16 @@ function ProjectsIndex() {
       <section className="relative bg-background pb-28 pt-12 sm:pt-16">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((p) => (
-              <Link
-                key={p.slug}
-                to="/projects/$slug"
-                params={{ slug: p.slug }}
-                className="group relative flex flex-col justify-between h-full rounded-2xl border border-ink/10 bg-white/75 dark:bg-card/75 backdrop-blur-xs p-5 sm:p-6 shadow-xs hover:border-ink/35 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
-              >
-                {/* Top ambient hover accent line */}
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-ink/0 via-ink/70 to-ink/0 dark:from-white/0 dark:via-white/70 dark:to-white/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                <div>
-                  <div className="relative overflow-hidden bg-ink/10 aspect-[16/10] rounded-xl shadow-2xs group-hover:shadow-xs transition-shadow">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className={`h-full w-full object-cover ${p.heroPosition} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15" />
-                    <div className="absolute left-3 top-3 flex items-center">
-                      <span className="numeral inline-flex items-center rounded-full bg-white/95 px-2.5 py-1 text-xs font-black text-ink shadow-xs backdrop-blur-md dark:bg-card/95 dark:text-white ring-1 ring-black/5 dark:ring-white/10">
-                        {String(projects.findIndex((item) => item.slug === p.slug) + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-4.5 sm:mt-5">
-                    <h2 className="font-display text-lg font-bold text-ink transition-colors group-hover:text-ink/80 dark:group-hover:text-white sm:text-xl line-clamp-1">
-                      {p.name}
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-ink/70 dark:text-cream/70 line-clamp-2 min-h-[2.6rem]">
-                      {p.short}
-                    </p>
-                  </div>
-
-                  {/* Highlights ticker */}
-                  <ProjectHighlightCards project={p} />
-                </div>
-                <div className="mt-5 flex items-center justify-between border-t border-ink/8 dark:border-white/10 pt-4 text-xs">
-                  <span className="inline-flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-wider text-ink/55 dark:text-cream/55">
-                    <span className="h-1.5 w-1.5 rounded-full bg-ink/80 dark:bg-white/80" />
-                    {p.outcomes?.[0]?.value || "Direct Field Program"}
-                  </span>
-                  <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-ink dark:text-cream transition-colors group-hover:text-ink">
-                    <span>Explore</span>
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink/10 text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-white dark:bg-white/10 dark:text-white dark:group-hover:bg-white dark:group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      <ArrowUpRight className="h-3.5 w-3.5" />
-                    </span>
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {filteredProjects.map((p) => {
+              const originalIndex = projects.findIndex((item) => item.slug === p.slug);
+              return (
+                <ProjectCard
+                  key={p.slug}
+                  project={p}
+                  index={originalIndex >= 0 ? originalIndex : 0}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
