@@ -200,7 +200,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hope-and-freedom-for-widows-headed-families",
-    name: "Hope and Freedom for Widows-Headed Families Project",
+    name: "Hope and Freedom",
     short: "Comprehensive debt cancellation, safe housing, children's schooling, and micro-enterprise capital to permanently liberate widow-headed families from generational brick kiln debt bondage.",
     problem: {
       figure: "20,000",
@@ -336,10 +336,12 @@ export const projects: Project[] = [
     ],
     image: foundationMedia.schoolUniforms,
     gallery: [
-      foundationMedia.schoolUniforms,
-      foundationMedia.classroomDesks,
-      foundationMedia.schoolStudents,
-      "/images/school-bags/DSC09384.JPG",
+      "/images/orphan-care/1.JPG",
+      "/images/orphan-care/5.JPG",
+      "/images/orphan-care/8.JPG",
+      "/images/orphan-care/15.JPG",
+      "/images/orphan-care/17.JPG",
+      "/images/orphan-care/21.JPG",
     ],
     heroPosition: "object-[50%_25%]",
     accent: "clay",

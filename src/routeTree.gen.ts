@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as FaithHopeLoveForEveryChildRouteImport } from './routes/faith-hope-love-for-every-child'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as SchoolBagDistributionRouteImport } from './routes/school-bag-distribution'
@@ -47,6 +48,12 @@ const DonateRoute = DonateRouteImport.update({
   path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaithHopeLoveForEveryChildRoute =
+  FaithHopeLoveForEveryChildRouteImport.update({
+    id: '/faith-hope-love-for-every-child',
+    path: '/faith-hope-love-for-every-child',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ImpactRoute = ImpactRouteImport.update({
   id: '/impact',
   path: '/impact',
@@ -89,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
@@ -103,6 +111,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
@@ -118,6 +127,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
     | '/school-bag-distribution'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
     | '/school-bag-distribution'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/contact'
     | '/donate'
+    | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
     | '/school-bag-distribution'
@@ -177,6 +190,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
+  FaithHopeLoveForEveryChildRoute: typeof FaithHopeLoveForEveryChildRoute
   ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRoute
   SchoolBagDistributionRoute: typeof SchoolBagDistributionRoute
@@ -221,6 +235,13 @@ declare module '@tanstack/react-router' {
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faith-hope-love-for-every-child': {
+      id: '/faith-hope-love-for-every-child'
+      path: '/faith-hope-love-for-every-child'
+      fullPath: '/faith-hope-love-for-every-child'
+      preLoaderRoute: typeof FaithHopeLoveForEveryChildRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact': {
@@ -281,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
+  FaithHopeLoveForEveryChildRoute: FaithHopeLoveForEveryChildRoute,
   ImpactRoute: ImpactRoute,
   NewsRoute: NewsRoute,
   SchoolBagDistributionRoute: SchoolBagDistributionRoute,

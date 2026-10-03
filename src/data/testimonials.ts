@@ -107,7 +107,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "test-hope-widows",
     projectSlug: "hope-and-freedom-for-widows-headed-families",
-    projectName: "Hope And Freedom For Widows Headed Families Project",
+    projectName: "Hope and Freedom",
     category: "Widows & Families",
     name: "Razia Sultana",
     role: "Widow & Tailoring Entrepreneur",
@@ -120,7 +120,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "test-widows-welfare",
     projectSlug: "hope-and-freedom-for-widows-headed-families",
-    projectName: "Hope and Freedom for Widows-Headed Families Project",
+    projectName: "Hope and Freedom",
     category: "Widows & Families",
     name: "Bilquis Begum",
     role: "Welfare Beneficiary (Age 72)",

@@ -178,7 +178,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
                 <FileCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-clay-bright">
                     Govt. Reg
                   </span>
                   <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
@@ -191,7 +191,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
                 <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-clay-bright">
                     Punjab Charity
                   </span>
                   <span
@@ -207,7 +207,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
                 <Award className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-clay-bright">
                     PCP Certified
                   </span>
                   <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
@@ -220,7 +220,7 @@ export function SiteFooter() {
               <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
                 <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />
                 <div className="min-w-0">
-                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-cream/50">
+                  <span className="block text-[0.58rem] font-semibold uppercase tracking-wider text-clay-bright">
                     FBR Tax Exempt
                   </span>
                   <span className="block font-mono text-[0.72rem] font-bold text-cream tracking-tight truncate">
