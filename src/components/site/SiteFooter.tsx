@@ -173,7 +173,7 @@ export function SiteFooter() {
               </span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 flex-1 lg:max-w-4xl">
+            <div className="grid grid-cols-1 min-[440px]:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 flex-1 lg:max-w-4xl">
               {/* Reg 1: Societies Act */}
               <div className="flex items-center gap-2.5 rounded-lg border border-cream/10 bg-white/5 px-3 py-2 backdrop-blur-xs">
                 <FileCheck className="h-3.5 w-3.5 shrink-0 text-clay-bright" />

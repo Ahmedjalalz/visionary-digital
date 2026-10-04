@@ -81,7 +81,7 @@ function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="max-w-[12ch] font-display text-[clamp(3rem,6.5vw,6.8rem)] font-bold leading-[0.98] text-cream">
+            <h1 className="max-w-[12ch] font-display text-[clamp(2.1rem,6.2vw,6.8rem)] font-bold leading-[0.98] text-cream">
               <MaskLines lines={["Uplifting the Lives", "of Community"]} delay={0.12} />
             </h1>
 
@@ -359,7 +359,7 @@ function Story() {
       <div className="absolute inset-0 mx-auto flex max-w-[1600px] items-end px-5 py-12 sm:px-8 sm:py-16">
         <motion.div
           style={reduce ? {} : { x: quoteX }}
-          className="realistic-blue-glass relative w-full max-w-2xl rounded-3xl p-8 sm:p-12 shadow-2xl"
+          className="realistic-blue-glass relative w-full max-w-2xl rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl"
         >
           {/* Realistic physical glass reflection & optical flare layers */}
           <div
@@ -416,9 +416,9 @@ function Numbers() {
   ];
   return (
     <section className="border-y border-ink/10 bg-sand py-14 sm:py-18">
-      <div className="mx-auto grid max-w-[1600px] gap-8 px-5 sm:px-8 grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-[1600px] gap-6 sm:gap-8 px-5 sm:px-8 grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="border-l-2 border-clay/40 pl-5">
+          <div key={s.label} className="border-l-2 border-clay/40 pl-3.5 sm:pl-5">
             <div className="flex items-baseline">
               <span className="numeral text-4xl sm:text-5xl font-black text-clay">
                 <Counter to={s.value} format={(n) => Math.round(n).toString()} />

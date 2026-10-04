@@ -252,7 +252,7 @@ function ScrollTestimonialsTrack({
             key={`track-r1-${t.id}-${idx}`}
             t={t}
             onSelect={() => onSelectTestimonial(t)}
-            className="w-[320px] sm:w-[420px] shrink-0"
+            className="w-[min(320px,calc(100vw-2.5rem))] sm:w-[420px] shrink-0"
           />
         ))}
       </motion.div>
@@ -268,7 +268,7 @@ function ScrollTestimonialsTrack({
             key={`track-r2-${t.id}-${idx}`}
             t={t}
             onSelect={() => onSelectTestimonial(t)}
-            className="w-[320px] sm:w-[420px] shrink-0"
+            className="w-[min(320px,calc(100vw-2.5rem))] sm:w-[420px] shrink-0"
           />
         ))}
       </motion.div>

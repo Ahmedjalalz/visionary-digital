@@ -260,17 +260,17 @@ function BagDetails() {
               value ? (
                 <div
                   key={label}
-                  className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-t border-ink/10 py-5"
+                  className="grid grid-cols-1 sm:grid-cols-[8.5rem_1fr] items-baseline gap-1.5 sm:gap-4 border-t border-ink/10 py-4 sm:py-5"
                 >
                   <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-ink/45">{label}</dt>
-                  <dd className="font-display text-xl font-bold leading-tight tracking-tight text-ink">
+                  <dd className="font-display text-lg sm:text-xl font-bold leading-tight tracking-tight text-ink">
                     {value}
                   </dd>
                 </div>
               ) : null,
             )}
             {(data.dispatched_on || data.delivered_on) && (
-              <div className="grid grid-cols-[9rem_1fr] items-baseline gap-4 border-y border-ink/10 py-5">
+              <div className="grid grid-cols-1 sm:grid-cols-[8.5rem_1fr] items-baseline gap-1.5 sm:gap-4 border-y border-ink/10 py-4 sm:py-5">
                 <dt className="text-[0.66rem] uppercase tracking-[0.18em] text-ink/45">Dates</dt>
                 <dd className="text-sm text-ink/70">
                   {data.dispatched_on && <>Dispatched {data.dispatched_on}. </>}

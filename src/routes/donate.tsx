@@ -164,7 +164,7 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("bank")}
-                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex shrink-0 items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "bank"
                     ? "bg-clay text-primary-foreground shadow-xs"
                     : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
@@ -180,7 +180,7 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("pledge")}
-                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex shrink-0 items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "pledge"
                     ? "bg-clay text-primary-foreground shadow-xs"
                     : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
@@ -196,7 +196,7 @@ function Donate() {
               <button
                 type="button"
                 onClick={() => setActiveTab("trust")}
-                className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                className={`flex shrink-0 items-center gap-2.5 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
                   activeTab === "trust"
                     ? "bg-clay text-primary-foreground shadow-xs"
                     : "border border-ink/15 bg-background text-ink/70 hover:border-ink hover:text-ink"
@@ -500,7 +500,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
         </div>
 
         {/* Currency / Region pill */}
-        <div className="inline-flex rounded-full border border-ink/15 bg-sand/60 p-1 shadow-xs">
+        <div className="inline-flex flex-wrap sm:flex-nowrap rounded-2xl sm:rounded-full border border-ink/15 bg-sand/60 p-1 shadow-xs max-w-full">
           <button
             type="button"
             onClick={() => setMethod("international")}
@@ -570,7 +570,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">Official IBAN</div>
-              <div className="mt-1.5 font-mono text-lg sm:text-xl font-bold tracking-wider text-cream flex items-center gap-2">
+              <div className="mt-1.5 font-mono text-sm sm:text-base md:text-xl font-bold tracking-wider text-cream flex flex-wrap items-center gap-2 break-all sm:break-normal">
                 <span>PK11 FAYS 0464 0079 0022 4713</span>
               </div>
               <div className="mt-2">

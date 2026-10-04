@@ -329,8 +329,8 @@ function ProjectPage() {
               <h1
                 className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "!text-cream drop-shadow-md"} ${
                   project.name.length > 34
-                    ? "text-[clamp(2.5rem,5vw,5.2rem)]"
-                    : "text-[clamp(3rem,6vw,6.4rem)]"
+                    ? "text-[clamp(1.9rem,5vw,5.2rem)]"
+                    : "text-[clamp(2.1rem,6vw,6.4rem)]"
                 }`}
               >
                 {project.name}
@@ -346,7 +346,7 @@ function ProjectPage() {
         <div className="mx-auto max-w-[1600px]">
           <span className="eyebrow">The problem</span>
           <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            <span className={`numeral text-[17vw] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
+            <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
               {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
                 <Counter
                   to={Number(project.problem.figure.replace(/,/g, ""))}
@@ -698,7 +698,7 @@ function ProjectPage() {
                       Maternal Health Emergency
                     </span>
                     <div className="mt-4 flex flex-wrap items-baseline gap-x-4">
-                      <span className="numeral text-[18vw] leading-[0.78] sm:text-[7.5rem] font-bold text-clay">
+                      <span className="numeral text-[clamp(3rem,15vw,7.5rem)] leading-[0.78] font-bold text-clay">
                         <Counter to={27} duration={1400} />
                       </span>
                       <span className="font-display text-2xl sm:text-3xl font-bold uppercase leading-tight text-ink">

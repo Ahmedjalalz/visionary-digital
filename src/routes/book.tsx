@@ -146,14 +146,14 @@ function TimezoneNotice() {
 
       {/* Schedule Strip: Clean, balanced, no nested card boxes */}
       <div className="mt-5 grid gap-3 border-t border-ink/10 pt-4 sm:grid-cols-2 text-xs">
-        <div className="flex items-center justify-between rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
+        <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-1.5 rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
           <div>
             <span className="font-bold text-ink">Mon, Fri, Sat, Sun</span>
             <span className="ml-2 text-[0.68rem] text-ink/50 font-medium">9:00 AM – 12:05 AM NZT</span>
           </div>
           <span className="font-mono font-bold text-clay text-[0.78rem]">21:00 (prev) – 12:00 UTC</span>
         </div>
-        <div className="flex items-center justify-between rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
+        <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-1.5 rounded-xl bg-background/80 px-4 py-2.5 border border-ink/8">
           <div>
             <span className="font-bold text-ink">Tue, Wed, Thu</span>
             <span className="ml-2 text-[0.68rem] text-ink/50 font-medium">4:00 PM – 12:05 AM NZT</span>

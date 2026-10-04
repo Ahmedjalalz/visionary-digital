@@ -125,7 +125,7 @@ export function SiteNav() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label="Primary">
             {primary.map((item) => {
               if (item.to === "/projects") {
                 const isProjectsActive = pathname.startsWith("/projects");
@@ -251,7 +251,7 @@ export function SiteNav() {
             </Link>
             <Link
               to="/book"
-              className="hidden rounded-full bg-clay px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs sm:inline-block"
+              className="hidden rounded-full bg-clay px-5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs xl:inline-block"
             >
               Book a meeting
             </Link>
@@ -315,7 +315,7 @@ export function SiteNav() {
                           <Link
                             to={item.to}
                             onClick={() => setOpen(false)}
-                            className="font-display text-4xl font-bold text-ink"
+                            className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
                           >
                             {item.label}
                           </Link>
@@ -377,7 +377,7 @@ export function SiteNav() {
                       <Link
                         to={item.to}
                         onClick={() => setOpen(false)}
-                        className="block py-5 font-display text-4xl font-bold text-ink"
+                        className="block py-4 sm:py-5 font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
                       >
                         {item.label}
                       </Link>

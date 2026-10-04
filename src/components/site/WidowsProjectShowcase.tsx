@@ -57,7 +57,7 @@ export function WidowsProjectShowcase() {
                         <button
                           type="button"
                           onClick={() => setIsVideoPlaying(true)}
-                          className="group flex h-18 w-18 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-clay text-cream shadow-xl transition-all duration-300 hover:scale-110 hover:bg-clay-deep focus:outline-none focus:ring-4 focus:ring-clay/30"
+                          className="group flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-clay text-cream shadow-xl transition-all duration-300 hover:scale-110 hover:bg-clay-deep focus:outline-none focus:ring-4 focus:ring-clay/30"
                           aria-label="Play Campaign Video"
                         >
                           <Play className="h-8 w-8 fill-current ml-1 transition-transform group-hover:scale-110" />
@@ -350,7 +350,7 @@ export function WidowsProjectShowcase() {
             <span className="text-xs font-bold uppercase tracking-wider text-ink/60 block mb-4">
               Select A Story Below (11 Documented Case Histories):
             </span>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2.5 sm:gap-3">
               {widowsTestimonies.map((t) => {
                 const isSelected = selectedTestimony.id === t.id;
                 return (
