@@ -66,6 +66,7 @@ export const projects: Project[] = [
       line: "is often the difference between attending and dropping out.",
       source: "ELF field reporting",
     },
+    problemImage: "/images/school-bags/school-bags-problem.jpg",
     context: [
       "Stationery is not a small thing. When a family cannot supply a notebook, a child is sent home, and being sent home repeatedly ends in leaving.",
     ],
@@ -312,7 +313,7 @@ export const projects: Project[] = [
   },
   {
     slug: "faith-hope-love-for-every-child",
-    name: "Faith, Hope & Love for Every Child",
+    name: "Orphan Care",
     short: "Orphan care, education and comprehensive child protection walking alongside Pakistan's most vulnerable children.",
     problem: {
       figure: "1,655+",

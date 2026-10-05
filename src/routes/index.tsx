@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
 
 import heroImg from "@/assets/official-local/community.jpg";
 import elfLogoWhite from "@/assets/official-local/elf-logo-white.png";
@@ -435,6 +435,92 @@ function Numbers() {
   );
 }
 
+/* ─────────────────────────  SDG TEASER (Curiosity Highlight)  ───────────────────────── */
+
+function SdgTeaser() {
+  const sdgHighlights = [
+    { num: 1, label: "No Poverty", color: "#E5243B" },
+    { num: 3, label: "Good Health", color: "#4C9F38" },
+    { num: 4, label: "Quality Education", color: "#C5192D" },
+    { num: 5, label: "Gender Equality", color: "#FF3A21" },
+    { num: 6, label: "Clean Water", color: "#26BDE2" },
+    { num: 8, label: "Decent Work", color: "#A21942" },
+    { num: 10, label: "Reduced Inequalities", color: "#DD1367" },
+    { num: 16, label: "Peace & Justice", color: "#00689D" },
+    { num: 17, label: "Partnerships", color: "#19486A" },
+  ];
+
+  return (
+    <section className="relative overflow-hidden bg-background py-16 sm:py-24 border-b border-ink/10">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+        <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-sand/35 dark:bg-card/60 p-8 sm:p-12 lg:p-14 shadow-sm">
+          {/* Subtle decorative ambient glow */}
+          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-clay/10 blur-3xl" />
+          <div className="pointer-events-none absolute -left-16 -bottom-16 h-64 w-64 rounded-full bg-moss/10 blur-3xl" />
+
+          <div className="relative z-10 grid gap-8 lg:grid-cols-12 lg:items-center">
+            {/* Left Copy */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-clay">
+                <Globe2 className="h-3.5 w-3.5" />
+                <span>UN 2030 Agenda · Strategic Alignment</span>
+              </div>
+
+              <h2 className="display-md mt-4 text-ink font-display">
+                Global Goals. Real Village Outcomes.
+              </h2>
+
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink/75 max-w-2xl">
+                Every sponsored backpack, village medical camp, and discharged kiln loan in Pakistan connects to a worldwide commitment. Education and Life Foundation's 9 field programmes directly advance 9 United Nations Sustainable Development Goals.
+              </p>
+
+              {/* SDG Pill Strip Preview */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {sdgHighlights.map((s) => (
+                  <span
+                    key={s.num}
+                    style={{ backgroundColor: s.color }}
+                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold text-white shadow-2xs tracking-wide"
+                  >
+                    <span className="font-mono text-[10px]">SDG {s.num}</span>
+                    <span className="hidden sm:inline font-sans text-[11px]">{s.label}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Action & Hook Card */}
+            <div className="lg:col-span-5 lg:flex lg:flex-col lg:items-end">
+              <div className="rounded-2xl border border-ink/10 bg-background/80 p-6 shadow-xs max-w-md w-full">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-clay block">
+                  Institutional Alignment
+                </span>
+                <p className="font-display text-lg font-bold text-ink mt-1">
+                  How does local delivery create verifiable global impact?
+                </p>
+                <p className="text-xs text-ink/70 mt-2 leading-relaxed">
+                  Explore our interactive alignment matrix, evidence numbers, and theory of change across Pakistan's most marginalized districts.
+                </p>
+
+                <div className="mt-5 pt-4 border-t border-ink/10">
+                  <Link
+                    to="/about"
+                    hash="sdg-alignment"
+                    className="inline-flex items-center gap-2 rounded-full bg-clay px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground hover:bg-clay-deep transition-all shadow-xs w-full justify-center group"
+                  >
+                    <span>Read SDG Alignment in Details</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────────────  LOCATION  ───────────────────────── */
 
 function Location() {
@@ -548,6 +634,7 @@ function Home() {
       <Impact />
       <Story />
       <Numbers />
+      <SdgTeaser />
       <Location />
       <FinalCta />
     </>

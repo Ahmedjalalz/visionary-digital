@@ -385,7 +385,7 @@ function ProjectPage() {
                   <img
                     src={project.problemImage}
                     alt={`${project.name} field context`}
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>

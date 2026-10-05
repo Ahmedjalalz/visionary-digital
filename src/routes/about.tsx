@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
-import { ArrowRight, CheckCircle2, GraduationCap, HandHeart, Heart } from "lucide-react";
+import { ArrowRight, CheckCircle2, GraduationCap, HandHeart, Heart, ShieldCheck, Globe2 } from "lucide-react";
 
 import skillsImg from "@/assets/official-local/skills.jpg";
 import { foundationMedia } from "@/data/foundationMedia";
 
 import { MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
+import { SdgAlignmentSection } from "@/components/site/SdgAlignmentSection";
 
 
 export const Route = createFileRoute("/about")({
@@ -240,64 +241,148 @@ function HistoryRail() {
 function About() {
   return (
     <>
-      {/* hero — typographic, image behind */}
-      <section className="relative flex min-h-[68svh] w-full flex-col justify-end overflow-hidden pb-14 pt-24 sm:min-h-[76svh] sm:pb-20">
-        <ParallaxImage src="/images/wash/wash-b-1.jpg" alt="Children outside an ELF village school in Punjab" className="absolute inset-0" imgClassName="object-[50%_15%]" priority strength={45} />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/65 to-ink/20" />
-        <div className="absolute inset-0 bg-ink/30" />
-        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-clay-bright block mb-3">Lahore, Pakistan</span>
-            <h1 className="display-xl max-w-[12ch] !text-cream drop-shadow-md">
-              <MaskLines lines={["To uplift", "the deprived", "community."]} />
-            </h1>
-          </div>
-        </div>
-      </section>
+      {/* ── Modern Editorial Hero ── */}
+      <section className="relative border-b border-ink/10 bg-sand/35 dark:bg-card/50 pt-28 pb-16 sm:pt-36 sm:pb-24">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-clay">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                <span>Registered Non-Profit NGO · Lahore, Pakistan</span>
+              </div>
 
-      {/* who we are */}
-      <section className="paper py-20 sm:py-28">
-        <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <span className="eyebrow">Who we are</span>
+              <h1 className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-ink leading-[1.05]">
+                Rooted in Compassion. <br className="hidden sm:inline" />
+                <span className="text-clay">Driven by Accountability.</span>
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-lg sm:text-xl font-medium leading-relaxed text-ink/80">
+                Founded in Lahore in 2017, Education and Life Foundation (ELF) serves marginalized families, bonded brick-kiln laborers, and out-of-school children across Pakistan through direct, verifiable grassroots development.
+              </p>
+
+              {/* Quick Navigation Jump Pills */}
+              <div className="mt-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider text-ink/75">
+                <a
+                  href="#mission-vision"
+                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                >
+                  Mission & Vision
+                </a>
+                <a
+                  href="#our-story"
+                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                >
+                  Our Origins & Story
+                </a>
+                <a
+                  href="#sdg-alignment"
+                  className="rounded-full border border-clay/30 bg-clay/10 px-4 py-2 text-clay hover:bg-clay hover:text-primary-foreground transition-all shadow-2xs"
+                >
+                  UN SDG Alignment
+                </a>
+                <a
+                  href="#board-members"
+                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                >
+                  Board & Governance
+                </a>
+                <a
+                  href="#direct-provisions"
+                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                >
+                  Direct Provisions
+                </a>
+              </div>
+            </div>
+
+            {/* Right Visual Image Column */}
+            <div className="lg:col-span-5">
+              <div className="group relative overflow-hidden rounded-3xl border border-ink/10 bg-sand shadow-lg">
+                <img
+                  src="/images/wash/wash-b-1.jpg"
+                  alt="Children outside an ELF village school in Punjab"
+                  className="aspect-[4/3] w-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 text-cream">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-clay-bright">
+                    Direct Community Reach
+                  </span>
+                  <p className="mt-1 font-display text-base font-bold text-cream">
+                    Serving rural Punjab with zero intermediary overhead
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <p className="font-display text-2xl font-bold leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl">
-              Education and Life Foundation is a non-governmental organisation working with deprived
-              communities in Pakistan through sustainable development — free education, healthcare, food
-              and financial support.
-            </p>
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              <p className="text-base leading-relaxed text-ink/70">
-                We provide schooling and medical care where the state's reach thins out, and financial
-                support to widows and low-income families holding households together alone.
-              </p>
-              <p className="text-base leading-relaxed text-ink/70">
-                Our skill development programmes turn that support into self-reliance: practical training,
-                employment, and a route out of dependence rather than a longer stay inside it.
-              </p>
+
+          {/* Quick Credential Highlights Ribbon */}
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 pt-10 border-t border-ink/10 text-center">
+            <div className="rounded-2xl border border-ink/10 bg-background/60 p-4 shadow-2xs">
+              <span className="numeral block text-2xl sm:text-3xl font-black text-clay">100%</span>
+              <span className="mt-1 block text-xs font-bold uppercase tracking-wider text-ink">Direct Delivery</span>
+              <span className="text-[11px] text-ink/60">Zero administrative middle steps</span>
+            </div>
+            <div className="rounded-2xl border border-ink/10 bg-background/60 p-4 shadow-2xs">
+              <span className="numeral block text-2xl sm:text-3xl font-black text-clay">35+</span>
+              <span className="mt-1 block text-xs font-bold uppercase tracking-wider text-ink">Village Schools</span>
+              <span className="text-[11px] text-ink/60">Free tuition, books & supplies</span>
+            </div>
+            <div className="rounded-2xl border border-ink/10 bg-background/60 p-4 shadow-2xs">
+              <span className="numeral block text-2xl sm:text-3xl font-black text-clay">9 SDGs</span>
+              <span className="mt-1 block text-xs font-bold uppercase tracking-wider text-ink">UN Aligned</span>
+              <span className="text-[11px] text-ink/60">Global strategic integration</span>
+            </div>
+            <div className="rounded-2xl border border-ink/10 bg-background/60 p-4 shadow-2xs">
+              <span className="numeral block text-2xl sm:text-3xl font-black text-clay">2018</span>
+              <span className="mt-1 block text-xs font-bold uppercase tracking-wider text-ink">Registered NGO</span>
+              <span className="text-[11px] text-ink/60">Statutory Pakistani compliance</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* vision / mission — split, oversized with hover color switch */}
-      <section className="group/vm grid md:grid-cols-2 cursor-pointer transition-all duration-700">
-        <div className="flex flex-col justify-between gap-12 bg-clay text-primary-foreground px-5 py-16 sm:px-10 sm:py-20 transition-all duration-500 ease-in-out group-hover/vm:bg-sand group-hover/vm:text-ink">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-primary-foreground/80 transition-colors duration-500 group-hover/vm:text-clay">
-            Vision
-          </span>
-          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl text-primary-foreground transition-colors duration-500 group-hover/vm:text-ink">
-            To uplift the deprived community in Pakistan.
-          </p>
-        </div>
-        <div className="flex flex-col justify-between gap-12 bg-sand text-ink px-5 py-16 sm:px-10 sm:py-20 transition-all duration-500 ease-in-out group-hover/vm:bg-clay group-hover/vm:text-primary-foreground">
-          <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-clay transition-colors duration-500 group-hover/vm:text-primary-foreground/80">
-            Mission
-          </span>
-          <p className="font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl text-ink transition-colors duration-500 group-hover/vm:text-primary-foreground">
-            To build a better life for the community, and to aid those who cannot help themselves.
-          </p>
+      {/* ── Mission & Vision ── */}
+      <section id="mission-vision" className="border-b border-ink/10 bg-background py-16 sm:py-24">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="eyebrow text-clay">Guiding Ethos</span>
+            <h2 className="display-md mt-2 text-ink font-display">Purpose Behind Every Action</h2>
+            <p className="mt-3 text-base text-ink/70">
+              Clear commitments that define who we serve and how we measure real community transformation.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-clay/30 bg-clay p-8 sm:p-12 text-primary-foreground shadow-md transition-all hover:shadow-xl">
+              <div>
+                <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
+                  Our Vision
+                </span>
+                <p className="mt-4 font-display text-2xl sm:text-4xl font-extrabold leading-tight text-primary-foreground">
+                  To uplift the deprived community in Pakistan.
+                </p>
+              </div>
+              <p className="mt-8 text-sm sm:text-base leading-relaxed text-primary-foreground/85 border-t border-primary-foreground/20 pt-6">
+                A Pakistan where no child drops out for lack of a notebook, no mother dies in unassisted childbirth, and no family is held in hereditary bonded labor.
+              </p>
+            </div>
+
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-ink/10 bg-sand/60 dark:bg-card/70 p-8 sm:p-12 text-ink shadow-sm transition-all hover:border-clay/40 hover:shadow-xl">
+              <div>
+                <span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-clay">
+                  Our Mission
+                </span>
+                <p className="mt-4 font-display text-2xl sm:text-4xl font-extrabold leading-tight text-ink dark:text-cream">
+                  To build a better life for the community, and to aid those who cannot help themselves.
+                </p>
+              </div>
+              <p className="mt-8 text-sm sm:text-base leading-relaxed text-ink/75 dark:text-cream/75 border-t border-ink/10 pt-6">
+                Delivering actionable solutions—free schooling, maternal health, pure water, legal debt discharge, and industrial skills—that transform helplessness into self-reliance.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -628,92 +713,11 @@ function About() {
         </div>
       </section>
 
-      {/* services — rich visual card showcase */}
-      <section className="border-b border-ink/10 bg-background px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-[1600px]">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <span className="eyebrow">Direct Provisions</span>
-              <h2 className="display-md mt-3 text-ink">What the Foundation Provides</h2>
-            </div>
-            <p className="max-w-md text-sm text-ink/65 leading-relaxed">
-              Every initiative is delivered directly into the hands of families with zero administrative intermediaries and verifiable community impact.
-            </p>
-          </div>
+      {/* ── UN Sustainable Development Goals Alignment (Core Pillar) ── */}
+      <SdgAlignmentSection />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Free Education For Underprivileged",
-                desc: "Tuition, uniforms, textbooks, and daily stationery for children across Punjab who would otherwise be out of school.",
-                img: foundationMedia.projectEducation,
-                badge: "Education",
-              },
-              {
-                title: "Monthly Rations & Widow Support",
-                desc: "Direct nutritional rations and living stipends delivered with dignity to households headed solely by widows.",
-                img: "/images/widows/scrolling/16.jpg",
-                badge: "Welfare",
-              },
-              {
-                title: "Free Medical Care & Prescription",
-                desc: "Mobile clinical camps, qualified volunteer doctors, diagnostic screening, and emergency medication in rural villages.",
-                img: foundationMedia.healthCampDoctor,
-                badge: "Healthcare",
-              },
-              {
-                title: "Safe Water & Rural Hand Pumps",
-                desc: "Clean drinking water wells and school sanitation infrastructure protecting children from waterborne illness.",
-                img: "/images/wash/wash-b-6.jpg",
-                badge: "WASH",
-              },
-              {
-                title: "Vocational Skills & Micro-Enterprise",
-                desc: "Industrial sewing machines and computer literacy cohorts turning immediate relief into lifelong self-reliance.",
-                img: "/images/skills/community/community-skill-7.jpg",
-                badge: "Livelihoods",
-              },
-              {
-                title: "Emergency Relief & Orphan Support",
-                desc: "Rapid flood and winter survival packages alongside marriage and educational grants for orphaned young women.",
-                img: foundationMedia.emergencyRelief,
-                badge: "Emergency Aid",
-              },
-            ].map((s, i) => (
-              <Rise key={s.title} delay={i * 0.05}>
-                <div className="group relative rounded-2xl border border-ink/10 bg-sand/35 p-6 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="relative h-48 w-full overflow-hidden rounded-xl bg-ink/10 shadow-2xs">
-                    <img
-                      src={s.img}
-                      alt={s.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
-                    <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-xs shadow-xs">
-                      {s.badge}
-                    </span>
-                    <span className="numeral absolute bottom-2.5 right-3 text-2xl font-black text-cream/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="mt-5">
-                    <h3 className="font-display text-xl font-bold leading-tight text-ink group-hover:text-clay transition-colors">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                      {s.desc}
-                    </p>
-                  </div>
-                </div>
-              </Rise>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Board of Members — leadership & governance */}
-      <section className="bg-background px-5 pb-16 sm:px-8 sm:pb-24 border-b border-ink/10">
+      {/* ── Board of Directors & Officers (Core Pillar) ── */}
+      <section id="board-members" className="bg-background px-5 py-20 sm:px-8 sm:py-28 border-b border-ink/10">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
@@ -765,6 +769,90 @@ function About() {
                   </div>
                   <p className="sr-only">{m.detail}</p>
                 </figure>
+              </Rise>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Direct Provisions (Operational Overview) ── */}
+      <section id="direct-provisions" className="border-b border-ink/10 bg-sand/30 dark:bg-card/40 px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1600px]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="eyebrow">Operational Delivery</span>
+              <h2 className="display-md mt-3 text-ink">What the Foundation Provides</h2>
+            </div>
+            <p className="max-w-md text-sm text-ink/65 leading-relaxed">
+              Every initiative is delivered directly into the hands of families with zero administrative intermediaries and verifiable community impact.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Free Education For Underprivileged",
+                desc: "Tuition, uniforms, textbooks, and daily stationery for children across Punjab who would otherwise be out of school.",
+                img: foundationMedia.projectEducation,
+                badge: "Education",
+              },
+              {
+                title: "Monthly Rations & Widow Support",
+                desc: "Direct nutritional rations and living stipends delivered with dignity to households headed solely by widows.",
+                img: "/images/widows/scrolling/16.jpg",
+                badge: "Welfare",
+              },
+              {
+                title: "Free Medical Care & Prescription",
+                desc: "Mobile clinical camps, qualified volunteer doctors, diagnostic screening, and emergency medication in rural villages.",
+                img: foundationMedia.healthCampDoctor,
+                badge: "Healthcare",
+              },
+              {
+                title: "Safe Water & Rural Hand Pumps",
+                desc: "Clean drinking water wells and school sanitation infrastructure protecting children from waterborne illness.",
+                img: "/images/wash/wash-b-6.jpg",
+                badge: "WASH",
+              },
+              {
+                title: "Vocational Skills & Micro-Enterprise",
+                desc: "Industrial sewing machines and computer literacy cohorts turning immediate relief into lifelong self-reliance.",
+                img: "/images/skills/community/community-skill-7.jpg",
+                badge: "Livelihoods",
+              },
+              {
+                title: "Emergency Relief & Orphan Support",
+                desc: "Rapid flood and winter survival packages alongside marriage and educational grants for orphaned young women.",
+                img: foundationMedia.emergencyRelief,
+                badge: "Emergency Aid",
+              },
+            ].map((s, i) => (
+              <Rise key={s.title} delay={i * 0.05}>
+                <div className="group relative rounded-2xl border border-ink/10 bg-background p-6 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="relative h-48 w-full overflow-hidden rounded-xl bg-ink/10 shadow-2xs">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
+                    <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-xs shadow-xs">
+                      {s.badge}
+                    </span>
+                    <span className="numeral absolute bottom-2.5 right-3 text-2xl font-black text-cream/70">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="mt-5">
+                    <h3 className="font-display text-xl font-bold leading-tight text-ink group-hover:text-clay transition-colors">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">
+                      {s.desc}
+                    </p>
+                  </div>
+                </div>
               </Rise>
             ))}
           </div>
