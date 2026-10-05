@@ -91,7 +91,7 @@ function Hero() {
               transition={{ delay: 0.6, duration: 0.9 }}
               className="mt-7 max-w-xl text-base leading-relaxed text-cream/82 sm:text-lg"
             >
-              Education, healthcare, safe water, and pathways to self-reliance—delivered with dignity in communities across Pakistan.
+              Education, healthcare, safe water, and pathways to self-reliance delivered with dignity in communities across Pakistan.
             </motion.p>
 
             <motion.div
@@ -263,8 +263,8 @@ function Impact() {
           </div>
           <ul className="mt-14">
             {[
-              ["We find & fund", "We look continuously for communities carrying the sharpest shortfall, and we fund the response."],
-              ["We build networks", "Partners, local leaders and volunteers — because programmes delivered to a community do not last."],
+              ["We find & fund", "We identify communities that need help the most, and we provide direct funding to support them."],
+              ["We build networks", "We work closely with local leaders, partners, and volunteers to build strong relationships and lasting positive change."],
               ["We strengthen", "Resources and opportunity that make growth self-sustaining rather than donor-dependent."],
               ["We educate", "Free schooling, books and supplies for children who would otherwise never enrol."],
               ["We provide care", "Medical camps in rural districts where the nearest clinic is a journey, not a walk."],

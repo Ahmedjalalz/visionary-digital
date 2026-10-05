@@ -33,11 +33,11 @@ export function SchoolBagShortcut() {
           <span className="relative inline-flex h-3 w-3 rounded-full bg-clay" />
         </span>
 
-        {/* Official School in a Bag original red logo */}
+        {/* Official School in A bag original red logo */}
         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-clay/20 bg-clay/10 p-1.5 shadow-inner backdrop-blur-xs transition-transform duration-300 group-hover:scale-105">
           <img
             src="/school-in-a-bag-logo-red.png"
-            alt="School in a Bag"
+            alt="School in A bag"
             className="h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(179,40,36,0.2)] transition-transform duration-300 group-hover:scale-110"
           />
         </div>
@@ -45,7 +45,7 @@ export function SchoolBagShortcut() {
         {/* Text tag */}
         <div className="text-left">
           <div className="flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-[0.22em] text-clay">
-            <span>School in a Bag</span>
+            <span>School in A bag</span>
           </div>
           <div className="font-display text-sm font-bold tracking-tight text-ink sm:text-base">
             Track My Bag

@@ -26,7 +26,7 @@ export interface Partner {
 export const partners: Partner[] = [
   {
     id: "school-in-a-bag",
-    name: "School in a Bag",
+    name: "School in A bag",
     country: "United Kingdom",
     countryCode: "GB",
     logo: schoolInABag,
@@ -86,7 +86,7 @@ export const partners: Partner[] = [
   },
   {
     id: "paul-aid-trust",
-    name: "Paul Aid Trust",
+    name: "Paul Aid",
     country: "New Zealand",
     countryCode: "NZ",
     logo: paulAid,

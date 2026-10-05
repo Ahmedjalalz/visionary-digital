@@ -37,7 +37,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "A child without a school bag and geometry box feels incomplete and stays away from assembly out of shame. The moment these sturdy, packed bags arrived with student tracking IDs, attendance leaped from 62% to 95%.",
     impactHighlight: "95% school attendance rate achieved",
-    partnerName: "School in a Bag UK",
+    partnerName: "School in A bag UK",
   },
   {
     id: "test-midwifery",
@@ -167,6 +167,6 @@ export const testimonials: Testimonial[] = [
     quote:
       "Sustainable charity is not about outside experts coming and going; it is about training locals who stay. ELF equips us with transparent record-keeping, supply chain tracking, and disaster response skills.",
     impactHighlight: "35+ grassroots field leaders certified in governance",
-    partnerName: "Paul Aid Trust New Zealand",
+    partnerName: "Paul Aid New Zealand",
   },
 ];

@@ -32,7 +32,7 @@ function SchoolInABagBanner() {
           <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-clay/20 bg-background/80 dark:bg-background/90 p-2 shadow-xs">
             <img
               src="/school-in-a-bag-logo-red.png"
-              alt="School in a Bag"
+              alt="School in A bag"
               className="h-full w-full object-contain drop-shadow-xs"
             />
           </div>
@@ -47,7 +47,7 @@ function SchoolInABagBanner() {
               </span>
             </div>
             <p className="text-xs sm:text-sm leading-relaxed text-ink/80 max-w-4xl">
-              <span className="font-semibold text-ink">School In A Bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School In A Bag organization.
+              <span className="font-semibold text-ink">School in A bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School in A bag organization.
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ function BagDetails() {
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-clay/10 p-3.5 shadow-inner">
             <img
               src="/school-in-a-bag-logo-red.png"
-              alt="School in a Bag"
+              alt="School in A bag"
               className="h-full w-full object-contain"
             />
           </div>
@@ -286,7 +286,7 @@ function BagDetails() {
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2">
                 <img
                   src="/school-in-a-bag-logo-red.png"
-                  alt="School in a Bag"
+                  alt="School in A bag"
                   className="h-full w-full object-contain"
                 />
               </div>

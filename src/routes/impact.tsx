@@ -394,6 +394,9 @@ function ImpactPage() {
         </div>
       </section>
 
+      {/* ─── MOVING TRUST STRIP (Directly under Hero, matching homepage) ─── */}
+      <PartnerTicker />
+
       {/* ─── DEDICATED FIELD OUTCOMES METRICS (STANDALONE SECTION) ─── */}
       <section className="border-y border-ink/10 bg-sand py-14 sm:py-18">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
@@ -426,9 +429,6 @@ function ImpactPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── MOVING TRUST STRIP ─── */}
-      <PartnerTicker />
 
       {/* ─── TESTIMONIALS SECTION ─── */}
       <section className="py-20 sm:py-28 bg-sand/25 border-b border-ink/10 overflow-hidden">
@@ -872,7 +872,7 @@ function PartnerProposalForm() {
   });
 
   const [selectedFocus, setSelectedFocus] = useState<string[]>([
-    "Child Education & Supplies (School in a Bag)",
+    "Child Education & Supplies (School in A bag)",
   ]);
 
   const toggleFocus = (focus: string) => {
@@ -928,7 +928,7 @@ ${formData.proposal.trim() || "No additional message provided."}
   };
 
   const focusOptions = [
-    "Child Education & Supplies (School in a Bag)",
+    "Child Education & Supplies (School in A bag)",
     "Healthcare Outreach & Mobile Camps",
     "Safe Drinking Water & WASH Sanitation",
     "Maternal Health & Midwifery Kits",

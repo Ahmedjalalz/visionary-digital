@@ -43,7 +43,7 @@ const posts: DispatchPost[] = [
     body: "Enrolment opens with complete educational kits provided in full — eliminating the three financial hurdles that most often prevent impoverished children from continuing their schooling.",
     fullStory: [
       "Every new academic term in Pakistan brings a silent crisis for low-income families: the compounded cost of brand-new school bags, mandatory uniforms, textbooks, and year-long stationery supplies.",
-      "At ELF's flagship school campus in Raza Block, Allama Iqbal Town, Lahore, over 1,200 enrolled students received comprehensive academic kits in partnership with School in a Bag UK and local community donors.",
+      "At ELF's flagship school campus in Raza Block, Allama Iqbal Town, Lahore, over 1,200 enrolled students received comprehensive academic kits in partnership with School in A bag UK and local community donors.",
       "Each child received a weather-resistant satchel packed with notebooks, pens, pencils, geometry tins, water bottles, and hygiene essentials. By eliminating these direct expenses, ELF ensures zero students drop out due to economic strain."
     ],
     img: "/images/wash/wash-s-6.jpg",

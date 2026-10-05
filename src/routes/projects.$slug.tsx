@@ -173,7 +173,7 @@ const midwiferyPhotoDetails = [
 const schoolBagsPhotoDetails = [
   {
     title: "Distribution Day Celebration",
-    desc: "Primary school students proudly holding their serialized, sponsor-funded School in a Bag backpacks.",
+    desc: "Primary school students proudly holding their serialized, sponsor-funded School in A bag backpacks.",
   },
   {
     title: "Active Classroom Learning",
@@ -181,7 +181,7 @@ const schoolBagsPhotoDetails = [
   },
   {
     title: "Tracked Backpack #174563",
-    desc: "Featured student wearing her dedicated School in a Bag kit, complete with lunchbox and refillable water bottle.",
+    desc: "Featured student wearing her dedicated School in A bag kit, complete with lunchbox and refillable water bottle.",
   },
   {
     title: "Primary Cohort Handover (Bags 190938–190943)",
@@ -260,7 +260,7 @@ function ProjectPage() {
               <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-clay/20 bg-background/80 dark:bg-background/90 p-2 shadow-xs">
                 <img
                   src="/school-in-a-bag-logo-red.png"
-                  alt="School in a Bag"
+                  alt="School in A bag"
                   className="h-full w-full object-contain drop-shadow-xs"
                 />
               </div>
@@ -275,7 +275,7 @@ function ProjectPage() {
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm leading-relaxed text-ink/80 max-w-4xl">
-                  <span className="font-semibold text-ink">School In A Bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School In A Bag organization.
+                  <span className="font-semibold text-ink">School in A bag</span> is a charity registered in England and Wales that delivers rucksacks filled with stationery, learning resources, eating utensils and a hygiene kit to disadvantaged, disaster-affected and displaced children globally. <span className="font-semibold text-ink">Education and Life Foundation</span> is the on ground project implementing partner of School in A bag organization.
                 </p>
               </div>
             </div>
@@ -344,40 +344,91 @@ function ProjectPage() {
       {/* ── the problem, huge ── */}
       <section className="border-b border-ink/10 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1600px]">
-          <span className="eyebrow">The problem</span>
-          <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
-              {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
-                <Counter
-                  to={Number(project.problem.figure.replace(/,/g, ""))}
-                  decimals={project.problem.figure.includes(".") ? 1 : 0}
-                  duration={1600}
-                />
-              ) : (
-                project.problem.figure
-              )}
-            </span>
-            <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
-              {project.problem.unit}
-            </span>
-          </div>
-          <p className="mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
-            {project.problem.line}
-          </p>
-          <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
-            Source: {project.problem.source} — figures pending final ELF verification
-          </p>
+          {project.problemImage ? (
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              <div className="lg:col-span-7">
+                <span className="eyebrow">The problem</span>
+                <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+                  <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] lg:text-[5.5vw] xl:text-[5rem] ${accentClass}`}>
+                    {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
+                      <Counter
+                        to={Number(project.problem.figure.replace(/,/g, ""))}
+                        decimals={project.problem.figure.includes(".") ? 1 : 0}
+                        duration={1600}
+                      />
+                    ) : (
+                      project.problem.figure
+                    )}
+                  </span>
+                  <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw] lg:text-[2.5vw] xl:text-[2.2rem]">
+                    {project.problem.unit}
+                  </span>
+                </div>
+                <p className="mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
+                  {project.problem.line}
+                </p>
+                <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
+                  Source: {project.problem.source} — figures pending final ELF verification
+                </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-12">
-            {project.context.map((para, i) => (
-              <p
-                key={i}
-                className={`lede ${i === 0 ? "md:col-span-6" : "md:col-span-5 md:col-start-8"}`}
-              >
-                {para}
+                <div className="mt-8 space-y-4">
+                  {project.context.map((para, i) => (
+                    <p key={i} className="lede max-w-xl">
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
+                  <img
+                    src={project.problemImage}
+                    alt={`${project.name} field context`}
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <span className="eyebrow">The problem</span>
+              <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+                <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
+                  {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
+                    <Counter
+                      to={Number(project.problem.figure.replace(/,/g, ""))}
+                      decimals={project.problem.figure.includes(".") ? 1 : 0}
+                      duration={1600}
+                    />
+                  ) : (
+                    project.problem.figure
+                  )}
+                </span>
+                <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
+                  {project.problem.unit}
+                </span>
+              </div>
+              <p className="mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
+                {project.problem.line}
               </p>
-            ))}
-          </div>
+              <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
+                Source: {project.problem.source} — figures pending final ELF verification
+              </p>
+
+              <div className="mt-12 grid gap-6 md:grid-cols-12">
+                {project.context.map((para, i) => (
+                  <p
+                    key={i}
+                    className={`lede ${i === 0 ? "md:col-span-6" : "md:col-span-5 md:col-start-8"}`}
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

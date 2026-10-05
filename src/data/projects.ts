@@ -15,6 +15,7 @@ export interface Project {
   short: string;
   /** The single problem this project exists to answer. */
   problem: { figure: string; unit: string; line: string; source: string };
+  problemImage?: string;
   context: string[];
   response: string[];
   outcomes: { label: string; value: string; href?: string }[];
@@ -102,6 +103,7 @@ export const projects: Project[] = [
       line: "per 100,000 live births — Pakistan's maternal mortality ratio.",
       source: "Pakistan Maternal Mortality Survey",
     },
+    problemImage: "/images/midwifery/midwifery-problem.jpg",
     context: [
       "Most maternal deaths are preventable with a skilled attendant present. In remote districts, there often isn't one.",
     ],
@@ -220,7 +222,7 @@ export const projects: Project[] = [
     ],
     outcomes: [
       { label: "Sponsorship", value: "$1,850 Full Liberation" },
-      { label: "Debt Status", value: "100% Cancelled" },
+      { label: "Debt Status", value: "100% Debt Cleared" },
       { label: "Housing", value: "6 Months Rent Paid" },
       { label: "Long-Term", value: "Micro-Business Owner" },
     ],

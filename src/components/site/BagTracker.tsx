@@ -52,7 +52,7 @@ export function BagTracker() {
             <span className="relative flex h-28 w-28 items-center justify-center">
               <img
                 src="/school-in-a-bag-logo-red.png"
-                alt="School in a Bag"
+                alt="School in A bag"
                 className="float-slow h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_8px_20px_rgba(179,40,36,0.24)]"
               />
             </span>
@@ -97,7 +97,7 @@ export function BagTracker() {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay/10 p-2">
                 <img
                   src="/school-in-a-bag-logo-red.png"
-                  alt="School in a Bag"
+                  alt="School in A bag"
                   className="h-full w-full object-contain drop-shadow-xs"
                 />
               </div>

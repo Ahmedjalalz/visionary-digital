@@ -103,7 +103,7 @@ export const fetchLiveBagDetails = createServerFn({ method: "GET" })
     if (!trackingId) return null;
 
     try {
-      // 1. Fetch live from School in a Bag tracker
+      // 1. Fetch live from School in A bag tracker
       const url = `https://siab-live.azurewebsites.net/Bag/track/?bid=${encodeURIComponent(trackingId)}&submit=TRACK&pum_form_popup_id=2746`;
       const response = await fetch(url, {
         headers: {
