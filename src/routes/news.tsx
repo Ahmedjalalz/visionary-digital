@@ -47,7 +47,7 @@ const posts: DispatchPost[] = [
       "Each child received a weather-resistant satchel packed with notebooks, pens, pencils, geometry tins, water bottles, and hygiene essentials. By eliminating these direct expenses, ELF ensures zero students drop out due to economic strain."
     ],
     img: "/images/wash/wash-s-6.jpg",
-    imgPosition: "object-[center_18%]",
+    imgPosition: "object-[center_12%]",
   },
   {
     id: "music-of-the-heart",
@@ -64,7 +64,7 @@ const posts: DispatchPost[] = [
       "Field observations confirm that participating children show elevated discipline, improved emotional wellbeing, and an extraordinary 78% increase in regular classroom attendance."
     ],
     img: "/images/music/news-orchestra.jpg",
-    imgPosition: "object-[center_20%]",
+    imgPosition: "object-[center_15%]",
   },
   {
     id: "mobile-medical-camp-sheikhupura",
@@ -81,7 +81,7 @@ const posts: DispatchPost[] = [
       "Over 640 men, women, and children were examined, with critical cases referred to Lahore specialized tertiary hospitals with transportation and treatment fully subsidized by the foundation."
     ],
     img: "/images/pregnant/pregnant-13.jpg",
-    imgPosition: "object-[center_20%]",
+    imgPosition: "object-[center_14%]",
   },
   {
     id: "vocational-sewing-machines",
@@ -98,7 +98,7 @@ const posts: DispatchPost[] = [
       "Upon completion, each graduate was presented with an industrial-grade electric sewing machine, starting fabric stock, and local vendor production orders, securing guaranteed monthly income for their households."
     ],
     img: "/images/skills/community/community-skill-6.jpg",
-    imgPosition: "object-[center_20%]",
+    imgPosition: "object-[center_12%]",
   },
   {
     id: "widows-rations-cycle",
@@ -115,7 +115,7 @@ const posts: DispatchPost[] = [
       "Deliveries are made discreetly to each recipient's doorstep, completely doing away with humiliating public queues and preserving the absolute dignity of every mother."
     ],
     img: "/images/widows/scrolling/18.jpg",
-    imgPosition: "object-[center_20%]",
+    imgPosition: "object-[center_12%]",
   },
   {
     id: "classroom-infrastructure-upgrades",
@@ -132,7 +132,7 @@ const posts: DispatchPost[] = [
       "Teachers report that classroom engagement, posture, and written penmanship have markedly improved, transforming previously austere spaces into vibrant hubs of learning."
     ],
     img: "/images/wash/wash-s-7.jpg",
-    imgPosition: "object-[center_20%]",
+    imgPosition: "object-[center_14%]",
   },
 ];
 

@@ -60,6 +60,16 @@ export function ProjectCard({ project, index, className = "" }: ProjectCardProps
           alt={project.name}
           loading="lazy"
           className={project.heroPosition}
+          style={
+            project.heroPosition?.includes("[")
+              ? {
+                  objectPosition: project.heroPosition
+                    .replace("object-[", "")
+                    .replace("]", "")
+                    .replace(/_/g, " "),
+                }
+              : undefined
+          }
         />
       </div>
 

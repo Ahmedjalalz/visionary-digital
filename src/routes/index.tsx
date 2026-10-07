@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
 
 import heroImg from "@/assets/official-local/community.jpg";
-import elfLogoWhite from "@/assets/official-local/elf-logo-white.png";
 // educationImg unused
 // widowsImg unused
 // washImg unused
@@ -150,43 +149,6 @@ function ProjectsRail() {
               index={index}
             />
           ))}
-
-          {/* 10th Card: Directory Feature Tile completing the grid */}
-          <Link
-            to="/projects"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[28px] border border-ink/10 bg-ink p-6 sm:p-7 text-cream transition-all duration-300 shadow-xs hover:border-clay/50 hover:shadow-xl hover:-translate-y-1 min-h-[380px]"
-          >
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-clay/0 via-clay-bright to-clay/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-            {/* Large Watermark Logo covering almost the entire card with proper padding/margins */}
-            <div className="pointer-events-none absolute inset-4 sm:inset-5 flex items-center justify-center select-none overflow-hidden z-0">
-              <img
-                src={elfLogoWhite}
-                alt=""
-                aria-hidden="true"
-                className="h-full w-full max-h-[85%] max-w-[85%] object-contain opacity-[0.07] transition-opacity duration-500 group-hover:opacity-[0.13]"
-              />
-            </div>
-
-            <div className="relative z-10">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/80">
-                Complete Field Directory
-              </span>
-              <h3 className="mt-3 font-display text-xl font-bold text-cream sm:text-2xl">
-                Explore All Programs
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-cream/75">
-                From rural schools and mobile health clinics to women's livelihoods and emergency relief across Pakistan.
-              </p>
-            </div>
-
-            <div className="relative z-10 mt-6 flex items-center justify-between border-t border-cream/15 pt-4 text-xs font-bold uppercase tracking-[0.16em] text-cream transition-colors group-hover:text-clay-bright">
-              <span>View full directory</span>
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-cream transition-all duration-300 group-hover:bg-clay-bright group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </span>
-            </div>
-          </Link>
         </div>
       </div>
     </section>
@@ -292,7 +254,7 @@ function Impact() {
                 src={foundationMedia.schoolUniforms}
                 alt="ELF students in rural Punjab"
                 loading="lazy"
-                className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -306,7 +268,7 @@ function Impact() {
                 src="/images/wash/wash-b-3.jpg"
                 alt="Installed clean water hand pump"
                 loading="lazy"
-                className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_16%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -320,7 +282,7 @@ function Impact() {
                 src="/images/pregnant/pregnant-7.jpg"
                 alt="Medical camp doctor examining patient"
                 loading="lazy"
-                className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
@@ -587,29 +549,53 @@ function FinalCta() {
   return (
     <section className="paper relative overflow-hidden py-16 sm:py-24">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-        <p className="eyebrow">The end of the page is not the end of the story</p>
-        <h2 className="display-lg mt-6 max-w-[16ch]">
-          Somewhere a child is one bag, one fee, one clinic away.
-        </h2>
-        <div className="mt-12 flex flex-wrap gap-3.5">
-          <Link
-            to="/donate"
-            className="rounded-full bg-ink px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all hover:bg-clay hover:text-cream shadow-md"
-          >
-            Support a project
-          </Link>
-          <Link
-            to="/book"
-            className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
-          >
-            Book a meeting
-          </Link>
-          <Link
-            to="/about"
-            className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
-          >
-            Who we are
-          </Link>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">
+            <p className="eyebrow">The end of the page is not the end of the story</p>
+            <h2 className="display-lg mt-6 max-w-[16ch]">
+              Somewhere a child is one bag, one fee, one clinic away.
+            </h2>
+            <div className="mt-10 sm:mt-12 flex flex-wrap gap-3.5">
+              <Link
+                to="/donate"
+                className="rounded-full bg-ink px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition-all hover:bg-clay hover:text-cream shadow-md"
+              >
+                Support a project
+              </Link>
+              <Link
+                to="/book"
+                className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
+              >
+                Book a meeting
+              </Link>
+              <Link
+                to="/about"
+                className="rounded-full border border-ink/25 px-8 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition-all hover:border-ink hover:bg-sand/60 shadow-xs"
+              >
+                Who we are
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="group relative aspect-[16/11] sm:aspect-[4/3] lg:aspect-[16/11] w-full overflow-hidden rounded-3xl border border-ink/10 bg-sand/30 shadow-lg hover:border-clay/40 transition-all duration-300">
+              <img
+                src="/images/school-bags/IMG_9475.JPG"
+                alt="Pakistani school children joyfully holding their new school bags and educational supplies"
+                loading="lazy"
+                className="h-full w-full object-cover object-[center_28%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent opacity-85" />
+              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-cream">
+                <span className="inline-flex items-center rounded-full bg-clay px-3 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-cream shadow-xs">
+                  Education & Life Foundation
+                </span>
+                <p className="mt-2 text-xs sm:text-sm font-medium leading-relaxed text-cream/90 max-w-md">
+                  Delivering essential school bags, uniforms, books, and care to children across rural Pakistan.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div

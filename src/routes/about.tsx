@@ -46,7 +46,7 @@ const boardMembers: BoardMember[] = [
     credentials: "M.A. Economics (FCCU)",
     badge: "Executive Board",
     img: "/images/board/tasneem-najam.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Brings over three decades of distinguished leadership in Pakistan's education sector as an educator, school owner, and institutional administrator. Former Owner and Principal of Saint Matthew's Cambridge School (1986–2016), Head & Hostel Superintendent at Christian Vocational Training Center Narowal, and Vice Chairman of Assemblies of God Church overseeing nine community schools across suburban Punjab.",
   },
@@ -56,7 +56,7 @@ const boardMembers: BoardMember[] = [
     credentials: "BA (Hons) Biblical & Applied Theology (Mattersey Hall, UK)",
     badge: "Executive Board",
     img: "/images/board/anita-qaiser.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Dedicated community and ministry leader serving since 1986 across Pakistan's four provinces, Gilgit-Baltistan, and Parachinar. Specializes in youth empowerment, family counseling, and leadership development, bringing extensive pastoral governance and community care to ELF's humanitarian programs.",
   },
@@ -66,7 +66,7 @@ const boardMembers: BoardMember[] = [
     credentials: "BS (Hons) Educational Science (FCCU) · Univ. of Auckland",
     badge: "Executive Board",
     img: "/images/board/zeeshan-hameed.jpg",
-    position: "object-[center_15%]",
+    position: "object-[center_10%]",
     detail:
       "Founder and International Director of Education and Life Foundation. Leading non-profit initiatives since 2017, he spearheads ELF's international donor relations, strategic project planning, institutional capacity building, and cross-border partnerships connecting global resources directly to grassroots Pakistani communities.",
   },
@@ -76,7 +76,7 @@ const boardMembers: BoardMember[] = [
     credentials: "Ph.D. Biotechnology (Molecular Human Genetics)",
     badge: "Executive Board",
     img: "/images/board/sana-rafaqat.jpg",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Accomplished scientist and researcher with over 40 peer-reviewed scientific publications in international journals. With over six years of experience in quality assurance, clinical research management, and university teaching, she oversees ELF's institutional governance, statutory compliance, and healthcare initiatives.",
   },
@@ -85,7 +85,7 @@ const boardMembers: BoardMember[] = [
     role: "Chief Financial Officer",
     badge: "Executive Board",
     img: "/images/board/ejaz-pervaz.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Chief Financial Officer of Education and Life Foundation. Oversees financial governance, budgeting, external audits, and fiscal stewardship, ensuring that all donor contributions and institutional funds are deployed with rigorous transparency and maximum direct impact.",
   },
@@ -95,7 +95,7 @@ const boardMembers: BoardMember[] = [
     credentials: "B.Com (Hailey College of Commerce)",
     badge: "Executive Board",
     img: "/images/board/sohail-hameed.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Businessman with over 11 years of voluntary church financial administration. Holds a Bachelor of Commerce from Hailey College of Commerce and manages ELF's daily accounting, fiscal allocations, disbursement verification, and transparent reporting systems.",
   },
@@ -105,7 +105,7 @@ const boardMembers: BoardMember[] = [
     credentials: "MPhil Economics (NCBA&E) · MSc Economics (FCCU)",
     badge: "Executive Board",
     img: "/images/board/kamran-rehmat.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Economics Professor in the Punjab government sector (Government Associate College for Boys, Lahore) and former Human Rights Defender with the National Commission for Justice and Peace (NCJP). Directs official administration, secretarial documentation, and minority welfare advocacy for ELF.",
   },
@@ -115,7 +115,7 @@ const boardMembers: BoardMember[] = [
     credentials: "Master in Theology",
     badge: "Programs Leadership",
     img: "/images/board/samuel-bhatti.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Founder and Program Lead of Azadi Freedom under ELF. With a background directing a German non-profit in Pakistan, he advances UN Sustainable Development Goals through vocational skills training, micro-business grants, and rights-based social inclusion for marginalized communities.",
   },
@@ -125,9 +125,19 @@ const boardMembers: BoardMember[] = [
     credentials: "Motivational Speaker & Consultant",
     badge: "Communications",
     img: "/images/board/javed-mukhtar.jpg",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Press Secretary of Education and Life Foundation. Renowned motivational speaker and community consultant steering ELF's public communication, media outreach, and storytelling to highlight grassroots needs and rally community support.",
+  },
+  {
+    name: "Mr. Faisal Ilyas",
+    role: "Peace, Human Rights & Religious Harmony Advisor",
+    credentials: "M.Phil Peace & Conflict Studies · UN Fellow (OHCHR Geneva)",
+    badge: "Advisory Board",
+    img: "/images/board/faisal-ilyas.jpg",
+    position: "object-[center_12%]",
+    detail:
+      "M.Phil Research Scholar in Peace and Conflict Studies based in Lahore, Pakistan. UN Fellow in Human & Minority Rights (OHCHR United Nations, Geneva), Global Trustee At-Large at URI Global Council (San Francisco), Regional Expert for South Asia (International Prize – We Are Together, Moscow), and Paris Peace Forum Project Leader / Country Representative since 2018. Graduate of Goldin Institute (Chicago) and Euphrates Institute (New York); social scientist and defender of peace, human rights, and religious harmony since 2012.",
   },
   {
     name: "Prof. Dr. Christy Munir",
@@ -135,7 +145,7 @@ const boardMembers: BoardMember[] = [
     credentials: "Ph.D. Chemistry (Wayne State, USA) · Professor Emeritus (FCCU)",
     badge: "Professor Emeritus",
     img: "/images/board/christy-munir.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Former Chairman of ELF and Professor Emeritus of Inorganic Chemistry at Forman Christian College (A Chartered University). Over 40 years of academic and institutional leadership, including Vice Principal and Principal of FCCU, with 50+ published scientific papers guiding ELF's founding vision.",
   },
@@ -145,7 +155,7 @@ const boardMembers: BoardMember[] = [
     credentials: "M.Sc. Economics (Colorado State, USA) · Professor Emeritus (FCCU)",
     badge: "Professor Emeritus",
     img: "/images/board/aslam-yuhanna.png",
-    position: "object-[center_18%]",
+    position: "object-[center_12%]",
     detail:
       "Former Chairman of ELF and Professor Emeritus of Economics at Forman Christian College (1970–2007). Former Chairman of the Pakistan Assemblies of God and current Chairman of Assemblies of God Church, Lahore, providing lifelong spiritual wisdom, educational leadership, and ethical stewardship.",
   },
@@ -194,7 +204,7 @@ function HistoryRail() {
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24 pb-8">
           <div className="mx-auto mb-8 w-full max-w-[1600px] px-8">
             <span className="eyebrow">The journey</span>
-            <h2 className="display-md mt-3 max-w-[18ch] text-ink">
+            <h2 className="display-md mt-3 max-w-4xl text-balance text-ink">
               How a room full of urgency became a portfolio of programmes.
             </h2>
           </div>
@@ -202,7 +212,7 @@ function HistoryRail() {
             {history.map((h, i) => (
               <li key={h.year} className="w-[440px] shrink-0">
                 <div className="relative h-[240px] overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
-                  <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
+                  <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_16%]" />
                   <div className="absolute inset-0 bg-ink/45" />
                   <span className="numeral absolute bottom-4 left-5 text-5xl text-cream">{h.year}</span>
                 </div>
@@ -224,7 +234,7 @@ function HistoryRail() {
           {history.map((h) => (
             <li key={h.year}>
               <div className="relative h-52 overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
-                <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_30%]" />
+                <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_16%]" />
                 <div className="absolute inset-0 bg-ink/45" />
                 <span className="numeral absolute bottom-3 left-4 text-4xl text-cream">{h.year}</span>
               </div>
@@ -422,7 +432,7 @@ function About() {
                   <img
                     src={foundationMedia.widowsFoodRations}
                     alt="ELF Widows Welfare distribution in Punjab"
-                    className="h-full w-full object-cover object-[center_30%]"
+                    className="h-full w-full object-cover object-[center_12%]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                   <span className="absolute bottom-3 left-4 text-xs font-bold uppercase tracking-wider text-cream/90 bg-ink/70 backdrop-blur-xs px-3 py-1 rounded-full">
@@ -481,7 +491,7 @@ function About() {
                     <img
                       src={foundationMedia.schoolStudents}
                       alt="Smiling ELF student studying with open textbook and coursework"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-85" />
@@ -834,7 +844,7 @@ function About() {
                       src={s.img}
                       alt={s.title}
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent opacity-60" />
                     <span className="absolute left-3 top-3 rounded-full bg-ink/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cream backdrop-blur-xs shadow-xs">

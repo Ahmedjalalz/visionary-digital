@@ -97,7 +97,7 @@ export function WidowsHeroCarousel() {
                         src={img.src}
                         alt={img.alt}
                         loading={index < 4 ? "eager" : "lazy"}
-                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-1000 ease-out"
+                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-1000 ease-out"
                       />
 
                       {/* Ambient gradient overlay for depth */}

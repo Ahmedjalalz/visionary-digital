@@ -3,7 +3,6 @@ import { ShieldCheck, FileCheck, Award, BadgeCheck } from "lucide-react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
-import { ThemeToggle } from "@/hooks/use-theme";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -152,7 +151,6 @@ export function SiteFooter() {
                   <Icon className="h-3.5 w-3.5" />
                 </a>
               ))}
-              <ThemeToggle className="h-8 w-8" />
             </div>
           </div>
         </div>

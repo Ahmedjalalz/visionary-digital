@@ -46,8 +46,8 @@ const cohorts: Cohort[] = [
       "Safe residential and family-placement oversight",
       "Mentorship and life-skills preparation for adulthood",
     ],
-    img: "/images/orphan-care/1.JPG",
-    focal: "object-[50%_25%]",
+    img: "/images/orphan-care/orphan-center-family.jpg",
+    focal: "object-[center_20%]",
   },
   {
     id: "single-parent",
@@ -65,8 +65,8 @@ const cohorts: Cohort[] = [
       "Household relief preventing child labor dropouts",
       "Regular academic attendance tracking",
     ],
-    img: "/images/orphan-care/4.JPG",
-    focal: "object-[50%_20%]",
+    img: "/images/orphan-care/single-parent-family.jpg",
+    focal: "object-[center_18%]",
   },
   {
     id: "modern-slavery",
@@ -84,8 +84,8 @@ const cohorts: Cohort[] = [
       "Nutritional hampers for bonded households",
       "Advocacy and legal safeguarding against child coercion",
     ],
-    img: "/images/orphan-care/7.JPG",
-    focal: "object-[50%_20%]",
+    img: "/images/orphan-care/vulnerable-girl-portrait.jpg",
+    focal: "object-[center_20%]",
   },
   {
     id: "disabilities",
@@ -103,8 +103,8 @@ const cohorts: Cohort[] = [
       "Community and church integration workshops",
       "Family counseling overcoming societal stigma",
     ],
-    img: "/images/orphan-care/10.JPG",
-    focal: "object-[50%_30%]",
+    img: "/images/orphan-care/special-needs-boy.jpg",
+    focal: "object-[center_15%]",
   },
 ];
 

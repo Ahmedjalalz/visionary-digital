@@ -99,6 +99,20 @@ export function YouTubeIcon({ className = "h-4 w-4", ...props }: SocialIconProps
   );
 }
 
+export function TikTokIcon({ className = "h-4 w-4", ...props }: SocialIconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.891 2.892 2.896 2.896 0 0 1-2.892-2.892 2.896 2.896 0 0 1 2.892-2.892c.31 0 .607.054.885.148V9.435a6.34 6.34 0 0 0-.885-.063 6.337 6.337 0 0 0-6.338 6.338 6.337 6.337 0 0 0 6.338 6.338 6.337 6.337 0 0 0 6.338-6.338V8.679a8.21 8.21 0 0 0 4.768 1.48V6.714a4.838 4.838 0 0 1-.995-.028z" />
+    </svg>
+  );
+}
+
 /**
  * Standard collection of official ELF communication & social channels
  */
@@ -120,6 +134,12 @@ export const siteSocials = [
     label: "Instagram",
     title: "Instagram @educationandlifefoundation1",
     Icon: InstagramIcon,
+  },
+  {
+    href: "https://www.tiktok.com/@educationlifefoundation?_r=1&_t=ZS-9ALzG47gG2s",
+    label: "TikTok",
+    title: "TikTok @educationlifefoundation",
+    Icon: TikTokIcon,
   },
   {
     href: "https://facebook.com/profile.php?id=61582388637046",

@@ -139,9 +139,15 @@ export function ProvincialEducationCensus({
                 pencils, uniforms, and the everyday dignity required to walk through a school gate
                 without being turned away.
               </p>
-              <div className="pt-3 border-t border-ink/10 flex flex-wrap items-center justify-between text-xs font-semibold uppercase tracking-wider text-ink/60">
+              <div className="pt-3 border-t border-ink/10 flex flex-wrap items-center justify-between gap-2.5 text-xs font-semibold uppercase tracking-wider text-ink/60">
                 <span>Total 5–16 Demographic: ~52.5M</span>
-                <span className="text-clay font-bold">Out-of-School: ~49.9%</span>
+                <span className="animate-pulse-aggressive inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold tracking-wider text-red-600 dark:border-red-400/35 dark:bg-red-500/15 dark:text-red-400">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-red-600 dark:bg-red-400" />
+                  </span>
+                  <span>Out-of-School: ~49.9%</span>
+                </span>
               </div>
             </div>
           </div>

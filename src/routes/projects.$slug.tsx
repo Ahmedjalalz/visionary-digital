@@ -168,6 +168,14 @@ const midwiferyPhotoDetails = [
     title: "Sterile Delivery Tools & Practical",
     desc: "Hands-on practical training with surgical delivery instruments, aseptic clamps, and infant care.",
   },
+  {
+    title: "Postnatal Infant Examination",
+    desc: "Community midwives conducting newborn assessment and lactation consultation in the village.",
+  },
+  {
+    title: "Field Health Outreach",
+    desc: "Door-to-door prenatal monitoring and maternal health awareness across rural village clusters.",
+  },
 ];
 
 const schoolBagsPhotoDetails = [
@@ -240,8 +248,44 @@ const capacityBuildingPhotoDetails = [
   },
 ];
 
+const orphanCarePhotoDetails = [
+  {
+    title: "Special Needs Dignity & Affirmation",
+    desc: "Empowering children with developmental conditions through compassionate, individualized care, emotional warmth, and acceptance.",
+  },
+  {
+    title: "Protecting the Most Vulnerable",
+    desc: "Close-up portrait of a child from an underserved rural community where ELF provides safety, nutrition, and child protection.",
+  },
+  {
+    title: "Specialized Pediatric & Strabismus Care",
+    desc: "Infant and toddler health interventions supporting children with congenital eye, facial, and pediatric medical challenges.",
+  },
+  {
+    title: "Inclusive Childhood & Community Fellowship",
+    desc: "Children with speech, hearing, and cognitive differences thriving alongside their peers without stigma or isolation.",
+  },
+  {
+    title: "Mobility Assistance & Maternal Support",
+    desc: "Walking alongside children with lower limb and physical impairments, partnering with families for long-term therapeutic care.",
+  },
+  {
+    title: "Overcoming Rickets & Mobility Barriers",
+    desc: "Equipping children with mobility impairments with educational tools and orthopedic pathways so school is always accessible.",
+  },
+  {
+    title: "Adaptive Learning for Sensory Impairments",
+    desc: "Ensuring children with vision and sensory loss receive dedicated learning materials, school supplies, and dignity.",
+  },
+  {
+    title: "Deaf & Audiological Care Outreach",
+    desc: "Grassroots identification and compassionate support for children with audiological and ear conditions in impoverished villages.",
+  },
+];
+
 function ProjectPage() {
   const { project } = Route.useLoaderData();
+  const isEducation = project.slug === "education-for-all";
   const others = projects.filter((p) => p.slug !== project.slug).slice(0, 4);
   const accentClass = project.accent === "moss" ? "text-moss" : "text-clay";
 
@@ -325,6 +369,17 @@ function ProjectPage() {
 
           <div className={`relative z-10 flex flex-col justify-end px-5 py-12 sm:px-8 sm:py-16 ${splitHero ? "bg-sand lg:order-1 lg:px-[8vw]" : "mx-auto w-full max-w-[1600px]"}`}>
             <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
+              {(project.slug === "school-bags" || project.slug === "education-for-all") && (
+                <div className="mb-5 sm:mb-6">
+                  <span className="animate-pulse-aggressive inline-flex items-center gap-2.5 sm:gap-3 rounded-full border border-red-500/35 bg-red-500/10 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600 shadow-sm backdrop-blur-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400">
+                    <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-80" />
+                      <span className="relative inline-flex h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-600 dark:bg-red-400" />
+                    </span>
+                    <span>Education Crisis in Pakistan</span>
+                  </span>
+                </div>
+              )}
               <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "!text-clay-bright drop-shadow-xs"}`}>Initiative Portfolio</span>
               <h1
                 className={`mt-4 font-display font-bold leading-[1.02] ${splitHero ? "text-ink" : "!text-cream drop-shadow-md"} ${
@@ -346,10 +401,38 @@ function ProjectPage() {
         <div className="mx-auto max-w-[1600px]">
           {project.problemImage ? (
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-7">
-                <span className="eyebrow">The problem</span>
-                <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-                  <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] lg:text-[5.5vw] xl:text-[5rem] ${accentClass}`}>
+              <div className={`order-2 lg:order-1 ${isEducation ? "lg:col-span-4" : "lg:col-span-5"}`}>
+                <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
+                  <img
+                    src={project.problemImage}
+                    alt={`${project.name} problem context`}
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className={`order-1 lg:order-2 ${isEducation ? "lg:col-span-8" : "lg:col-span-7"}`}>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="eyebrow">The problem</span>
+                  {isEducation && (
+                    <span className="animate-pulse-aggressive inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-red-500/35 bg-red-500/10 px-3.5 sm:px-4 py-1 text-xs font-bold uppercase tracking-wider text-red-600 shadow-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400">
+                      <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-80" />
+                        <span className="relative inline-flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-red-600 dark:bg-red-400" />
+                      </span>
+                      <span>Education Crisis in Pakistan</span>
+                    </span>
+                  )}
+                </div>
+                <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-6 sm:gap-x-8 gap-y-2" : "gap-x-6 gap-y-2"}`}>
+                  <span
+                    className={
+                      isEducation
+                        ? `numeral text-[clamp(5.5rem,20vw,14rem)] leading-[0.75] font-black tracking-tighter ${accentClass}`
+                        : `numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] lg:text-[5.5vw] xl:text-[5rem] ${accentClass}`
+                    }
+                  >
                     {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
                       <Counter
                         to={Number(project.problem.figure.replace(/,/g, ""))}
@@ -360,11 +443,23 @@ function ProjectPage() {
                       project.problem.figure
                     )}
                   </span>
-                  <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw] lg:text-[2.5vw] xl:text-[2.2rem]">
+                  <span
+                    className={
+                      isEducation
+                        ? "numeral text-[clamp(2.4rem,8.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink"
+                        : "numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw] lg:text-[2.5vw] xl:text-[2.2rem]"
+                    }
+                  >
                     {project.problem.unit}
                   </span>
                 </div>
-                <p className="mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
+                <p
+                  className={
+                    isEducation
+                      ? "mt-7 max-w-[20ch] font-display text-3xl font-bold leading-[1.08] text-ink sm:text-4xl lg:text-5xl xl:text-[3.5rem] tracking-tight"
+                      : "mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl"
+                  }
+                >
                   {project.problem.line}
                 </p>
                 <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
@@ -379,23 +474,18 @@ function ProjectPage() {
                   ))}
                 </div>
               </div>
-
-              <div className="lg:col-span-5">
-                <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
-                  <img
-                    src={project.problemImage}
-                    alt={`${project.name} field context`}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
             </div>
           ) : (
             <>
               <span className="eyebrow">The problem</span>
-              <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-                <span className={`numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`}>
+              <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-6 sm:gap-x-8 gap-y-2" : "gap-x-6 gap-y-2"}`}>
+                <span
+                  className={
+                    isEducation
+                      ? `numeral text-[clamp(5.5rem,20vw,14rem)] leading-[0.75] font-black tracking-tighter ${accentClass}`
+                      : `numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`
+                  }
+                >
                   {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
                     <Counter
                       to={Number(project.problem.figure.replace(/,/g, ""))}
@@ -406,11 +496,23 @@ function ProjectPage() {
                     project.problem.figure
                   )}
                 </span>
-                <span className="numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]">
+                <span
+                  className={
+                    isEducation
+                      ? "numeral text-[clamp(2.4rem,8.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink"
+                      : "numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]"
+                  }
+                >
                   {project.problem.unit}
                 </span>
               </div>
-              <p className="mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
+              <p
+                className={
+                  isEducation
+                    ? "mt-7 max-w-[20ch] font-display text-3xl font-bold leading-[1.08] text-ink sm:text-4xl lg:text-5xl xl:text-[3.5rem] tracking-tight"
+                    : "mt-6 max-w-[24ch] font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl"
+                }
+              >
                 {project.problem.line}
               </p>
               <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
@@ -437,8 +539,34 @@ function ProjectPage() {
         <ProvincialEducationCensus showHeadline={project.slug !== "education-for-all"} />
       )}
 
-      {/* ── response, treated differently per layout ── */}
-      {project.layout === "horizontal" ? (
+      {/* ── response section ── */}
+      {project.responseImage ? (
+        <section className="paper py-16 sm:py-24">
+          <div className="mx-auto grid max-w-[1600px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7">
+              <h2 className="display-md text-ink">Our response.</h2>
+              <div className="mt-8 space-y-6">
+                {project.response.map((r, i) => (
+                  <p key={i} className="text-base sm:text-lg leading-relaxed text-ink/75">
+                    {r}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
+                <img
+                  src={project.responseImage}
+                  alt={`${project.name} response in action`}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : project.layout === "horizontal" ? (
         <section className="relative overflow-hidden py-16 sm:py-20">
           <div
             aria-hidden
@@ -557,7 +685,7 @@ function ProjectPage() {
                     src={image}
                     alt={`${project.name} field work ${index + 1}`}
                     loading="lazy"
-                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-[center_20%]"} transition-transform duration-700 group-hover:scale-[1.035]`}
+                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-[center_12%]"} transition-transform duration-700 group-hover:scale-[1.035]`}
                   />
                   {project.slug === "midwifery-program" && midwiferyPhotoDetails[index] && (
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
@@ -595,6 +723,19 @@ function ProjectPage() {
                       </h4>
                       <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
                         {capacityBuildingPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
+                  {project.slug === "faith-hope-love-for-every-child" && orphanCarePhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Dispatch
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {orphanCarePhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {orphanCarePhotoDetails[index].desc}
                       </p>
                     </div>
                   )}
@@ -663,7 +804,7 @@ function ProjectPage() {
                       src={foundationMedia.musicStudentSolo}
                       alt="Student practicing violin in Music of the Heart program"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
@@ -671,7 +812,7 @@ function ProjectPage() {
                       src="/images/music/music-lesson.jpg"
                       alt="Student learning violin in classroom session"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -681,7 +822,7 @@ function ProjectPage() {
                       src={foundationMedia.musicOrchestraClass}
                       alt="Classroom orchestra rehearsal session"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
@@ -689,7 +830,7 @@ function ProjectPage() {
                       src={foundationMedia.musicConcertHall}
                       alt="Youth concert performance"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -880,7 +1021,7 @@ function ProjectPage() {
                       <img
                         src="/images/pregnant/pregnant-10.jpg"
                         alt="Clinical Antenatal Checkup"
-                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -898,7 +1039,7 @@ function ProjectPage() {
                       <img
                         src="/images/pregnant/pregnant-11.jpg"
                         alt="Lady Health Visitor Home Consultation"
-                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -916,7 +1057,7 @@ function ProjectPage() {
                       <img
                         src="/images/pregnant/pregnant-14.jpg"
                         alt="ELF Nutrition Support and Infant Formula"
-                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
