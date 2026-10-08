@@ -38,6 +38,7 @@ import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog";
+import { sendPartnershipNotification } from "@/lib/email-service";
 
 
 export const Route = createFileRoute("/impact")({
@@ -918,6 +919,26 @@ ${formData.proposal.trim() || "No additional message provided."}
       } else {
         toast.success("Partnership proposal received! Our leadership team will review it.");
         setSubmitted(true);
+      }
+
+      // Dispatch notification emails via Resend
+      try {
+        await sendPartnershipNotification({
+          data: {
+            orgName: formData.orgName.trim(),
+            contactName: formData.contactName.trim(),
+            title: formData.title.trim() || undefined,
+            email: formData.email.trim(),
+            phone: formData.phone.trim() || undefined,
+            country: formData.country.trim() || undefined,
+            orgType: formData.orgType,
+            collabType: formData.collabType,
+            focusAreas: selectedFocus,
+            proposal: formData.proposal.trim(),
+          },
+        });
+      } catch (mailErr) {
+        console.warn("Failed to dispatch partnership emails:", mailErr);
       }
     } catch (err) {
       setLoading(false);

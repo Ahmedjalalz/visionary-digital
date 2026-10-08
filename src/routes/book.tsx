@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { sendBookingNotification } from "@/lib/email-service";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -227,22 +228,46 @@ function Book() {
     e.preventDefault();
     if (!date || !time) return;
     const fd = new FormData(e.currentTarget);
+    const name = String(fd.get("name") ?? "");
+    const email = String(fd.get("email") ?? "");
+    const phone = String(fd.get("phone") ?? "") || null;
+    const purpose = String(fd.get("purpose") ?? "") || null;
+
     setSending(true);
     const { error } = await supabase.from("appointments").insert({
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? "") || null,
-      purpose: String(fd.get("purpose") ?? "") || null,
+      name,
+      email,
+      phone,
+      purpose,
       platform,
       meeting_date: date,
       meeting_time: `${time} UTC`,
     });
-    setSending(false);
+
     if (error) {
+      setSending(false);
       setConfirmed(null);
       alert("We couldn't save your booking. Please try again or email us directly.");
       return;
     }
+
+    try {
+      await sendBookingNotification({
+        data: {
+          name,
+          email,
+          phone,
+          platform,
+          date,
+          time: `${time} UTC`,
+          purpose,
+        },
+      });
+    } catch (err) {
+      console.warn("Failed to dispatch booking notification email:", err);
+    }
+
+    setSending(false);
     setConfirmed({ date, time, platform });
   }
 

@@ -23,6 +23,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { supabase } from "@/integrations/supabase/client";
 import { projects } from "@/data/projects";
 import { MaskLines, ParallaxImage } from "@/components/site/motion-primitives";
+import { sendDonationPledgeNotification } from "@/lib/email-service";
 
 
 type DonateSearch = { project?: string | undefined };
@@ -100,12 +101,17 @@ function Donate() {
     e.preventDefault();
     if (!value || value <= 0) return;
     const fd = new FormData(e.currentTarget);
+    const donorName = String(fd.get("name") ?? "");
+    const donorEmail = String(fd.get("email") ?? "");
+    const donorPhone = String(fd.get("phone") ?? "") || null;
+    const donorMessage = String(fd.get("message") ?? "") || null;
+
     setSending(true);
     const { error } = await supabase.from("donation_pledges").insert({
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? "") || null,
-      message: String(fd.get("message") ?? "") || null,
+      name: donorName,
+      email: donorEmail,
+      phone: donorPhone,
+      message: donorMessage,
       amount: value,
       currency: "USD",
       is_monthly: monthly,
@@ -116,6 +122,25 @@ function Donate() {
       toast.error("We couldn't record your pledge. Please try again.");
       return;
     }
+
+    // Dispatch donation confirmation and admin alert via Resend
+    try {
+      await sendDonationPledgeNotification({
+        data: {
+          name: donorName,
+          email: donorEmail,
+          phone: donorPhone,
+          amount: value,
+          currency: "USD",
+          isMonthly: monthly,
+          projectSlug: projectSlug || null,
+          message: donorMessage,
+        },
+      });
+    } catch (err) {
+      console.warn("Failed to dispatch donation pledge emails:", err);
+    }
+
     setDone(true);
   }
 

@@ -7,6 +7,7 @@ import { MapEmbed } from "@/components/site/MapEmbed";
 import { MaskLines } from "@/components/site/motion-primitives";
 import { supabase } from "@/integrations/supabase/client";
 import { foundationMedia } from "@/data/foundationMedia";
+import { sendContactMessageNotification } from "@/lib/email-service";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -33,18 +34,38 @@ function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
+    const name = String(fd.get("name") ?? "");
+    const email = String(fd.get("email") ?? "");
+    const subject = String(fd.get("subject") ?? "");
+    const message = String(fd.get("message") ?? "");
+
     setSending(true);
     const { error } = await supabase.from("contact_messages").insert({
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      subject: String(fd.get("subject") ?? ""),
-      message: String(fd.get("message") ?? ""),
+      name,
+      email,
+      subject,
+      message,
     });
     setSending(false);
     if (error) {
       toast.error("Your message didn't send. Please try again.");
       return;
     }
+
+    // Dispatch email notifications via Resend
+    try {
+      await sendContactMessageNotification({
+        data: {
+          name,
+          email,
+          subject,
+          message,
+        },
+      });
+    } catch (err) {
+      console.warn("Failed to dispatch contact message emails:", err);
+    }
+
     toast.success("Message received. We'll be in touch.");
     form.reset();
   }
