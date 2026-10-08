@@ -428,20 +428,25 @@ function About() {
             </div>
             <div className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-sand/30 dark:bg-card/60 p-6 sm:p-8 shadow-xs">
-                <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-ink/10">
+                <div className="relative h-80 sm:h-96 w-full overflow-hidden rounded-2xl bg-ink/10 shadow-xs">
                   <img
-                    src={foundationMedia.widowsFoodRations}
-                    alt="ELF Widows Welfare distribution in Punjab"
-                    className="h-full w-full object-cover object-[center_12%]"
+                    src="/images/about/irshad-bibi-and-husband.jpg"
+                    alt="Irshad Bibi and her husband, the founding inspiration of Education and Life Foundation"
+                    className="h-full w-full object-cover object-[center_20%]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                   <span className="absolute bottom-3 left-4 text-xs font-bold uppercase tracking-wider text-cream/90 bg-ink/70 backdrop-blur-xs px-3 py-1 rounded-full">
-                    Widows Welfare Initiative
+                    The Founding Inspiration
                   </span>
                 </div>
-                <blockquote className="mt-6 border-l-2 border-clay pl-4 italic text-sm text-ink/75 leading-relaxed">
-                  "Seeing their daily struggles inspired the family to begin helping widows with their immediate needs — turning personal compassion into lifelong community commitment."
-                </blockquote>
+                <div className="mt-5 space-y-1">
+                  <h4 className="font-display text-base font-bold text-ink">
+                    Irshad Bibi &amp; Her Husband
+                  </h4>
+                  <p className="text-xs text-ink/70 leading-relaxed">
+                    Whose personal compassion for widows, struggling families, and vulnerable children inspired the inception and lifelong mission of Education and Life Foundation.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -682,41 +687,63 @@ function About() {
 
           {/* Section 9: Our Journey Continues */}
           <div className="mt-16 rounded-3xl border border-ink/10 bg-sand/35 dark:bg-card/70 p-8 sm:p-12">
-            <div className="max-w-4xl">
-              <span className="eyebrow">The Road Ahead</span>
-              <h3 className="font-display text-2xl sm:text-4xl font-bold text-ink mt-2">
-                Our Journey Continues
-              </h3>
-              <div className="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-ink/75">
-                <p>
-                  What began with Irshad Bibi's compassion for widows and vulnerable children has grown into a continuing mission carried forward through Education and Life Foundation.
-                </p>
-                <p>
-                  Today, ELF continues to stand alongside disadvantaged families and persecuted Christian communities through programs designed to provide education, skills, practical support, dignity, and opportunities for a better future.
-                </p>
-                <p className="font-display text-xl sm:text-2xl font-bold text-ink pt-2">
-                  There is still much more to do.
-                </p>
-                <p className="border-l-4 border-clay pl-5 text-ink/90 font-medium italic">
-                  "And as long as there are children waiting for an opportunity to learn, widows struggling to provide for their families, young people searching for a path toward independence, and communities needing support in times of crisis, Education and Life Foundation will continue working to turn compassion into action and hope into opportunity."
-                </p>
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-7">
+                <span className="eyebrow">The Road Ahead</span>
+                <h3 className="font-display text-2xl sm:text-4xl font-bold text-ink mt-2">
+                  Our Journey Continues
+                </h3>
+                <div className="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-ink/75">
+                  <p>
+                    What began with Irshad Bibi's compassion for widows and vulnerable children has grown into a continuing mission carried forward through Education and Life Foundation.
+                  </p>
+                  <p>
+                    Today, ELF continues to stand alongside disadvantaged families and persecuted Christian communities through programs designed to provide education, skills, practical support, dignity, and opportunities for a better future.
+                  </p>
+                  <p className="font-display text-xl sm:text-2xl font-bold text-ink pt-2">
+                    There is still much more to do.
+                  </p>
+                  <p className="border-l-4 border-clay pl-5 text-ink/90 font-medium italic">
+                    "And as long as there are children waiting for an opportunity to learn, widows struggling to provide for their families, young people searching for a path toward independence, and communities needing support in times of crisis, Education and Life Foundation will continue working to turn compassion into action and hope into opportunity."
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-4 pt-4">
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-xs hover:bg-clay-deep transition-all"
+                  >
+                    <span>Explore Our Projects</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    to="/donate"
+                    className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-background/80 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:bg-ink hover:text-cream transition-all shadow-xs"
+                  >
+                    <span>Support Our Mission</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4 pt-4">
-                <Link
-                  to="/projects"
-                  className="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-xs hover:bg-clay-deep transition-all"
-                >
-                  <span>Explore Our Projects</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  to="/donate"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/20 bg-background/80 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.16em] text-ink hover:bg-ink hover:text-cream transition-all shadow-xs"
-                >
-                  <span>Support Our Mission</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+              {/* Widows Welfare Distribution Image in a longer frame */}
+              <div className="lg:col-span-5">
+                <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-background/90 dark:bg-card p-6 sm:p-7 shadow-xs">
+                  <div className="relative h-[380px] sm:h-[460px] w-full overflow-hidden rounded-2xl bg-ink/10">
+                    <img
+                      src={foundationMedia.widowsFoodRations}
+                      alt="ELF Widows Welfare distribution in Punjab"
+                      className="h-full w-full object-cover object-[center_16%]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+                    <span className="absolute bottom-3 left-4 text-xs font-bold uppercase tracking-wider text-cream/90 bg-ink/75 backdrop-blur-xs px-3 py-1 rounded-full">
+                      Widows Welfare Initiative
+                    </span>
+                  </div>
+                  <blockquote className="mt-5 border-l-2 border-clay pl-4 italic text-xs sm:text-sm text-ink/75 leading-relaxed">
+                    "Seeing their daily struggles inspired the family to begin helping widows with their immediate needs — turning personal compassion into lifelong community commitment."
+                  </blockquote>
+                </div>
               </div>
             </div>
           </div>
