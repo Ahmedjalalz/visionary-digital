@@ -63,8 +63,8 @@ const posts: DispatchPost[] = [
       "Guided by international advisory from former U.S. Ambassador Dr. Jonathan Addleton and backed by classical instrument pledges from George Mason University's Mason Community Arts Academy, string ensembles have been integrated into weekly schedules.",
       "Field observations confirm that participating children show elevated discipline, improved emotional wellbeing, and an extraordinary 78% increase in regular classroom attendance."
     ],
-    img: "/images/music/news-orchestra.jpg",
-    imgPosition: "object-[center_15%]",
+    img: "/images/music/music-harmonium-performance.jpg",
+    imgPosition: "object-[center_20%]",
   },
   {
     id: "mobile-medical-camp-sheikhupura",

@@ -283,6 +283,33 @@ const orphanCarePhotoDetails = [
   },
 ];
 
+const musicPhotoDetails = [
+  {
+    title: "Harmonium & Vocal Performance",
+    desc: "Master harmonium player and vocalists leading live classical hymns and melodies at community gathering.",
+  },
+  {
+    title: "Carved Dholak Acoustic Rhythm",
+    desc: "Traditional percussionist performing on carved wooden dholak, grounding students in indigenous musical rhythm.",
+  },
+  {
+    title: "Acoustic Guitar Repertoire",
+    desc: "Youth musician playing Yamaha acoustic guitar, bringing contemporary acoustic instrumentation to community sessions.",
+  },
+  {
+    title: "Arts & Joy: Students Celebrating",
+    desc: "Underprivileged students raising their hands in joyful song, demonstrating the transformative emotional power of music.",
+  },
+  {
+    title: "Unified School Assembly Choir",
+    desc: "Students in uniform singing together in morning assembly, building confidence, focus, and community cohesion.",
+  },
+  {
+    title: "Opus 1 Collaborative Spirit",
+    desc: "Children celebrating the introduction of daily music and arts instruction into their school experience.",
+  },
+];
+
 function ProjectPage() {
   const { project } = Route.useLoaderData();
   const isEducation = project.slug === "education-for-all";
@@ -739,6 +766,19 @@ function ProjectPage() {
                       </p>
                     </div>
                   )}
+                  {project.slug === "music-of-the-heart" && musicPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Dispatch
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {musicPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {musicPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
                 </figure>
               );
             })}
@@ -801,36 +841,36 @@ function ProjectPage() {
                 <div className="space-y-4">
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
                     <img
-                      src={foundationMedia.musicStudentSolo}
-                      alt="Student practicing violin in Music of the Heart program"
+                      src="/images/music/music-harmonium-performance.jpg"
+                      alt="Harmonium and vocal performance in community music program"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
-                      src="/images/music/music-lesson.jpg"
-                      alt="Student learning violin in classroom session"
+                      src="/images/music/music-dholak-percussion.jpg"
+                      alt="Live dholak percussionist playing carved acoustic instrument"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_35%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
                     <img
-                      src={foundationMedia.musicOrchestraClass}
-                      alt="Classroom orchestra rehearsal session"
+                      src="/images/music/music-acoustic-guitar.jpg"
+                      alt="Acoustic guitarist performing during community event"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
                     <img
-                      src={foundationMedia.musicConcertHall}
-                      alt="Youth concert performance"
+                      src="/images/music/music-children-joy.jpg"
+                      alt="School children celebrating with song and hands raised in joy"
                       loading="lazy"
-                      className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
