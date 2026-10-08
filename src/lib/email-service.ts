@@ -1,7 +1,26 @@
 import { createServerFn } from "@tanstack/react-start";
 
-const ADMIN_EMAIL = process.env["ADMIN_EMAIL"] || "info@educationlifefoundation.org";
-const FROM_EMAIL = process.env["RESEND_FROM_EMAIL"] || "Education and Life Foundation <info@educationlifefoundation.org>";
+function getAdminEmail(): string {
+  const metaEnv = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env as Record<string, string | undefined>) : undefined;
+  return (
+    process.env["ADMIN_EMAIL"] ||
+    metaEnv?.["ADMIN_EMAIL"] ||
+    process.env["VITE_ADMIN_EMAIL"] ||
+    metaEnv?.["VITE_ADMIN_EMAIL"] ||
+    "info@educationandlifefoundation.org"
+  );
+}
+
+function getFromEmail(): string {
+  const metaEnv = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env as Record<string, string | undefined>) : undefined;
+  return (
+    process.env["RESEND_FROM_EMAIL"] ||
+    metaEnv?.["RESEND_FROM_EMAIL"] ||
+    process.env["VITE_RESEND_FROM_EMAIL"] ||
+    metaEnv?.["VITE_RESEND_FROM_EMAIL"] ||
+    "Education and Life Foundation <info@educationandlifefoundation.org>"
+  );
+}
 
 function getApiKey(): string | null {
   const metaEnv = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env as Record<string, string | undefined>) : undefined;
@@ -31,6 +50,8 @@ async function sendViaResend({ to, replyTo, subject, html }: SendEmailParams) {
     return { success: false, reason: "missing_api_key" };
   }
 
+  const fromEmail = getFromEmail();
+
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -39,7 +60,7 @@ async function sendViaResend({ to, replyTo, subject, html }: SendEmailParams) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: FROM_EMAIL,
+        from: fromEmail,
         to: Array.isArray(to) ? to : [to],
         reply_to: replyTo,
         subject,
@@ -49,7 +70,7 @@ async function sendViaResend({ to, replyTo, subject, html }: SendEmailParams) {
 
     const data = await response.json();
     if (!response.ok) {
-      console.error("[Resend Email Service] API Error:", data);
+      console.error("[Resend Email Service] Delivery Error:", data);
       return { success: false, error: data };
     }
 
@@ -62,6 +83,7 @@ async function sendViaResend({ to, replyTo, subject, html }: SendEmailParams) {
 
 // Common email styling wrapper
 function wrapEmailHtml(title: string, contentHtml: string): string {
+  const adminEmail = getAdminEmail();
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +119,7 @@ function wrapEmailHtml(title: string, contentHtml: string): string {
             <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 24px 32px; text-align: center; font-size: 12px; color: #718096; line-height: 1.5;">
               <p style="margin: 0 0 6px 0; font-weight: 600; color: #143055;">Education and Life Foundation (ELF)</p>
               <p style="margin: 0 0 4px 0;">Lahore, Pakistan · Auckland, NZ · Toronto, CA · Berlin, DE</p>
-              <p style="margin: 0;">Official Inquiries: <a href="mailto:${ADMIN_EMAIL}" style="color: #2563eb; text-decoration: none;">${ADMIN_EMAIL}</a></p>
+              <p style="margin: 0;">Official Inquiries: <a href="mailto:${adminEmail}" style="color: #2563eb; text-decoration: none;">${adminEmail}</a></p>
             </td>
           </tr>
         </table>
@@ -125,6 +147,7 @@ export interface BookingEmailData {
 export const sendBookingNotification = createServerFn({ method: "POST" })
   .validator((data: BookingEmailData) => data)
   .handler(async ({ data }) => {
+    const adminEmail = getAdminEmail();
     const formattedDate = new Date(`${data.date}T00:00:00`).toLocaleDateString("en-GB", {
       weekday: "long",
       year: "numeric",
@@ -170,7 +193,7 @@ export const sendBookingNotification = createServerFn({ method: "POST" })
 
       <p>A member of our team will send the exact video link or dial-in coordinates before the scheduled time.</p>
       <p style="font-size: 13px; color: #64748b;">
-        Need to reschedule or have a question in advance? Simply reply directly to this email or write to <a href="mailto:${ADMIN_EMAIL}" style="color: #2563eb;">${ADMIN_EMAIL}</a>.
+        Need to reschedule or have a question in advance? Simply reply directly to this email or write to <a href="mailto:${adminEmail}" style="color: #2563eb;">${adminEmail}</a>.
       </p>
       `
     );
@@ -178,14 +201,14 @@ export const sendBookingNotification = createServerFn({ method: "POST" })
     // Send both in parallel
     const [adminRes, userRes] = await Promise.all([
       sendViaResend({
-        to: ADMIN_EMAIL,
+        to: adminEmail,
         replyTo: data.email,
         subject: `[New Booking] ${data.name} — ${formattedDate} at ${data.time}`,
         html: adminHtml,
       }),
       sendViaResend({
         to: data.email,
-        replyTo: ADMIN_EMAIL,
+        replyTo: adminEmail,
         subject: `Meeting Confirmation — Education and Life Foundation (${formattedDate})`,
         html: userHtml,
       }),
@@ -213,6 +236,7 @@ export interface PartnershipEmailData {
 export const sendPartnershipNotification = createServerFn({ method: "POST" })
   .validator((data: PartnershipEmailData) => data)
   .handler(async ({ data }) => {
+    const adminEmail = getAdminEmail();
     // 1. Admin Email
     const adminHtml = wrapEmailHtml(
       `Partnership Application: ${data.orgName}`,
@@ -249,20 +273,20 @@ export const sendPartnershipNotification = createServerFn({ method: "POST" })
       </div>
 
       <p>A designated partnerships officer will follow up with you directly at this email address with next steps.</p>
-      <p style="font-size: 13px; color: #64748b;">In the meantime, feel free to write to <a href="mailto:${ADMIN_EMAIL}" style="color: #2563eb;">${ADMIN_EMAIL}</a> with any supplemental dossiers or organizational documentation.</p>
+      <p style="font-size: 13px; color: #64748b;">In the meantime, feel free to write to <a href="mailto:${adminEmail}" style="color: #2563eb;">${adminEmail}</a> with any supplemental dossiers or organizational documentation.</p>
       `
     );
 
     const [adminRes, userRes] = await Promise.all([
       sendViaResend({
-        to: ADMIN_EMAIL,
+        to: adminEmail,
         replyTo: data.email,
         subject: `[Partnership Proposal] ${data.orgName} (${data.country || "Global"})`,
         html: adminHtml,
       }),
       sendViaResend({
         to: data.email,
-        replyTo: ADMIN_EMAIL,
+        replyTo: adminEmail,
         subject: `Partnership Acknowledgment — Education and Life Foundation`,
         html: userHtml,
       }),
@@ -288,6 +312,7 @@ export interface DonationPledgeEmailData {
 export const sendDonationPledgeNotification = createServerFn({ method: "POST" })
   .validator((data: DonationPledgeEmailData) => data)
   .handler(async ({ data }) => {
+    const adminEmail = getAdminEmail();
     const formattedAmount = `$${data.amount.toLocaleString()} ${data.currency} ${data.isMonthly ? "/ month" : "one-time"}`;
 
     // 1. User Receipt / Transfer Instructions Email
@@ -339,12 +364,12 @@ export const sendDonationPledgeNotification = createServerFn({ method: "POST" })
     const [userRes, adminRes] = await Promise.all([
       sendViaResend({
         to: data.email,
-        replyTo: ADMIN_EMAIL,
+        replyTo: adminEmail,
         subject: `Donation Pledge Confirmation — Education and Life Foundation`,
         html: userHtml,
       }),
       sendViaResend({
-        to: ADMIN_EMAIL,
+        to: adminEmail,
         replyTo: data.email,
         subject: `[New Pledge: ${formattedAmount}] from ${data.name}`,
         html: adminHtml,
@@ -367,6 +392,7 @@ export interface ContactMessageEmailData {
 export const sendContactMessageNotification = createServerFn({ method: "POST" })
   .validator((data: ContactMessageEmailData) => data)
   .handler(async ({ data }) => {
+    const adminEmail = getAdminEmail();
     const adminHtml = wrapEmailHtml(
       `Contact Form Message: ${data.subject}`,
       `
@@ -389,20 +415,20 @@ export const sendContactMessageNotification = createServerFn({ method: "POST" })
       <p style="margin-top: 0;">Dear <strong>${data.name}</strong>,</p>
       <p>Thank you for reaching out to the <strong>Education and Life Foundation</strong>. We have received your inquiry regarding "<em>${data.subject}</em>".</p>
       <p>A member of our team across Lahore, Auckland, Toronto, or Berlin will review your message and reply as soon as possible.</p>
-      <p style="font-size: 13px; color: #64748b;">If your inquiry is urgent, you can also write directly to <a href="mailto:${ADMIN_EMAIL}" style="color: #2563eb;">${ADMIN_EMAIL}</a>.</p>
+      <p style="font-size: 13px; color: #64748b;">If your inquiry is urgent, you can also write directly to <a href="mailto:${adminEmail}" style="color: #2563eb;">${adminEmail}</a>.</p>
       `
     );
 
     const [adminRes, userRes] = await Promise.all([
       sendViaResend({
-        to: ADMIN_EMAIL,
+        to: adminEmail,
         replyTo: data.email,
         subject: `[Contact Inquiry] ${data.subject} — from ${data.name}`,
         html: adminHtml,
       }),
       sendViaResend({
         to: data.email,
-        replyTo: ADMIN_EMAIL,
+        replyTo: adminEmail,
         subject: `Message Received — Education and Life Foundation`,
         html: userHtml,
       }),
