@@ -132,7 +132,7 @@ export function ProjectCard({ project, index, className = "" }: ProjectCardProps
       </div>
 
       <div className="foot">
-        <span className="left">{leftLabel}</span>
+        <span className="left" title={leftLabel}>{leftLabel}</span>
         <span className="explore">
           Explore
           <span className="arr">

@@ -106,7 +106,7 @@ function ProjectsIndex() {
 
       <section className="relative bg-background pb-28 pt-12 sm:pt-16">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((p) => {
               const originalIndex = projects.findIndex((item) => item.slug === p.slug);
               return (
