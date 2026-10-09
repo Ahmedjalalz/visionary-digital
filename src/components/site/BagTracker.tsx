@@ -72,7 +72,7 @@ export function BagTracker() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/45 px-5 backdrop-blur-sm"
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/45 px-4 sm:px-5 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             role="dialog"
             aria-modal="true"
@@ -84,7 +84,7 @@ export function BagTracker() {
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-ink/15 bg-sand/95 p-8 shadow-2xl backdrop-blur-2xl sm:p-10"
+              className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-ink/15 bg-sand/95 p-6 sm:p-10 shadow-2xl backdrop-blur-2xl"
             >
               <button
                 onClick={() => setOpen(false)}

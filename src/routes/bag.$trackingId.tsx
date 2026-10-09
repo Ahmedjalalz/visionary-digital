@@ -230,16 +230,16 @@ function BagDetails() {
 
           {/* status as a journey, not a card */}
           <div className="mt-12">
-            <div className="flex items-center">
+            <div className="flex items-center overflow-x-auto pb-2 no-scrollbar">
               {stages.map((s, i) => (
-                <div key={s} className="flex flex-1 items-center last:flex-none">
+                <div key={s} className="flex flex-1 min-w-[65px] sm:min-w-0 items-center last:flex-none">
                   <div className="flex flex-col items-start gap-2">
                     <span
-                      className={`h-3 w-3 rounded-full ${i <= stageIndex ? "bg-clay" : "bg-ink/20"}`}
+                      className={`h-3 w-3 rounded-full shrink-0 ${i <= stageIndex ? "bg-clay" : "bg-ink/20"}`}
                     />
                     <span
-                      className={`text-[0.65rem] uppercase tracking-[0.16em] ${
-                        i <= stageIndex ? "text-ink" : "text-ink/40"
+                      className={`text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.12em] sm:tracking-[0.16em] whitespace-nowrap sm:whitespace-normal ${
+                        i <= stageIndex ? "text-ink font-semibold" : "text-ink/40"
                       }`}
                     >
                       {s}
@@ -247,7 +247,7 @@ function BagDetails() {
                   </div>
                   {i < stages.length - 1 && (
                     <span
-                      className={`mx-3 mb-6 h-px flex-1 ${i < stageIndex ? "bg-clay" : "bg-ink/15"}`}
+                      className={`mx-2 sm:mx-3 mb-6 h-px flex-1 min-w-[16px] ${i < stageIndex ? "bg-clay" : "bg-ink/15"}`}
                     />
                   )}
                 </div>

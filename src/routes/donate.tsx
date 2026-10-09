@@ -280,13 +280,13 @@ function Donate() {
                         setCustom("");
                       }}
                       aria-pressed={amount === a}
-                      className={`rounded-xl border p-6 text-left transition-all cursor-pointer shadow-xs hover:border-clay/40 hover:shadow-md ${
+                      className={`rounded-xl border p-4 sm:p-6 text-left transition-all cursor-pointer shadow-xs hover:border-clay/40 hover:shadow-md ${
                         amount === a
                           ? "border-clay bg-clay text-primary-foreground shadow-md"
                           : "border-ink/15 bg-sand/50 text-ink hover:border-clay hover:bg-sand"
                       }`}
                     >
-                      <span className="numeral text-3xl font-bold">${a}</span>
+                      <span className="numeral text-2xl sm:text-3xl font-bold">${a}</span>
                     </button>
                   ))}
                 </div>
@@ -525,36 +525,36 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
         </div>
 
         {/* Currency / Region pill */}
-        <div className="inline-flex flex-wrap sm:flex-nowrap rounded-2xl sm:rounded-full border border-ink/15 bg-sand/60 p-1 shadow-xs max-w-full">
+        <div className="flex flex-col min-[480px]:flex-row rounded-2xl min-[480px]:rounded-full border border-ink/15 bg-sand/60 p-1 shadow-xs max-w-full">
           <button
             type="button"
             onClick={() => setMethod("international")}
-            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+            className={`flex items-center justify-center gap-2 rounded-xl min-[480px]:rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.14em] transition-all cursor-pointer ${
               method === "international"
                 ? "bg-ink text-cream shadow-xs"
                 : "text-ink/65 hover:text-ink"
             }`}
           >
-            <Globe className="h-3.5 w-3.5" />
+            <Globe className="h-3.5 w-3.5 shrink-0" />
             <span>International (USD / GBP / EUR)</span>
           </button>
           <button
             type="button"
             onClick={() => setMethod("domestic")}
-            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+            className={`flex items-center justify-center gap-2 rounded-xl min-[480px]:rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.14em] transition-all cursor-pointer ${
               method === "domestic"
                 ? "bg-ink text-cream shadow-xs"
                 : "text-ink/65 hover:text-ink"
             }`}
           >
-            <Building2 className="h-3.5 w-3.5" />
+            <Building2 className="h-3.5 w-3.5 shrink-0" />
             <span>Pakistan (PKR / Raast / IBAN)</span>
           </button>
         </div>
       </div>
 
       {/* ── EMBOSSED OFFICIAL FOUNDATION BANK VOUCHER CARD ── */}
-      <div className="mt-10 overflow-hidden rounded-2xl border border-ink/20 bg-gradient-to-br from-ink via-ink/95 to-clay/40 text-cream p-7 sm:p-10 shadow-xl relative">
+      <div className="mt-10 overflow-hidden rounded-2xl border border-ink/20 bg-gradient-to-br from-ink via-ink/95 to-clay/40 text-cream p-5 sm:p-10 shadow-xl relative">
         <div
           aria-hidden
           className="pointer-events-none absolute right-0 top-0 h-96 w-96 -translate-y-12 translate-x-20 rounded-full bg-clay/20 blur-3xl"

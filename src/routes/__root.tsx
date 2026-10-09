@@ -143,7 +143,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SiteNav />
-        <main id="content" className="relative w-full">
+        <main id="content" className="relative w-full max-w-full overflow-x-clip">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>

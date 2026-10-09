@@ -126,20 +126,20 @@ function TimezoneNotice() {
 
         {/* Right: Unified, sleek dual-clock pill widget */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 rounded-xl border border-ink/10 bg-background p-1.5 shadow-2xs">
-          <div className="flex items-center gap-2 rounded-lg bg-ink px-3.5 py-2 text-white">
-            <Clock className="h-3.5 w-3.5 text-clay" />
+          <div className="flex items-center gap-2 rounded-lg bg-ink px-3 py-1.5 sm:px-3.5 sm:py-2 text-white flex-1 min-[440px]:flex-initial">
+            <Clock className="h-3.5 w-3.5 text-clay shrink-0" />
             <div>
               <div className="text-[0.58rem] font-bold uppercase tracking-wider text-white/55">Current UTC</div>
-              <div className="font-mono text-sm sm:text-base font-bold text-white tracking-tight">{utcTime || "--:--:-- UTC"}</div>
+              <div className="font-mono text-xs sm:text-base font-bold text-white tracking-tight">{utcTime || "--:--:-- UTC"}</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-lg bg-sand/60 px-3.5 py-2 text-ink">
-            <Globe className="h-3.5 w-3.5 text-ink/40" />
+          <div className="flex items-center gap-2 rounded-lg bg-sand/60 px-3 py-1.5 sm:px-3.5 sm:py-2 text-ink flex-1 min-[440px]:flex-initial">
+            <Globe className="h-3.5 w-3.5 text-ink/40 shrink-0" />
             <div>
               <div className="text-[0.58rem] font-bold uppercase tracking-wider text-ink/45 truncate max-w-[130px]" title={localTz}>
                 {localTz || "Your Time"}
               </div>
-              <div className="font-mono text-sm sm:text-base font-bold text-ink tracking-tight">{localTime || "--:--:--"}</div>
+              <div className="font-mono text-xs sm:text-base font-bold text-ink tracking-tight">{localTime || "--:--:--"}</div>
             </div>
           </div>
         </div>

@@ -452,12 +452,12 @@ function ProjectPage() {
                     </span>
                   )}
                 </div>
-                <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-6 sm:gap-x-8 gap-y-2" : "gap-x-6 gap-y-2"}`}>
+                <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-4 sm:gap-x-8 gap-y-2" : "gap-x-4 sm:gap-x-6 gap-y-2"}`}>
                   <span
                     className={
                       isEducation
-                        ? `numeral text-[clamp(5.5rem,20vw,14rem)] leading-[0.75] font-black tracking-tighter ${accentClass}`
-                        : `numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] lg:text-[5.5vw] xl:text-[5rem] ${accentClass}`
+                        ? `numeral text-[clamp(3.2rem,14vw,14rem)] leading-[0.85] font-black tracking-tighter break-words ${accentClass}`
+                        : `numeral text-[clamp(2.5rem,12vw,6.5rem)] leading-[0.85] sm:text-[8vw] lg:text-[5.5vw] xl:text-[5rem] break-words ${accentClass}`
                     }
                   >
                     {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
@@ -473,8 +473,8 @@ function ProjectPage() {
                   <span
                     className={
                       isEducation
-                        ? "numeral text-[clamp(2.4rem,8.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink"
-                        : "numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw] lg:text-[2.5vw] xl:text-[2.2rem]"
+                        ? "numeral text-[clamp(1.6rem,6.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink break-words"
+                        : "numeral text-[clamp(1.3rem,5.5vw,2.5rem)] uppercase leading-none text-ink sm:text-[3.4vw] lg:text-[2.5vw] xl:text-[2.2rem] break-words"
                     }
                   >
                     {project.problem.unit}
@@ -505,12 +505,12 @@ function ProjectPage() {
           ) : (
             <>
               <span className="eyebrow">The problem</span>
-              <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-6 sm:gap-x-8 gap-y-2" : "gap-x-6 gap-y-2"}`}>
+              <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-4 sm:gap-x-8 gap-y-2" : "gap-x-4 sm:gap-x-6 gap-y-2"}`}>
                 <span
                   className={
                     isEducation
-                      ? `numeral text-[clamp(5.5rem,20vw,14rem)] leading-[0.75] font-black tracking-tighter ${accentClass}`
-                      : `numeral text-[clamp(2.8rem,14vw,6.5rem)] leading-[0.78] sm:text-[8vw] ${accentClass}`
+                      ? `numeral text-[clamp(3.2rem,14vw,14rem)] leading-[0.85] font-black tracking-tighter break-words ${accentClass}`
+                      : `numeral text-[clamp(2.5rem,12vw,6.5rem)] leading-[0.85] sm:text-[8vw] break-words ${accentClass}`
                   }
                 >
                   {!isNaN(Number(project.problem.figure.replace(/,/g, ""))) ? (
@@ -526,8 +526,8 @@ function ProjectPage() {
                 <span
                   className={
                     isEducation
-                      ? "numeral text-[clamp(2.4rem,8.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink"
-                      : "numeral text-[7vw] uppercase leading-none text-ink sm:text-[3.4vw]"
+                      ? "numeral text-[clamp(1.6rem,6.5vw,6rem)] uppercase font-black tracking-tight leading-none text-ink break-words"
+                      : "numeral text-[clamp(1.3rem,5.5vw,3rem)] uppercase leading-none text-ink sm:text-[3.4vw] break-words"
                   }
                 >
                   {project.problem.unit}

@@ -61,23 +61,23 @@ export function SiteNav() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-ink/10 bg-background/95 backdrop-blur-xl transition-all duration-500">
         <div className="border-b border-white/10 bg-ink text-cream">
-          <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-5 py-[3px] text-[0.6rem] tracking-[0.12em] text-cream/70 sm:px-8">
+          <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-2 px-3 py-[3px] text-[0.6rem] tracking-[0.1em] text-cream/70 sm:gap-3 sm:px-8 sm:tracking-[0.12em]">
             <a
               href="https://www.google.com/maps?q=31.507582468159587,74.2878023190929"
               target="_blank"
               rel="noreferrer noopener"
               title="ELF Head Office — 181 Raza Block, Allama Iqbal Town, Lahore"
-              className="flex items-center gap-1.5 transition-colors hover:text-cream text-cream/80"
+              className="flex items-center gap-1.5 transition-colors hover:text-cream text-cream/80 truncate"
             >
-              <span className="relative flex h-1.5 w-1.5">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-clay-bright opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-clay-bright" />
               </span>
-              <span className="tabular-nums font-medium">31.508, 74.288</span>
+              <span className="tabular-nums font-medium truncate">31.508, 74.288</span>
             </a>
 
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <div className="flex items-center gap-2 sm:gap-2.5">
                 {siteSocials.map(({ href, label, title, Icon }) => (
                   <a
                     key={label}
@@ -103,23 +103,23 @@ export function SiteNav() {
         </div>
 
         <div
-          className={`mx-auto flex max-w-[1600px] items-center justify-between px-5 transition-all duration-500 sm:px-8 ${scrolled || open ? "py-2" : "py-3"}`}
+          className={`mx-auto flex max-w-[1600px] items-center justify-between px-3 sm:px-8 transition-all duration-500 ${scrolled || open ? "py-2" : "py-2.5 sm:py-3"}`}
         >
           <Link
             to="/"
-            className="group flex items-center gap-3 sm:gap-3.5"
+            className="group flex items-center gap-2 sm:gap-3.5 min-w-0"
             aria-label="Education And Life Foundation — home"
           >
             <img
               src={logo}
               alt="ELF Logo"
-              className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
+              className="h-9 w-9 min-[360px]:h-10 min-[360px]:w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
             />
-            <div className="flex flex-col">
-              <span className="font-display text-[0.8rem] sm:text-[0.95rem] font-bold uppercase tracking-wide text-ink leading-tight group-hover:text-clay transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="font-display text-[0.72rem] min-[360px]:text-[0.8rem] sm:text-[0.95rem] font-bold uppercase tracking-tight sm:tracking-wide text-ink leading-tight truncate group-hover:text-clay transition-colors">
                 Education And Life Foundation
               </span>
-              <span className="text-[0.58rem] sm:text-[0.68rem] font-medium tracking-[0.12em] text-clay uppercase leading-tight mt-0.5">
+              <span className="hidden min-[360px]:block text-[0.54rem] sm:text-[0.68rem] font-medium tracking-[0.08em] sm:tracking-[0.12em] text-clay uppercase leading-tight mt-0.5 truncate">
                 Uplifting the Lives of Communities
               </span>
             </div>
@@ -279,10 +279,10 @@ export function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-background pt-24 pb-16"
+            className="fixed inset-0 z-40 overflow-y-auto bg-background pt-20 pb-24 sm:pt-24 sm:pb-16"
           >
-            <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 pt-4 border-b border-ink/10 mb-2">
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-8">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-5 pt-3 border-b border-ink/10 mb-2">
                 <div className="flex items-center gap-3 min-w-0">
                   <img
                     src={logo}
@@ -290,10 +290,10 @@ export function SiteNav() {
                     className="h-10 w-10 object-contain shrink-0 rounded-lg p-0.5 dark:bg-white/95"
                   />
                   <div className="min-w-0">
-                    <span className="font-display text-sm font-bold uppercase tracking-wide text-ink block truncate">
+                    <span className="font-display text-xs min-[360px]:text-sm font-bold uppercase tracking-wide text-ink block truncate">
                       Education And Life Foundation
                     </span>
-                    <span className="text-[0.62rem] font-medium tracking-[0.12em] text-clay uppercase block">
+                    <span className="text-[0.58rem] min-[360px]:text-[0.62rem] font-medium tracking-[0.1em] sm:tracking-[0.12em] text-clay uppercase block truncate">
                       Uplifting the Lives of Communities
                     </span>
                   </div>
@@ -311,18 +311,18 @@ export function SiteNav() {
                         transition={{ delay: 0.05 + i * 0.05, duration: 0.5 }}
                         className="border-b border-ink/10"
                       >
-                        <div className="flex items-center justify-between py-5">
+                        <div className="flex items-center justify-between py-4 sm:py-5">
                           <Link
                             to={item.to}
                             onClick={() => setOpen(false)}
-                            className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
+                            className="font-display text-xl min-[400px]:text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
                           >
                             {item.label}
                           </Link>
                           <button
                             type="button"
                             onClick={() => setMobileProjectsOpen((v) => !v)}
-                            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:border-clay"
+                            className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors hover:border-clay"
                             aria-label="Toggle projects submenu"
                             aria-expanded={mobileProjectsOpen}
                           >
@@ -347,7 +347,7 @@ export function SiteNav() {
                             <div className="grid grid-cols-1 gap-1 border-l-2 border-clay/20 pl-3">
                               {projects.map((p, idx) => (
                                 <Link
-                                  key={p.slug}
+                                   key={p.slug}
                                   to="/projects/$slug"
                                   params={{ slug: p.slug }}
                                   onClick={() => setOpen(false)}
@@ -377,7 +377,7 @@ export function SiteNav() {
                       <Link
                         to={item.to}
                         onClick={() => setOpen(false)}
-                        className="block py-4 sm:py-5 font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
+                        className="block py-3.5 sm:py-5 font-display text-xl min-[400px]:text-2xl sm:text-3xl md:text-4xl font-bold text-ink"
                       >
                         {item.label}
                       </Link>
@@ -385,18 +385,18 @@ export function SiteNav() {
                   );
                 })}
               </ul>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-2.5 sm:gap-3">
                 <Link
                   to="/donate"
                   onClick={() => setOpen(false)}
-                  className="inline-block rounded-full border border-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs"
+                  className="inline-block rounded-full border border-clay px-5 py-3 sm:px-7 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.14em] sm:tracking-[0.18em] text-clay transition-all hover:bg-clay hover:text-cream shadow-xs text-center flex-1 sm:flex-initial"
                 >
                   Donate
                 </Link>
                 <Link
                   to="/book"
                   onClick={() => setOpen(false)}
-                  className="inline-block rounded-full bg-clay px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs"
+                  className="inline-block rounded-full bg-clay px-5 py-3 sm:px-7 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.14em] sm:tracking-[0.18em] text-primary-foreground transition-all hover:bg-clay-deep shadow-xs text-center flex-1 sm:flex-initial"
                 >
                   Book a meeting
                 </Link>

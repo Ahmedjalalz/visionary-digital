@@ -272,34 +272,34 @@ function About() {
               </p>
 
               {/* Quick Navigation Jump Pills */}
-              <div className="mt-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider text-ink/75">
+              <div className="mt-8 flex flex-wrap gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-ink/75">
                 <a
                   href="#mission-vision"
-                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                  className="rounded-full border border-ink/15 bg-background px-3 py-1.5 sm:px-4 sm:py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
                 >
                   Mission & Vision
                 </a>
                 <a
                   href="#our-story"
-                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                  className="rounded-full border border-ink/15 bg-background px-3 py-1.5 sm:px-4 sm:py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
                 >
                   Our Origins & Story
                 </a>
                 <a
                   href="#sdg-alignment"
-                  className="rounded-full border border-clay/30 bg-clay/10 px-4 py-2 text-clay hover:bg-clay hover:text-primary-foreground transition-all shadow-2xs"
+                  className="rounded-full border border-clay/30 bg-clay/10 px-3 py-1.5 sm:px-4 sm:py-2 text-clay hover:bg-clay hover:text-primary-foreground transition-all shadow-2xs"
                 >
                   UN SDG Alignment
                 </a>
                 <a
                   href="#board-members"
-                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                  className="rounded-full border border-ink/15 bg-background px-3 py-1.5 sm:px-4 sm:py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
                 >
                   Board & Governance
                 </a>
                 <a
                   href="#direct-provisions"
-                  className="rounded-full border border-ink/15 bg-background px-4 py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
+                  className="rounded-full border border-ink/15 bg-background px-3 py-1.5 sm:px-4 sm:py-2 hover:border-clay hover:text-clay transition-all shadow-2xs"
                 >
                   Direct Provisions
                 </a>
@@ -664,7 +664,7 @@ function About() {
               </p>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-5">
+            <div className="mt-8 grid grid-cols-2 gap-3 min-[480px]:grid-cols-3 lg:grid-cols-5">
               {[
                 { step: "01", verb: "See", desc: "the need." },
                 { step: "02", verb: "Care", desc: "for the person." },
@@ -672,9 +672,9 @@ function About() {
                 { step: "04", verb: "Create", desc: "opportunity." },
                 { step: "05", verb: "Restore", desc: "hope." },
               ].map((p) => (
-                <div key={p.step} className="rounded-2xl border border-cream/15 bg-white/5 p-5 backdrop-blur-xs">
+                <div key={p.step} className="rounded-2xl border border-cream/15 bg-white/5 p-4 sm:p-5 backdrop-blur-xs">
                   <span className="text-[11px] font-bold text-clay-bright">{p.step}</span>
-                  <div className="mt-2 font-display text-xl font-bold text-cream">{p.verb}</div>
+                  <div className="mt-2 font-display text-lg sm:text-xl font-bold text-cream">{p.verb}</div>
                   <div className="text-xs text-cream/70 mt-0.5">{p.desc}</div>
                 </div>
               ))}

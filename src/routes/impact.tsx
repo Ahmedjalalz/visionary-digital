@@ -411,17 +411,17 @@ function ImpactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:gap-12">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-8 lg:gap-12">
             {stats.map((s, idx) => (
               <Rise key={s.label} delay={idx * 0.08}>
-                <div className="border-t-2 border-clay/30 pt-5">
-                  <div className="numeral text-3xl sm:text-5xl font-extrabold text-clay">
+                <div className="border-t-2 border-clay/30 pt-4 sm:pt-5">
+                  <div className="numeral text-2xl min-[360px]:text-3xl sm:text-5xl font-extrabold text-clay break-words">
                     {s.value}
                   </div>
-                  <div className="mt-2 font-display text-sm sm:text-base font-bold text-ink">
+                  <div className="mt-2 font-display text-xs min-[360px]:text-sm sm:text-base font-bold text-ink">
                     {s.label}
                   </div>
-                  <div className="mt-1 text-xs text-ink/60 leading-normal">
+                  <div className="mt-1 text-[11px] sm:text-xs text-ink/60 leading-normal">
                     {s.sub}
                   </div>
                 </div>

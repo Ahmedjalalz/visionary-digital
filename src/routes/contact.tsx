@@ -94,7 +94,7 @@ function Contact() {
         </div>
 
         <div className="relative z-10 mx-auto -mt-14 max-w-[1600px] px-5 sm:-mt-16 sm:px-8">
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs md:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {branches.map((b, i) => {
               const isActive = i === active;
               return (
