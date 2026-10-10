@@ -158,7 +158,12 @@ export function Counter({
   const formatter = format ?? defaultFormat;
 
   return (
-    <span ref={ref} className={className}>
+    <span
+      ref={ref}
+      className={`notranslate ${className ?? ""}`}
+      data-no-translate="true"
+      translate="no"
+    >
       {formatter(inView ? value : 0)}
     </span>
   );

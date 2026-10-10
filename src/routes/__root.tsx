@@ -16,6 +16,7 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/hooks/use-theme";
+import { LanguageProvider } from "@/hooks/use-language";
 
 function NotFoundComponent() {
   return (
@@ -142,13 +143,15 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <SiteNav />
-        <main id="content" className="relative w-full max-w-full overflow-x-clip">
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </main>
-        <SiteFooter />
-        <Toaster position="bottom-right" />
+        <LanguageProvider>
+          <SiteNav />
+          <main id="content" className="relative w-full max-w-full overflow-x-clip">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          <SiteFooter />
+          <Toaster position="bottom-right" />
+        </LanguageProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

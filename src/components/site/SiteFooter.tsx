@@ -3,6 +3,7 @@ import { ShieldCheck, FileCheck, Award, BadgeCheck } from "lucide-react";
 import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
+import { LanguageToggle } from "@/components/site/LanguageToggle";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -238,7 +239,10 @@ export function SiteFooter() {
                 Non-governmental organisation registered in Pakistan
               </span>
             </div>
-            <span className="text-cream/60">Lahore · Auckland · Toronto · Berlin</span>
+            <div className="flex items-center gap-4">
+              <span className="text-cream/60">Lahore · Auckland · Toronto · Berlin</span>
+              <LanguageToggle className="border-cream/20 bg-white/10 text-cream hover:text-white hover:border-clay-bright" />
+            </div>
           </div>
         </div>
       </div>

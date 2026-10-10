@@ -6,6 +6,7 @@ import { projects } from "@/data/projects";
 import logo from "@/assets/official-local/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
 import { ThemeToggle } from "@/hooks/use-theme";
+import { LanguageToggle } from "@/components/site/LanguageToggle";
 
 const primary = [
   { to: "/", label: "Home" },
@@ -242,6 +243,7 @@ export function SiteNav() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-2.5">
+            <LanguageToggle />
             <ThemeToggle />
             <Link
               to="/donate"
@@ -298,7 +300,10 @@ export function SiteNav() {
                     </span>
                   </div>
                 </div>
-                <ThemeToggle showLabel className="shrink-0" />
+                <div className="flex items-center gap-2 shrink-0">
+                  <LanguageToggle />
+                  <ThemeToggle showLabel className="shrink-0" />
+                </div>
               </div>
               <ul className="border-t border-ink/10">
                 {primary.map((item, i) => {
