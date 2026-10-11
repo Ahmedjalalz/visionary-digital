@@ -170,12 +170,12 @@ function Impact() {
               <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
             </div>
           </Rise>
-          <div className="mt-8 grid gap-8 border-t border-ink/10 pt-8 md:grid-cols-12">
-            <p className="md:col-span-6 md:col-start-1 font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
-              children in Pakistan are not in a classroom today.
-            </p>
-            <div className="md:col-span-4 md:col-start-9">
-              <p className="lede">
+          <div className="mt-8 grid items-start gap-10 border-t border-ink/10 pt-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="font-display text-2xl font-bold leading-[1.1] text-ink sm:text-4xl">
+                children in Pakistan are not in a classroom today.
+              </p>
+              <p className="lede mt-6 max-w-2xl">
                 It is one of the largest out-of-school populations in the world. Behind the figure sits
                 something much smaller and much more solvable: a fee, a uniform, a walk that is too long,
                 a family that needs the income more than the certificate.
@@ -183,6 +183,25 @@ function Impact() {
               <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ink/45">
                 Source: UNICEF Pakistan
               </p>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="group relative overflow-hidden rounded-2xl border border-ink/10 bg-sand/30 shadow-md transition-shadow duration-300 hover:shadow-lg">
+                <img
+                  src="/images/education/out-of-school-children.jpg"
+                  alt="Children in rural Pakistan facing economic hardship outside of school"
+                  className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-cream">
+                  <span className="inline-block rounded-full bg-clay/90 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cream">
+                    Ground Reality
+                  </span>
+                  <p className="mt-1 text-xs text-cream/90 sm:text-sm">
+                    Families caught in bonded kiln cycles and rural poverty where daily survival takes precedence over schooling.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
