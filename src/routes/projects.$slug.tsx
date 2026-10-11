@@ -454,9 +454,9 @@ function ProjectPage() {
             src={project.image}
             alt={project.name}
             className={splitHero ? "relative min-h-[48svh] lg:order-2 lg:min-h-[72svh]" : "absolute inset-0"}
-            imgClassName={project.heroPosition}
-            strength={60}
-            scaleFrom={1.12}
+            imgClassName={project.slug === "education-for-all" ? "object-top" : project.heroPosition}
+            strength={project.slug === "education-for-all" ? 15 : 60}
+            scaleFrom={project.slug === "education-for-all" ? 1.02 : 1.12}
             priority
           />
           {!splitHero && <div className="absolute inset-0 bg-gradient-to-t from-ink/92 via-ink/50 to-ink/20" />}

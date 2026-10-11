@@ -64,7 +64,7 @@ export const projects: Project[] = [
       "/images/education/edu-7.jpg",
       "/images/education/edu-8.jpg",
     ],
-    heroPosition: "object-[50%_12%]",
+    heroPosition: "object-top",
     accent: "clay",
     layout: "map",
   },
