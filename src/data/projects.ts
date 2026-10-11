@@ -79,7 +79,7 @@ export const projects: Project[] = [
       source: "ELF field reporting",
     },
     problemImage: "/images/school-bags/school-bags-problem.jpg",
-    responseImage: "/images/school-bags/DSC01043.JPG",
+    responseImage: "/images/school-bags/IMG_9475.JPG",
     context: [
       "Stationery is not a small thing. When a family cannot supply a notebook, a child is sent home, and being sent home repeatedly ends in leaving.",
     ],
@@ -92,18 +92,17 @@ export const projects: Project[] = [
       { label: "Contents", value: "Full year of supplies" },
       { label: "Delivered to", value: "A named child" },
     ],
-    image: "/images/school-bags/DSC01043.JPG",
+    image: "/images/school-bags/IMG_9475.JPG",
     gallery: [
       "/images/school-bags/IMG_9475.JPG",
       "/images/school-bags/DSC09384.JPG",
-      "/images/school-bags/DSC01043.JPG",
       "/images/school-bags/IMG_9835.JPG",
-      "/images/school-bags/DSC01207.JPG",
       "/images/school-bags/DSC01252.JPG",
+      "/images/school-bags/DSC01207.JPG",
       "/images/school-bags/DSC02848.JPG",
       "/images/school-bags/DSC01220.JPG",
     ],
-    heroPosition: "object-[center_12%]",
+    heroPosition: "object-[center_28%]",
     accent: "clay",
     layout: "object",
   },
@@ -270,43 +269,84 @@ export const projects: Project[] = [
     layout: "portrait",
   },
   {
-    slug: "community-digital-skills-developments",
-    name: "Community & Digital Skills Developments",
-    short: "Dual-track technical empowerment combining modern digital literacy and market-ready vocational trades for sustainable household self-reliance.",
+    slug: "community-skills-development",
+    name: "Community Skills Development Program",
+    short: "Vocational tailoring, industrial stitching, and free sewing machine distribution equipping underprivileged women and mothers for independent home micro-enterprises.",
+    problem: {
+      figure: "78",
+      unit: "percent",
+      line: "of women in marginalized rural and peri-urban settlements lack vocational training or certified trades to escape exploitative labor.",
+      source: "Pakistan Bureau of Statistics & Gender Economic Survey",
+    },
+    problemImage: "/images/skills/community/community-skill-1.jpg",
+    responseImage: "/images/skills/community/DSC04208.JPG",
+    context: [
+      "In underserved settlements across Punjab, women and young mothers face severe structural exclusions from the formal economy. With limited schooling and no technical apprenticeship hubs, they are left with few alternatives beyond grueling, low-paid brick kiln labor or unregulated domestic servitude.",
+      "Without independent earning capacity, families remain trapped in cyclical debt and food insecurity. Vocational trade mastery—particularly industrial stitching, garment cutting, and garment finishing—offers a proven, culturally supported route to sustainable home-based income generation.",
+    ],
+    response: [
+      "ELF operates community vocational craft centers providing intensive, 6-month hands-on training courses led by master instructors. Students master precision fabric measurement, pattern drafting, foot-pedal machine operation, and retail-grade finishing.",
+      "Upon graduation, ELF provides each certified student with a brand-new, heavy-duty sewing machine complete with motor, starter fabric, and tailoring tools—enabling mothers to accept commercial orders from day one and attain lasting financial independence.",
+    ],
+    outcomes: [
+      { label: "Graduation Kit", value: "100% Free Sewing Machine", href: "#vocational-equipment" },
+      { label: "Course Duration", value: "6-Month Certified Training", href: "#vocational-curriculum" },
+      { label: "Focus Demographic", value: "Vulnerable Mothers & Women" },
+      { label: "Economic Impact", value: "Dignified Home Enterprise" },
+    ],
+    image: "/images/skills/community/community-skill-2.jpg",
+    gallery: [
+      "/images/skills/community/DSC04208.JPG",
+      "/images/skills/community/community-skill-3.jpg",
+      "/images/skills/community/community-skill-4.jpg",
+      "/images/skills/community/community-skill-5.jpg",
+      "/images/skills/community/community-skill-6.jpg",
+      "/images/skills/community/community-skill-7.jpg",
+      foundationMedia.skillsSewingMachine,
+      "/images/skills/community/community-skill-1.jpg",
+    ],
+    heroPosition: "object-[center_20%]",
+    accent: "clay",
+    layout: "statement",
+  },
+  {
+    slug: "digital-skills-development",
+    name: "Digital Skills Development Program",
+    short: "Modern IT laboratories, computer literacy, office suites, and online freelancing mentorship connecting underprivileged youth to the global digital economy.",
     problem: {
       figure: "2.1",
       unit: "million",
-      line: "young people enter Pakistan's workforce annually without digital literacy or certified technical trades.",
+      line: "young people enter Pakistan's workforce annually without basic computer literacy or modern digital skills.",
       source: "Pakistan Labour Force Survey & UNDP Youth Development Report",
     },
-    problemImage: "/images/skills/community/community-skill-1.jpg",
-    responseImage: "/images/skills/digital/IMG_5370.JPG",
+    problemImage: "/images/skills/digital/IMG_5370.JPG",
+    responseImage: "/images/skills/digital/IMG_8746.JPG",
     context: [
-      "Economic vulnerability in marginalized communities is driven by a dual structural challenge: a severe deficit in foundational computer literacy required for the modern remote service economy, and the absence of certified vocational trades that offer alternatives to exploitative daily-wage manual labor.",
-      "Young people and women bear the greatest brunt of this barrier. Without access to dedicated computer workstations or hands-on trade apprenticeships, families remain trapped in intergenerational poverty cycles where earning capacity is strictly capped by geography and physical toil.",
+      "Economic opportunity in modern Pakistan is rapidly shifting toward the remote service and digital economy. Yet in marginalized neighborhoods, young adults have zero access to desktop computers, reliable internet, or structured IT mentoring.",
+      "This digital divide locks talented youth out of office employment, clerical careers, and online freelancing, confining them to hazardous manual labor despite their aptitude and ambition.",
     ],
     response: [
-      "ELF delivers an integrated dual-stream development pipeline: modern digital skills academies teaching computer applications, office productivity, and freelancing fundamentals, paired with community vocational training hubs offering industrial stitching, tailoring, and micro-business establishment.",
-      "Both tracks are fully equipped with hands-on practice facilities—including dedicated computer workstations and heavy-duty sewing machines distributed to certified graduates for immediate home enterprise and dignified income generation.",
+      "ELF establishes high-tech Community Digital Skills Academies equipped with modern workstations, high-speed broadband, and qualified faculty mentors. All training is 100% tuition-free.",
+      "The curriculum takes students from absolute fundamentals—keyboarding, operating systems, and file management—through professional office suites, graphic tools, and freelance marketplace onboarding with accredited certification.",
     ],
     outcomes: [
-      { label: "Digital Track", value: "Computer Literacy & Freelance", href: "#digital-skills-section" },
-      { label: "Vocational Track", value: "Certified Stitching & Trades", href: "#community-skills-section" },
-      { label: "Equipment Support", value: "Machines & Lab Access", href: "#equipment-pathway-section" },
-      { label: "Target Demographics", value: "Vulnerable Women & Youth" },
+      { label: "Lab Workstations", value: "100% Free High-Speed Access", href: "#it-lab-infrastructure" },
+      { label: "Curriculum Track", value: "Office Suites & Freelancing", href: "#digital-curriculum" },
+      { label: "Accreditation", value: "Certified IT Graduates" },
+      { label: "Target Demographics", value: "Underprivileged Youth & Women" },
     ],
-    image: foundationMedia.digitalSkillsLab,
+    image: "/images/skills/digital/IMG_8766.JPG",
     gallery: [
-      "/images/skills/digital-lab-1.jpg",
-      "/images/skills/digital-lab-2.jpg",
-      "/images/skills/digital-lab-3.jpg",
-      "/images/skills/digital-lab-4.jpg",
-      "/images/skills/digital-lab-5.jpg",
-      "/images/skills/digital-lab-6.jpg",
-      foundationMedia.skillsSewingMachine,
+      "/images/skills/digital/IMG_8746.JPG",
+      "/images/skills/digital/IMG_8766.JPG",
+      "/images/skills/digital/IMG_9098.JPG",
+      "/images/skills/digital/IMG_8802.JPG",
+      "/images/skills/digital/IMG_8753.JPG",
+      "/images/skills/digital/IMG_5415.JPG",
+      "/images/skills/digital/IMG_5370.JPG",
       digital,
     ],
-    heroPosition: "object-[50%_15%]",
+    heroPosition: "object-[center_25%]",
     accent: "clay",
     layout: "statement",
   },
@@ -421,7 +461,13 @@ export const getProject = (slug: string) => {
     return projects.find((p) => p.slug === "hope-and-freedom-for-widows-headed-families");
   }
 
-  const skillsAliases = [
+  const communitySkillsAliases = [
+    "community-skills",
+    "community-skills-development",
+    "community-skills-developments",
+    "community-skill-development",
+    "vocational-skills",
+    "vocational-training",
     "community-digital-skills-developments",
     "community-and-digital-skills-developments",
     "comminity-and-digital-skills-developments",
@@ -432,8 +478,20 @@ export const getProject = (slug: string) => {
     "skills-development",
     "skills-developement",
   ];
-  if (skillsAliases.includes(slug)) {
-    return projects.find((p) => p.slug === "community-digital-skills-developments");
+  if (communitySkillsAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "community-skills-development");
+  }
+
+  const digitalSkillsAliases = [
+    "digital-skills",
+    "digital-skills-development",
+    "digital-skills-developments",
+    "digital-skill-development",
+    "computer-skills",
+    "it-training",
+  ];
+  if (digitalSkillsAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "digital-skills-development");
   }
 
   return projects.find((p) => p.slug === slug);

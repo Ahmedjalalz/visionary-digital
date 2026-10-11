@@ -25,6 +25,8 @@ const PROJECT_FOOTER_LABELS: Record<string, string> = {
   "music-of-the-heart": "Arts & Joy",
   "health-wash-community-wellbeing": "Clean Water",
   "hope-and-freedom-for-widows-headed-families": "Generational Freedom",
+  "community-skills-development": "Vocational Trades",
+  "digital-skills-development": "IT & Freelance",
   "community-digital-skills-developments": "Livelihoods",
   "capacity-building": "Governance",
   "faith-hope-love-for-every-child": "Child Protection",

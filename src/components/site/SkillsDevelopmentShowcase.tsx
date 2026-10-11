@@ -29,69 +29,69 @@ interface GalleryPhoto {
 const digitalPhotos: GalleryPhoto[] = [
   {
     id: "dig-1",
-    src: "/images/skills/digital/digital-skill-1.jpg",
-    alt: "Students actively engaged in computer lab practical session",
-    tag: "Workstation Practical",
-    caption: "Students building hands-on digital proficiency on dedicated computer terminals.",
+    src: "/images/skills/digital/IMG_8746.JPG",
+    alt: "Graduates holding accredited government and foundation certificates",
+    tag: "Certified Graduates",
+    caption: "Successful cohort students proudly displaying their recognized diplomas and computer literacy credentials.",
     focal: "object-[center_20%]",
   },
   {
     id: "dig-2",
-    src: "/images/skills/digital/digital-skill-2.jpg",
-    alt: "Instructor demonstrating digital software and typing skills",
-    tag: "Faculty Mentorship",
-    caption: "One-on-one instructor guidance ensuring every trainee grasps modern interface fundamentals.",
-    focal: "object-[center_20%]",
+    src: "/images/skills/digital/IMG_8766.JPG",
+    alt: "Classroom computer lab with trainees working on individual workstations",
+    tag: "IT Lab Infrastructure",
+    caption: "Fully equipped computer lab providing dedicated monitors, internet connectivity, and reliable power.",
+    focal: "object-[center_25%]",
   },
   {
     id: "dig-3",
-    src: "/images/skills/digital/digital-skill-3.jpg",
-    alt: "Digital skills cohort collaborating on practical computer assignments",
-    tag: "Cohort Learning",
-    caption: "Collaborative peer learning encouraging problem-solving and digital communication.",
+    src: "/images/skills/digital/IMG_9098.JPG",
+    alt: "Students actively engaged in software application practical session",
+    tag: "Workstation Practical",
+    caption: "Hands-on daily exercises covering typing accuracy, word processors, spreadsheets, and presentation decks.",
     focal: "object-[center_25%]",
   },
   {
     id: "dig-4",
-    src: "/images/skills/digital/digital-skill-4.jpg",
-    alt: "Classroom computer lab with trainees working simultaneously",
-    tag: "IT Lab Infrastructure",
-    caption: "Fully equipped computer workstations providing reliable electricity and connectivity.",
+    src: "/images/skills/digital/IMG_8802.JPG",
+    alt: "Practical computer skill examination and evaluation session",
+    tag: "Skills Assessment",
+    caption: "Rigorous testing ensuring trainees meet commercial standards for administrative and clerical duties.",
     focal: "object-[center_20%]",
   },
   {
     id: "dig-5",
-    src: "/images/skills/digital/digital-skill-5.jpg",
-    alt: "Detailed software workflows being practiced by students",
-    tag: "Applied Workflow",
-    caption: "Structured practice covering typing speed, file management, and office documents.",
+    src: "/images/skills/digital/IMG_8753.JPG",
+    alt: "Student receiving formal graduation certificate and recognition",
+    tag: "Graduation Award",
+    caption: "Celebrating student milestones as they transition into dignified remote and local employment.",
     focal: "object-[center_20%]",
   },
   {
     id: "dig-6",
-    src: "/images/skills/digital/digital-skill-6.jpg",
-    alt: "Student focused on practical online tools and typing practice",
-    tag: "Focused Learning",
-    caption: "Developing the muscle memory and keyboard dexterity required for remote digital work.",
-    focal: "object-[center_15%]",
+    src: "/images/skills/digital/IMG_5415.JPG",
+    alt: "Instructor demonstrating digital workflow and typing mechanics",
+    tag: "Faculty Mentorship",
+    caption: "Personalized one-on-one instructor guidance ensuring every trainee masters modern interface fundamentals.",
+    focal: "object-[center_20%]",
   },
 ];
 
 const communityPhotos: GalleryPhoto[] = [
   {
     id: "com-1",
-    src: "/images/skills/community/community-skill-1.jpg",
-    alt: "Vocational tailoring students learning fabric measurement and cutting",
-    tag: "Pattern & Cutting",
-    caption: "Precision measurement, drafting, and fabric cutting taught under master craftswomen.",
-    focal: "object-[center_20%]",
+    src: "/images/skills/community/DSC04208.JPG",
+    alt: "Vocational tailoring students operating sewing workstations in active session",
+    tag: "Sewing Apprenticeship",
+    caption: "Mastering foot-pedal tension control, industrial seams, and garment assembly under master tailors.",
+    focal: "object-[center_25%]",
   },
   {
     id: "com-2",
     src: "/images/skills/community/community-skill-2.jpg",
-    alt: "Students operating sewing machines during practical stitching class",
-    tag: "Sewing Machine Operation",
-    caption: "Mastering foot-pedal control, tension calibration, and durable seam stitching.",
+    alt: "Apprentice practicing precision garment seam construction",
+    tag: "Industrial Stitching",
+    caption: "Commercial stitch standards preparing women to fulfill market orders and local tailoring requests.",
     focal: "object-[center_20%]",
   },
   {
@@ -99,7 +99,7 @@ const communityPhotos: GalleryPhoto[] = [
     src: "/images/skills/community/community-skill-3.jpg",
     alt: "Master trainer guiding student through intricate stitch work",
     tag: "Artisanal Guidance",
-    caption: "Personalized apprenticeships enabling trainees to reach commercial market standards.",
+    caption: "Personalized apprenticeships enabling trainees to reach commercial fashion and uniform standards.",
     focal: "object-[center_20%]",
   },
   {
@@ -118,51 +118,66 @@ const communityPhotos: GalleryPhoto[] = [
     caption: "From raw fabric to finished attire ready for local customers and retail orders.",
     focal: "object-[center_20%]",
   },
+  {
+    id: "com-6",
+    src: "/images/skills/community/community-skill-6.jpg",
+    alt: "Heavy-duty sewing machine distribution to certified graduate",
+    tag: "Machine Distribution",
+    caption: "Providing brand-new industrial sewing machines to graduates for independent home-based enterprise.",
+    focal: "object-[center_20%]",
+  },
 ];
 
-export function SkillsDevelopmentShowcase() {
+interface SkillsDevelopmentShowcaseProps {
+  mode?: "all" | "community" | "digital";
+}
+
+export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentShowcaseProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   return (
     <div className="relative">
-      {/* ── Sub-navigation sticky jump bar ── */}
-      <div className="sticky top-20 z-30 border-y border-ink/10 bg-background/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-clay" />
-            <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink">
-              Two Integrated Pathways to Self-Reliance
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <a
-              href="#digital-skills-section"
-              className="inline-flex items-center gap-1.5 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1.5 text-xs font-semibold text-clay transition hover:bg-clay hover:text-primary-foreground"
-            >
-              <Laptop className="h-3.5 w-3.5" />
-              <span>01 · Digital Skills</span>
-            </a>
-            <a
-              href="#community-skills-section"
-              className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-sand/60 px-3.5 py-1.5 text-xs font-semibold text-ink transition hover:bg-ink hover:text-cream"
-            >
-              <Scissors className="h-3.5 w-3.5" />
-              <span>02 · Community Skills</span>
-            </a>
-            <a
-              href="#equipment-pathway-section"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-sand/60 px-3.5 py-1.5 text-xs font-semibold text-ink transition hover:bg-ink hover:text-cream"
-            >
-              <GraduationCap className="h-3.5 w-3.5" />
-              <span>03 · Graduation &amp; Tools</span>
-            </a>
+      {/* ── Sub-navigation sticky jump bar (only shown in combined view) ── */}
+      {mode === "all" && (
+        <div className="sticky top-20 z-30 border-y border-ink/10 bg-background/95 backdrop-blur-md">
+          <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-clay" />
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-ink">
+                Two Integrated Pathways to Self-Reliance
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <a
+                href="#digital-skills-section"
+                className="inline-flex items-center gap-1.5 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1.5 text-xs font-semibold text-clay transition hover:bg-clay hover:text-primary-foreground"
+              >
+                <Laptop className="h-3.5 w-3.5" />
+                <span>01 · Digital Skills</span>
+              </a>
+              <a
+                href="#community-skills-section"
+                className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-sand/60 px-3.5 py-1.5 text-xs font-semibold text-ink transition hover:bg-ink hover:text-cream"
+              >
+                <Scissors className="h-3.5 w-3.5" />
+                <span>02 · Community Skills</span>
+              </a>
+              <a
+                href="#equipment-pathway-section"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-sand/60 px-3.5 py-1.5 text-xs font-semibold text-ink transition hover:bg-ink hover:text-cream"
+              >
+                <GraduationCap className="h-3.5 w-3.5" />
+                <span>03 · Graduation &amp; Tools</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: DIGITAL SKILLS & MODERN COMPUTER LITERACY
           ═══════════════════════════════════════════════════════════════ */}
+      {(mode === "all" || mode === "digital") && (
       <section
         id="digital-skills-section"
         className="scroll-mt-32 border-b border-ink/10 bg-sand/20 px-5 py-24 sm:px-8 sm:py-28"
@@ -342,10 +357,12 @@ export function SkillsDevelopmentShowcase() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 2: COMMUNITY SKILLS & VOCATIONAL TRADES
           ═══════════════════════════════════════════════════════════════ */}
+      {(mode === "all" || mode === "community") && (
       <section
         id="community-skills-section"
         className="scroll-mt-32 border-b border-ink/10 bg-background px-5 py-24 sm:px-8 sm:py-28"
@@ -525,6 +542,7 @@ export function SkillsDevelopmentShowcase() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 3: INTEGRATED GRADUATION & SUSTAINED AUTONOMY
@@ -560,7 +578,7 @@ export function SkillsDevelopmentShowcase() {
               <span className="font-display text-2xl font-bold text-clay">Step 02</span>
               <h3 className="mt-3 font-display text-lg font-bold text-ink">Structured Apprenticeship</h3>
               <p className="mt-2 text-xs leading-relaxed text-ink/70">
-                Intensive practice in either our digital labs or vocational tailoring centers with
+                Intensive practice in our {mode === "digital" ? "digital IT labs" : mode === "community" ? "vocational tailoring center" : "digital labs or vocational tailoring centers"} with
                 all materials provided.
               </p>
             </div>
@@ -569,8 +587,7 @@ export function SkillsDevelopmentShowcase() {
               <span className="font-display text-2xl font-bold text-clay">Step 03</span>
               <h3 className="mt-3 font-display text-lg font-bold text-ink">Equipment Distribution</h3>
               <p className="mt-2 text-xs leading-relaxed text-ink/70">
-                Graduates receive verified certifications alongside industrial sewing machines or
-                digital tool access.
+                Graduates receive verified certifications alongside {mode === "digital" ? "accredited diplomas and digital access" : "industrial sewing machines and starter kits"}.
               </p>
             </div>
 
@@ -592,7 +609,9 @@ export function SkillsDevelopmentShowcase() {
                   Sponsor a Student’s Livelihood
                 </span>
                 <h3 className="display-sm mt-3 text-cream">
-                  Equip a Student with a Sewing Machine or Computer Workstation
+                  {mode === "digital"
+                    ? "Equip a Youth with a Dedicated Computer Workstation & Mentorship"
+                    : "Equip a Mother with a Heavy-Duty Sewing Machine & Startup Kit"}
                 </h3>
                 <p className="mt-3 text-sm text-cream/75 max-w-2xl leading-relaxed">
                   Your donation directly funds certified trade instruction and provides the
@@ -602,7 +621,12 @@ export function SkillsDevelopmentShowcase() {
               <div className="lg:col-span-4 lg:text-right">
                 <Link
                   to="/donate"
-                  search={{ project: "community-digital-skills-developments" }}
+                  search={{
+                    project:
+                      mode === "digital"
+                        ? "digital-skills-development"
+                        : "community-skills-development",
+                  }}
                   className="inline-flex items-center justify-center rounded-full bg-clay px-8 py-4 text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground shadow-xs hover:bg-clay-deep transition-colors"
                 >
                   <span>Sponsor a Trainee</span>

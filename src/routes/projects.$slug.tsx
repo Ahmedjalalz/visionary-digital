@@ -89,11 +89,12 @@ export const Route = createFileRoute("/projects/$slug")({
       "community-and-digital-skills-developments",
       "comminity-and-digital-skills-developments",
       "comminity-digital-skills-developments",
+      "community-digital-skills-developments",
     ];
     if (skillsAliases.includes(params.slug)) {
       throw redirect({
         to: "/projects/$slug",
-        params: { slug: "community-digital-skills-developments" },
+        params: { slug: "community-skills-development" },
       });
     }
     const project = getProject(params.slug);
@@ -192,16 +193,12 @@ const schoolBagsPhotoDetails = [
     desc: "Featured student wearing her dedicated School in A bag kit, complete with lunchbox and refillable water bottle.",
   },
   {
-    title: "Primary Cohort Handover (Bags 190938–190943)",
-    desc: "Young learners outside their classroom displaying verified, donor-sponsored backpacks.",
+    title: "Boys Secondary Cohort (Bags 191633–191637)",
+    desc: "Equipping young male students from vulnerable families with complete year-long learning resources.",
   },
   {
     title: "Girls Secondary Education (Bags 191629–191632)",
     desc: "Empowering female students with full academic sets to ensure continuous retention and learning.",
-  },
-  {
-    title: "Boys Secondary Cohort (Bags 191633–191637)",
-    desc: "Equipping young male students from vulnerable families with complete year-long learning resources.",
   },
   {
     title: "Direct District Handover (Bags 191315–191319)",
@@ -307,6 +304,76 @@ const musicPhotoDetails = [
   {
     title: "Opus 1 Collaborative Spirit",
     desc: "Children celebrating the introduction of daily music and arts instruction into their school experience.",
+  },
+];
+
+const communitySkillsPhotoDetails = [
+  {
+    title: "Vocational Sewing Workshop",
+    desc: "Students operating industrial sewing machines under expert craftswomen in community centers.",
+  },
+  {
+    title: "Master Pattern & Seam Precision",
+    desc: "Apprentices learning precision garment cutting and seam construction to meet commercial standards.",
+  },
+  {
+    title: "Artisanal Tailoring Guidance",
+    desc: "Master instructor guiding trainees through intricate finishing techniques on traditional garments.",
+  },
+  {
+    title: "Community Vocational Center",
+    desc: "Safe, dignified classroom equipping underprivileged mothers with accredited technical trades.",
+  },
+  {
+    title: "Garment Finishing & Assembly",
+    desc: "From bulk fabric rolls to custom-tailored apparel ready for local retail sales and school orders.",
+  },
+  {
+    title: "Industrial Machine Handover",
+    desc: "Distributing free heavy-duty sewing machines to certified graduates for home micro-enterprise.",
+  },
+  {
+    title: "Heavy-Duty Equipment Distribution",
+    desc: "Empowering mothers with lifelong production assets to achieve permanent household food security.",
+  },
+  {
+    title: "Pattern Measurement & Drafting",
+    desc: "Foundational drafting and pattern cutting fundamentals taught by certified master trainers.",
+  },
+];
+
+const digitalSkillsPhotoDetails = [
+  {
+    title: "Certified IT Graduates",
+    desc: "Graduates proudly displaying government and foundation accredited computer literacy certificates.",
+  },
+  {
+    title: "IT Computer Lab Workspace",
+    desc: "Modern computer laboratory equipped with individual monitor workstations and high-speed connectivity.",
+  },
+  {
+    title: "Practical Software Training",
+    desc: "Students actively practicing office productivity suites, data entry, and digital design tools.",
+  },
+  {
+    title: "Skills Evaluation & Practical Test",
+    desc: "Comprehensive testing ensuring students meet professional standards for administrative and clerical duties.",
+  },
+  {
+    title: "Diploma & Achievement Ceremony",
+    desc: "Honoring outstanding students transitioning toward remote freelancing and IT career opportunities.",
+  },
+  {
+    title: "Faculty Mentorship & Guidance",
+    desc: "Instructors providing individual keyboard and software mechanics coaching to beginners.",
+  },
+  {
+    title: "Classroom Digital Workstations",
+    desc: "Dedicated computing hubs giving underprivileged youth equal access to modern technological tools.",
+  },
+  {
+    title: "Modern Tech Education",
+    desc: "Bridging the digital divide with structured technology education for disadvantaged youth and women.",
   },
 ];
 
@@ -776,6 +843,32 @@ function ProjectPage() {
                       </h4>
                       <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
                         {musicPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
+                  {project.slug === "community-skills-development" && communitySkillsPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Vocational Center
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {communitySkillsPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {communitySkillsPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
+                  {project.slug === "digital-skills-development" && digitalSkillsPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · IT Academy
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {digitalSkillsPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {digitalSkillsPhotoDetails[index].desc}
                       </p>
                     </div>
                   )}
@@ -1270,8 +1363,12 @@ function ProjectPage() {
         </section>
       )}
 
-      {project.slug === "community-digital-skills-developments" && (
-        <SkillsDevelopmentShowcase />
+      {project.slug === "community-skills-development" && (
+        <SkillsDevelopmentShowcase mode="community" />
+      )}
+
+      {project.slug === "digital-skills-development" && (
+        <SkillsDevelopmentShowcase mode="digital" />
       )}
 
       {project.slug === "faith-hope-love-for-every-child" && (

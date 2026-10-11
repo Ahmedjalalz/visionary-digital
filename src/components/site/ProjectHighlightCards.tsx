@@ -43,6 +43,18 @@ export const PROJECT_HIGHLIGHTS: Record<string, ProjectHighlight[]> = {
     { stat: "Micro-Biz", label: "Sewing Machine Grants" },
     { stat: "Enrolled", label: "Children in School" },
   ],
+  "community-skills-development": [
+    { stat: "6 Months", label: "Certified Tailoring" },
+    { stat: "Free Grant", label: "Sewing Machine Kit" },
+    { stat: "100%", label: "Women & Mothers" },
+    { stat: "Home Biz", label: "Dignified Income" },
+  ],
+  "digital-skills-development": [
+    { stat: "100% Free", label: "Workstations & Internet" },
+    { stat: "Accredited", label: "Govt Certified Diplomas" },
+    { stat: "Mentorship", label: "Faculty-Led Coaching" },
+    { stat: "Remote Work", label: "Freelancing Marketplace" },
+  ],
   "community-digital-skills-developments": [
     { stat: "Dual-Track", label: "Digital & Stitching" },
     { stat: "Tech Lab", label: "Dedicated Workstations" },
