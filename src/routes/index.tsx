@@ -164,14 +164,16 @@ function Impact() {
       <section className="relative overflow-hidden bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <Rise>
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap items-baseline gap-x-6">
-                <span className="numeral text-[18vw] leading-[0.8] text-ink sm:text-[11vw]">
-                  <Counter to={26} format={(n) => Math.round(n).toString()} />
-                </span>
-                <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
+            <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10">
+              <div className="lg:col-span-7">
+                <div className="flex flex-wrap items-baseline gap-x-6">
+                  <span className="numeral text-[18vw] leading-[0.8] text-ink sm:text-[11vw]">
+                    <Counter to={26} format={(n) => Math.round(n).toString()} />
+                  </span>
+                  <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
+                </div>
               </div>
-              <div className="self-start sm:self-center">
+              <div className="flex items-center lg:col-span-5">
                 <EducationCrisisBadge />
               </div>
             </div>
