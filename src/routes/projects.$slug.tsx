@@ -26,6 +26,7 @@ import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
 import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsGallery";
 import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentShowcase";
 import { FaithHopeLoveShowcase } from "@/components/site/FaithHopeLoveShowcase";
+import { EducationCrisisBadge } from "@/components/site/EducationCrisisBadge";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -465,13 +466,7 @@ function ProjectPage() {
             <div className={centeredHero ? "max-w-4xl" : "max-w-3xl"}>
               {(project.slug === "school-bags" || project.slug === "education-for-all") && (
                 <div className="mb-5 sm:mb-6">
-                  <span className="animate-pulse-aggressive inline-flex items-center gap-2.5 sm:gap-3 rounded-full border border-red-500/35 bg-red-500/10 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600 shadow-sm backdrop-blur-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400">
-                    <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-80" />
-                      <span className="relative inline-flex h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-600 dark:bg-red-400" />
-                    </span>
-                    <span>Education Crisis in Pakistan</span>
-                  </span>
+                  <EducationCrisisBadge />
                 </div>
               )}
               <span className={`eyebrow font-bold ${splitHero ? "text-clay" : "!text-clay-bright drop-shadow-xs"}`}>Initiative Portfolio</span>
@@ -496,6 +491,11 @@ function ProjectPage() {
           {project.problemImage ? (
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
               <div className={`order-2 lg:order-1 ${isEducation ? "lg:col-span-4" : "lg:col-span-5"}`}>
+                {project.slug === "music-of-the-heart" && (
+                  <div className="mb-5 sm:mb-6">
+                    <EducationCrisisBadge />
+                  </div>
+                )}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
                   <img
                     src={project.problemImage}

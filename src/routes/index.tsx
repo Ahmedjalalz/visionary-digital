@@ -16,6 +16,7 @@ import { MapEmbed } from "@/components/site/MapEmbed";
 import { Counter, MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 import { ProjectCard } from "@/components/site/ProjectCard";
+import { EducationCrisisBadge } from "@/components/site/EducationCrisisBadge";
 
 
 export const Route = createFileRoute("/")({
@@ -163,11 +164,16 @@ function Impact() {
       <section className="relative overflow-hidden bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8">
           <Rise>
-            <div className="flex flex-wrap items-baseline gap-x-6">
-              <span className="numeral text-[18vw] leading-[0.8] text-ink sm:text-[11vw]">
-                <Counter to={26} format={(n) => Math.round(n).toString()} />
-              </span>
-              <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-baseline gap-x-6">
+                <span className="numeral text-[18vw] leading-[0.8] text-ink sm:text-[11vw]">
+                  <Counter to={26} format={(n) => Math.round(n).toString()} />
+                </span>
+                <span className="numeral text-[7vw] leading-none text-clay sm:text-[4vw]">MILLION</span>
+              </div>
+              <div className="self-start sm:self-center">
+                <EducationCrisisBadge />
+              </div>
             </div>
           </Rise>
           <div className="mt-8 grid items-start gap-10 border-t border-ink/10 pt-8 lg:grid-cols-12">
