@@ -8,7 +8,7 @@ export function EducationCrisisBadge({ className }: EducationCrisisBadgeProps) {
   return (
     <span
       className={cn(
-        "animate-pulse-aggressive inline-flex items-center gap-2.5 sm:gap-3 rounded-full border border-red-500/60 bg-red-500/10 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600 backdrop-blur-xs dark:border-red-400/70 dark:bg-red-500/15 dark:text-red-400",
+        "animate-pulse-aggressive inline-flex items-center gap-2.5 sm:gap-3 rounded-full border border-red-500/35 bg-red-500/10 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-red-600 shadow-sm backdrop-blur-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400",
         className
       )}
     >

@@ -29,6 +29,7 @@ import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentSh
 import { FaithHopeLoveShowcase } from "@/components/site/FaithHopeLoveShowcase";
 import { EducationCrisisBadge } from "@/components/site/EducationCrisisBadge";
 import { SponsoredSchoolsShowcase } from "@/components/site/SponsoredSchoolsShowcase";
+import { TOTAL_SPONSORED_SCHOOLS, TOTAL_SPONSORED_STUDENTS } from "@/data/sponsoredSchoolsData";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -496,11 +497,11 @@ function ProjectPage() {
                     href="#sponsored-schools"
                     className="inline-flex items-center gap-2 rounded-full border border-clay bg-clay px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-cream shadow-xs transition-all hover:bg-clay/90 hover:scale-105 active:scale-95 cursor-pointer"
                   >
-                    <span>View 56 Sponsored Schools</span>
+                    <span>View {TOTAL_SPONSORED_SCHOOLS} Sponsored Schools</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </a>
                   <span className="text-xs font-bold uppercase tracking-wider text-clay">
-                    7,136 Students Enrolled
+                    {TOTAL_SPONSORED_STUDENTS.toLocaleString()} Students Enrolled
                   </span>
                 </div>
               )}
@@ -534,7 +535,13 @@ function ProjectPage() {
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="eyebrow">The problem</span>
                   {isEducation && (
-                    <EducationCrisisBadge className="py-1 px-3.5 sm:px-4 text-xs" />
+                    <span className="animate-pulse-aggressive inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-red-500/35 bg-red-500/10 px-3.5 sm:px-4 py-1 text-xs font-bold uppercase tracking-wider text-red-600 shadow-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400">
+                      <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-80" />
+                        <span className="relative inline-flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-red-600 dark:bg-red-400" />
+                      </span>
+                      <span>Education Crisis in Pakistan</span>
+                    </span>
                   )}
                 </div>
                 <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-4 sm:gap-x-8 gap-y-2" : "gap-x-4 sm:gap-x-6 gap-y-2"}`}>

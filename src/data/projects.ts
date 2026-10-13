@@ -51,7 +51,7 @@ export const projects: Project[] = [
     outcomes: [
       { label: "Focus", value: "Primary & secondary" },
       { label: "Cost to family", value: "Zero" },
-      { label: "Reach", value: "56 Schools · 7,136 Students" },
+      { label: "Reach", value: "81 Schools · 8,704 Students" },
     ],
     image: foundationMedia.schoolStudents,
     gallery: [

@@ -80,21 +80,21 @@ export function SponsoredSchoolsShowcase() {
               <span>Institutional Sponsorship Registry · Education For All</span>
             </div>
             <h2 className="display-md text-ink">
-              56 Sponsored Schools Across Pakistan
+              {TOTAL_SPONSORED_SCHOOLS} Sponsored Schools Across Pakistan
             </h2>
             <p className="lede mt-4 text-ink/75 max-w-2xl">
-              Education And Life Foundation directly funds and operates partnerships with 56 schools across Punjab, Sindh, and Azad Jammu &amp; Kashmir. By covering tuition, books, uniforms, and local teachers, we ensure 7,136 children have free, guaranteed access to a classroom.
+              Education And Life Foundation directly funds and operates partnerships with {TOTAL_SPONSORED_SCHOOLS} schools across Punjab, Sindh, and Azad Jammu &amp; Kashmir. By covering tuition, books, uniforms, and local teachers, we ensure {TOTAL_SPONSORED_STUDENTS.toLocaleString()} children have free, guaranteed access to a classroom.
             </p>
           </div>
 
           {/* Quick Metrics Pillar Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 shrink-0">
             <div className="rounded-2xl border border-ink/10 bg-background/90 dark:bg-background/95 p-4 text-center shadow-xs">
-              <span className="block font-display text-2xl sm:text-3xl font-black text-clay">56</span>
+              <span className="block font-display text-2xl sm:text-3xl font-black text-clay">{TOTAL_SPONSORED_SCHOOLS}</span>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-ink/60">Partner Schools</span>
             </div>
             <div className="rounded-2xl border border-ink/10 bg-background/90 dark:bg-background/95 p-4 text-center shadow-xs">
-              <span className="block font-display text-2xl sm:text-3xl font-black text-clay">7,136</span>
+              <span className="block font-display text-2xl sm:text-3xl font-black text-clay">{TOTAL_SPONSORED_STUDENTS.toLocaleString()}</span>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-ink/60">Students Enrolled</span>
             </div>
             <div className="rounded-2xl border border-ink/10 bg-background/90 dark:bg-background/95 p-4 text-center shadow-xs">
@@ -368,10 +368,19 @@ export function SponsoredSchoolsShowcase() {
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 rounded-lg border border-clay/30 bg-clay/10 px-2.5 py-1 text-xs font-bold text-clay">
-                        <Users className="h-3 w-3" />
-                        <span className="font-mono">{school.students}</span>
-                        <span className="text-[10px] font-sans font-semibold uppercase tracking-wider text-clay/80">Students</span>
+                      <div className="flex flex-col items-end gap-1">
+                        <div className="flex items-center gap-1.5 rounded-lg border border-clay/30 bg-clay/10 px-2.5 py-1 text-xs font-bold text-clay">
+                          <Users className="h-3 w-3" />
+                          <span className="font-mono">{school.students}</span>
+                          <span className="text-[10px] font-sans font-semibold uppercase tracking-wider text-clay/80">Students</span>
+                        </div>
+                        {school.boys !== undefined && school.girls !== undefined && (
+                          <div className="text-[10px] font-mono text-ink/60 flex items-center gap-1">
+                            <span>{school.boys} Boys</span>
+                            <span>·</span>
+                            <span>{school.girls} Girls</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </article>
@@ -457,6 +466,11 @@ export function SponsoredSchoolsShowcase() {
                           <span className="inline-flex items-center justify-center rounded-lg border border-clay/30 bg-clay/10 px-3 py-1 font-mono text-xs font-bold text-clay">
                             {school.students.toLocaleString()}
                           </span>
+                          {school.boys !== undefined && school.girls !== undefined && (
+                            <span className="block text-[10px] font-mono text-ink/50 mt-0.5">
+                              {school.boys}B · {school.girls}G
+                            </span>
+                          )}
                         </td>
                       </tr>
                     );
@@ -487,10 +501,10 @@ export function SponsoredSchoolsShowcase() {
             <div className="border-t border-ink/10 bg-sand/20 dark:bg-card/50 p-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-ink/60">
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="h-3.5 w-3.5 text-clay shrink-0" />
-                <span>All 56 institutions verified under ELF educational sponsorship agreements.</span>
+                <span>All {TOTAL_SPONSORED_SCHOOLS} institutions verified under ELF educational sponsorship agreements.</span>
               </span>
               <span className="font-mono text-[11px] font-bold text-ink/40">
-                OFFICIAL REGISTRY · 7,136 SCHOLARS
+                OFFICIAL REGISTRY · {TOTAL_SPONSORED_STUDENTS.toLocaleString()} SCHOLARS
               </span>
             </div>
           </div>
