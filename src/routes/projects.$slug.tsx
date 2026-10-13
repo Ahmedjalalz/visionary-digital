@@ -534,13 +534,7 @@ function ProjectPage() {
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="eyebrow">The problem</span>
                   {isEducation && (
-                    <span className="animate-pulse-aggressive inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-red-500/35 bg-red-500/10 px-3.5 sm:px-4 py-1 text-xs font-bold uppercase tracking-wider text-red-600 shadow-xs dark:border-red-400/40 dark:bg-red-500/15 dark:text-red-400">
-                      <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-80" />
-                        <span className="relative inline-flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-red-600 dark:bg-red-400" />
-                      </span>
-                      <span>Education Crisis in Pakistan</span>
-                    </span>
+                    <EducationCrisisBadge className="py-1 px-3.5 sm:px-4 text-xs" />
                   )}
                 </div>
                 <div className={`mt-8 flex flex-wrap items-baseline ${isEducation ? "gap-x-4 sm:gap-x-8 gap-y-2" : "gap-x-4 sm:gap-x-6 gap-y-2"}`}>
