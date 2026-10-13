@@ -185,32 +185,36 @@ const midwiferyPhotoDetails = [
 
 const schoolBagsPhotoDetails = [
   {
-    title: "Distribution Day Celebration",
-    desc: "Primary school students proudly holding their serialized, sponsor-funded School in A bag backpacks.",
+    title: "Active Classroom Reading & Instruction",
+    desc: "Over twenty primary pupils engaged with open textbooks and learning kits as their teacher conducts morning reading in the central aisle.",
   },
   {
-    title: "Active Classroom Learning",
-    desc: "Pupils at their desks equipped with fresh textbooks, exercise notebooks, and learning materials with their teacher.",
+    title: "Full-Classroom Literacy Session",
+    desc: "A packed classroom of students studying side by side, fully equipped with School in A bag stationery and learning supplies.",
   },
   {
-    title: "Tracked Backpack #174563",
-    desc: "Featured student wearing her dedicated School in A bag kit, complete with lunchbox and refillable water bottle.",
+    title: "Classroom Milestone & Distribution",
+    desc: "Students seated with their teacher as dedicated School in A bag backpacks are delivered and lined up for daily coursework.",
   },
   {
-    title: "Boys Secondary Cohort (Bags 191633–191637)",
-    desc: "Equipping young male students from vulnerable families with complete year-long learning resources.",
+    title: "Blackboard Instruction & Guided Study",
+    desc: "Subject instructor teaching at the blackboard while secondary students follow along in workbooks with their learning packs.",
   },
   {
-    title: "Girls Secondary Education (Bags 191629–191632)",
-    desc: "Empowering female students with full academic sets to ensure continuous retention and learning.",
+    title: "Courtyard Handover (Bags 190938–190943)",
+    desc: "Primary school children assembled in the school courtyard with their serialized backpacks, lunchboxes, and water bottles.",
   },
   {
-    title: "Direct District Handover (Bags 191315–191319)",
-    desc: "Direct, accountable delivery into the hands of named children across underserved districts.",
+    title: "Early Childhood Learners (Bags 191751–191755)",
+    desc: "Youngest kindergarten and nursery students equipped with essential starter kits to support early learning foundations.",
   },
   {
-    title: "Full Uniform & Equipment Milestone",
-    desc: "Students in school uniform fully prepared for the academic year with essential learning kits.",
+    title: "Girls Secondary Retention (Bags 191676–191679)",
+    desc: "Empowering older female students with complete academic sets to encourage secondary retention and graduation.",
+  },
+  {
+    title: "Secondary Student Cohort (Bags 191321–191326)",
+    desc: "Equipping young men and women across vulnerable communities with essential supplies for continuous academic progress.",
   },
 ];
 
