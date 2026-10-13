@@ -7,9 +7,9 @@ export interface ProjectHighlight {
 
 export const PROJECT_HIGHLIGHTS: Record<string, ProjectHighlight[]> = {
   "education-for-all": [
-    { stat: "14,000+", label: "Students Supported" },
+    { stat: "7,136", label: "Sponsored Students" },
+    { stat: "56", label: "Partner Schools" },
     { stat: "100%", label: "Free Tuition & Books" },
-    { stat: "35+", label: "Community Schools" },
     { stat: "Zero", label: "Cost to Families" },
     { stat: "26M", label: "Out-of-School Gap" },
   ],

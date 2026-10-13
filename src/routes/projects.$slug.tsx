@@ -20,6 +20,7 @@ import { getProject, projects } from "@/data/projects";
 import { Counter, MaskLines, ParallaxImage, Rise } from "@/components/site/motion-primitives";
 import { ProvincialEducationCensus } from "@/components/site/ProvincialEducationCensus";
 import { BagTracker } from "@/components/site/BagTracker";
+import { SchoolBagContentsSection } from "@/components/site/SchoolBagContentsSection";
 import { SchoolBagShortcut } from "@/components/site/SchoolBagShortcut";
 import { WidowsProjectShowcase } from "@/components/site/WidowsProjectShowcase";
 import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
@@ -27,6 +28,7 @@ import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsG
 import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentShowcase";
 import { FaithHopeLoveShowcase } from "@/components/site/FaithHopeLoveShowcase";
 import { EducationCrisisBadge } from "@/components/site/EducationCrisisBadge";
+import { SponsoredSchoolsShowcase } from "@/components/site/SponsoredSchoolsShowcase";
 import { foundationMedia } from "@/data/foundationMedia";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -418,13 +420,21 @@ function ProjectPage() {
                 </p>
               </div>
             </div>
-            <a
-              href="#bag-tracker"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-clay/40 bg-clay/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-clay hover:bg-clay hover:text-cream transition-all self-start md:self-center"
-            >
-              <span>Track A Bag</span>
-              <ArrowRight className="h-3 w-3" />
-            </a>
+            <div className="flex items-center gap-2.5 shrink-0 self-start md:self-center">
+              <a
+                href="#bag-contents"
+                className="inline-flex items-center gap-1.5 rounded-full border border-clay/30 bg-background/80 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:border-clay hover:text-clay transition-all"
+              >
+                <span>Bag Contents</span>
+              </a>
+              <a
+                href="#bag-tracker"
+                className="inline-flex items-center gap-2 rounded-full border border-clay/40 bg-clay/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-clay hover:bg-clay hover:text-cream transition-all"
+              >
+                <span>Track A Bag</span>
+                <ArrowRight className="h-3 w-3" />
+              </a>
+            </div>
           </div>
         </aside>
       )}
@@ -480,6 +490,20 @@ function ProjectPage() {
                 {project.name}
               </h1>
               <p className={`mt-6 max-w-xl text-base leading-relaxed sm:text-lg ${splitHero ? "text-ink/68" : "!text-cream/90 drop-shadow-xs"}`}>{project.short}</p>
+              {project.slug === "education-for-all" && (
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <a
+                    href="#sponsored-schools"
+                    className="inline-flex items-center gap-2 rounded-full border border-clay bg-clay px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-cream shadow-xs transition-all hover:bg-clay/90 hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <span>View 56 Sponsored Schools</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                  <span className="text-xs font-bold uppercase tracking-wider text-clay">
+                    7,136 Students Enrolled
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -975,8 +999,13 @@ function ProjectPage() {
       </>
       )}
 
+      {project.slug === "education-for-all" && (
+        <SponsoredSchoolsShowcase />
+      )}
+
       {project.slug === "school-bags" && (
         <>
+          <SchoolBagContentsSection />
           <section id="bag-tracker" className="relative overflow-hidden px-5 py-28 sm:px-8">
             <div className="mx-auto grid max-w-[1600px] items-center gap-14 lg:grid-cols-2">
               <div>
