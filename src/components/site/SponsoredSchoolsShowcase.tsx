@@ -21,6 +21,7 @@ import {
   PROVINCE_STATS,
   type SponsoredSchool,
 } from "@/data/sponsoredSchoolsData";
+import { SponsoredPakistanMap } from "@/components/site/SponsoredPakistanMap";
 
 type ProvinceFilter = "All" | "Punjab" | "Sindh" | "Azad Jammu & Kashmir";
 
@@ -67,6 +68,17 @@ export function SponsoredSchoolsShowcase() {
   const currentStudentsTotal = useMemo(() => {
     return filteredSchools.reduce((sum, s) => sum + s.students, 0);
   }, [filteredSchools]);
+
+  const handleSelectDistrictFromMap = (districtName: string) => {
+    setSelectedProvince("All");
+    setSelectedCategory("All");
+    setSearchQuery(districtName);
+    setVisibleCount(24);
+    const directoryEl = document.getElementById("schools-directory-controls");
+    if (directoryEl) {
+      directoryEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section id="sponsored-schools" className="scroll-mt-20 border-b border-ink/10 bg-sand/35 dark:bg-card/35 py-20 sm:py-28">
@@ -179,8 +191,14 @@ export function SponsoredSchoolsShowcase() {
           </div>
         </div>
 
+        {/* Interactive Pakistan Map & District Intelligence Explorer */}
+        <SponsoredPakistanMap
+          onSelectDistrictFilter={handleSelectDistrictFromMap}
+          className="my-10"
+        />
+
         {/* Filter Controls Bar */}
-        <div className="mt-8 flex flex-col gap-4">
+        <div id="schools-directory-controls" className="mt-8 flex flex-col gap-4 scroll-mt-24">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             
             {/* Search Input */}
