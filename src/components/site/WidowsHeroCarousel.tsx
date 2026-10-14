@@ -93,12 +93,18 @@ export function WidowsHeroCarousel() {
                   >
                     {/* Aspect Ratio Box (cinematic 16:9 / responsive height) */}
                     <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[580px] min-h-[260px] sm:min-h-[420px] bg-sand">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        loading={index < 4 ? "eager" : "lazy"}
-                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-1000 ease-out"
-                      />
+                      <picture className="contents">
+                        {img.src.startsWith("/") && (
+                          <source srcSet={img.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                        )}
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading={index < 2 ? "eager" : "lazy"}
+                          decoding="async"
+                          className="h-full w-full object-cover object-[center_12%] transition-transform duration-1000 ease-out"
+                        />
+                      </picture>
 
                       {/* Ambient gradient overlay for depth */}
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent opacity-60" />

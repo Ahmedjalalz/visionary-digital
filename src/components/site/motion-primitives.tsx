@@ -85,25 +85,41 @@ export function ParallaxImage({
   const y = useTransform(scrollYProgress, [0, 1], [-bleed, bleed]);
   const scale = useTransform(scrollYProgress, [0, 1], [scaleFrom, 1.02]);
 
+  const isLocal = typeof src === "string" && src.startsWith("/") && !src.endsWith(".svg");
+  const webpSrc = isLocal ? src.replace(/\.(jpe?g|png)$/i, ".webp") : null;
+
+  const imgContent = (
+    <motion.img
+      src={src}
+      alt={alt}
+      loading={priority ? "eager" : "lazy"}
+      decoding="async"
+      // @ts-expect-error React 19 / modern HTML fetchpriority
+      fetchpriority={priority ? "high" : "auto"}
+      style={
+        reduce
+          ? { height: "100%", width: "100%" }
+          : {
+              y,
+              scale,
+              top: `-${bleed}px`,
+              height: `calc(100% + ${bleed * 2}px)`,
+            }
+      }
+      className={`absolute inset-x-0 w-full object-cover will-change-transform ${imgClassName ?? ""}`}
+    />
+  );
+
   return (
     <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
-      <motion.img
-        src={src}
-        alt={alt}
-        loading={priority ? "eager" : "lazy"}
-        decoding="async"
-        style={
-          reduce
-            ? { height: "100%", width: "100%" }
-            : {
-                y,
-                scale,
-                top: `-${bleed}px`,
-                height: `calc(100% + ${bleed * 2}px)`,
-              }
-        }
-        className={`absolute inset-x-0 w-full object-cover will-change-transform ${imgClassName ?? ""}`}
-      />
+      {webpSrc && webpSrc !== src ? (
+        <picture className="contents">
+          <source srcSet={webpSrc} type="image/webp" />
+          {imgContent}
+        </picture>
+      ) : (
+        imgContent
+      )}
     </div>
   );
 }

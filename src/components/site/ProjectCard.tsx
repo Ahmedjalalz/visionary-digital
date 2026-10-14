@@ -57,22 +57,28 @@ export function ProjectCard({ project, index, className = "" }: ProjectCardProps
     >
       <div className="media">
         <span className="badge">{badgeNumber}</span>
-        <img
-          src={project.image}
-          alt={project.name}
-          loading="lazy"
-          className={project.heroPosition}
-          style={
-            project.heroPosition?.includes("[")
-              ? {
-                  objectPosition: project.heroPosition
-                    .replace("object-[", "")
-                    .replace("]", "")
-                    .replace(/_/g, " "),
-                }
-              : undefined
-          }
-        />
+        <picture className="contents">
+          {project.image.startsWith("/") && (
+            <source srcSet={project.image.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+          )}
+          <img
+            src={project.image}
+            alt={project.name}
+            loading="lazy"
+            decoding="async"
+            className={project.heroPosition}
+            style={
+              project.heroPosition?.includes("[")
+                ? {
+                    objectPosition: project.heroPosition
+                      .replace("object-[", "")
+                      .replace("]", "")
+                      .replace(/_/g, " "),
+                  }
+                : undefined
+            }
+          />
+        </picture>
       </div>
 
       <div className="body">

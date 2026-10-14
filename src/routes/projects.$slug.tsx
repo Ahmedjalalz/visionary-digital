@@ -534,12 +534,18 @@ function ProjectPage() {
                   </div>
                 )}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
-                  <img
-                    src={project.problemImage}
-                    alt={`${project.name} problem context`}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    loading="lazy"
-                  />
+                  <picture className="contents">
+                    {project.problemImage.startsWith("/") && (
+                      <source srcSet={project.problemImage.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    )}
+                    <img
+                      src={project.problemImage}
+                      alt={`${project.name} problem context`}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
               </div>
 
@@ -687,12 +693,18 @@ function ProjectPage() {
 
             <div className="lg:col-span-5">
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
-                <img
-                  src={project.responseImage}
-                  alt={`${project.name} response in action`}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                  loading="lazy"
-                />
+                <picture className="contents">
+                  {project.responseImage.startsWith("/") && (
+                    <source srcSet={project.responseImage.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                  )}
+                  <img
+                    src={project.responseImage}
+                    alt={`${project.name} response in action`}
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </div>
             </div>
           </div>
@@ -817,14 +829,22 @@ function ProjectPage() {
                   ? project.heroPosition
                   : "object-[center_12%]";
 
+              const webpVersion = image.startsWith("/") ? image.replace(/\.(jpe?g|png)$/i, ".webp") : null;
+
               return (
                 <figure key={image} className={`group relative overflow-hidden rounded-xl border border-ink/10 bg-muted shadow-2xs ${spanClass}`}>
-                  <img
-                    src={image}
-                    alt={`${project.name} field work ${index + 1}`}
-                    loading="lazy"
-                    className={`h-full w-full object-cover ${imagePosition} transition-transform duration-700 group-hover:scale-[1.035]`}
-                  />
+                  <picture className="contents">
+                    {webpVersion && webpVersion !== image && (
+                      <source srcSet={webpVersion} type="image/webp" />
+                    )}
+                    <img
+                      src={image}
+                      alt={`${project.name} field work ${index + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className={`h-full w-full object-cover ${imagePosition} transition-transform duration-700 group-hover:scale-[1.035]`}
+                    />
+                  </picture>
                   {project.slug === "midwifery-program" && midwiferyPhotoDetails[index] && (
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
