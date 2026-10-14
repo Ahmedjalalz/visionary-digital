@@ -266,12 +266,18 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
                   className="group relative cursor-pointer overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-ink/5">
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      loading="lazy"
-                      className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${photo.focal}`}
-                    />
+                    <picture className="contents">
+                      {photo.src.startsWith("/") && (
+                        <source srcSet={photo.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                      )}
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${photo.focal}`}
+                      />
+                    </picture>
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                     <div className="absolute top-3 right-3 rounded-full bg-background/80 p-2 backdrop-blur-xs text-ink opacity-0 group-hover:opacity-100 transition-opacity">
                       <Maximize2 className="h-4 w-4" />
@@ -451,12 +457,18 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
                   className="group relative cursor-pointer overflow-hidden rounded-2xl border border-ink/10 bg-sand/20 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-ink/5">
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      loading="lazy"
-                      className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${photo.focal}`}
-                    />
+                    <picture className="contents">
+                      {photo.src.startsWith("/") && (
+                        <source srcSet={photo.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                      )}
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${photo.focal}`}
+                      />
+                    </picture>
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                     <div className="absolute top-3 right-3 rounded-full bg-background/80 p-2 backdrop-blur-xs text-ink opacity-0 group-hover:opacity-100 transition-opacity">
                       <Maximize2 className="h-4 w-4" />
@@ -660,11 +672,17 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
             </button>
 
             <div className="max-h-[65vh] overflow-hidden bg-ink/5">
-              <img
-                src={selectedPhoto.src}
-                alt={selectedPhoto.alt}
-                className="h-full w-full object-contain max-h-[65vh]"
-              />
+              <picture className="contents">
+                {selectedPhoto.src.startsWith("/") && (
+                  <source srcSet={selectedPhoto.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                )}
+                <img
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.alt}
+                  decoding="async"
+                  className="h-full w-full object-contain max-h-[65vh]"
+                />
+              </picture>
             </div>
 
             <div className="p-6">

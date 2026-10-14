@@ -8,6 +8,7 @@ import { foundationMedia } from "@/data/foundationMedia";
 
 import { MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
 import { SdgAlignmentSection } from "@/components/site/SdgAlignmentSection";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 export const Route = createFileRoute("/about")({
@@ -177,8 +178,10 @@ function HistoryRail() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const [distance, setDistance] = useState(0);
   const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
     const measure = () => {
       const el = trackRef.current;
       if (!el) return;
@@ -192,49 +195,23 @@ function HistoryRail() {
       ro.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, []);
+  }, [isMobile]);
 
-  return (
-    <>
-      <section
-        ref={ref}
-        className="relative hidden bg-sand lg:block"
-        style={{ height: `${Math.max(160, 60 + history.length * 20)}vh` }}
-      >
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24 pb-8">
-          <div className="mx-auto mb-8 w-full max-w-[1600px] px-8">
-            <span className="eyebrow">The journey</span>
-            <h2 className="display-md mt-3 max-w-4xl text-balance text-ink">
-              How a room full of urgency became a portfolio of programmes.
-            </h2>
-          </div>
-          <motion.ol ref={trackRef} style={reduce ? {} : { x }} className="flex items-stretch gap-8 pl-8 pr-8">
-            {history.map((h, i) => (
-              <li key={h.year} className="w-[440px] shrink-0">
-                <div className="relative h-[240px] overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
-                  <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_16%]" />
-                  <div className="absolute inset-0 bg-ink/45" />
-                  <span className="numeral absolute bottom-4 left-5 text-5xl text-cream">{h.year}</span>
-                </div>
-                <div className="mt-5 border-t border-ink/15 pt-4">
-                  <span className="numeral text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-1.5 font-display text-2xl font-bold text-ink">{h.title}</h3>
-                  <p className="mt-2.5 max-w-[42ch] text-sm leading-relaxed text-ink/60">{h.body}</p>
-                </div>
-              </li>
-            ))}
-          </motion.ol>
-        </div>
-      </section>
-
-      <section className="bg-sand px-5 py-14 lg:hidden">
+  if (isMobile) {
+    return (
+      <section className="bg-sand px-5 py-14">
         <span className="eyebrow">The journey</span>
         <h2 className="display-md mt-3 text-ink">How urgency became a portfolio of programmes.</h2>
         <ol className="mt-8 space-y-10">
           {history.map((h) => (
             <li key={h.year}>
               <div className="relative h-52 overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
-                <img src={h.img} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover object-[center_16%]" />
+                <picture className="contents">
+                  {h.img.startsWith("/") && (
+                    <source srcSet={h.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                  )}
+                  <img src={h.img} alt="" aria-hidden loading="lazy" decoding="async" className="h-full w-full object-cover object-[center_16%]" />
+                </picture>
                 <div className="absolute inset-0 bg-ink/45" />
                 <span className="numeral absolute bottom-3 left-4 text-4xl text-cream">{h.year}</span>
               </div>
@@ -244,7 +221,45 @@ function HistoryRail() {
           ))}
         </ol>
       </section>
-    </>
+    );
+  }
+
+  return (
+    <section
+      ref={ref}
+      className="relative bg-sand"
+      style={{ height: `${Math.max(160, 60 + history.length * 20)}vh` }}
+    >
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-24 pb-8">
+        <div className="mx-auto mb-8 w-full max-w-[1600px] px-8">
+          <span className="eyebrow">The journey</span>
+          <h2 className="display-md mt-3 max-w-4xl text-balance text-ink">
+            How a room full of urgency became a portfolio of programmes.
+          </h2>
+        </div>
+        <motion.ol ref={trackRef} style={reduce ? {} : { x }} className="flex items-stretch gap-8 pl-8 pr-8">
+          {history.map((h, i) => (
+            <li key={h.year} className="w-[440px] shrink-0">
+              <div className="relative h-[240px] overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
+                <picture className="contents">
+                  {h.img.startsWith("/") && (
+                    <source srcSet={h.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                  )}
+                  <img src={h.img} alt="" aria-hidden loading="lazy" decoding="async" className="h-full w-full object-cover object-[center_16%]" />
+                </picture>
+                <div className="absolute inset-0 bg-ink/45" />
+                <span className="numeral absolute bottom-4 left-5 text-5xl text-cream">{h.year}</span>
+              </div>
+              <div className="mt-5 border-t border-ink/15 pt-4">
+                <span className="numeral text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-1.5 font-display text-2xl font-bold text-ink">{h.title}</h3>
+                <p className="mt-2.5 max-w-[42ch] text-sm leading-relaxed text-ink/60">{h.body}</p>
+              </div>
+            </li>
+          ))}
+        </motion.ol>
+      </div>
+    </section>
   );
 }
 
@@ -309,11 +324,16 @@ function About() {
             {/* Right Visual Image Column */}
             <div className="lg:col-span-5">
               <div className="group relative overflow-hidden rounded-3xl border border-ink/10 bg-sand shadow-lg">
-                <img
-                  src="/images/wash/wash-b-1.jpg"
-                  alt="Children outside an ELF village school in Punjab"
-                  className="aspect-[4/3] w-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105"
-                />
+                <picture className="contents">
+                  <source srcSet="/images/wash/wash-b-1.webp" type="image/webp" />
+                  <img
+                    src="/images/wash/wash-b-1.jpg"
+                    alt="Children outside an ELF village school in Punjab"
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 text-cream">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-clay-bright">
@@ -429,11 +449,16 @@ function About() {
             <div className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-sand/30 dark:bg-card/60 p-6 sm:p-8 shadow-xs">
                 <div className="relative h-80 sm:h-96 w-full overflow-hidden rounded-2xl bg-ink/10 shadow-xs">
-                  <img
-                    src="/images/about/irshad-bibi-and-husband.jpg"
-                    alt="Irshad Bibi and her husband, the founding inspiration of Education and Life Foundation"
-                    className="h-full w-full object-cover object-[center_20%]"
-                  />
+                  <picture className="contents">
+                    <source srcSet="/images/about/irshad-bibi-and-husband.webp" type="image/webp" />
+                    <img
+                      src="/images/about/irshad-bibi-and-husband.jpg"
+                      alt="Irshad Bibi and her husband, the founding inspiration of Education and Life Foundation"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-[center_20%]"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
                   <span className="absolute bottom-3 left-4 text-xs font-bold uppercase tracking-wider text-cream/90 bg-ink/70 backdrop-blur-xs px-3 py-1 rounded-full">
                     The Founding Inspiration
@@ -770,12 +795,18 @@ function About() {
             {boardMembers.map((m, i) => (
               <Rise key={m.name} delay={i * 0.04}>
                 <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                  <img
-                    src={m.img}
-                    alt={`${m.name}, ${m.role}`}
-                    loading="lazy"
-                    className={`h-full w-full object-cover ${m.position || "object-[center_20%]"} transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
-                  />
+                  <picture className="contents">
+                    {m.img.startsWith("/") && (
+                      <source srcSet={m.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    )}
+                    <img
+                      src={m.img}
+                      alt={`${m.name}, ${m.role}`}
+                      loading="lazy"
+                      decoding="async"
+                      className={`h-full w-full object-cover ${m.position || "object-[center_20%]"} transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/35 to-transparent" />
                   
                   {m.badge && (

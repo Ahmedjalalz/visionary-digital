@@ -194,12 +194,16 @@ function Impact() {
             </div>
             <div className="lg:col-span-5">
               <div className="group relative overflow-hidden rounded-2xl border border-ink/10 bg-sand/30 shadow-md transition-shadow duration-300 hover:shadow-lg">
-                <img
-                  src="/images/education/out-of-school-children.jpg"
-                  alt="Children in rural Pakistan facing economic hardship outside of school"
-                  className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                  loading="lazy"
-                />
+                <picture className="contents">
+                  <source srcSet="/images/education/out-of-school-children.webp" type="image/webp" />
+                  <img
+                    src="/images/education/out-of-school-children.jpg"
+                    alt="Children in rural Pakistan facing economic hardship outside of school"
+                    className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-80" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-cream">
                   <span className="inline-block rounded-full bg-clay/90 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-cream">
@@ -281,6 +285,7 @@ function Impact() {
                 src={foundationMedia.schoolUniforms}
                 alt="ELF students in rural Punjab"
                 loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
@@ -291,12 +296,16 @@ function Impact() {
             </div>
 
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
-              <img
-                src="/images/wash/wash-b-3.jpg"
-                alt="Installed clean water hand pump"
-                loading="lazy"
-                className="h-full w-full object-cover object-[center_16%] transition-transform duration-700 group-hover:scale-105"
-              />
+              <picture className="contents">
+                <source srcSet="/images/wash/wash-b-3.webp" type="image/webp" />
+                <img
+                  src="/images/wash/wash-b-3.jpg"
+                  alt="Installed clean water hand pump"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover object-[center_16%] transition-transform duration-700 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
                 <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Safe Water Points</span>
@@ -305,12 +314,16 @@ function Impact() {
             </div>
 
             <div className="group relative overflow-hidden rounded-2xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
-              <img
-                src="/images/pregnant/pregnant-7.jpg"
-                alt="Medical camp doctor examining patient"
-                loading="lazy"
-                className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
-              />
+              <picture className="contents">
+                <source srcSet="/images/pregnant/pregnant-7.webp" type="image/webp" />
+                <img
+                  src="/images/pregnant/pregnant-7.jpg"
+                  alt="Medical camp doctor examining patient"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-5 right-5">
                 <span className="text-[0.62rem] font-bold uppercase tracking-wider text-clay">Clinical Care</span>
@@ -606,12 +619,16 @@ function FinalCta() {
 
           <div className="lg:col-span-5">
             <div className="group relative aspect-[16/11] sm:aspect-[4/3] lg:aspect-[16/11] w-full overflow-hidden rounded-3xl border border-ink/10 bg-sand/30 shadow-lg hover:border-clay/40 transition-all duration-300">
-              <img
-                src="/images/school-bags/IMG_9475.JPG"
-                alt="Pakistani school children joyfully holding their new school bags and educational supplies"
-                loading="lazy"
-                className="h-full w-full object-cover object-[center_28%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-              />
+              <picture className="contents">
+                <source srcSet="/images/school-bags/IMG_9475.webp" type="image/webp" />
+                <img
+                  src="/images/school-bags/IMG_9475.JPG"
+                  alt="Pakistani school children joyfully holding their new school bags and educational supplies"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover object-[center_28%] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent opacity-85" />
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-cream">
                 <span className="inline-flex items-center rounded-full bg-clay px-3 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-cream shadow-xs">

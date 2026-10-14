@@ -113,6 +113,22 @@ async function main() {
     }
   }
 
+  // Generate high-efficiency avatar thumbnails for widow testimonies
+  const testimoniesDir = path.resolve(process.cwd(), 'public/images/widows/testimonies');
+  if (fs.existsSync(testimoniesDir)) {
+    const testimonyFiles = fs.readdirSync(testimoniesDir).filter(f => f.endsWith('.jpg') && !f.includes('-thumb'));
+    for (const f of testimonyFiles) {
+      const src = path.join(testimoniesDir, f);
+      const destThumb = path.join(testimoniesDir, f.replace(/\.jpg$/, '-thumb.webp'));
+      const buf = fs.readFileSync(src);
+      await sharp(buf)
+        .resize({ width: 140, height: 140, fit: 'cover', position: 'top' })
+        .webp({ quality: 78 })
+        .toFile(destThumb);
+    }
+    console.log(`Generated ${testimonyFiles.length} avatar thumbnails for widow testimonies.`);
+  }
+
   console.log('Done!');
   console.log(`Original total: ${(totalOrig / (1024 * 1024)).toFixed(2)} MB`);
   console.log(`Optimized total: ${(totalFinal / (1024 * 1024)).toFixed(2)} MB`);

@@ -997,38 +997,54 @@ function ProjectPage() {
               <div className="grid grid-cols-2 gap-4 lg:col-span-6">
                 <div className="space-y-4">
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
-                    <img
-                      src="/images/music/music-harmonium-performance.jpg"
-                      alt="Harmonium and vocal performance in community music program"
-                      loading="lazy"
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
-                    />
+                    <picture className="contents">
+                      <source srcSet="/images/music/music-harmonium-performance.webp" type="image/webp" />
+                      <img
+                        src="/images/music/music-harmonium-performance.jpg"
+                        alt="Harmonium and vocal performance in community music program"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
+                      />
+                    </picture>
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
-                    <img
-                      src="/images/music/music-dholak-percussion.jpg"
-                      alt="Live dholak percussionist playing carved acoustic instrument"
-                      loading="lazy"
-                      className="h-full w-full object-cover object-[center_35%] transition-transform duration-700 hover:scale-105"
-                    />
+                    <picture className="contents">
+                      <source srcSet="/images/music/music-dholak-percussion.webp" type="image/webp" />
+                      <img
+                        src="/images/music/music-dholak-percussion.jpg"
+                        alt="Live dholak percussionist playing carved acoustic instrument"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-[center_35%] transition-transform duration-700 hover:scale-105"
+                      />
+                    </picture>
                   </div>
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/3] bg-ink/10 shadow-xs">
-                    <img
-                      src="/images/music/music-acoustic-guitar.jpg"
-                      alt="Acoustic guitarist performing during community event"
-                      loading="lazy"
-                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
-                    />
+                    <picture className="contents">
+                      <source srcSet="/images/music/music-acoustic-guitar.webp" type="image/webp" />
+                      <img
+                        src="/images/music/music-acoustic-guitar.jpg"
+                        alt="Acoustic guitarist performing during community event"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
+                      />
+                    </picture>
                   </div>
                   <div className="overflow-hidden rounded-xl border border-ink/10 aspect-[4/5] bg-ink/10 shadow-xs">
-                    <img
-                      src="/images/music/music-children-joy.jpg"
-                      alt="School children celebrating with song and hands raised in joy"
-                      loading="lazy"
-                      className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
-                    />
+                    <picture className="contents">
+                      <source srcSet="/images/music/music-children-joy.webp" type="image/webp" />
+                      <img
+                        src="/images/music/music-children-joy.jpg"
+                        alt="School children celebrating with song and hands raised in joy"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-[center_25%] transition-transform duration-700 hover:scale-105"
+                      />
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -1220,12 +1236,16 @@ function ProjectPage() {
                 <div className="mt-8 grid gap-6 sm:grid-cols-3">
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <img
-                        src="/images/pregnant/pregnant-10.jpg"
-                        alt="Clinical Antenatal Checkup"
-                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
+                      <picture className="contents">
+                        <source srcSet="/images/pregnant/pregnant-10.webp" type="image/webp" />
+                        <img
+                          src="/images/pregnant/pregnant-10.jpg"
+                          alt="Clinical Antenatal Checkup"
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </picture>
                     </div>
                     <div className="p-6">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Clinical Care</span>
@@ -1238,12 +1258,16 @@ function ProjectPage() {
 
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <img
-                        src="/images/pregnant/pregnant-11.jpg"
-                        alt="Lady Health Visitor Home Consultation"
-                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
+                      <picture className="contents">
+                        <source srcSet="/images/pregnant/pregnant-11.webp" type="image/webp" />
+                        <img
+                          src="/images/pregnant/pregnant-11.jpg"
+                          alt="Lady Health Visitor Home Consultation"
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </picture>
                     </div>
                     <div className="p-6">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Community Outreach</span>
@@ -1256,12 +1280,16 @@ function ProjectPage() {
 
                   <div className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1">
                     <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <img
-                        src="/images/pregnant/pregnant-14.jpg"
-                        alt="ELF Nutrition Support and Infant Formula"
-                        className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
+                      <picture className="contents">
+                        <source srcSet="/images/pregnant/pregnant-14.webp" type="image/webp" />
+                        <img
+                          src="/images/pregnant/pregnant-14.jpg"
+                          alt="ELF Nutrition Support and Infant Formula"
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </picture>
                     </div>
                     <div className="p-6">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay">Newborn Nutrition</span>

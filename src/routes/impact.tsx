@@ -306,11 +306,16 @@ function ImpactPage() {
             {/* Left Column: Framed Authentic Field Photo Card */}
             <div className="lg:col-span-6">
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-cream/15 bg-ink/50 shadow-2xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full group">
-                <img
-                  src={heroImg}
-                  alt="ELF field work with communities in Punjab"
-                  className="h-full w-full object-cover object-[center_22%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
+                <picture className="contents">
+                  <source srcSet="/images/pregnant/pregnant-15.webp" type="image/webp" />
+                  <img
+                    src={heroImg}
+                    alt="ELF field work with communities in Punjab"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-[center_22%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </picture>
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
               </div>
             </div>

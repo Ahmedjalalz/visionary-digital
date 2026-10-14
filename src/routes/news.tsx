@@ -200,11 +200,18 @@ function News() {
                   >
                     <div className="lg:col-span-7">
                       <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/10] bg-ink/10 shadow-sm">
-                        <img
-                          src={posts[0].img}
-                          alt={posts[0].title}
-                          className={`h-full w-full object-cover ${posts[0].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
-                        />
+                        <picture className="contents">
+                          {posts[0].img.startsWith("/") && (
+                            <source srcSet={posts[0].img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                          )}
+                          <img
+                            src={posts[0].img}
+                            alt={posts[0].title}
+                            loading="eager"
+                            decoding="async"
+                            className={`h-full w-full object-cover ${posts[0].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+                          />
+                        </picture>
                         <div className="absolute left-4 top-4">
                           <span className="rounded-full bg-clay px-3.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-cream shadow-xs">
                             Featured Dispatch
@@ -252,11 +259,18 @@ function News() {
                     >
                       <div>
                         <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
-                          <img
-                            src={p.img}
-                            alt={p.title}
-                            className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
-                          />
+                          <picture className="contents">
+                            {p.img.startsWith("/") && (
+                              <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                            )}
+                            <img
+                              src={p.img}
+                              alt={p.title}
+                              loading="lazy"
+                              decoding="async"
+                              className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
+                            />
+                          </picture>
                           <div className="absolute left-3 top-3">
                             <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
                               {p.category}
@@ -327,11 +341,18 @@ function News() {
 
                     <div className="lg:col-span-7 lg:order-2">
                       <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/10] bg-ink/10 shadow-sm">
-                        <img
-                          src={posts[3].img}
-                          alt={posts[3].title}
-                          className={`h-full w-full object-cover ${posts[3].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
-                        />
+                        <picture className="contents">
+                          {posts[3].img.startsWith("/") && (
+                            <source srcSet={posts[3].img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                          )}
+                          <img
+                            src={posts[3].img}
+                            alt={posts[3].title}
+                            loading="lazy"
+                            decoding="async"
+                            className={`h-full w-full object-cover ${posts[3].imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+                          />
+                        </picture>
                         <div className="absolute right-4 top-4">
                           <span className="rounded-full bg-ink/80 backdrop-blur-xs px-3.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-cream shadow-xs">
                             {posts[3].category}
@@ -353,11 +374,18 @@ function News() {
                     >
                       <div>
                         <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
-                          <img
-                            src={p.img}
-                            alt={p.title}
-                            className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
-                          />
+                          <picture className="contents">
+                            {p.img.startsWith("/") && (
+                              <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                            )}
+                            <img
+                              src={p.img}
+                              alt={p.title}
+                              loading="lazy"
+                              decoding="async"
+                              className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
+                            />
+                          </picture>
                           <div className="absolute left-3 top-3">
                             <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
                               {p.category}
@@ -404,11 +432,18 @@ function News() {
                   >
                     <div>
                       <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
-                        <img
-                          src={p.img}
-                          alt={p.title}
-                          className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
-                        />
+                        <picture className="contents">
+                          {p.img.startsWith("/") && (
+                            <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                          )}
+                          <img
+                            src={p.img}
+                            alt={p.title}
+                            loading="lazy"
+                            decoding="async"
+                            className={`h-full w-full object-cover ${p.imgPosition || "object-[center_20%]"} transition-transform duration-700 ease-out group-hover:scale-105`}
+                          />
+                        </picture>
                         <div className="absolute left-3 top-3">
                           <span className="rounded bg-background/90 backdrop-blur-xs px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-clay">
                             {p.category}
@@ -453,11 +488,17 @@ function News() {
           {activeDispatch && (
             <div>
               <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-ink">
-                <img
-                  src={activeDispatch.img}
-                  alt={activeDispatch.title}
-                  className={`h-full w-full object-cover ${activeDispatch.imgPosition || "object-[center_20%]"}`}
-                />
+                <picture className="contents">
+                  {activeDispatch.img.startsWith("/") && (
+                    <source srcSet={activeDispatch.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                  )}
+                  <img
+                    src={activeDispatch.img}
+                    alt={activeDispatch.title}
+                    decoding="async"
+                    className={`h-full w-full object-cover ${activeDispatch.imgPosition || "object-[center_20%]"}`}
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-8 sm:right-8">
                   <div className="flex flex-wrap items-center gap-2">

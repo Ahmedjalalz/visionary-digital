@@ -270,11 +270,18 @@ export function FaithHopeLoveShowcase() {
           <div className="grid gap-0 lg:grid-cols-12">
             {/* Visual Photo */}
             <div className="relative min-h-[320px] sm:min-h-[380px] lg:col-span-5 overflow-hidden bg-sand dark:bg-card">
-              <img
-                src={currentCohort.img}
-                alt={currentCohort.title}
-                className={`h-full w-full object-cover ${currentCohort.focal} transition-transform duration-700`}
-              />
+              <picture className="contents">
+                {currentCohort.img.startsWith("/") && (
+                  <source srcSet={currentCohort.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                )}
+                <img
+                  src={currentCohort.img}
+                  alt={currentCohort.title}
+                  loading="lazy"
+                  decoding="async"
+                  className={`h-full w-full object-cover ${currentCohort.focal} transition-transform duration-700`}
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
               <div className="absolute top-4 left-4">
                 <span className="inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink shadow-xs backdrop-blur-md">

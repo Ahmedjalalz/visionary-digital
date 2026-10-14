@@ -11,6 +11,10 @@ export function WidowsHeroCarousel() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
+  // Keep track of visited/adjacent slides to download only what is needed
+  const [renderedIndices, setRenderedIndices] = useState<Set<number>>(
+    () => new Set([0, 1, 2, 27])
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -34,6 +38,19 @@ export function WidowsHeroCarousel() {
       emblaApi.off("reInit", onSelect);
     };
   }, [emblaApi, onSelect]);
+
+  // Expand rendered slides window around selected index
+  useEffect(() => {
+    setRenderedIndices((prev) => {
+      const next = new Set(prev);
+      const total = WIDOWS_HERO_IMAGES.length;
+      for (let offset = -2; offset <= 2; offset++) {
+        const idx = (selectedIndex + offset + total) % total;
+        next.add(idx);
+      }
+      return next;
+    });
+  }, [selectedIndex]);
 
   // Autoplay timer with pause on hover/interaction
   useEffect(() => {
@@ -73,6 +90,7 @@ export function WidowsHeroCarousel() {
           <div className="flex -ml-4 sm:-ml-6 lg:-ml-8 items-center">
             {WIDOWS_HERO_IMAGES.map((img, index) => {
               const isCenter = index === selectedIndex;
+              const isRendered = renderedIndices.has(index);
 
               return (
                 <div
@@ -93,18 +111,26 @@ export function WidowsHeroCarousel() {
                   >
                     {/* Aspect Ratio Box (cinematic 16:9 / responsive height) */}
                     <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[580px] min-h-[260px] sm:min-h-[420px] bg-sand">
-                      <picture className="contents">
-                        {img.src.startsWith("/") && (
-                          <source srcSet={img.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
-                        )}
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          loading={index < 2 ? "eager" : "lazy"}
-                          decoding="async"
-                          className="h-full w-full object-cover object-[center_12%] transition-transform duration-1000 ease-out"
-                        />
-                      </picture>
+                      {isRendered ? (
+                        <picture className="contents">
+                          {img.src.startsWith("/") && (
+                            <source srcSet={img.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                          )}
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            loading={index === 0 ? "eager" : "lazy"}
+                            decoding="async"
+                            className="h-full w-full object-cover object-[center_12%] transition-transform duration-1000 ease-out"
+                          />
+                        </picture>
+                      ) : (
+                        <div className="h-full w-full bg-sand/80 dark:bg-card/60 flex items-center justify-center">
+                          <span className="text-[10px] uppercase tracking-widest text-ink/30 font-semibold font-mono">
+                            {String(index + 1).padStart(2, "0")} / 28
+                          </span>
+                        </div>
+                      )}
 
                       {/* Ambient gradient overlay for depth */}
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent opacity-60" />

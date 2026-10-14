@@ -29,6 +29,7 @@ export function WidowsProjectShowcase() {
   const [selectedTestimony, setSelectedTestimony] = useState<WidowTestimony>(widowsTestimonies[0]!);
   const [openFaq, setOpenFaq] = useState<string | null>(widowsFaqs[0]?.id ?? null);
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+  const [showAllScrolling, setShowAllScrolling] = useState<boolean>(false);
 
   const toggleFaq = (id: string) => {
     setOpenFaq((prev) => (prev === id ? null : id));
@@ -47,11 +48,16 @@ export function WidowsProjectShowcase() {
                   {!isVideoPlaying ? (
                     <div className="relative h-full w-full">
                       {/* Video Poster Image */}
-                      <img
-                        src="/images/widows/bottom/1.jpg"
-                        alt="A Legacy of Hope Sponsorship"
-                        className="h-full w-full object-cover object-[center_20%] opacity-85 transition-transform duration-700 hover:scale-105"
-                      />
+                      <picture className="contents">
+                        <source srcSet="/images/widows/bottom/1.webp" type="image/webp" />
+                        <img
+                          src="/images/widows/bottom/1.jpg"
+                          alt="A Legacy of Hope Sponsorship"
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-[center_20%] opacity-85 transition-transform duration-700 hover:scale-105"
+                        />
+                      </picture>
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                         <button
@@ -300,11 +306,16 @@ export function WidowsProjectShowcase() {
             <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-5">
                 <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-2xl border border-ink/10 bg-muted">
-                  <img
-                    src={selectedTestimony.image}
-                    alt={selectedTestimony.name}
-                    className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 hover:scale-105"
-                  />
+                  <picture className="contents">
+                    <source srcSet={selectedTestimony.image.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    <img
+                      src={selectedTestimony.image}
+                      alt={selectedTestimony.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 hover:scale-105"
+                    />
+                  </picture>
                   <div className="absolute top-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-[10px] font-semibold tracking-wider text-cream backdrop-blur-xs">
                     {selectedTestimony.status}
                   </div>
@@ -353,6 +364,7 @@ export function WidowsProjectShowcase() {
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2.5 sm:gap-3">
               {widowsTestimonies.map((t) => {
                 const isSelected = selectedTestimony.id === t.id;
+                const thumbSrc = t.image.replace(/\.(jpe?g|png)$/i, "-thumb.webp");
                 return (
                   <button
                     key={t.id}
@@ -366,10 +378,13 @@ export function WidowsProjectShowcase() {
                   >
                     <div className="aspect-square w-full bg-muted overflow-hidden">
                       <img
-                        src={t.image}
+                        src={thumbSrc}
                         alt={t.name}
-                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-300 group-hover:scale-110"
+                        width={64}
+                        height={64}
                         loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-[center_18%] transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
                     <div className="p-1.5 text-center bg-background">
@@ -414,12 +429,18 @@ export function WidowsProjectShowcase() {
                 className="group overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-xl hover:-translate-y-1"
               >
                 <div className="aspect-[4/3] overflow-hidden bg-muted">
-                  <img
-                    src={imgSrc}
-                    alt={`Field Welfare Outreach ${idx + 1}`}
-                    className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <picture className="contents">
+                    {imgSrc.startsWith("/") && (
+                      <source srcSet={imgSrc.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    )}
+                    <img
+                      src={imgSrc}
+                      alt={`Field Welfare Outreach ${idx + 1}`}
+                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
                 <div className="p-5">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-clay">
@@ -440,22 +461,39 @@ export function WidowsProjectShowcase() {
 
           {/* Horizontal Scrolling Gallery Strip */}
           <div className="mt-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-ink/60 block mb-4">
-              Continuous Field Photo Stream (Scroll horizontally):
-            </span>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-ink/60">
+                Continuous Field Photo Stream (Scroll horizontally):
+              </span>
+              {!showAllScrolling && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllScrolling(true)}
+                  className="text-xs font-bold uppercase tracking-wider text-clay hover:text-clay-deep underline cursor-pointer"
+                >
+                  View All 20 Photographs →
+                </button>
+              )}
+            </div>
             <div className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x scrollbar-thin scrollbar-thumb-ink/20">
-              {widowsGalleryImages.scrolling.map((imgSrc, idx) => (
+              {(showAllScrolling ? widowsGalleryImages.scrolling : widowsGalleryImages.scrolling.slice(0, 6)).map((imgSrc, idx) => (
                 <div
                   key={imgSrc}
                   className="group relative shrink-0 w-64 sm:w-72 overflow-hidden rounded-2xl border border-ink/10 bg-background shadow-xs transition-all duration-300 hover:border-clay/40 hover:shadow-md snap-start"
                 >
                   <div className="aspect-[3/2] overflow-hidden bg-muted">
-                    <img
-                      src={imgSrc}
-                      alt={`Scrolling Record ${idx + 1}`}
-                      className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
+                    <picture className="contents">
+                      {imgSrc.startsWith("/") && (
+                        <source srcSet={imgSrc.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                      )}
+                      <img
+                        src={imgSrc}
+                        alt={`Scrolling Record ${idx + 1}`}
+                        className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
                   </div>
                   <div className="p-3 bg-background">
                     <span className="text-[10px] font-medium text-ink/60">
@@ -464,6 +502,20 @@ export function WidowsProjectShowcase() {
                   </div>
                 </div>
               ))}
+              {!showAllScrolling && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllScrolling(true)}
+                  className="group shrink-0 w-64 sm:w-72 aspect-[3/2] flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-clay/40 bg-sand/50 p-6 text-center hover:bg-clay/10 transition-colors cursor-pointer"
+                >
+                  <span className="font-display text-base font-bold text-ink group-hover:text-clay">
+                    +14 More Records
+                  </span>
+                  <span className="mt-1 text-[11px] text-ink/60">
+                    Click to load full photostream
+                  </span>
+                </button>
+              )}
             </div>
           </div>
         </div>
