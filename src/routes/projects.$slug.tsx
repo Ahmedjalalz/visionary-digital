@@ -535,7 +535,7 @@ function ProjectPage() {
                 )}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
                   <picture className="contents">
-                    {project.problemImage.startsWith("/") && (
+                    {project.problemImage.startsWith("/images/") && (
                       <source srcSet={project.problemImage.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                     )}
                     <img
@@ -694,7 +694,7 @@ function ProjectPage() {
             <div className="lg:col-span-5">
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink/10 bg-sand/30 shadow-md">
                 <picture className="contents">
-                  {project.responseImage.startsWith("/") && (
+                  {project.responseImage.startsWith("/images/") && (
                     <source srcSet={project.responseImage.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                   )}
                   <img
@@ -829,7 +829,7 @@ function ProjectPage() {
                   ? project.heroPosition
                   : "object-[center_12%]";
 
-              const webpVersion = image.startsWith("/") ? image.replace(/\.(jpe?g|png)$/i, ".webp") : null;
+              const webpVersion = image.startsWith("/images/") ? image.replace(/\.(jpe?g|png)$/i, ".webp") : null;
 
               return (
                 <figure key={image} className={`group relative overflow-hidden rounded-xl border border-ink/10 bg-muted shadow-2xs ${spanClass}`}>

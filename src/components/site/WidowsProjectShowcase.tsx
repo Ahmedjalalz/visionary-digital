@@ -307,7 +307,9 @@ export function WidowsProjectShowcase() {
               <div className="lg:col-span-5">
                 <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-2xl border border-ink/10 bg-muted">
                   <picture className="contents">
-                    <source srcSet={selectedTestimony.image.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    {selectedTestimony.image.startsWith("/images/") && (
+                      <source srcSet={selectedTestimony.image.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
+                    )}
                     <img
                       src={selectedTestimony.image}
                       alt={selectedTestimony.name}
@@ -430,7 +432,7 @@ export function WidowsProjectShowcase() {
               >
                 <div className="aspect-[4/3] overflow-hidden bg-muted">
                   <picture className="contents">
-                    {imgSrc.startsWith("/") && (
+                    {imgSrc.startsWith("/images/") && (
                       <source srcSet={imgSrc.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                     )}
                     <img
@@ -483,7 +485,7 @@ export function WidowsProjectShowcase() {
                 >
                   <div className="aspect-[3/2] overflow-hidden bg-muted">
                     <picture className="contents">
-                      {imgSrc.startsWith("/") && (
+                      {imgSrc.startsWith("/images/") && (
                         <source srcSet={imgSrc.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                       )}
                       <img

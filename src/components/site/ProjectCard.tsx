@@ -58,7 +58,7 @@ export function ProjectCard({ project, index, className = "" }: ProjectCardProps
       <div className="media">
         <span className="badge">{badgeNumber}</span>
         <picture className="contents">
-          {project.image.startsWith("/") && (
+          {project.image.startsWith("/images/") && (
             <source srcSet={project.image.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
           )}
           <img

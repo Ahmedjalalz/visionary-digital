@@ -85,7 +85,7 @@ export function ParallaxImage({
   const y = useTransform(scrollYProgress, [0, 1], [-bleed, bleed]);
   const scale = useTransform(scrollYProgress, [0, 1], [scaleFrom, 1.02]);
 
-  const isLocal = typeof src === "string" && src.startsWith("/") && !src.endsWith(".svg");
+  const isLocal = typeof src === "string" && src.startsWith("/images/") && !src.endsWith(".svg");
   const webpSrc = isLocal ? src.replace(/\.(jpe?g|png)$/i, ".webp") : null;
 
   const imgContent = (

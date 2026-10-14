@@ -21,7 +21,7 @@ export function OptimizedImage({
   decoding = "async",
   ...rest
 }: OptimizedImageProps) {
-  const isLocal = typeof src === "string" && src.startsWith("/") && !src.endsWith(".svg");
+  const isLocal = typeof src === "string" && src.startsWith("/images/") && !src.endsWith(".svg");
   const webpSrc = isLocal ? src.replace(/\.(jpe?g|png)$/i, ".webp") : null;
 
   const img = (

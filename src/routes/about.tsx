@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowRight, CheckCircle2, GraduationCap, HandHeart, Heart, ShieldCheck, Globe2 } from "lucide-react";
 
-import skillsImg from "@/assets/official-local/skills.jpg";
 import { foundationMedia } from "@/data/foundationMedia";
 
 import { MaskLines, ParallaxImage, Rise, motion } from "@/components/site/motion-primitives";
@@ -167,7 +166,7 @@ const history = [
   { year: "Schools", title: "Classrooms open", body: "Free schooling formalises: tuition, books, uniforms and stationery covered so cost stops deciding who learns.", img: "/images/wash/wash-s-2.jpg" },
   { year: "Health", title: "Camps go rural", body: "Medical camps move out of the city into districts where the nearest clinic is a journey rather than a walk.", img: "/images/pregnant/pregnant-9.jpg" },
   { year: "Water", title: "WASH added", body: "Safe water and sanitation become a programme in their own right after illness keeps emptying classrooms.", img: "/images/wash/wash-s-4.jpg" },
-  { year: "Skills", title: "From aid to income", body: "Vocational and digital training launch so families exit assistance instead of depending on it.", img: skillsImg },
+  { year: "Skills", title: "From aid to income", body: "Vocational and digital training launch so families exit assistance instead of depending on it.", img: "/images/official/skills.jpg" },
   { year: "Today", title: "Programmes across four countries", body: "Supporters in Pakistan, New Zealand, Canada and Germany fund work delivered by teams who live where it happens.", img: "/images/wash/wash-s-1.jpg" },
 ];
 
@@ -207,7 +206,7 @@ function HistoryRail() {
             <li key={h.year}>
               <div className="relative h-52 overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
                 <picture className="contents">
-                  {h.img.startsWith("/") && (
+                  {h.img.startsWith("/images/") && (
                     <source srcSet={h.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                   )}
                   <img src={h.img} alt="" aria-hidden loading="lazy" decoding="async" className="h-full w-full object-cover object-[center_16%]" />
@@ -242,7 +241,7 @@ function HistoryRail() {
             <li key={h.year} className="w-[440px] shrink-0">
               <div className="relative h-[240px] overflow-hidden rounded-2xl border border-ink/10 shadow-xs">
                 <picture className="contents">
-                  {h.img.startsWith("/") && (
+                  {h.img.startsWith("/images/") && (
                     <source srcSet={h.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                   )}
                   <img src={h.img} alt="" aria-hidden loading="lazy" decoding="async" className="h-full w-full object-cover object-[center_16%]" />
@@ -796,7 +795,7 @@ function About() {
               <Rise key={m.name} delay={i * 0.04}>
                 <figure className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <picture className="contents">
-                    {m.img.startsWith("/") && (
+                    {m.img.startsWith("/images/") && (
                       <source srcSet={m.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                     )}
                     <img

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ShieldCheck, FileCheck, Award, BadgeCheck } from "lucide-react";
 import { projects } from "@/data/projects";
-import logo from "@/assets/official-local/efl-logo.png";
+const logo = "/images/official/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
 import { LanguageToggle } from "@/components/site/LanguageToggle";
 

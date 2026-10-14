@@ -3,7 +3,7 @@ import { useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
 
-import heroImg from "@/assets/official-local/community.jpg";
+const heroImg = "/images/official/community.jpg";
 // educationImg unused
 // widowsImg unused
 // washImg unused
@@ -53,14 +53,17 @@ function Hero() {
       className="relative flex min-h-[78svh] w-full flex-col justify-end overflow-hidden bg-ink pb-16 pt-32 sm:min-h-[84svh] sm:pb-20 lg:min-h-[calc(100svh-5rem)] lg:pb-24"
     >
       <motion.div className="absolute inset-0" style={reduce ? {} : { y: imgY, scale: imgScale }}>
-        <motion.img
-          src={heroImg}
-          alt="Schoolchildren gathered in a village courtyard at dusk in rural Punjab, Pakistan"
-          width={1920}
-          height={1280}
-          fetchPriority="high"
-          className="h-full w-full object-cover object-[56%_34%] sm:object-[58%_34%] lg:object-[62%_34%]"
-        />
+        <picture className="contents">
+          <source srcSet="/images/official/community.webp" type="image/webp" />
+          <motion.img
+            src={heroImg}
+            alt="Schoolchildren gathered in a village courtyard at dusk in rural Punjab, Pakistan"
+            width={1920}
+            height={1280}
+            fetchPriority="high"
+            className="h-full w-full object-cover object-[56%_34%] sm:object-[58%_34%] lg:object-[62%_34%]"
+          />
+        </picture>
       </motion.div>
 
       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink/88 via-ink/40 to-transparent" />

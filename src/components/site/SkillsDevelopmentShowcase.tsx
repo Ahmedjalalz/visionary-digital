@@ -267,7 +267,7 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-ink/5">
                     <picture className="contents">
-                      {photo.src.startsWith("/") && (
+                      {photo.src.startsWith("/images/") && (
                         <source srcSet={photo.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                       )}
                       <img
@@ -458,7 +458,7 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
                 >
                   <div className="relative aspect-[4/3] overflow-hidden bg-ink/5">
                     <picture className="contents">
-                      {photo.src.startsWith("/") && (
+                      {photo.src.startsWith("/images/") && (
                         <source srcSet={photo.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                       )}
                       <img
@@ -673,7 +673,7 @@ export function SkillsDevelopmentShowcase({ mode = "all" }: SkillsDevelopmentSho
 
             <div className="max-h-[65vh] overflow-hidden bg-ink/5">
               <picture className="contents">
-                {selectedPhoto.src.startsWith("/") && (
+                {selectedPhoto.src.startsWith("/images/") && (
                   <source srcSet={selectedPhoto.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                 )}
                 <img

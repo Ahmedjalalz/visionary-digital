@@ -6,36 +6,24 @@ import communityLeadPortrait from "@/assets/field/community-lead.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import projectDigital from "@/assets/project-digital.jpg";
 import projectEducation from "@/assets/project-education.jpg";
-import projectWidows from "@/assets/official-local/widows.jpg";
 import washHandPump from "@/assets/projects/wash-hand-pump.jpg";
 import washSchoolHygiene from "@/assets/projects/wash-school-hygiene.jpg";
 import washSoapDistribution from "@/assets/projects/wash-soap-distribution.jpg";
 import maternalLhvConsultation from "@/assets/projects/maternal-lhv-consultation.jpg";
 import maternalEflCare from "@/assets/projects/maternal-efl-care.jpg";
 import maternalAntenatalCheckup from "@/assets/projects/maternal-antenatal-checkup.jpg";
-import schoolStudents from "@/assets/official-local/school-students.jpg";
-import classroomDesks from "@/assets/official-local/classroom-desks.jpg";
-import schoolUniforms from "@/assets/official-local/school-uniforms.jpg";
-import bagsCeremony from "@/assets/official-local/bags-ceremony.jpg";
-import healthCampDoctor from "@/assets/official-local/health-camp-doctor.jpg";
-import clinicBanner from "@/assets/official-local/clinic-banner.jpg";
-import widowsFoodRations from "@/assets/official-local/widows-rations-flipped.jpg";
-import skillsSewingMachine from "@/assets/official-local/skills-sewing.jpg";
-import officialLogo from "@/assets/official-local/logo.png";
-import officialEmblem from "@/assets/official-local/emblem.png";
-
 export const foundationMedia = {
   // Official photography from educationandlifefoundation.org
-  schoolStudents,
-  classroomDesks,
-  schoolUniforms,
-  bagsCeremony,
-  healthCampDoctor,
-  clinicBanner,
-  widowsFoodRations,
-  skillsSewingMachine,
-  officialLogo,
-  officialEmblem,
+  schoolStudents: "/images/official/school-students.jpg",
+  classroomDesks: "/images/official/classroom-desks.jpg",
+  schoolUniforms: "/images/official/school-uniforms.jpg",
+  bagsCeremony: "/images/official/bags-ceremony.jpg",
+  healthCampDoctor: "/images/official/health-camp-doctor.jpg",
+  clinicBanner: "/images/official/clinic-banner.jpg",
+  widowsFoodRations: "/images/official/widows-rations-flipped.jpg",
+  skillsSewingMachine: "/images/official/skills-sewing.jpg",
+  officialLogo: "/images/official/logo.png",
+  officialEmblem: "/images/official/emblem.png",
 
   // Official Opus 1 Foundation Music of the Heart photography
   musicClassViolins: "/images/music/music-class-violins.jpg",
@@ -62,7 +50,7 @@ export const foundationMedia = {
   projectEducation,
   projectHealth: washSchoolHygiene,
   projectWash: washHandPump,
-  projectWidows,
+  projectWidows: "/images/official/widows.jpg",
   projectSchoolBags: "/images/school-bags/IMG_9835.JPG",
   schoolBagsHero: "/images/school-bags/IMG_9835.JPG",
   schoolBagsCohort: "/images/school-bags/IMG_9475.JPG",

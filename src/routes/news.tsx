@@ -201,7 +201,7 @@ function News() {
                     <div className="lg:col-span-7">
                       <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/10] bg-ink/10 shadow-sm">
                         <picture className="contents">
-                          {posts[0].img.startsWith("/") && (
+                          {posts[0].img.startsWith("/images/") && (
                             <source srcSet={posts[0].img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                           )}
                           <img
@@ -260,7 +260,7 @@ function News() {
                       <div>
                         <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
                           <picture className="contents">
-                            {p.img.startsWith("/") && (
+                            {p.img.startsWith("/images/") && (
                               <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                             )}
                             <img
@@ -342,7 +342,7 @@ function News() {
                     <div className="lg:col-span-7 lg:order-2">
                       <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[16/10] bg-ink/10 shadow-sm">
                         <picture className="contents">
-                          {posts[3].img.startsWith("/") && (
+                          {posts[3].img.startsWith("/images/") && (
                             <source srcSet={posts[3].img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                           )}
                           <img
@@ -375,7 +375,7 @@ function News() {
                       <div>
                         <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
                           <picture className="contents">
-                            {p.img.startsWith("/") && (
+                            {p.img.startsWith("/images/") && (
                               <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                             )}
                             <img
@@ -433,7 +433,7 @@ function News() {
                     <div>
                       <div className="relative overflow-hidden rounded-xl aspect-[16/10] bg-ink/10 shadow-2xs">
                         <picture className="contents">
-                          {p.img.startsWith("/") && (
+                          {p.img.startsWith("/images/") && (
                             <source srcSet={p.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                           )}
                           <img
@@ -489,7 +489,7 @@ function News() {
             <div>
               <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-ink">
                 <picture className="contents">
-                  {activeDispatch.img.startsWith("/") && (
+                  {activeDispatch.img.startsWith("/images/") && (
                     <source srcSet={activeDispatch.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                   )}
                   <img

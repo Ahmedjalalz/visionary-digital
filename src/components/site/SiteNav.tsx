@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
-import logo from "@/assets/official-local/efl-logo.png";
+const logo = "/images/official/efl-logo.png";
 import { siteSocials } from "@/components/icons/SocialIcons";
 import { ThemeToggle } from "@/hooks/use-theme";
 import { LanguageToggle } from "@/components/site/LanguageToggle";

@@ -113,7 +113,7 @@ export function WidowsHeroCarousel() {
                     <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[580px] min-h-[260px] sm:min-h-[420px] bg-sand">
                       {isRendered ? (
                         <picture className="contents">
-                          {img.src.startsWith("/") && (
+                          {img.src.startsWith("/images/") && (
                             <source srcSet={img.src.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                           )}
                           <img

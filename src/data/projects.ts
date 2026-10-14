@@ -1,10 +1,3 @@
-import education from "@/assets/official-local/education.jpg";
-import schoolwork from "@/assets/official-local/schoolwork.jpg";
-// community unused
-import widows from "@/assets/official-local/widows.jpg";
-import health from "@/assets/official-local/health.jpg";
-import midwifery from "@/assets/official-local/midwifery.jpg";
-import digital from "@/assets/official-local/digital.jpg";
 import { foundationMedia } from "./foundationMedia";
 
 export type ProjectLayout = "statement" | "horizontal" | "portrait" | "data" | "map" | "object";
@@ -38,8 +31,8 @@ export const projects: Project[] = [
       line: "children in Pakistan are not in school.",
       source: "UNICEF Pakistan, education estimates",
     },
-    problemImage: schoolwork,
-    responseImage: education,
+    problemImage: "/images/official/schoolwork.jpg",
+    responseImage: "/images/official/education.jpg",
     context: [
       "Pakistan has one of the largest out-of-school populations on earth. Poverty, distance, and the cost of books and uniforms decide who learns and who does not.",
       "For girls in rural districts the odds narrow further — a single school fee can end an education permanently.",
@@ -345,7 +338,7 @@ export const projects: Project[] = [
       "/images/skills/digital/IMG_8753.JPG",
       "/images/skills/digital/IMG_5415.JPG",
       "/images/skills/digital/IMG_5370.JPG",
-      digital,
+      "/images/official/digital.jpg",
     ],
     heroPosition: "object-[center_25%]",
     accent: "clay",

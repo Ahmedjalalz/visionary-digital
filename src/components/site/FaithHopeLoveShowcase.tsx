@@ -271,7 +271,7 @@ export function FaithHopeLoveShowcase() {
             {/* Visual Photo */}
             <div className="relative min-h-[320px] sm:min-h-[380px] lg:col-span-5 overflow-hidden bg-sand dark:bg-card">
               <picture className="contents">
-                {currentCohort.img.startsWith("/") && (
+                {currentCohort.img.startsWith("/images/") && (
                   <source srcSet={currentCohort.img.replace(/\.(jpe?g|png)$/i, ".webp")} type="image/webp" />
                 )}
                 <img
