@@ -148,38 +148,46 @@ export const Route = createFileRoute("/projects/$slug")({
   component: ProjectPage,
 });
 
-const midwiferyPhotoDetails = [
+const midwiferyPhotoDetails: { title: string; desc: string; position?: string }[] = [
   {
-    title: "Graduating Certified Midwives",
-    desc: "Frontline graduates displaying their official Community Midwifery Training Center certifications.",
+    title: "Graduating Midwife Cohort",
+    desc: "A proud cohort of community midwifery students and their faculty instructors standing together at the training center.",
+    position: "object-[center_20%]",
   },
   {
     title: "Classroom Clinical Theory",
-    desc: "Midwifery students in interactive lectures on antenatal screening, vitals, and danger sign triage.",
+    desc: "A full lecture hall of student midwives studying maternal health curriculum, antenatal screening, and safe delivery protocols.",
+    position: "object-[center_35%]",
   },
   {
-    title: "Community Center Milestone",
-    desc: "Faculty, students, and community elders celebrating the expansion of maternal healthcare services.",
+    title: "Obstetric Simulation Skills Lab",
+    desc: "Hands-on delivery practicals using anatomical pelvic models and hospital ward equipment under instructor guidance.",
+    position: "object-[center_30%]",
   },
   {
-    title: "Trainer Mentorship & Recognition",
-    desc: "Master obstetric trainers validating competency across standard safe delivery protocols.",
+    title: "Sterile Delivery Tools & Instruments",
+    desc: "Master obstetric trainer walking students through aseptic setup, sterilization protocols, surgical clamps, and delivery trays.",
+    position: "object-[center_25%]",
   },
   {
-    title: "Clinical Bedside Care",
-    desc: "Compassionate bedside monitoring for expectant and postpartum mothers in rural health facilities.",
+    title: "Neonatal & Infant Ward Practical",
+    desc: "Trainee practicing essential newborn care, temperature regulation, and vital checks in the clinical nursery bassinets.",
+    position: "object-[center_30%]",
   },
   {
-    title: "Sterile Delivery Tools & Practical",
-    desc: "Hands-on practical training with surgical delivery instruments, aseptic clamps, and infant care.",
+    title: "Certified Midwifery Graduates",
+    desc: "Trainees proudly presenting their official Community Midwifery Training Center certificates of completion.",
+    position: "object-[center_20%]",
   },
   {
-    title: "Postnatal Infant Examination",
-    desc: "Community midwives conducting newborn assessment and lactation consultation in the village.",
+    title: "Community Assembly & Dedication",
+    desc: "Trainees, faculty, and community elders gathered together in prayer and dedication at the training center hall.",
+    position: "object-[center_35%]",
   },
   {
-    title: "Field Health Outreach",
-    desc: "Door-to-door prenatal monitoring and maternal health awareness across rural village clusters.",
+    title: "Training Center Milestone",
+    desc: "Graduating midwives assembled before the official digital certification ceremony at the training center.",
+    position: "object-[center_20%]",
   },
 ];
 
@@ -802,13 +810,20 @@ function ProjectPage() {
                 spanClass = "sm:col-span-6 aspect-[16/10]";
               }
 
+              const imagePosition =
+                project.slug === "midwifery-program" && midwiferyPhotoDetails[index]?.position
+                  ? midwiferyPhotoDetails[index].position
+                  : index === 0
+                  ? project.heroPosition
+                  : "object-[center_12%]";
+
               return (
                 <figure key={image} className={`group relative overflow-hidden rounded-xl border border-ink/10 bg-muted shadow-2xs ${spanClass}`}>
                   <img
                     src={image}
                     alt={`${project.name} field work ${index + 1}`}
                     loading="lazy"
-                    className={`h-full w-full object-cover ${index === 0 ? project.heroPosition : "object-[center_12%]"} transition-transform duration-700 group-hover:scale-[1.035]`}
+                    className={`h-full w-full object-cover ${imagePosition} transition-transform duration-700 group-hover:scale-[1.035]`}
                   />
                   {project.slug === "midwifery-program" && midwiferyPhotoDetails[index] && (
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">

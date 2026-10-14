@@ -118,7 +118,7 @@ export const projects: Project[] = [
       source: "Pakistan Maternal Mortality Survey",
     },
     problemImage: "/images/midwifery/midwifery-problem.jpg",
-    responseImage: "/images/midwifery/midwifery-training-1.jpg",
+    responseImage: "/images/midwifery/midwifery-training-2.jpg",
     context: [
       "Most maternal deaths are preventable with a skilled attendant present. In remote districts, there often isn't one.",
     ],
@@ -130,7 +130,7 @@ export const projects: Project[] = [
       { label: "Placed", value: "In home districts" },
       { label: "Focus", value: "Safe Delivery & Serve the Community" },
     ],
-    image: "/images/midwifery/midwifery-training-2.jpg",
+    image: "/images/midwifery/midwifery-training-1.jpg",
     gallery: [
       "/images/midwifery/midwifery-training-1.jpg",
       "/images/midwifery/midwifery-training-2.jpg",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       "/images/midwifery/midwifery-training-7.jpg",
       "/images/midwifery/midwifery-training-8.jpg",
     ],
-    heroPosition: "object-[50%_12%]",
+    heroPosition: "object-[center_20%]",
     accent: "clay",
     layout: "portrait",
   },
