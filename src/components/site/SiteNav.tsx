@@ -111,11 +111,14 @@ export function SiteNav() {
             className="group flex items-center gap-2 sm:gap-3.5 min-w-0"
             aria-label="Education And Life Foundation — home"
           >
-            <img
-              src={logo}
-              alt="ELF Logo"
-              className="h-9 w-9 min-[360px]:h-10 min-[360px]:w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
-            />
+            <picture className="contents">
+              <source srcSet="/images/official/efl-logo.webp" type="image/webp" />
+              <img
+                src={logo}
+                alt="ELF Logo"
+                className="h-9 w-9 min-[360px]:h-10 min-[360px]:w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
+              />
+            </picture>
             <div className="flex flex-col min-w-0">
               <span className="font-display text-[0.72rem] min-[360px]:text-[0.8rem] sm:text-[0.95rem] font-bold uppercase tracking-tight sm:tracking-wide text-ink leading-tight truncate group-hover:text-clay transition-colors">
                 Education And Life Foundation
@@ -286,11 +289,14 @@ export function SiteNav() {
             <div className="mx-auto max-w-[1600px] px-4 sm:px-8">
               <div className="flex flex-wrap items-center justify-between gap-3 pb-5 pt-3 border-b border-ink/10 mb-2">
                 <div className="flex items-center gap-3 min-w-0">
-                  <img
-                    src={logo}
-                    alt="ELF Logo"
-                    className="h-10 w-10 object-contain shrink-0 rounded-lg p-0.5 dark:bg-white/95"
-                  />
+                  <picture className="contents">
+                    <source srcSet="/images/official/efl-logo.webp" type="image/webp" />
+                    <img
+                      src={logo}
+                      alt="ELF Logo"
+                      className="h-10 w-10 object-contain shrink-0 rounded-lg p-0.5 dark:bg-white/95"
+                    />
+                  </picture>
                   <div className="min-w-0">
                     <span className="font-display text-xs min-[360px]:text-sm font-bold uppercase tracking-wide text-ink block truncate">
                       Education And Life Foundation

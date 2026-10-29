@@ -56,11 +56,14 @@ export function SiteFooter() {
           <div className="lg:col-span-3 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <img
-                  src={logo}
-                  alt="Education and Life Foundation"
-                  className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-xl p-1 transition-all bg-white/85 dark:bg-white/95 shadow-2xs shrink-0"
-                />
+                <picture className="contents">
+                  <source srcSet="/images/official/efl-logo.webp" type="image/webp" />
+                  <img
+                    src={logo}
+                    alt="Education and Life Foundation"
+                    className="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-xl p-1 transition-all bg-white/85 dark:bg-white/95 shadow-2xs shrink-0"
+                  />
+                </picture>
                 <div>
                   <span className="font-display text-base sm:text-lg font-bold tracking-tight text-ink block leading-snug">
                     Education and Life Foundation
