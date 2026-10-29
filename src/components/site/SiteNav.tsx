@@ -116,7 +116,7 @@ export function SiteNav() {
               <img
                 src={logo}
                 alt="ELF Logo"
-                className="h-9 w-9 min-[360px]:h-10 min-[360px]:w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg p-0.5 transition-all dark:bg-white/95"
+                className="h-10 sm:h-12 w-auto object-contain shrink-0 transition-all dark:brightness-0 dark:invert"
               />
             </picture>
             <div className="flex flex-col min-w-0">
@@ -294,7 +294,7 @@ export function SiteNav() {
                     <img
                       src={logo}
                       alt="ELF Logo"
-                      className="h-10 w-10 object-contain shrink-0 rounded-lg p-0.5 dark:bg-white/95"
+                      className="h-10 sm:h-11 w-auto object-contain shrink-0 dark:brightness-0 dark:invert"
                     />
                   </picture>
                   <div className="min-w-0">
