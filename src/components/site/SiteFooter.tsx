@@ -61,7 +61,7 @@ export function SiteFooter() {
                   <img
                     src={logo}
                     alt="Education and Life Foundation"
-                    className="h-14 sm:h-16 w-auto object-contain transition-all shrink-0 dark:brightness-0 dark:invert"
+                    className="h-14 sm:h-16 w-auto object-contain shrink-0"
                   />
                 </picture>
                 <div>
