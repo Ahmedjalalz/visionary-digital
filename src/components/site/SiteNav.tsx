@@ -358,7 +358,7 @@ export function SiteNav() {
                             <div className="grid grid-cols-1 gap-1 border-l-2 border-clay/20 pl-3">
                               {projects.map((p, idx) => (
                                 <Link
-                                   key={p.slug}
+                                  key={p.slug}
                                   to="/projects/$slug"
                                   params={{ slug: p.slug }}
                                   onClick={() => setOpen(false)}
@@ -427,6 +427,40 @@ export function SiteNav() {
                     <Icon className="h-4 w-4" />
                   </a>
                 ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] text-ink/60">
+                <Link
+                  to="/privacy-policy"
+                  onClick={() => setOpen(false)}
+                  className="hover:text-clay"
+                >
+                  Privacy Policy
+                </Link>
+                <span>·</span>
+                <Link
+                  to="/terms-and-conditions"
+                  onClick={() => setOpen(false)}
+                  className="hover:text-clay"
+                >
+                  Terms &amp; Conditions
+                </Link>
+                <span>·</span>
+                <Link
+                  to="/refund-policy"
+                  onClick={() => setOpen(false)}
+                  className="hover:text-clay"
+                >
+                  Refund Policy
+                </Link>
+                <span>·</span>
+                <Link
+                  to="/chargeback-policy"
+                  onClick={() => setOpen(false)}
+                  className="hover:text-clay"
+                >
+                  Chargeback Policy
+                </Link>
               </div>
             </div>
           </motion.div>
