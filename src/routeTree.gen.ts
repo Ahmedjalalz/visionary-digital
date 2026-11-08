@@ -12,13 +12,20 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as ChargebackPolicyRouteImport } from './routes/chargeback-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as FaithHopeLoveForEveryChildRouteImport } from './routes/faith-hope-love-for-every-child'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
+import { Route as RefundsRouteImport } from './routes/refunds'
 import { Route as SchoolBagDistributionRouteImport } from './routes/school-bag-distribution'
 import { Route as SchoolBagsRouteImport } from './routes/school-bags'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
@@ -36,6 +43,11 @@ const AboutRoute = AboutRouteImport.update({
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChargebackPolicyRoute = ChargebackPolicyRouteImport.update({
+  id: '/chargeback-policy',
+  path: '/chargeback-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -64,6 +76,26 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SchoolBagDistributionRoute = SchoolBagDistributionRouteImport.update({
   id: '/school-bag-distribution',
   path: '/school-bag-distribution',
@@ -72,6 +104,16 @@ const SchoolBagDistributionRoute = SchoolBagDistributionRouteImport.update({
 const SchoolBagsRoute = SchoolBagsRouteImport.update({
   id: '/school-bags',
   path: '/school-bags',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BagTrackingIdRoute = BagTrackingIdRouteImport.update({
@@ -94,13 +136,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
+  '/chargeback-policy': typeof ChargebackPolicyRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/refunds': typeof RefundsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
   '/school-bags': typeof SchoolBagsRoute
+  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -109,13 +158,20 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
+  '/chargeback-policy': typeof ChargebackPolicyRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/refunds': typeof RefundsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
   '/school-bags': typeof SchoolBagsRoute
+  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
@@ -125,13 +181,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
+  '/chargeback-policy': typeof ChargebackPolicyRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/faith-hope-love-for-every-child': typeof FaithHopeLoveForEveryChildRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/refunds': typeof RefundsRoute
   '/school-bag-distribution': typeof SchoolBagDistributionRoute
   '/school-bags': typeof SchoolBagsRoute
+  '/terms': typeof TermsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -142,13 +205,20 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book'
+    | '/chargeback-policy'
     | '/contact'
     | '/donate'
     | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
+    | '/privacy'
+    | '/privacy-policy'
+    | '/refund-policy'
+    | '/refunds'
     | '/school-bag-distribution'
     | '/school-bags'
+    | '/terms'
+    | '/terms-and-conditions'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -157,13 +227,20 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book'
+    | '/chargeback-policy'
     | '/contact'
     | '/donate'
     | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
+    | '/privacy'
+    | '/privacy-policy'
+    | '/refund-policy'
+    | '/refunds'
     | '/school-bag-distribution'
     | '/school-bags'
+    | '/terms'
+    | '/terms-and-conditions'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects'
@@ -172,13 +249,20 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/book'
+    | '/chargeback-policy'
     | '/contact'
     | '/donate'
     | '/faith-hope-love-for-every-child'
     | '/impact'
     | '/news'
+    | '/privacy'
+    | '/privacy-policy'
+    | '/refund-policy'
+    | '/refunds'
     | '/school-bag-distribution'
     | '/school-bags'
+    | '/terms'
+    | '/terms-and-conditions'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -188,13 +272,20 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookRoute: typeof BookRoute
+  ChargebackPolicyRoute: typeof ChargebackPolicyRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
   FaithHopeLoveForEveryChildRoute: typeof FaithHopeLoveForEveryChildRoute
   ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
+  RefundsRoute: typeof RefundsRoute
   SchoolBagDistributionRoute: typeof SchoolBagDistributionRoute
   SchoolBagsRoute: typeof SchoolBagsRoute
+  TermsRoute: typeof TermsRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -221,6 +312,13 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chargeback-policy': {
+      id: '/chargeback-policy'
+      path: '/chargeback-policy'
+      fullPath: '/chargeback-policy'
+      preLoaderRoute: typeof ChargebackPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -258,6 +356,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/school-bag-distribution': {
       id: '/school-bag-distribution'
       path: '/school-bag-distribution'
@@ -270,6 +396,20 @@ declare module '@tanstack/react-router' {
       path: '/school-bags'
       fullPath: '/school-bags'
       preLoaderRoute: typeof SchoolBagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bag/$trackingId': {
@@ -300,13 +440,20 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookRoute: BookRoute,
+  ChargebackPolicyRoute: ChargebackPolicyRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
   FaithHopeLoveForEveryChildRoute: FaithHopeLoveForEveryChildRoute,
   ImpactRoute: ImpactRoute,
   NewsRoute: NewsRoute,
+  PrivacyRoute: PrivacyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
+  RefundsRoute: RefundsRoute,
   SchoolBagDistributionRoute: SchoolBagDistributionRoute,
   SchoolBagsRoute: SchoolBagsRoute,
+  TermsRoute: TermsRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,

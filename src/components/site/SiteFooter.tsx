@@ -16,6 +16,13 @@ const nav = [
   { to: "/book", label: "Book a Meeting" },
 ] as const;
 
+export const legalLinks = [
+  { to: "/privacy-policy", label: "Privacy Policy" },
+  { to: "/terms-and-conditions", label: "Terms & Conditions" },
+  { to: "/refund-policy", label: "Refund Policy" },
+  { to: "/chargeback-policy", label: "Chargeback Policy" },
+] as const;
+
 export const branches = [
   {
     country: "Pakistan",
@@ -74,12 +81,13 @@ export function SiteFooter() {
                 </div>
               </div>
               <p className="mt-4 sm:mt-5 max-w-sm text-xs sm:text-[13px] leading-relaxed text-ink/75">
-                A registered non-profit organization serving marginalized and vulnerable communities across
-                Pakistan through education, healthcare, livelihoods, and humanitarian relief.
+                A registered non-profit organization serving marginalized and vulnerable communities
+                across Pakistan through education, healthcare, livelihoods, and humanitarian relief.
               </p>
             </div>
             <p className="mt-8 sm:mt-10 font-serif text-sm sm:text-base italic leading-relaxed text-ink/80 border-l-2 border-clay pl-3.5">
-              “To build a better life for the community, and to aid those who cannot help themselves.”
+              “To build a better life for the community, and to aid those who cannot help
+              themselves.”
             </p>
           </div>
 
@@ -101,17 +109,34 @@ export function SiteFooter() {
           </div>
 
           {/* Projects / Initiatives */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-2">
             <h3 className="eyebrow tracking-[0.22em]">Initiatives</h3>
             <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-3.5">
-              {projects.map((p) => (
+              {projects.slice(0, 6).map((p) => (
                 <li key={p.slug}>
                   <Link
                     to="/projects/$slug"
                     params={{ slug: p.slug }}
-                    className="text-xs sm:text-[13px] font-medium leading-relaxed text-ink/75 transition-colors hover:text-clay block"
+                    className="text-xs sm:text-[13px] font-medium leading-relaxed text-ink/75 transition-colors hover:text-clay block truncate"
                   >
                     {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal & Policies (Compliance) */}
+          <div className="lg:col-span-2">
+            <h3 className="eyebrow tracking-[0.22em]">Policies &amp; Legal</h3>
+            <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-3.5">
+              {legalLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-xs sm:text-[13px] font-medium text-ink/75 transition-colors hover:text-clay block"
+                  >
+                    {l.label}
                   </Link>
                 </li>
               ))}
@@ -121,14 +146,22 @@ export function SiteFooter() {
           {/* Contact & Global Presence */}
           <div className="lg:col-span-3">
             <h3 className="eyebrow tracking-[0.22em]">Contact &amp; Offices</h3>
-            <a
-              href="mailto:info@educationandlifefoundation.org"
-              className="mt-5 sm:mt-6 block text-xs sm:text-[13px] font-medium text-ink/85 transition-colors hover:text-clay truncate"
-            >
-              info@educationandlifefoundation.org
-            </a>
+            <div className="mt-5 sm:mt-6 space-y-1">
+              <a
+                href="mailto:info@educationandlifefoundation.org"
+                className="block text-xs sm:text-[13px] font-medium text-ink/85 transition-colors hover:text-clay truncate"
+              >
+                info@educationandlifefoundation.org
+              </a>
+              <a
+                href="tel:+923009475513"
+                className="block font-mono text-xs font-semibold text-clay transition-colors hover:underline"
+              >
+                +92 300 9475513
+              </a>
+            </div>
 
-            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-3.5">
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-3.5">
               {branches.map((b) => (
                 <div key={b.country} className="text-xs">
                   <span className="font-semibold text-clay text-[0.66rem] uppercase tracking-wider block">
@@ -137,6 +170,14 @@ export function SiteFooter() {
                   <span className="text-[11.5px] text-ink/70 leading-relaxed block mt-0.5">
                     {b.address}
                   </span>
+                  {b.phone && (
+                    <a
+                      href={`tel:${b.phone.replace(/\s+/g, "")}`}
+                      className="text-[11px] font-mono text-clay hover:underline block mt-0.5"
+                    >
+                      Tel: {b.phone}
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
@@ -234,7 +275,7 @@ export function SiteFooter() {
           </div>
 
           {/* Bottom Copyright & Global Presence */}
-          <div className="flex flex-col gap-2 pt-3.5 sm:pt-4 text-[0.68rem] uppercase tracking-[0.15em] text-cream/75 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 pt-3.5 sm:pt-4 text-[0.68rem] uppercase tracking-[0.15em] text-cream/75 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
               <span>© {new Date().getFullYear()} Education and Life Foundation</span>
               <span className="hidden text-cream/35 sm:inline">|</span>
@@ -242,8 +283,35 @@ export function SiteFooter() {
                 Non-governmental organisation registered in Pakistan
               </span>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="text-cream/60">Lahore · Auckland · Toronto · Berlin</span>
+            <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2">
+              <Link
+                to="/privacy-policy"
+                className="text-cream/70 hover:text-white transition-colors"
+              >
+                Privacy
+              </Link>
+              <span className="text-cream/30">·</span>
+              <Link
+                to="/terms-and-conditions"
+                className="text-cream/70 hover:text-white transition-colors"
+              >
+                Terms
+              </Link>
+              <span className="text-cream/30">·</span>
+              <Link
+                to="/refund-policy"
+                className="text-cream/70 hover:text-white transition-colors"
+              >
+                Refunds
+              </Link>
+              <span className="text-cream/30">·</span>
+              <Link
+                to="/chargeback-policy"
+                className="text-cream/70 hover:text-white transition-colors"
+              >
+                Chargebacks
+              </Link>
+              <span className="text-cream/30">·</span>
               <LanguageToggle className="border-cream/20 bg-white/10 text-cream hover:text-white hover:border-clay-bright" />
             </div>
           </div>

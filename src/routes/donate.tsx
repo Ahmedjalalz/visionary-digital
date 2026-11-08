@@ -25,22 +25,25 @@ import { projects } from "@/data/projects";
 import { MaskLines, ParallaxImage } from "@/components/site/motion-primitives";
 import { sendDonationPledgeNotification } from "@/lib/email-service";
 
-
 type DonateSearch = { project?: string | undefined };
 
 export const Route = createFileRoute("/donate")({
   validateSearch: (search: Record<string, unknown>): DonateSearch => ({
-    project: typeof search['project'] === "string" ? (search['project'] as string) : undefined,
+    project: typeof search["project"] === "string" ? (search["project"] as string) : undefined,
   }),
   head: () => ({
     meta: [
       { title: "Direct Field Support — Education And Life Foundation" },
       {
         name: "description",
-        content: "Fund school fees, medical camps, safe water and widow support. 100% direct flow to field with zero platform cuts.",
+        content:
+          "Fund school fees, medical camps, safe water and widow support. 100% direct flow to field with zero platform cuts.",
       },
       { property: "og:title", content: "Support Education And Life Foundation" },
-      { property: "og:description", content: "Every pledge is tied directly to a verified programme and community." },
+      {
+        property: "og:description",
+        content: "Every pledge is tied directly to a verified programme and community.",
+      },
     ],
   }),
   component: Donate,
@@ -151,8 +154,8 @@ function Donate() {
           <Check className="h-10 w-10 text-clay" strokeWidth={1.3} />
           <h1 className="display-lg mt-6 max-w-[14ch] text-ink">Thank you. Genuinely.</h1>
           <p className="lede mt-6 max-w-xl">
-            Your pledge of ${value} {monthly ? "per month " : ""}is recorded. A member of the team will
-            email you the transfer details and, once it clears, tell you exactly where it went.
+            Your pledge of ${value} {monthly ? "per month " : ""}is recorded. A member of the team
+            will email you the transfer details and, once it clears, tell you exactly where it went.
           </p>
           <Link
             to="/projects"
@@ -169,7 +172,13 @@ function Donate() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[50svh] sm:min-h-[56svh] w-full flex flex-col justify-center overflow-hidden pt-16 pb-14 sm:pt-20 sm:pb-16">
-        <ParallaxImage src="/images/wash/wash-b-5.jpg" alt="A classroom of students in Punjab supported by ELF" className="absolute inset-0" strength={60} priority />
+        <ParallaxImage
+          src="/images/wash/wash-b-5.jpg"
+          alt="A classroom of students in Punjab supported by ELF"
+          className="absolute inset-0"
+          strength={60}
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8">
           <div>
@@ -292,7 +301,10 @@ function Donate() {
                 </div>
 
                 <div className="mt-8">
-                  <label htmlFor="custom" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
+                  <label
+                    htmlFor="custom"
+                    className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
+                  >
                     Or specify another amount ($)
                   </label>
                   <input
@@ -313,10 +325,14 @@ function Donate() {
                   onClick={() => setMonthly(!monthly)}
                   aria-pressed={monthly}
                   className={`mt-8 inline-flex items-center gap-3 rounded-full border px-5 py-3 text-xs uppercase tracking-[0.16em] transition-all cursor-pointer shadow-xs ${
-                    monthly ? "border-clay bg-clay/10 text-clay font-bold" : "border-ink/20 text-ink/70 hover:border-ink"
+                    monthly
+                      ? "border-clay bg-clay/10 text-clay font-bold"
+                      : "border-ink/20 text-ink/70 hover:border-ink"
                   }`}
                 >
-                  <span className={`h-2.5 w-2.5 rounded-full ${monthly ? "bg-clay ring-2 ring-clay/30" : "bg-ink/25"}`} />
+                  <span
+                    className={`h-2.5 w-2.5 rounded-full ${monthly ? "bg-clay ring-2 ring-clay/30" : "bg-ink/25"}`}
+                  />
                   Make this a monthly recurring pledge
                 </button>
 
@@ -332,7 +348,10 @@ function Donate() {
 
               <div className="lg:col-span-5 lg:col-start-8">
                 <div>
-                  <label htmlFor="project" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
+                  <label
+                    htmlFor="project"
+                    className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
+                  >
                     Allocate to a specific project
                   </label>
                   <select
@@ -354,10 +373,18 @@ function Donate() {
 
                 <div className="mt-8 grid gap-7">
                   <DonorField label="Your full name" name="name" required />
-                  <DonorField label="Email address (for receipt)" name="email" type="email" required />
+                  <DonorField
+                    label="Email address (for receipt)"
+                    name="email"
+                    type="email"
+                    required
+                  />
                   <DonorField label="Phone number (WhatsApp optional)" name="phone" />
                   <div>
-                    <label htmlFor="message" className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55">
+                    <label
+                      htmlFor="message"
+                      className="block text-[0.66rem] uppercase tracking-[0.2em] text-ink/55"
+                    >
                       Dedication or message (optional)
                     </label>
                     <textarea
@@ -379,8 +406,8 @@ function Donate() {
                   Confirm Pledge: ${value || 0} {monthly ? "/ Month" : "One-Time"}
                 </button>
                 <p className="mt-4 text-xs leading-relaxed text-ink/50">
-                  This records your intention. No payment card is charged automatically. Our treasurer
-                  emails the matching bank coordinate and confirmation immediately.
+                  This records your intention. No payment card is charged automatically. Our
+                  treasurer emails the matching bank coordinate and confirmation immediately.
                 </p>
               </div>
             </form>
@@ -398,8 +425,8 @@ function Donate() {
                 How every rupee and dollar is audited and delivered.
               </h2>
               <p className="lede mt-3">
-                Education and Life Foundation is structured so that public donations are not eroded by
-                operational overheads.
+                Education and Life Foundation is structured so that public donations are not eroded
+                by operational overheads.
               </p>
             </div>
 
@@ -408,35 +435,42 @@ function Donate() {
                 <ShieldCheck className="h-8 w-8 text-clay" />
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">100% Direct Model</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  All administrative salaries, rent, and overheads are underwritten separately by our
-                  founding trustees. 100% of external donations go directly to schooling, healthcare camps,
-                  widow stipends, and water infrastructure.
+                  All administrative salaries, rent, and overheads are underwritten separately by
+                  our founding trustees. 100% of external donations go directly to schooling,
+                  healthcare camps, widow stipends, and water infrastructure.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-ink/10 bg-sand/40 p-8 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <BadgeCheck className="h-8 w-8 text-clay" />
-                <h3 className="mt-5 font-display text-2xl font-bold text-ink">Tax Exemption &amp; Receipts</h3>
+                <h3 className="mt-5 font-display text-2xl font-bold text-ink">
+                  Tax Exemption &amp; Receipts
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  ELF is an officially registered non-profit organization under the Laws of Pakistan. We
-                  issue formal stamped donation receipts for all bank wires and local transfers, eligible
-                  for tax reporting and audit purposes.
+                  ELF is an officially registered non-profit organization under the Laws of
+                  Pakistan. We issue formal stamped donation receipts for all bank wires and local
+                  transfers, eligible for tax reporting and audit purposes.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-ink/10 bg-sand/40 p-8 shadow-xs hover:border-clay/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <CheckCircle2 className="h-8 w-8 text-clay" />
-                <h3 className="mt-5 font-display text-2xl font-bold text-ink">Traceable Projects</h3>
+                <h3 className="mt-5 font-display text-2xl font-bold text-ink">
+                  Traceable Projects
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                  Whether funding school bags through our QR tag program or supporting a specific medical camp,
-                  sponsors receive photographic confirmation and field records directly from the field teams.
+                  Whether funding school bags through our QR tag program or supporting a specific
+                  medical camp, sponsors receive photographic confirmation and field records
+                  directly from the field teams.
                 </p>
               </div>
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-clay/20 bg-sand/60 p-8 shadow-xs">
               <div>
-                <h4 className="font-display text-xl font-bold text-ink">Need to discuss a corporate endowment or grant?</h4>
+                <h4 className="font-display text-xl font-bold text-ink">
+                  Need to discuss a corporate endowment or grant?
+                </h4>
                 <p className="mt-1 text-sm text-ink/65">
                   Our chairperson and finance coordinator are available for direct review meetings.
                 </p>
@@ -455,6 +489,49 @@ function Donate() {
                 >
                   View Wire Details
                 </button>
+              </div>
+            </div>
+
+            {/* Merchant Compliance & Legal Policies */}
+            <div className="mt-8 rounded-2xl border border-ink/10 bg-background p-6 sm:p-8 shadow-xs">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div>
+                  <span className="eyebrow">Financial Accountability &amp; Compliance</span>
+                  <h4 className="mt-2 font-display text-xl font-bold text-ink">
+                    Merchant Transparency &amp; Banking Standards
+                  </h4>
+                  <p className="mt-2 text-xs sm:text-sm text-ink/70 leading-relaxed max-w-2xl">
+                    ELF operates in accordance with Pakistan banking and non-profit governance
+                    regulations. All donations are covered by transparent refund, dispute,
+                    chargeback, and privacy guidelines.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2.5 shrink-0">
+                  <Link
+                    to="/refund-policy"
+                    className="rounded-full border border-ink/20 bg-sand/50 px-4 py-2 text-xs font-semibold text-ink hover:border-clay hover:text-clay transition-colors"
+                  >
+                    Refund Policy
+                  </Link>
+                  <Link
+                    to="/chargeback-policy"
+                    className="rounded-full border border-ink/20 bg-sand/50 px-4 py-2 text-xs font-semibold text-ink hover:border-clay hover:text-clay transition-colors"
+                  >
+                    Chargeback Policy
+                  </Link>
+                  <Link
+                    to="/privacy-policy"
+                    className="rounded-full border border-ink/20 bg-sand/50 px-4 py-2 text-xs font-semibold text-ink hover:border-clay hover:text-clay transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <Link
+                    to="/terms-and-conditions"
+                    className="rounded-full border border-ink/20 bg-sand/50 px-4 py-2 text-xs font-semibold text-ink hover:border-clay hover:text-clay transition-colors"
+                  >
+                    Terms &amp; Conditions
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -515,12 +592,10 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
       <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div>
           <span className="eyebrow">Bank Wire Transfers</span>
-          <h2 className="display-md mt-2 text-ink">
-            Direct institutional wire &amp; settlement.
-          </h2>
+          <h2 className="display-md mt-2 text-ink">Direct institutional wire &amp; settlement.</h2>
           <p className="lede mt-3">
-            Send funds directly to the foundation's audited account with zero third-party platform cuts.
-            Select your origin below for the exact routing sequence.
+            Send funds directly to the foundation's audited account with zero third-party platform
+            cuts. Select your origin below for the exact routing sequence.
           </p>
         </div>
 
@@ -542,9 +617,7 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             type="button"
             onClick={() => setMethod("domestic")}
             className={`flex items-center justify-center gap-2 rounded-xl min-[480px]:rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.14em] transition-all cursor-pointer ${
-              method === "domestic"
-                ? "bg-ink text-cream shadow-xs"
-                : "text-ink/65 hover:text-ink"
+              method === "domestic" ? "bg-ink text-cream shadow-xs" : "text-ink/65 hover:text-ink"
             }`}
           >
             <Building2 className="h-3.5 w-3.5 shrink-0" />
@@ -594,7 +667,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">Official IBAN</div>
+              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">
+                Official IBAN
+              </div>
               <div className="mt-1.5 font-mono text-sm sm:text-base md:text-xl font-bold tracking-wider text-cream flex flex-wrap items-center gap-2 break-all sm:break-normal">
                 <span>PK11 FAYS 0464 0079 0022 4713</span>
               </div>
@@ -604,7 +679,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             </div>
 
             <div>
-              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">Account Number</div>
+              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">
+                Account Number
+              </div>
               <div className="mt-1.5 font-mono text-lg sm:text-xl font-bold tracking-wider text-cream">
                 0464007900224713
               </div>
@@ -614,7 +691,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             </div>
 
             <div>
-              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">Beneficiary Bank</div>
+              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">
+                Beneficiary Bank
+              </div>
               <div className="mt-1.5 font-display text-lg font-bold text-cream">
                 Faysal Bank Limited
               </div>
@@ -627,7 +706,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             </div>
 
             <div>
-              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">Branch Details</div>
+              <div className="text-[0.62rem] uppercase tracking-[0.2em] text-cream/55">
+                Branch Details
+              </div>
               <div className="mt-1.5 text-sm leading-snug text-cream/90 font-medium">
                 Usman Block, Awami Complex, Garden Town, Lahore
               </div>
@@ -647,7 +728,8 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
               <span className="h-px flex-1 bg-ink/10" />
             </div>
             <p className="mt-1 text-xs text-ink/55">
-              Cross-border foreign currency wires (USD / EUR / GBP) settle through the New York correspondent gateway into Pakistan:
+              Cross-border foreign currency wires (USD / EUR / GBP) settle through the New York
+              correspondent gateway into Pakistan:
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -764,8 +846,8 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
                 Send via Raast, Mobile Banking, or ATM
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/65">
-                Support is accepted from all Pakistani commercial banks, microfinance banks, and digital wallets.
-                Choose "Faysal Bank Limited" and enter the details below:
+                Support is accepted from all Pakistani commercial banks, microfinance banks, and
+                digital wallets. Choose "Faysal Bank Limited" and enter the details below:
               </p>
 
               <dl className="mt-6 space-y-4 border-t border-ink/10 pt-6 text-sm">
@@ -796,7 +878,9 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-2 border-t border-ink/5 pt-3">
                   <dt className="text-xs uppercase tracking-wider text-ink/50">Branch</dt>
-                  <dd className="text-ink/80 text-right">Usman Block, Awami Complex — Garden Town, Lahore</dd>
+                  <dd className="text-ink/80 text-right">
+                    Usman Block, Awami Complex — Garden Town, Lahore
+                  </dd>
                 </div>
               </dl>
             </div>
@@ -804,10 +888,26 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             <div className="flex flex-col justify-between rounded-2xl border border-ink/15 bg-background p-8 md:col-span-5 shadow-xs">
               <div>
                 <span className="eyebrow">Compatible Platforms</span>
-                <h4 className="mt-2 font-display text-xl font-bold text-ink">Works seamlessly with</h4>
+                <h4 className="mt-2 font-display text-xl font-bold text-ink">
+                  Works seamlessly with
+                </h4>
                 <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                  {["Raast ID", "SadaPay", "NayaPay", "Easypaisa", "JazzCash", "Meezan", "HBL Mobile", "Faysal Digi", "Alfalah Orbit", "Standard Chartered"].map((app) => (
-                    <span key={app} className="rounded-full border border-ink/10 bg-sand/60 px-3 py-1.5 font-medium text-ink/75 shadow-2xs">
+                  {[
+                    "Raast ID",
+                    "SadaPay",
+                    "NayaPay",
+                    "Easypaisa",
+                    "JazzCash",
+                    "Meezan",
+                    "HBL Mobile",
+                    "Faysal Digi",
+                    "Alfalah Orbit",
+                    "Standard Chartered",
+                  ].map((app) => (
+                    <span
+                      key={app}
+                      className="rounded-full border border-ink/10 bg-sand/60 px-3 py-1.5 font-medium text-ink/75 shadow-2xs"
+                    >
                       {app}
                     </span>
                   ))}
@@ -815,7 +915,8 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
 
                 <div className="mt-6 rounded-xl bg-clay/5 p-4 border border-clay/15 text-xs leading-relaxed text-ink/75">
                   <strong className="text-clay block mb-1">Transfer Note / Reference:</strong>
-                  Enter your name or the project name (e.g. "School Bags", "Medical Camp") in the payment description so our finance desk can record your dedication.
+                  Enter your name or the project name (e.g. "School Bags", "Medical Camp") in the
+                  payment description so our finance desk can record your dedication.
                 </div>
               </div>
 
@@ -841,9 +942,14 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             <MessageCircle className="h-5 w-5" />
           </div>
           <div>
-            <h4 className="font-display text-lg font-bold text-ink">Transferred? Send Screenshot for Official Receipt</h4>
+            <h4 className="font-display text-lg font-bold text-ink">
+              Transferred? Send Screenshot for Official Receipt
+            </h4>
             <p className="text-xs text-ink/65 mt-0.5">
-              WhatsApp your transfer receipt to <strong className="text-ink">+92 300 9475513</strong> or email <strong className="text-ink">info@educationandlifefoundation.org</strong> with your transaction reference.
+              WhatsApp your transfer receipt to{" "}
+              <strong className="text-ink">+92 300 9475513</strong> or email{" "}
+              <strong className="text-ink">info@educationandlifefoundation.org</strong> with your
+              transaction reference.
             </p>
           </div>
         </div>
@@ -866,6 +972,35 @@ function BankDetails({ onSwitchToPledge }: { onSwitchToPledge?: () => void }) {
             <span>Or Pledge Online</span>
             <ArrowRight className="h-3.5 w-3.5 text-clay" />
           </button>
+        </div>
+      </div>
+
+      {/* ── DONOR SAFEGUARD & LEGAL POLICIES STRIP ── */}
+      <div className="mt-8 rounded-2xl border border-ink/10 bg-sand/40 p-5 sm:p-6 text-xs text-ink/75 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <ShieldCheck className="h-4 w-4 text-clay shrink-0" />
+            <span className="font-semibold text-ink">
+              Official Foundation Policies &amp; Donor Protections:
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+            <Link to="/refund-policy" className="text-clay font-medium hover:underline">
+              Refund Policy (14-Day Window)
+            </Link>
+            <span className="text-ink/20">|</span>
+            <Link to="/chargeback-policy" className="text-clay font-medium hover:underline">
+              Chargeback &amp; Dispute Policy
+            </Link>
+            <span className="text-ink/20">|</span>
+            <Link to="/privacy-policy" className="text-clay font-medium hover:underline">
+              Privacy Policy
+            </Link>
+            <span className="text-ink/20">|</span>
+            <Link to="/terms-and-conditions" className="text-clay font-medium hover:underline">
+              Terms &amp; Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </div>
