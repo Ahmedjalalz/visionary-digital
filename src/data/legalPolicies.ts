@@ -1,3 +1,4 @@
+/** Official compliance and legal policies for Education and Life Foundation (ELF) */
 export interface PolicySection {
   id: string;
   number: string;
