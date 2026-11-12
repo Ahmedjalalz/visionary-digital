@@ -27,6 +27,7 @@ import { WidowsHeroCarousel } from "@/components/site/WidowsHeroCarousel";
 import { MusicalInstrumentsGallery } from "@/components/site/MusicalInstrumentsGallery";
 import { SkillsDevelopmentShowcase } from "@/components/site/SkillsDevelopmentShowcase";
 import { FaithHopeLoveShowcase } from "@/components/site/FaithHopeLoveShowcase";
+import { WomenHealthHygieneShowcase } from "@/components/site/WomenHealthHygieneShowcase";
 import { EducationCrisisBadge } from "@/components/site/EducationCrisisBadge";
 import { SponsoredSchoolsShowcase } from "@/components/site/SponsoredSchoolsShowcase";
 import { TOTAL_SPONSORED_SCHOOLS, TOTAL_SPONSORED_STUDENTS } from "@/data/sponsoredSchoolsData";
@@ -58,6 +59,20 @@ export const Route = createFileRoute("/projects/$slug")({
     ];
     if (healthWashAliases.includes(params.slug)) {
       throw redirect({ to: "/projects/$slug", params: { slug: "health-wash-community-wellbeing" } });
+    }
+    const womenHealthAliases = [
+      "women-health-and-hygiene",
+      "women-health",
+      "women-hygiene",
+      "menstrual-hygiene",
+      "menstrual-health",
+      "menstrual-hygiene-empowerment",
+      "menstrual-health-and-hygiene",
+      "women-health-and-hygiene-empowerment",
+      "gn-women-health",
+    ];
+    if (womenHealthAliases.includes(params.slug)) {
+      throw redirect({ to: "/projects/$slug", params: { slug: "women-health-hygiene-empowerment" } });
     }
     const schoolBagAliases = [
       "school-bag-distribution",
@@ -223,6 +238,42 @@ const schoolBagsPhotoDetails = [
   {
     title: "Secondary Student Cohort (Bags 191321–191326)",
     desc: "Equipping young men and women across vulnerable communities with essential supplies for continuous academic progress.",
+  },
+];
+
+
+const womenHealthPhotoDetails = [
+  {
+    title: "Dignity Kits Distribution",
+    desc: "Adolescent schoolgirls receiving their Dignity Kits in Lahore & Kasur, eliminating financial barriers and school absenteeism.",
+  },
+  {
+    title: "School-Based Adolescent Education",
+    desc: "Interactive classroom session engaging students with pre-menarche guidance and safe menstrual hygiene habits.",
+  },
+  {
+    title: "Community Awareness Gathering",
+    desc: "Women and young girls gathered in an open village courtyard session led by female Community Health Workers.",
+  },
+  {
+    title: "Door-to-Door Household Outreach",
+    desc: "CHWs conducting confidential, stigma-free counseling at family doorsteps across the 4 target villages.",
+  },
+  {
+    title: "Adolescent Girls Empowerment",
+    desc: "Students holding their packaged Dignity Kits containing sanitary pads, hygiene supplies, and Urdu guidance.",
+  },
+  {
+    title: "Classroom Peer Learning",
+    desc: "Interactive questions, workbook activities, and open dialogue breaking generational silence around pubertal health.",
+  },
+  {
+    title: "Village Women's Circle",
+    desc: "Mothers learning proper sanitation and sunlight drying methods for reproductive tract infection prevention.",
+  },
+  {
+    title: "Personal In-Home Consultation",
+    desc: "Reaching shy and restricted village daughters in their safe home environments across Lahore and Kasur.",
   },
 ];
 
@@ -871,6 +922,19 @@ function ProjectPage() {
                       </p>
                     </div>
                   )}
+                                    {project.slug === "women-health-hygiene-empowerment" && womenHealthPhotoDetails[index] && (
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
+                        {String(index + 1).padStart(2, "0")} · Field Operation
+                      </span>
+                      <h4 className="mt-1 font-display text-base font-bold text-cream">
+                        {womenHealthPhotoDetails[index].title}
+                      </h4>
+                      <p className="mt-1 text-xs text-cream/80 leading-relaxed line-clamp-2">
+                        {womenHealthPhotoDetails[index].desc}
+                      </p>
+                    </div>
+                  )}
                   {project.slug === "capacity-building" && capacityBuildingPhotoDetails[index] && (
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/90 via-ink/35 to-transparent p-5 text-cream opacity-90 transition-opacity duration-300 group-hover:opacity-100">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-clay-bright">
@@ -1473,6 +1537,12 @@ function ProjectPage() {
           <div className="mx-auto max-w-[1600px]">
             <FaithHopeLoveShowcase />
           </div>
+        </section>
+      )}
+
+      {project.slug === "women-health-hygiene-empowerment" && (
+        <section className="border-t border-ink/10 bg-background pt-16 sm:pt-24">
+          <WomenHealthHygieneShowcase />
         </section>
       )}
 

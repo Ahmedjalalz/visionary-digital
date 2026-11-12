@@ -429,9 +429,65 @@ export const projects: Project[] = [
     accent: "clay",
     layout: "statement",
   },
+  {
+    slug: "women-health-hygiene-empowerment",
+    name: "Women Health & Hygiene Empowerment",
+    short: "Menstrual hygiene awareness, adolescent girls' dignity kit distribution, and community health worker capacity building across 4 villages in Lahore and Kasur.",
+    problem: {
+      figure: "10",
+      unit: "percent",
+      line: "of drinking water sources in Kasur meet safety standards — compounding severe hygiene risks for rural adolescent girls.",
+      source: "Pakistan Council of Research in Water Resources (PCRWR) & UNICEF MICS",
+    },
+    problemImage: "/images/women-health/hygiene-problem.jpg",
+    responseImage: "/images/women-health/hygiene-response.jpg",
+    context: [
+      "In rural Kasur and Lahore, cultural taboos around menstruation leave 7 out of 10 adolescent girls with zero knowledge before their first period. Inadequate sanitation and lack of affordable supplies cause recurring school absenteeism, social isolation, and preventable reproductive tract infections.",
+      "Integrated directly alongside Good Water Project (GWP) infrastructure sites, this initiative pairs safe water access with community-based menstrual health education, door-to-door household visits, and adolescent school empowerment without redundant assessment costs.",
+    ],
+    response: [
+      "Female Community Health Workers (CHWs) recruited from target villages lead 80 structured awareness sessions reaching ~2,000 women and adolescent girls, alongside 840 door-to-door household visits to break generational stigma.",
+      "We deliver 24 school-based sessions reaching ~960 students, and distribute 500 complete Dignity Kits packed with sanitary pads, hygiene essentials, and Urdu guidance to adolescent girls aged 12–15 to protect their education, dignity, and future.",
+    ],
+    outcomes: [
+      { label: "Community Outreach", value: "80 Sessions · 2,000 Women & Girls", href: "#three-activities" },
+      { label: "Household Visits", value: "840 Village Families Reached", href: "#three-activities" },
+      { label: "School Education", value: "24 Sessions · 960 Students", href: "#three-activities" },
+      { label: "Dignity Kits", value: "500 Adolescent Girls (12–15)", href: "#dignity-kits" },
+    ],
+    image: "/images/women-health/hero-empowerment.jpg",
+    gallery: [
+      "/images/women-health/dignity-kits/dignity-kit-2.jpg",
+      "/images/women-health/schools/school-4.jpg",
+      "/images/women-health/community/community-1.jpg",
+      "/images/women-health/door-to-door/door-to-door-2.jpg",
+      "/images/women-health/dignity-kits/dignity-kit-7.jpg",
+      "/images/women-health/schools/school-10.jpg",
+      "/images/women-health/community/community-6.jpg",
+      "/images/women-health/door-to-door/door-to-door-7.jpg",
+    ],
+    heroPosition: "object-[center_20%]",
+    accent: "clay",
+    layout: "statement",
+  },
 ];
 
 export const getProject = (slug: string) => {
+  const womenHealthAliases = [
+    "women-health-hygiene-empowerment",
+    "women-health-and-hygiene",
+    "women-health",
+    "women-hygiene",
+    "menstrual-hygiene",
+    "menstrual-health",
+    "menstrual-hygiene-empowerment",
+    "menstrual-health-and-hygiene",
+    "women-health-and-hygiene-empowerment",
+    "gn-women-health",
+  ];
+  if (womenHealthAliases.includes(slug)) {
+    return projects.find((p) => p.slug === "women-health-hygiene-empowerment");
+  }
   const childCareAliases = [
     "faith-hope-love-for-every-child",
     "faith-hope-love",

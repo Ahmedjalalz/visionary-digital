@@ -26,6 +26,7 @@ import { Route as SchoolBagDistributionRouteImport } from './routes/school-bag-d
 import { Route as SchoolBagsRouteImport } from './routes/school-bags'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as WomenHealthHygieneEmpowermentRouteImport } from './routes/women-health-hygiene-empowerment'
 import { Route as BagTrackingIdRouteImport } from './routes/bag.$trackingId'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
@@ -116,6 +117,12 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WomenHealthHygieneEmpowermentRoute =
+  WomenHealthHygieneEmpowermentRouteImport.update({
+    id: '/women-health-hygiene-empowerment',
+    path: '/women-health-hygiene-empowerment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BagTrackingIdRoute = BagTrackingIdRouteImport.update({
   id: '/bag/$trackingId',
   path: '/bag/$trackingId',
@@ -150,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/school-bags': typeof SchoolBagsRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/women-health-hygiene-empowerment': typeof WomenHealthHygieneEmpowermentRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -172,6 +180,7 @@ export interface FileRoutesByTo {
   '/school-bags': typeof SchoolBagsRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/women-health-hygiene-empowerment': typeof WomenHealthHygieneEmpowermentRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
@@ -195,6 +204,7 @@ export interface FileRoutesById {
   '/school-bags': typeof SchoolBagsRoute
   '/terms': typeof TermsRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/women-health-hygiene-empowerment': typeof WomenHealthHygieneEmpowermentRoute
   '/bag/$trackingId': typeof BagTrackingIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/school-bags'
     | '/terms'
     | '/terms-and-conditions'
+    | '/women-health-hygiene-empowerment'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -241,6 +252,7 @@ export interface FileRouteTypes {
     | '/school-bags'
     | '/terms'
     | '/terms-and-conditions'
+    | '/women-health-hygiene-empowerment'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects'
@@ -263,6 +275,7 @@ export interface FileRouteTypes {
     | '/school-bags'
     | '/terms'
     | '/terms-and-conditions'
+    | '/women-health-hygiene-empowerment'
     | '/bag/$trackingId'
     | '/projects/$slug'
     | '/projects/'
@@ -286,6 +299,7 @@ export interface RootRouteChildren {
   SchoolBagsRoute: typeof SchoolBagsRoute
   TermsRoute: typeof TermsRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  WomenHealthHygieneEmpowermentRoute: typeof WomenHealthHygieneEmpowermentRoute
   BagTrackingIdRoute: typeof BagTrackingIdRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
@@ -412,6 +426,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/women-health-hygiene-empowerment': {
+      id: '/women-health-hygiene-empowerment'
+      path: '/women-health-hygiene-empowerment'
+      fullPath: '/women-health-hygiene-empowerment'
+      preLoaderRoute: typeof WomenHealthHygieneEmpowermentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bag/$trackingId': {
       id: '/bag/$trackingId'
       path: '/bag/$trackingId'
@@ -454,6 +475,7 @@ const rootRouteChildren: RootRouteChildren = {
   SchoolBagsRoute: SchoolBagsRoute,
   TermsRoute: TermsRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  WomenHealthHygieneEmpowermentRoute: WomenHealthHygieneEmpowermentRoute,
   BagTrackingIdRoute: BagTrackingIdRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
