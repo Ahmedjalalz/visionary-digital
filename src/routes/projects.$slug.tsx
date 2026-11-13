@@ -244,8 +244,8 @@ const schoolBagsPhotoDetails = [
 
 const womenHealthPhotoDetails = [
   {
-    title: "Dignity Kits Distribution",
-    desc: "Adolescent schoolgirls receiving their Dignity Kits in Lahore & Kasur, eliminating financial barriers and school absenteeism.",
+    title: "Dignity Kit Handover",
+    desc: "Field leadership and health mobilizers directly handing over complete Dignity Kits to adolescent students at target schools.",
   },
   {
     title: "School-Based Adolescent Education",

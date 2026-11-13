@@ -217,10 +217,10 @@ const schoolPhotos: FieldPhotoItem[] = [
 
 const dignityKitDistributionPhotos: FieldPhotoItem[] = [
   {
-    src: "/images/women-health/dignity-kits/dignity-kit-2.jpg",
-    webp: "/images/women-health/dignity-kits/dignity-kit-2.webp",
+    src: "/images/women-health/dignity-kits/dignity-kit-13.jpg",
+    webp: "/images/women-health/dignity-kits/dignity-kit-13.webp",
     title: "Adolescent Dignity Kit Handover",
-    desc: "Adolescent schoolgirl in uniform holding her packaged GN Pakistan Dignity Kit in Lahore.",
+    desc: "Central Field Coordinator handing over the official Dignity Kit box to a student prefect at Govt Girls Elementary School.",
   },
   {
     src: "/images/women-health/dignity-kits/dignity-kit-7.jpg",

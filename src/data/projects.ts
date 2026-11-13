@@ -457,7 +457,7 @@ export const projects: Project[] = [
     ],
     image: "/images/women-health/hero-empowerment.jpg",
     gallery: [
-      "/images/women-health/dignity-kits/dignity-kit-2.jpg",
+      "/images/women-health/dignity-kits/dignity-kit-13.jpg",
       "/images/women-health/schools/school-4.jpg",
       "/images/women-health/community/community-1.jpg",
       "/images/women-health/door-to-door/door-to-door-2.jpg",
