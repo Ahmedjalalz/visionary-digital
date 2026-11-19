@@ -21,7 +21,6 @@ import {
   Layers,
   ChevronRight,
   Info,
-  DollarSign,
   HeartHandshake,
   School,
   Smile,
@@ -306,102 +305,6 @@ const timelineMilestones = [
   },
 ];
 
-const budgetBreakdown = [
-  {
-    category: "Program Delivery Costs",
-    share: "66.52%",
-    totalPkr: "PKR 1,510,000",
-    totalUsd: "$5,341",
-    items: [
-      {
-        title: "Dignity Kits for 500 Adolescent Girls",
-        detail: "500 comprehensive kits @ PKR 2,000 per kit ($7.07 USD)",
-        amountPkr: "PKR 1,000,000",
-        amountUsd: "$3,537",
-        pct: "44.05%",
-      },
-      {
-        title: "School-Based Menstrual Hygiene Sessions",
-        detail: "24 expert-led classroom sessions across 2 districts @ PKR 10,000",
-        amountPkr: "PKR 240,000",
-        amountUsd: "$849",
-        pct: "10.57%",
-      },
-      {
-        title: "IEC Materials (Distribution, Sessions & Kits)",
-        detail: "Multipurpose informational, educational, and visual materials",
-        amountPkr: "PKR 120,000",
-        amountUsd: "$424",
-        pct: "5.29%",
-      },
-      {
-        title: "Project Orientation & Capacity-Building Workshop",
-        detail: "Expert stipends, venue hire, multimedia, travel & lunch for 10–12 participants",
-        amountPkr: "PKR 100,000",
-        amountUsd: "$354",
-        pct: "4.41%",
-      },
-      {
-        title: "Learning Materials (Posters & Booklets)",
-        detail: "Design and full print run of visual anatomy and hygiene posters & booklets",
-        amountPkr: "PKR 50,000",
-        amountUsd: "$177",
-        pct: "2.20%",
-      },
-      {
-        title: "Community Sessions (80) & Door-to-Door Visits (840 HH)",
-        detail: "Directly delivered by budgeted CHWs (zero duplicate program line)",
-        amountPkr: "PKR 0*",
-        amountUsd: "$0*",
-        pct: "0.00%",
-      },
-    ],
-  },
-  {
-    category: "Support & Human Resource Costs",
-    share: "33.48%",
-    totalPkr: "PKR 760,000",
-    totalUsd: "$2,688",
-    items: [
-      {
-        title: "2 Social Mobilizers / CHWs (4 Months)",
-        detail: "Dedicated female field mobilizers (PKR 50,000 × 2 × 4 months)",
-        amountPkr: "PKR 400,000",
-        amountUsd: "$1,415",
-        pct: "17.62%",
-      },
-      {
-        title: "Travel & Field Logistics",
-        detail: "Local inter-village travel and logistical support (PKR 50,000 × 4 months)",
-        amountPkr: "PKR 200,000",
-        amountUsd: "$707",
-        pct: "8.81%",
-      },
-      {
-        title: "Finance Officer Contribution",
-        detail: "Financial reporting, compliance, and ledger oversight (PKR 30,000 × 4 months)",
-        amountPkr: "PKR 120,000",
-        amountUsd: "$424",
-        pct: "5.29%",
-      },
-      {
-        title: "Stationery, IT Support & Communications",
-        detail: "Field reporting forms, digital communications, and connectivity (PKR 10,000 × 4)",
-        amountPkr: "PKR 40,000",
-        amountUsd: "$141",
-        pct: "1.76%",
-      },
-      {
-        title: "Monitoring & Evaluation (GN Lahore & HO Team)",
-        detail: "Core technical oversight (PKR 200,000 charged to institutional R&D)",
-        amountPkr: "Charged to R&D",
-        amountUsd: "—",
-        pct: "—",
-      },
-    ],
-  },
-];
-
 export function WomenHealthHygieneShowcase() {
   const [activeTab, setActiveTab] = useState<"community" | "household" | "school">("community");
   const [selectedKitItem, setSelectedKitItem] = useState<DignityKitItem>(dignityKitItems[0]!);
@@ -443,12 +346,12 @@ export function WomenHealthHygieneShowcase() {
                 <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-ink/10 pt-6">
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-ink/50">
-                      Total Budget
+                      Total Reach
                     </div>
                     <div className="mt-1 font-display text-lg sm:text-xl font-bold text-ink">
-                      PKR 2,270,000
+                      ≈2,000
                     </div>
-                    <div className="text-[11px] text-clay font-medium">~USD $8,030</div>
+                    <div className="text-[11px] text-clay font-medium">Women &amp; Girls</div>
                   </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-ink/50">
@@ -1158,11 +1061,10 @@ export function WomenHealthHygieneShowcase() {
                   <span className="font-display text-lg font-bold text-ink">Dignity Kits</span>
                 </div>
                 <p className="mt-2 text-xs text-ink/70">
-                  Unit Cost: <strong>PKR 2,000 (~$7.07 USD)</strong> · Total Budget:{" "}
-                  <strong>PKR 1,000,000 ($3,537 USD)</strong>
+                  Target Cohort: <strong>Adolescent Girls (Ages 12–15)</strong> at or approaching menarche across 4 rural intervention villages.
                 </p>
-                <div className="mt-3 text-[11px] text-ink/50 italic">
-                  *Target can be scaled upward should additional philanthropic funding become available.
+                <div className="mt-3 text-[11px] text-clay font-medium">
+                  Direct material support eliminating school absenteeism and infection risks.
                 </div>
               </div>
             </div>
@@ -1322,9 +1224,9 @@ export function WomenHealthHygieneShowcase() {
                     </div>
                   </div>
                   <div>
-                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">PKR 100K</div>
+                    <div className="numeral text-3xl sm:text-4xl font-bold text-ink">4 Villages</div>
                     <div className="text-xs font-bold uppercase tracking-wider text-ink/60 mt-1">
-                      Dedicated Allocation ($354)
+                      CHW &amp; Community Alignment
                     </div>
                   </div>
                 </div>
@@ -1377,11 +1279,11 @@ export function WomenHealthHygieneShowcase() {
                   </picture>
                   <div className="mt-3 p-4 rounded-xl bg-background border border-ink/10">
                     <div className="text-xs font-bold uppercase tracking-wider text-clay">
-                      Budget Inclusions (Activity 4.1):
+                      Workshop Scope &amp; Facilities:
                     </div>
                     <p className="mt-1 text-xs text-ink/75 leading-relaxed">
-                      Includes technical expert stipends, travel allowances for CHWs &amp; community representatives,
-                      hall rental, multimedia projection, seating setup, and refreshments/lunch for participants.
+                      Comprehensive training modules covering evidence-based MHM guidance, interactive demonstrations,
+                      monitoring protocols, multimedia presentation tools, and facilitation supplies for all participants.
                     </p>
                   </div>
                 </div>
@@ -1634,98 +1536,7 @@ export function WomenHealthHygieneShowcase() {
         </div>
       </section>
 
-      {/* ── 7. TRANSPARENT BUDGET BREAKDOWN (Table 12) ── */}
-      <section className="border-t border-ink/10 bg-sand/30 px-5 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-[1600px]">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-clay">
-                <DollarSign className="h-4 w-4" />
-                Fiscal Transparency · Section 12 Budget Summary
-              </div>
-              <h2 className="display-md mt-4 text-ink font-bold">
-                Total Project Budget Breakdown
-              </h2>
-              <p className="font-display text-xl font-bold text-clay mt-2">
-                PKR 2,270,000 (Approx. USD $8,030 @ 282.7 PKR/USD)
-              </p>
-              <p className="lede mt-3 text-ink/75 max-w-3xl">
-                Every rupee is mapped directly to measurable community deliverables. 66.52% of all
-                funds directly purchase dignity kits, session supplies, and educational materials; 33.48%
-                supports female Community Health Workers, local logistics, and financial oversight.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 lg:text-right">
-              <div className="inline-block rounded-2xl border border-ink/10 bg-background p-6 shadow-xs text-left">
-                <div className="text-xs font-bold uppercase tracking-wider text-ink/50">
-                  Mid-Year Review (MYR) Cap
-                </div>
-                <div className="font-display text-2xl font-bold text-ink mt-1">
-                  $8,000 – $9,000 Range
-                </div>
-                <div className="mt-2 text-xs text-clay font-semibold">
-                  100% compliant with GN Pakistan field limits
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            {budgetBreakdown.map((sec) => (
-              <div
-                key={sec.category}
-                className="rounded-3xl border border-ink/10 bg-background p-6 sm:p-8 shadow-xs"
-              >
-                <div className="flex items-center justify-between border-b border-ink/10 pb-4">
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-clay">
-                      {sec.share} of Total Budget
-                    </span>
-                    <h3 className="font-display text-xl font-bold text-ink mt-0.5">
-                      {sec.category}
-                    </h3>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-display text-lg font-bold text-ink">{sec.totalPkr}</div>
-                    <div className="text-xs text-clay font-medium">{sec.totalUsd}</div>
-                  </div>
-                </div>
-
-                <div className="mt-6 space-y-4">
-                  {sec.items.map((item) => (
-                    <div
-                      key={item.title}
-                      className="p-4 rounded-xl bg-sand/40 border border-ink/5 flex flex-col justify-between"
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="min-w-0">
-                          <h4 className="font-display text-sm font-bold text-ink">{item.title}</h4>
-                          <p className="mt-1 text-xs text-ink/70">{item.detail}</p>
-                        </div>
-                        <div className="text-right shrink-0">
-                          <div className="font-display text-sm font-bold text-ink">{item.amountPkr}</div>
-                          <div className="text-[11px] text-clay font-semibold">{item.amountUsd}</div>
-                        </div>
-                      </div>
-                      <div className="mt-2 pt-2 border-t border-ink/10 flex justify-between text-[11px] text-ink/50">
-                        <span>Budget Allocation</span>
-                        <span className="font-bold text-ink/70">{item.pct}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-xs text-ink/60 italic">
-            * Activities 2.1 (Community Awareness Sessions) and 2.2 (Door-to-Door Household Visits) carry zero direct program cost line items, as they are fully delivered by the 2 Social Mobilizers / CHWs budgeted under Support Costs.
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8. SUSTAINABILITY & COMMUNITY OWNERSHIP ── */}
+      {/* ── 7. SUSTAINABILITY & COMMUNITY OWNERSHIP ── */}
       <section className="px-5 py-24 sm:px-8">
         <div className="mx-auto max-w-[1600px]">
           <div className="rounded-3xl border border-clay/30 bg-sand/60 p-8 sm:p-12 lg:p-16 shadow-md">
@@ -1751,7 +1562,7 @@ export function WomenHealthHygieneShowcase() {
                     search={{ project: "women-health-hygiene-empowerment" }}
                     className="inline-flex items-center gap-2 rounded-full bg-clay px-8 py-4 text-xs font-bold uppercase tracking-wider text-cream shadow-xs hover:bg-clay-deep transition-all"
                   >
-                    <span>Sponsor A Dignity Kit ($7.50 / PKR 2,000)</span>
+                    <span>Sponsor A Dignity Kit</span>
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link

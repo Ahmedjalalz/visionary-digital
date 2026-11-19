@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -24,6 +24,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { projects } from "@/data/projects";
 import { MaskLines, ParallaxImage } from "@/components/site/motion-primitives";
 import { sendDonationPledgeNotification } from "@/lib/email-service";
+import { CaptchaVerification, type CaptchaRef } from "@/components/ui/captcha";
 
 type DonateSearch = { project?: string | undefined };
 
@@ -97,12 +98,21 @@ function Donate() {
   const [projectSlug, setProjectSlug] = useState(preset ?? "");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const captchaRef = useRef<CaptchaRef>(null);
 
   const value = amount ?? Number(custom || 0);
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!value || value <= 0) return;
+
+    if (!captchaVerified && !captchaRef.current?.validate()) {
+      toast.error("Please complete the security CAPTCHA verification before confirming.");
+      captchaRef.current?.focus();
+      return;
+    }
+
     const fd = new FormData(e.currentTarget);
     const donorName = String(fd.get("name") ?? "");
     const donorEmail = String(fd.get("email") ?? "");
@@ -395,6 +405,14 @@ function Donate() {
                       className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink placeholder:text-ink/30 focus:border-clay focus:outline-none"
                     />
                   </div>
+                </div>
+
+                <div className="mt-8">
+                  <CaptchaVerification
+                    ref={captchaRef}
+                    onVerify={setCaptchaVerified}
+                    label="Payment Gateway Security Verification"
+                  />
                 </div>
 
                 <button

@@ -33,6 +33,7 @@ import { partners } from "@/data/partners";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
 import { MaskLines, Rise, ParallaxImage } from "@/components/site/motion-primitives";
+import { CaptchaVerification, type CaptchaRef } from "@/components/ui/captcha";
 const heroImg = "/images/pregnant/pregnant-15.jpg";
 import {
   Dialog,
@@ -880,6 +881,8 @@ function PartnerProposalForm() {
   const [selectedFocus, setSelectedFocus] = useState<string[]>([
     "Child Education & Supplies (School in A bag)",
   ]);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const captchaRef = useRef<CaptchaRef>(null);
 
   const toggleFocus = (focus: string) => {
     setSelectedFocus((prev) =>
@@ -891,6 +894,12 @@ function PartnerProposalForm() {
     e.preventDefault();
     if (!formData.orgName.trim() || !formData.contactName.trim() || !formData.email.trim()) {
       toast.error("Please fill in all required contact fields.");
+      return;
+    }
+
+    if (!captchaVerified && !captchaRef.current?.validate()) {
+      toast.error("Please complete the security CAPTCHA verification before submitting.");
+      captchaRef.current?.focus();
       return;
     }
 
@@ -1276,6 +1285,14 @@ ${formData.proposal.trim() || "No additional message provided."}
                       onChange={(e) => setFormData({ ...formData, proposal: e.target.value })}
                       placeholder="Outline your organization's mission, target impact, proposed timeline, or grant framework..."
                       className="mt-1.5 w-full rounded-xl border border-ink/20 bg-sand/30 p-3.5 text-sm text-ink placeholder:text-ink/30 focus:border-clay focus:bg-background focus:outline-none focus:ring-1 focus:ring-clay leading-relaxed"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <CaptchaVerification
+                      ref={captchaRef}
+                      onVerify={setCaptchaVerified}
+                      label="Security Verification (CAPTCHA)"
                     />
                   </div>
 

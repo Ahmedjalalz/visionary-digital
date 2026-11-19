@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { branches } from "@/components/site/SiteFooter";
@@ -8,6 +8,7 @@ import { MaskLines } from "@/components/site/motion-primitives";
 import { supabase } from "@/integrations/supabase/client";
 import { foundationMedia } from "@/data/foundationMedia";
 import { sendContactMessageNotification } from "@/lib/email-service";
+import { CaptchaVerification, type CaptchaRef } from "@/components/ui/captcha";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -31,10 +32,19 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const [active, setActive] = useState(0);
   const [sending, setSending] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const captchaRef = useRef<CaptchaRef>(null);
   const branch = branches[active]!;
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!captchaVerified && !captchaRef.current?.validate()) {
+      toast.error("Please complete the security CAPTCHA verification before sending.");
+      captchaRef.current?.focus();
+      return;
+    }
+
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") ?? "");
@@ -71,6 +81,8 @@ function Contact() {
 
     toast.success("Message received. We'll be in touch.");
     form.reset();
+    captchaRef.current?.reset();
+    setCaptchaVerified(false);
   }
 
   return (
@@ -220,6 +232,15 @@ function Contact() {
                 className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink placeholder:text-ink/25 focus:border-clay focus:outline-none"
               />
             </div>
+
+            <div className="mt-8">
+              <CaptchaVerification
+                ref={captchaRef}
+                onVerify={setCaptchaVerified}
+                label="Security Verification (CAPTCHA)"
+              />
+            </div>
+
             <button
               type="submit"
               disabled={sending}

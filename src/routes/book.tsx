@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Clock, Globe, Loader2 } from "lucide-react";
@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { sendBookingNotification } from "@/lib/email-service";
+import { CaptchaVerification, type CaptchaRef } from "@/components/ui/captcha";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -175,6 +176,8 @@ function Book() {
   const [time, setTime] = useState<string | null>(null);
   const [platform, setPlatform] = useState<string>(platforms[0]!);
   const [sending, setSending] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const captchaRef = useRef<CaptchaRef>(null);
   const [confirmed, setConfirmed] = useState<{ date: string; time: string; platform: string } | null>(
     null,
   );
@@ -227,6 +230,13 @@ function Book() {
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!date || !time) return;
+
+    if (!captchaVerified && !captchaRef.current?.validate()) {
+      alert("Please complete the security CAPTCHA verification before confirming your booking.");
+      captchaRef.current?.focus();
+      return;
+    }
+
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") ?? "");
     const email = String(fd.get("email") ?? "");
@@ -457,6 +467,14 @@ function Book() {
                       name="purpose"
                       rows={4}
                       className="mt-3 w-full resize-none border-b border-ink/20 bg-transparent pb-3 text-lg text-ink focus:border-clay focus:outline-none"
+                    />
+                  </div>
+
+                  <div className="mt-8">
+                    <CaptchaVerification
+                      ref={captchaRef}
+                      onVerify={setCaptchaVerified}
+                      label="Security Verification (CAPTCHA)"
                     />
                   </div>
 
