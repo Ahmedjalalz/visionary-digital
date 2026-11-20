@@ -409,9 +409,8 @@ export const CaptchaVerification = forwardRef<CaptchaRef, CaptchaVerificationPro
           </div>
         ) : (
           <>
-            <p className="mt-2 text-xs leading-relaxed text-ink/65">
-              Please enter the 6 characters shown in the security box to verify authentic human
-              request for payment gateway & fraud protection.
+            <p className="mt-2 text-xs text-ink/65">
+              Enter the 6 characters shown below.
             </p>
 
             {/* Challenge Box & Controls */}
