@@ -21,7 +21,6 @@ import {
   Layers,
   ChevronRight,
   Info,
-  HeartHandshake,
   School,
   Smile,
   BookOpen,
@@ -1575,26 +1574,26 @@ export function WomenHealthHygieneShowcase() {
               </div>
 
               <div className="lg:col-span-4">
-                <div className="rounded-2xl border border-ink/10 bg-background p-6 shadow-xs space-y-4">
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-clay">
-                    <HeartHandshake className="h-4 w-4" />
-                    Field Leadership &amp; Contact
+                <div className="relative overflow-hidden rounded-2xl border border-ink/10 bg-background p-3 shadow-md">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-ink/10 bg-sand">
+                    <picture className="contents">
+                      <source srcSet="/images/women-health/legacy-empowerment.webp" type="image/webp" />
+                      <img
+                        src="/images/women-health/legacy-empowerment.jpg"
+                        alt="Adolescent schoolgirls walking proudly with their Dignity Kits at Govt Girls School"
+                        className="h-full w-full object-cover object-[center_30%]"
+                        loading="lazy"
+                      />
+                    </picture>
                   </div>
-                  <div>
-                    <div className="text-xs text-ink/60">Submitted By:</div>
-                    <div className="font-display text-base font-bold text-ink">Rabia Tariq</div>
-                    <div className="text-xs text-clay font-medium">Central Field Coordinator, GN Pakistan</div>
-                  </div>
-                  <div className="pt-3 border-t border-ink/10 text-xs text-ink/75 space-y-1">
-                    <div>
-                      <strong>Email:</strong> rabiatariq@goodneighbors.pk
+                  <div className="p-3.5">
+                    <div className="flex items-center justify-between text-xs font-bold text-ink">
+                      <span>Empowered for Tomorrow</span>
+                      <span className="text-[11px] font-semibold text-clay uppercase tracking-wider">Generational Impact</span>
                     </div>
-                    <div>
-                      <strong>Mobile:</strong> +92 324 4054202
-                    </div>
-                    <div>
-                      <strong>Project Office:</strong> Lahore Field Office &amp; Head Office
-                    </div>
+                    <p className="mt-1 text-xs text-ink/75 leading-relaxed">
+                      Adolescent schoolgirls equipped with Dignity Kits and vital health education, stepping forward into their futures with confidence and regular school attendance.
+                    </p>
                   </div>
                 </div>
               </div>
